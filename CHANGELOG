@@ -1,3 +1,30 @@
+[Edge] All Go for Rails 2.0
+Ruby on Rails bundle maintenance has been taken over by Dr Nic Williams from its initial legendary owner Duane Johnson.
+See git branch two_point_ooh for initial drive to upgrade bundle for Rails 2.0 conventions (http://github.com/drnic/ruby-on-rails-tmbundle/tree/two_point_ooh)
+
+Added so far:
+  * Snippets for:
+    * Tests
+      * assert_select (ass)
+      * assert_difference/assert_no_difference (asd/asnd)
+    * Controllers
+      * respond_to (rst)
+      * REMOVED: render_component snippets
+    * Views
+      * form_for (ff)
+    * Models
+      * has_many :though (hmt)
+  * Language upgrades
+    * New keywords: rescue_from
+  * Commands
+    * html.erb is the default for new templates (backwards compatibility is being worked on too)
+
+For thoughts and patches, email drnicwilliams@gmail.com
+
+* BLACKHOLE OF CHANGELOG *
+...
+
+* END OF BLACKHOLE *
 2006-09-28 Added "Rake Migrate to Version", changed "rake migrate" to "rake db:migrate" to remove warning message.
 2006-02-22 Changed key bindings to TextMate conventions (http://macromates.com/textmate/manual/key_bindings#conventions)
 2006-02-22 Footnotes can be turned off for specific pages:
