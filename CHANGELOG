@@ -1,5 +1,5 @@
-[Edge] All Go for Rails 2.0
-Ruby on Rails bundle maintenance has been taken over by Dr Nic Williams from its initial legendary owner Duane Johnson.
+[Edge] Trundle to Rails 2.0 Bundle
+Ruby on Rails bundle maintenance has been taken over by Dr Nic Williams from its initial legendary creator Duane Johnson.
 See git branch two_point_ooh for initial drive to upgrade bundle for Rails 2.0 conventions (http://github.com/drnic/ruby-on-rails-tmbundle/tree/two_point_ooh)
 
 Added so far:
