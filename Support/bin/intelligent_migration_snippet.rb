@@ -62,25 +62,23 @@ def indent(code)
 end
 
 def insert_migration(snippet, text)
-  lines = text.to_a.reverse
+  lines = text.to_a
   
   up_code = indent(snippet[:up])
   down_code = indent(snippet[:down])
 
   # insert the self.up part of the snippet
-  lines[-1] = up_code
-  
-  # find the end of self.down and insert 2nd line, this is hardly robust.
-  # i'm assuming self.down is the last method in the class, but it works
-  ends_seen = 0
-  lines.each_with_index do |line, i|
-    ends_seen += 1    if line =~ /^\s*end\b/
-    if ends_seen == 2
+  lines[0] = up_code
+                  
+  # find the beginning of self.down and insert down code, this is hardly robust.
+  # assuming self.down is after self.up in the class
+  lines.each_with_index do |line, i|                
+    if line =~ /^\s*def\s+self\.down\b/
       lines[i, 1] = [lines[i], down_code]
       break
     end
   end
-  lines.reverse.to_s
+  lines.to_s
 end
 
 snippet = ARGV.shift
