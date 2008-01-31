@@ -11,6 +11,7 @@ Added so far:
       * respond_to (rst)
       * REMOVED: render_component snippets
       * loggers - pass a block instead of raw string to save time if logging not used (e.g. production) [thx Stephen Touset]
+      * redirect_to for resource paths (rep, repp, renp, renpp)
     * Views
       * form_for (ff)
       * link_to for resource paths (lip, lipp, linp, linpp)
