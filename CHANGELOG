@@ -3,7 +3,7 @@ Ruby on Rails bundle maintenance has been taken over by Dr Nic Williams from its
 See git branch two_point_ooh for initial drive to upgrade bundle for Rails 2.0 conventions (http://github.com/drnic/ruby-on-rails-tmbundle/tree/two_point_ooh)
 
 Added so far:
-  * Snippets for:
+  * Snippets/Commands for:
     * Tests
       * assert_select (ass)
       * assert_difference/assert_no_difference (asd/asnd)
@@ -15,6 +15,8 @@ Added so far:
     * Models
       * has_many :though (hmt)
       * association snippets give better defaults (e.g. bt + hm)
+    * Migrations
+      * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit]
   * Language upgrades
     * New keywords: rescue_from
   * Commands
