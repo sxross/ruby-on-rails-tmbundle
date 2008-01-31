@@ -10,8 +10,10 @@ Added so far:
     * Controllers
       * respond_to (rst)
       * REMOVED: render_component snippets
+      * loggers - pass a block instead of raw string to save time if logging not used (e.g. production) [thx Stephen Touset]
     * Views
       * form_for (ff)
+      * link_to for resource paths (lip, lipp, linp, linpp)
     * Models
       * has_many :though (hmt)
       * association snippets give better defaults (e.g. bt + hm)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>&lt;%= link_to "${1:link text...}", ${10:${2:parent}_${3:child}_path(${4:@}${5:${2}})} %&gt;</string>
+	<key>name</key>
+	<string>link_to (nested path plural)</string>
+	<key>scope</key>
+	<string>text.html.ruby</string>
+	<key>tabTrigger</key>
+	<string>linpp</string>
+	<key>uuid</key>
+	<string>866AAD87-E458-4F2D-9E7C-3CE73EFC047B</string>
+</dict>
+</plist>
