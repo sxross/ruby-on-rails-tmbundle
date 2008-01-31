@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>if [[ $TM_RAILS_VERSION -eq 1 ]]
-  then
-t.${1:string} :${2:title} 
+	<string>t.${1:string} :${2:title}
 mccc$0</string>
 	<key>name</key>
 	<string>Create Several Columns</string>
