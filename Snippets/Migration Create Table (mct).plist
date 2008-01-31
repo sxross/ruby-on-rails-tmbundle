@@ -3,8 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>create_table :${1:table} do |t|
-    $0
+	<string>create_table :${1:table}, :force => true do |t|
+  $0
+  t.timestamps
+  t.integer :lock_version, :null =&gt; false, :default =&gt; 0
 end</string>
 	<key>name</key>
 	<string>Create Table</string>

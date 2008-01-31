@@ -35,8 +35,10 @@ marcc$0',
       :down => 'remove_column :$1, :$2' },
 
   'create_drop_table' =>
-    { :up   => 'create_table :${1:table_name} do |t|
+    { :up   => 'create_table :${1:table_name}, :force => true do |t|
   mccc$0
+  t.timestamps
+  t.integer :lock_version, :null => false, :default => 0
 end',
       :down => 'drop_table :$1' },
 
