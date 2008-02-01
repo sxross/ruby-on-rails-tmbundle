@@ -1,4 +1,4 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/test_helper'
 
 require 'text_mate_mock'
 require 'rails/buffer'
