@@ -86,10 +86,10 @@ class Buffer
     end
 
     from.step(to, direction) do |i|
-      value = yield(lines[i])
-      value = lines[i].scan(value).flatten.compact.first if value.is_a? Regexp
-      return [value, i] if value
-    end
+      value = yield(lines[i])                                                 
+      value = lines[i].scan(value) if value.is_a? Regexp
+      return [i, value].flatten.compact if value.first
+    end    
     return nil
   end
 
