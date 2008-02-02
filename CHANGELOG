@@ -15,6 +15,7 @@ Added so far:
     * Views
       * form_for (ff)
       * link_to for resource paths (lip, lipp, linp, linpp)
+      * <% end -%> (end)
     * Models
       * has_many :though (hmt)
       * association snippets give better defaults (e.g. bt + hm)
