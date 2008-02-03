@@ -21,7 +21,7 @@ Added so far:
       * association snippets give better defaults (e.g. bt + hm)
       * validates_format_of (vf,vfif) [thx Dean Strelau]
     * Migrations
-      * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit]
+      * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit, Daniel Kristensen]
   * Language upgrades
     * New keywords: rescue_from
   * Commands
