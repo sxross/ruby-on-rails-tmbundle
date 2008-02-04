@@ -4,7 +4,7 @@
 <dict>
 	<key>content</key>
 	<string>render :update do |${2:page}|
-	$0
+	$2.$0
 end</string>
 	<key>name</key>
 	<string>render (update)</string>
