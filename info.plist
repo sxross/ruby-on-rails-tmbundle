@@ -46,6 +46,8 @@
 			<string>E34453D0-68EB-408C-AE49-990663DE18F7</string>
 			<string>EE4BA904-F727-4C6B-A2CB-602E30537E38</string>
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
+			<string>------------------------------------</string>
+			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -60,6 +62,15 @@
 				</array>
 				<key>name</key>
 				<string>Migrations</string>
+			</dict>
+			<key>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>0BCF0EE2-35EE-4959-A771-E74D55271D5A</string>
+				</array>
+				<key>name</key>
+				<string>Fixtures</string>
 			</dict>
 			<key>5CCEA099-4B20-4BC3-96B9-BD9BF57279F5</key>
 			<dict>
