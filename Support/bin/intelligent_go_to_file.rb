@@ -93,7 +93,7 @@ case TextMate.current_line
     action = $1
     if current_file.file_type == :controller
       if search = current_file.buffer.find(:direction => :backwards) { /def\s+#{action}\b/ }
-        TextMate.open(current_file, search[1])
+        TextMate.open(current_file, search[0])
       end
     else
       puts "Don't know where to go when rendering an action from outside a controller"
@@ -125,7 +125,7 @@ case TextMate.current_line
     end
 
     if search = controller_file.buffer.find(:direction => :backwards) { /def\s+#{action}\b/ }
-      TextMate.open(controller_file, search[1])
+      TextMate.open(controller_file, search[0])
     else
       puts "Couldn't find the #{action} action inside '#{controller_file.basename}'"
       exit
