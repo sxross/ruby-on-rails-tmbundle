@@ -12,6 +12,7 @@ Added so far:
       * REMOVED: render_component snippets
       * loggers - pass a block instead of raw string to save time if logging not used (e.g. production) [thx Stephen Touset]
       * redirect_to for resource paths (rep, repp, renp, renpp)
+      * render :update (ru) [thx Simon Jefford]
     * Views
       * form_for (ff)
       * link_to for resource paths (lip, lipp, linp, linpp)
@@ -19,8 +20,9 @@ Added so far:
     * Models
       * has_many :though (hmt)
       * association snippets give better defaults (e.g. bt + hm)
+      * validates_format_of (vf,vfif) [thx Dean Strelau]
     * Migrations
-      * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit]
+      * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit, Daniel Kristensen]
   * Language upgrades
     * New keywords: rescue_from
   * Commands
