@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
@@ -46,8 +46,8 @@
 			<string>E34453D0-68EB-408C-AE49-990663DE18F7</string>
 			<string>EE4BA904-F727-4C6B-A2CB-602E30537E38</string>
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
-			<string>------------------------------------</string>
 			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
+			<string>EC511A43-D3B7-11DC-BA49-00112475D960</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -317,6 +317,7 @@
 		<string>9A1AE6BA-8350-4AB7-B5BD-969A7E64CF29</string>
 		<string>5EEA0C71-B34B-4408-953B-F47AAD343CCC</string>
 		<string>F758BFD1-00CA-4742-BE71-032580080F5C</string>
+		<string>0BCF0EE2-35EE-4959-A771-E74D55271D5A</string>
 		<string>310C901C-EF32-4E88-938A-804ABBF8C428</string>
 		<string>6DEF923E-2347-46EC-AFBE-183D08E63DC1</string>
 		<string>6F2AB859-46E3-4FF5-A9A7-E9A813AB5DE1</string>
