@@ -2,7 +2,6 @@
 
 require 'rails_bundle_tools'
 require 'yaml'
-require 'rubygems'
 require File.join(ENV['TM_SUPPORT_PATH'], "lib", "escape")
 DIALOG = ENV['DIALOG']
 
