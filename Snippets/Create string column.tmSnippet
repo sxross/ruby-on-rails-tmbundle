@@ -3,15 +3,15 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>drop_table :${1:table}
-$0</string>
+	<string>t.string :${1:title}
+t.$0</string>
 	<key>name</key>
-	<string>Drop Table</string>
+	<string>Create string column</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
-	<string>mtab</string>
+	<string>t.</string>
 	<key>uuid</key>
-	<string>C3ED4A88-B9CF-4F2B-B195-3C582ED58C5F</string>
+	<string>377BF814-D52D-11DC-BD8E-00112475D960</string>
 </dict>
 </plist>

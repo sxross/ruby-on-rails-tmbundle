@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
@@ -142,6 +142,48 @@
 			<string>meta.rails.model</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ruby</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(^\s*)(?=class\s+.+ActiveRecord::Migration)</string>
+			<key>comment</key>
+			<string>Uses lookahead to match classes that (may) inherit from ActiveRecord::Migration; includes 'source.ruby' to avoid infinite recursion</string>
+			<key>end</key>
+			<string>^\1(?=end)\b</string>
+			<key>name</key>
+			<string>meta.rails.migration</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>begin</key>
+					<string>(^\s*)(?=create_table)\b</string>
+					<key>comment</key>
+					<string>Uses lookahead to match methods create_table; includes 'source.ruby' to avoid infinite recursion</string>
+					<key>contentName</key>
+					<string>meta.rails.migration.create_table</string>
+					<key>end</key>
+					<string>^\1(?=end)\b</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>source.ruby</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+					</array>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>source.ruby</string>
