@@ -31,6 +31,9 @@ Added so far:
     * Added rb as a valid Rails file type [thx James Deville]
   * Commands
     * html.erb is the default for new templates (backwards compatibility is being worked on too)
+  * Plugins
+    * Footnote
+      * footnote-edge uses .erb for templates [thx Stephen Bannasch]
 
 For thoughts and patches, email drnicwilliams@gmail.com
 
