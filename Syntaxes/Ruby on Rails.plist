@@ -4,6 +4,7 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
+		<string>rb</string>
 		<string>rxml</string>
 		<string>builder</string>
 	</array>
