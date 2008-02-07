@@ -8,7 +8,7 @@ mccc$0</string>
 	<key>name</key>
 	<string>Create Several Columns</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
 	<string>mccc</string>
 	<key>uuid</key>

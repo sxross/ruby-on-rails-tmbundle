@@ -8,7 +8,7 @@ $0</string>
 	<key>name</key>
 	<string>Drop Table</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>meta.rails.migration - meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
 	<string>mtab</string>
 	<key>uuid</key>

@@ -8,7 +8,7 @@ t.$0</string>
 	<key>name</key>
 	<string>Create lock_version column</string>
 	<key>scope</key>
-	<string>source.ruby.rails meta.rails.migration</string>
+	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
 	<string>t.</string>
 	<key>uuid</key>

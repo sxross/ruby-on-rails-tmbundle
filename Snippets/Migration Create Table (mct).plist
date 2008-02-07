@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>create_table :${1:table}, :force => true do |t|
+	<string>create_table :${1:table}, :force =&gt; true do |t|
   t.$0
   t.timestamps
 end</string>
 	<key>name</key>
 	<string>Create Table</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>meta.rails.migration - meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
 	<string>mtab</string>
 	<key>uuid</key>
