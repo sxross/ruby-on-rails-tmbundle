@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
@@ -114,6 +114,7 @@
 			<dict>
 				<key>items</key>
 				<array>
+					<string>A66D3FEE-D537-11DC-BD8E-00112475D960</string>
 					<string>59A47C33-97C5-411D-ADBE-ABD2324BD130</string>
 					<string>7592CA99-75D7-48B6-9133-00B9F148FF43</string>
 					<string>23BAF50A-CAFC-468E-929C-B6EAC75937A8</string>
@@ -223,6 +224,28 @@
 				</array>
 				<key>name</key>
 				<string>Logger</string>
+			</dict>
+			<key>A66D3FEE-D537-11DC-BD8E-00112475D960</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>377BF814-D52D-11DC-BD8E-00112475D960</string>
+					<string>6A9D4C30-D52D-11DC-BD8E-00112475D960</string>
+					<string>729D559E-D52D-11DC-BD8E-00112475D960</string>
+					<string>8AF989C4-D52E-11DC-BD8E-00112475D960</string>
+					<string>93A16768-D52E-11DC-BD8E-00112475D960</string>
+					<string>D6CBCA96-D52F-11DC-BD8E-00112475D960</string>
+					<string>4600CE20-D532-11DC-BD8E-00112475D960</string>
+					<string>4F5DDD37-D532-11DC-BD8E-00112475D960</string>
+					<string>56276686-D532-11DC-BD8E-00112475D960</string>
+					<string>967093B4-D532-11DC-BD8E-00112475D960</string>
+					<string>5E9B8B0E-D532-11DC-BD8E-00112475D960</string>
+					<string>E0C8FDC4-D532-11DC-BD8E-00112475D960</string>
+					<string>FC2523C1-D532-11DC-BD8E-00112475D960</string>
+					<string>EDA6568B-D533-11DC-BD8E-00112475D960</string>
+				</array>
+				<key>name</key>
+				<string>Columns</string>
 			</dict>
 			<key>D4D18AD6-11DA-47F2-AAD8-F2F350EE2BB9</key>
 			<dict>
@@ -389,6 +412,20 @@
 		<string>16A705EB-10DC-42B5-9FF2-377E206421DC</string>
 		<string>7592CA99-75D7-48B6-9133-00B9F148FF43</string>
 		<string>67FD2F8F-5F25-45F2-A451-2F39977A9EDE</string>
+		<string>377BF814-D52D-11DC-BD8E-00112475D960</string>
+		<string>6A9D4C30-D52D-11DC-BD8E-00112475D960</string>
+		<string>729D559E-D52D-11DC-BD8E-00112475D960</string>
+		<string>8AF989C4-D52E-11DC-BD8E-00112475D960</string>
+		<string>93A16768-D52E-11DC-BD8E-00112475D960</string>
+		<string>D6CBCA96-D52F-11DC-BD8E-00112475D960</string>
+		<string>4600CE20-D532-11DC-BD8E-00112475D960</string>
+		<string>4F5DDD37-D532-11DC-BD8E-00112475D960</string>
+		<string>56276686-D532-11DC-BD8E-00112475D960</string>
+		<string>967093B4-D532-11DC-BD8E-00112475D960</string>
+		<string>5E9B8B0E-D532-11DC-BD8E-00112475D960</string>
+		<string>E0C8FDC4-D532-11DC-BD8E-00112475D960</string>
+		<string>FC2523C1-D532-11DC-BD8E-00112475D960</string>
+		<string>EDA6568B-D533-11DC-BD8E-00112475D960</string>
 		<string>59A47C33-97C5-411D-ADBE-ABD2324BD130</string>
 		<string>23BAF50A-CAFC-468E-929C-B6EAC75937A8</string>
 		<string>C3ED4A88-B9CF-4F2B-B195-3C582ED58C5F</string>
