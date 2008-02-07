@@ -8,7 +8,7 @@
 	<string>#!/usr/bin/env ruby
 
 require "#{ENV['TM_SUPPORT_PATH']}/lib/progress"
-TextMate.call_with_progress(:title =&gt; "Contacting SQL Server", :message =&gt; "Fetching database schema…") do
+TextMate.call_with_progress(:title =&gt; "Contacting database", :message =&gt; "Fetching database schema…") do
 
   project = ENV['TM_PROJECT_DIRECTORY']
   word = ENV['TM_CURRENT_WORD']
