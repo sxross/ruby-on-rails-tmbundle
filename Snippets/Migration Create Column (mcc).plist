@@ -8,7 +8,7 @@ $0</string>
 	<key>name</key>
 	<string>Create Column in Table</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
 	<string>mcol</string>
 	<key>uuid</key>
