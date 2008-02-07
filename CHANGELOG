@@ -23,8 +23,9 @@ Added so far:
       * validates_format_of (vf,vfif) [thx Dean Strelau]
     * Migrations
       * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit, Daniel Kristensen]
-  * Language upgrades
+  * Language/Syntax
     * New keywords: rescue_from
+    * Added rb as a valid Rails file type [thx James Deville]
   * Commands
     * html.erb is the default for new templates (backwards compatibility is being worked on too)
 
