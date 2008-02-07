@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>def test_should_get_${2:action}
+	get :${2}${3:, :id =&gt; @${4:object}}
+	assert_response :success
+	$0
+end</string>
+	<key>name</key>
+	<string>def get request</string>
+	<key>scope</key>
+	<string>meta.rails.functional_test</string>
+	<key>tabTrigger</key>
+	<string>defg</string>
+	<key>uuid</key>
+	<string>1C491A76-751F-44EF-8DFB-0A585C7EEFF6</string>
+</dict>
+</plist>
