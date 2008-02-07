@@ -22,6 +22,8 @@ Added so far:
       * association snippets give better defaults (e.g. bt + hm)
       * validates_format_of (vf,vfif) [thx Dean Strelau]
     * Migrations
+      * Sexy Migrations now available as "t." snippets [thx Lawrence Pit]
+      * Migration classes have own textmate scope
       * Add/Remove Columns - the 'down' statements are in reverse order [thx Lawrence Pit, Daniel Kristensen]
   * Language/Syntax
     * New keywords: rescue_from
