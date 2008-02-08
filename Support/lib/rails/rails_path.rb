@@ -103,11 +103,11 @@ class RailsPath
     name =
       case file_type
       when :controller, :model
-        buffer.find_method(:direction => :backwards).first rescue nil
+        buffer.find_method(:direction => :backwards).last rescue nil
       when :view
         basename
       when :functional_test
-        buffer.find_method(:direction => :backwards).first.sub('^test_', '')
+        buffer.find_method(:direction => :backwards).last.sub('^test_', '')
       else nil
       end
     
