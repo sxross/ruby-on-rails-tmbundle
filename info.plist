@@ -53,6 +53,7 @@
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
 			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
 			<string>E34453D0-68EB-408C-AE49-990663DE18F7</string>
+			<string>8113246B-122E-4F4A-9B5A-98390900839E</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -176,6 +177,19 @@
 				<key>name</key>
 				<string>Controllers</string>
 			</dict>
+			<key>8113246B-122E-4F4A-9B5A-98390900839E</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>1C491A76-751F-44EF-8DFB-0A585C7EEFF6</string>
+					<string>8B9CD068-4338-4039-AA06-D839A6C7A9FF</string>
+					<string>2BD82DCB-1F19-4C8F-BC70-C0BBB06A2138</string>
+					<string>CD60F800-850D-47CF-BE32-3DE665DD5C68</string>
+					<string>DBE14FE8-B415-4DBC-A316-F8DA63FE9FD7</string>
+				</array>
+				<key>name</key>
+				<string>Functional Tests</string>
+			</dict>
 			<key>88B6256D-A8BF-46A9-8A6B-651D089D5F67</key>
 			<dict>
 				<key>items</key>
@@ -267,11 +281,8 @@
 			<dict>
 				<key>items</key>
 				<array>
-					<string>CD60F800-850D-47CF-BE32-3DE665DD5C68</string>
-					<string>2BD82DCB-1F19-4C8F-BC70-C0BBB06A2138</string>
 					<string>30BEA6FB-301C-4460-93EC-FA3404688962</string>
 					<string>5C6F4462-70E6-40B4-B3F2-F371656E7784</string>
-					<string>DBE14FE8-B415-4DBC-A316-F8DA63FE9FD7</string>
 					<string>------------------------------------</string>
 				</array>
 				<key>name</key>
