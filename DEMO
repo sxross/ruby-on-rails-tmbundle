@@ -1,0 +1,96 @@
+# A step-by-step project that demonstrates the use of this bundle.
+
+In this demo we'll create a blog; because that's what blogs are form: being 
+demonstrations of web frameworks.
+
+The demonstration uses new features of Rails 2.0 and the snippets in this bundle.
+
+## A New App
+
+    rails blog
+    cd blog
+    mate .
+
+## Add some models
+
+    ruby script/generate model Post body:text
+    
+This creates a 001_create_post migration with a create_table:
+
+    create_table :posts do |t|
+      t.text :body
+
+      t.timestamps
+    end
+    
+## Sexy Migration support
+
+If you put the cursor on the line after `t.text :body`, type `t.` and press TAB. Select "Create boolean column", and type "published" into the template field.
+
+Note that another `t.` was created on the next line! Press TAB and the cursor will be placed after it. You can now press TAB again to create another column, or delete this line.
+
+Here, delete the extraneous `t.` line.
+
+Run the migrations:
+
+    rake db:migrate
+    
+## Public blog controller
+
+    ruby script/generate controller blog index show
+    
+Now open `blog_controller_test.rb`. Note how much cleaner functional tests are now via `ActionController::TestCase`. 
+
+Let's do some TDD. First, delete the `test_truth` dummy method. 
+
+To create a test to show a list of blog articles:
+
+    defg
+
+and TAB gives:
+
+    def test_should_get_action
+      get :action, :id => @object
+      assert_response :success
+
+    end
+
+Type `index` to replace `action`. Press TAB, and then DELETE to remove `:id => @object`. The press TAB again to go to the end of the method. Now we have:
+
+    def test_should_get_index
+      get :index
+      assert_response :success
+
+    end
+    
+Now type `asg`, press TAB, and type `posts`, and press TAB again. This creates an instance variable lookup within an assertion:
+
+    assert(posts = assigns(:posts), "Cannot find @posts")
+    
+Now, let's assert the HTML format.
+
+Type `ass` and press TAB. Type `div#posts`, press TAB and DELETE, then TAB again to place the cursor within the `assert_select` block:
+
+    assert_select 'div#posts' do
+      
+    end
+    
+Now we'll check that the `@posts` objects are represented in the `div#posts` element.
+
+With the cursor inside the `assert_select`:
+
+Type `ass`, press TAB, type `div.post`, press TAB, press TAB again, and type `count` (to replace the `text`). Now press TAB again, and type `@posts.size`. Press TAB a final time (it will highlight the `do...end` block), and press DELETE.
+
+Our test method is now finished:
+
+    def test_should_get_index
+      get :index
+      assert_response :success
+      assert(posts = assigns(:posts), "Cannot find @posts")
+      assert_select 'div#posts' do
+        assert_select 'div.post', :count => @post.size
+      end
+    end
+
+
+    
