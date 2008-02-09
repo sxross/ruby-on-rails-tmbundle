@@ -404,3 +404,90 @@ The tab stop points are in useful places.
 So, to create our link to the posts page, type `lipp` and TAB, type 
 `Show all posts`, press TAB and type `post`. 
 
+## Controllers: `respond_to` and `redirect_to`
+
+Now we'll add a `create` action to the `posts_controller.rb`. Press
+Shift+Alt+Cmd+DownArrow and select "Controller" to go there.
+
+Within the class, go to the end, and type `def` and TAB, and type
+`create` and TAB. Now fill out the `create` action like:
+
+    def create
+      @post = Post.new(params[:post])
+      if @post.save
+
+      else
+
+      end
+    end
+    
+Place the cursor in the `true` section of the `if` statement.
+Type `rep` and TAB to create a `redirect_to` expression. Replace
+the selected text with `@post`.
+
+Like the various `link_to` snippets, there are matching `redirect_to`
+snippets.
+
+* rep   - `redirect_to(model_path(@model))`
+* repp  - `redirect_to(models_path)`
+* renp  - `redirect_to(parent_child_path(@parent, @child))`
+* renpp - `redirect_to(parent_child_path(@parent))`
+
+There are tab stops in useful places.
+
+In the `false` section of the `if` expression, we'll demonstrate the 
+`respond_to` block. There are two ways to generate a `respond_to` block.
+
+Type `rst` and TAB, and you get a standard empty block you can work with:
+
+    respond_to do |format|
+      
+    end
+    
+Inside the block, type `ra` and press TAB, then type `new`. The final block
+is:
+
+    respond_to do |format|
+      render :action => "new"
+    end
+
+Alternately, there is the "upgrade" hot key. Where you can convert some
+existing selected code, into a `respond_to` block.
+
+Select the whole line containing the `redirect_to` expression from the 
+`true` section of the `if` statement.
+
+Press Shift+Cmd+R (TODO - a better hot key?) and the line is replaced
+with:
+
+    format.html do
+      redirect_to(@post)
+    end
+    format.js {  }
+    
+The `js` is the first tab stop. The point of this hot key is to instantly 
+refactor your existing html respond code, and support a second response
+format.
+
+Select the whole `format.js` line (Shift+Cmd+L) and delete it.
+
+The completed `create` action is:
+
+    def create
+      @post = Post.new(params[:post])
+      if @post.save
+        respond_to do |format|
+          format.html do
+            redirect_to(@post)
+          end
+        end
+      else
+        respond_to do |format|
+          render :action => "new"
+        end
+      end
+    end
+    
+Yes you'd probably only have one `respond_to` block, but this is a
+demo so I am taking the scenic route.
+
