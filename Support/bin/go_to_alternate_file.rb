@@ -39,8 +39,6 @@ else
   choice = ARGV.shift
 end
 
-TextMate.textbox "path", current_file.rails_path_for(choice.to_sym).filepath
-
 if rails_path = current_file.rails_path_for(choice.to_sym)
   if choice.to_sym == :view and !rails_path.exists?
     if filename = TextMate.input("Enter the name of the new view file:", rails_path.basename)
