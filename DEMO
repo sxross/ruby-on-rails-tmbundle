@@ -169,7 +169,7 @@ If we run our functional tests they now pass: `rake test:functionals`
 
 As yet, we have no way for users to leave comments.
 
-## Associations
+## Foxy Fixtures
 
 Create a comment model:
 
@@ -216,4 +216,43 @@ Put the cursor after `post: ` and press Alt+Escape. A drop-down box appears with
       body: MyText
       name: MyString
       post: published
+
+## Associations
     
+To enable the Foxy Fixtures, we need to add associations to the model classes.
+
+You can now quickly toggle from a fixtures file (we're in comments.yml now) to the
+model file with Shift+Alt+Cmd+DownArrow hot key.
+
+Within `comment.rb` model, create a new line within the class, and type `bt` and press TAB. Type `post`. This creates a snippet:
+
+    belongs_to :post, :class_name => "Post", :foreign_key => "post_id"
+    
+The class name and foreign key are now generated from the association name. You can change them by TABbing across. But, we only need the default, so we can delete these options. 
+
+Press TAB and DELETE to remove the `:class_name` and `:foreign_key` options. The `Comment` class is now:
+
+    class Comment < ActiveRecord::Base
+      belongs_to :post
+    end
+
+Now go to the `Post` class. Press Cmd+T and type `post` and select the model file, and press enter.
+
+Create a new line within the `Post` class. Type `hm` and press TAB to generate a `has_many` association. Type `comments`, and the resulting snippet is:
+
+    has_many :comments, :class_name => "Comments", :foreign_key => "class_name_id"
+
+Notice the default `:class_name` is `Comments`, not `Comment`. This is wrong, and would need to be fixed, so its really just a helper to remind you to change it. We haven't figured out how to singularize a string using a regular expression; so if you know how let us know. 
+
+But here, we don't need the options. So press TAB once and then DELETE.
+
+    class Post < ActiveRecord::Base
+      has_many :comments
+    end
+
+Note, there is now a `has_many :through` snippet. Type `hmt` and TAB to activate it.
+
+Finally, we can run our tests since adding the `Comment` model + fixtures.
+
+`rake test`
+
