@@ -381,3 +381,22 @@ Shift+Alt+Cmd+DownArrow and select "Controller"), go to the `edit` action,
 and use Shift+Alt+Cmd+DownArrow again, and select "View" to create
 the `edit.html.erb` template file.
 
+## Link helpers
+
+At the bottom of the `new.html.erb` we want a link back to the list of all posts
+(within the posts controller, not the public blog controller). This
+will be the `index` action, and will be accessible via the resources route
+`posts_path`.
+
+There are several `link_to` snippets that support the resources routes:
+
+* lip   - `<%= link_to "link text...", model_path(@model) %>`
+* lipp  - `<%= link_to "link text...", models_path %>`
+* linp  - `<%= link_to "link text...", parent_child_path(@parent, @child) %>`
+* linpp - `<%= link_to "link text...", parent_child_path(@parent) %>`
+
+The tab stop points are in useful places.
+
+So, to create our link to the posts page, type `lipp` and TAB, type 
+`Show all posts`, press TAB and type `post`. 
+
