@@ -306,15 +306,17 @@ and select 'View'. A dialog box will pop up asking for the name of the new
 template (as there are no `app/views/posts/new*` files). By default, the 
 suffix is now `.html.erb` rather than the old `.rhtml`. Press RETURN.
 
-Inside the blank `new.html.erb` file, type `ff` and press TAB, and type `post` 
-and press TAB:
+Inside the blank `new.html.erb` file, type `ffe` and press TAB, and type `post` 
+and press TAB, twice:
 
+    <%= error_messages_for :post %>
     <% form_for @post do |f| -%>
 
     <% end -%>
 
 `form_for` is the Rails 2.0 preferred helper for managing forms, and 
-there are now snippets for common form_for helpers.
+there are now snippets for common form_for helpers. There are `ff` and `ffe`
+snippets; the former does not have the error messages section.
 
 To create a label and text field for the `subject` attribute:
 
@@ -325,6 +327,7 @@ Type `f.` and TAB, and select "Check box". Type `subject`.
 
 This gives us:
 
+    <%= error_messages_for :post %>
     <% form_for @post do |f| -%>
       <p>
         <%= f.label :subject %><br />
@@ -343,6 +346,7 @@ You can now view this form at [http://localhost:3000/posts/new](http://localhost
 
 The final form is:
 
+    <%= error_messages_for :post %>
     <% form_for @post do |f| -%>
       <p>
         <%= f.label :subject %><br />
