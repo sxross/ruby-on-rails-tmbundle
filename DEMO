@@ -422,8 +422,8 @@ Within the class, go to the end, and type `def` and TAB, and type
     end
     
 Place the cursor in the `true` section of the `if` statement.
-Type `rep` and TAB to create a `redirect_to` expression. Replace
-the selected text with `@post`.
+Type `repp` and TAB to create a `redirect_to` expression. Replace
+the selected text with `post`.
 
 Like the various `link_to` snippets, there are matching `redirect_to`
 snippets.
@@ -434,6 +434,9 @@ snippets.
 * renpp - `redirect_to(parent_child_path(@parent))`
 
 There are tab stops in useful places.
+
+We're going with `redirect_to(posts_path)` here, even though
+we don't yet have an `index` action yet.
 
 In the `false` section of the `if` expression, we'll demonstrate the 
 `respond_to` block. There are two ways to generate a `respond_to` block.
@@ -478,7 +481,7 @@ The completed `create` action is:
       if @post.save
         respond_to do |format|
           format.html do
-            redirect_to(@post)
+            redirect_to(posts_path)
           end
         end
       else
@@ -490,4 +493,3 @@ The completed `create` action is:
     
 Yes you'd probably only have one `respond_to` block, but this is a
 demo so I am taking the scenic route.
-
