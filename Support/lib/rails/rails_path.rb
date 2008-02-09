@@ -8,6 +8,7 @@
 require 'rails/misc'
 require 'rails/text_mate'
 require 'rails/buffer'
+require 'rails/inflector'
 
 module AssociationMessages
   # Return associated_with_*? methods
@@ -25,7 +26,7 @@ module AssociationMessages
     :helper => [:controller, :unit_test, :javascript, :stylesheet],
     :view => [:controller, :javascript, :stylesheet, :model],
     :model => [:unit_test, :fixture, :view],
-    :fixture => [:unit_test],
+    :fixture => [:unit_test, :model],
     :functional_test => [:controller],
     :unit_test => [:model, :helper],
     :javascript => [:helper, :controller],
@@ -94,6 +95,7 @@ class RailsPath
     when :unit_test  then name.sub!(/_test$/, '')
     when :view       then name = dirname.split('/').pop
     when :functional_test then name.sub!(/_controller_test$/, '')
+    when :fixture    then Inflector.singularize(name)
     end
     
     return name
@@ -126,7 +128,7 @@ class RailsPath
   end
   
   # This is used in :file_type and :rails_path_for_view
-  VIEW_EXTENSIONS = %w( rhtml rxhtml rxml rjs erb builder )
+  VIEW_EXTENSIONS = %w( erb builder rhtml rxhtml rxml rjs )
 
   def file_type
     return @file_type if @file_type
@@ -199,6 +201,7 @@ class RailsPath
     when :javascript then '.js'
     when :stylesheet then '.css'
     when :view       then '.html.erb'
+    when :fixture    then '.yml'
     else '.rb'
     end
   end
