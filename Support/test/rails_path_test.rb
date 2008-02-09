@@ -5,7 +5,7 @@ require 'rails/rails_path'
 
 TextMate.line_number = '1'
 TextMate.column_number = '1'
-TextMate.project_directory = File.expand_path(File.dirname(__FILE__) + '/fixtures')
+TextMate.project_directory = File.expand_path(File.dirname(__FILE__) + '/app_fixtures')
 
 class RailsPathTest < Test::Unit::TestCase
   def setup
@@ -13,11 +13,11 @@ class RailsPathTest < Test::Unit::TestCase
     @rp_controller_with_module = RailsPath.new(FIXTURE_PATH + '/app/controllers/admin/base_controller.rb')
     @rp_view = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml')
     @rp_view_with_module = RailsPath.new(FIXTURE_PATH + '/app/views/admin/base/action.rhtml')
-    @rp_fixture = RailsPath.new(FIXTURE_PATH + '/text/fixtures/users.yml')
+    @rp_fixture = RailsPath.new(FIXTURE_PATH + '/test/fixtures/users.yml')
   end
   
   def test_rails_root
-    assert_equal File.expand_path(File.dirname(__FILE__) + '/fixtures'), RailsPath.new.rails_root
+    assert_equal File.expand_path(File.dirname(__FILE__) + '/app_fixtures'), RailsPath.new.rails_root
   end
   
   def test_extension
@@ -71,7 +71,8 @@ class RailsPathTest < Test::Unit::TestCase
       [FIXTURE_PATH + '/app/controllers/admin/base_controller.rb', :helper, FIXTURE_PATH + '/app/helpers/admin/base_helper.rb'],
       [FIXTURE_PATH + '/app/controllers/admin/inside/outside_controller.rb', :javascript, FIXTURE_PATH + '/public/javascripts/admin/inside/outside.js'],
       [FIXTURE_PATH + '/app/controllers/admin/base_controller.rb', :functional_test, FIXTURE_PATH + '/test/functional/admin/base_controller_test.rb'],
-      [FIXTURE_PATH + '/app/helpers/admin/base_helper.rb', :controller, FIXTURE_PATH + '/app/controllers/admin/base_controller.rb']
+      [FIXTURE_PATH + '/app/helpers/admin/base_helper.rb', :controller, FIXTURE_PATH + '/app/controllers/admin/base_controller.rb'],
+      [FIXTURE_PATH + '/test/fixtures/users.yml', :model, FIXTURE_PATH + '/app/models/user.rb']
     ]
     # TODO Add [posts.yml, :model, post.rb]
     for pair in partners
