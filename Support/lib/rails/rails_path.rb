@@ -193,6 +193,7 @@ class RailsPath
     when :functional_test then controller_name + '_controller_test'
     when :unit_test  then controller_name + '_test'
     when :model      then Inflector.singularize(controller_name)
+    when :fixture    then Inflector.pluralize(controller_name)
     else controller_name
     end
   end
