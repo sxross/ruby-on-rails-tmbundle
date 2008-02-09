@@ -146,6 +146,11 @@ Press Ctrl+> (greater-than) to create a `<%=  %>` element. If you press Ctrl+> a
 
 Enter `post.body` within the ERb template field.
 
+Actually, we'll need to show the subject too, so above the `<%= post.body %>` line
+type 'h3', and press Ctrl+< (LessThan), then Ctrl+> (GreatherThan), and `post.subject`.
+
+The resulting line is: `<h3><%= post.subject %></h3>`
+
 Move the cursor down between `<% else %>` and `<% end %>`.
 
 Press Shift+Ctrl+W to create a simple element `<p></p>`. You can change the element type here. Just press TAB to go inside the element. Type `There are no posts available to read. All y'all come back soon, yer hear.` because its funny.
@@ -156,6 +161,7 @@ Our `index.html.erb` template is now:
       <% if !@posts.blank? %>
         <% for post in @posts %>
           <div class="post">
+            <h3><%= post.subject %></h3>
             <%= post.body %>
           </div>
         <% end %>
