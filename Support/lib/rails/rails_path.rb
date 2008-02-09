@@ -175,9 +175,9 @@ class RailsPath
   def modules
     case file_type
     when :view
-      @tail.split('/').slice(0...-2)
+      tail.split('/').slice(0...-2)
     else
-      @tail.split('/').slice(0...-1)
+      tail.split('/').slice(0...-1)
     end
   end
   
@@ -192,6 +192,7 @@ class RailsPath
     when :helper     then controller_name + '_helper'
     when :functional_test then controller_name + '_controller_test'
     when :unit_test  then controller_name + '_test'
+    when :model      then Inflector.singularize(controller_name)
     else controller_name
     end
   end
