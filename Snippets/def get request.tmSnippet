@@ -9,11 +9,11 @@
 	$0
 end</string>
 	<key>name</key>
-	<string>def get request</string>
+	<string>def test_should_get_action</string>
 	<key>scope</key>
 	<string>meta.rails.functional_test</string>
 	<key>tabTrigger</key>
-	<string>defg</string>
+	<string>deftg</string>
 	<key>uuid</key>
 	<string>1C491A76-751F-44EF-8DFB-0A585C7EEFF6</string>
 </dict>
