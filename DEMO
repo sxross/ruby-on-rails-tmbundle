@@ -13,11 +13,12 @@ The demonstration uses new features of Rails 2.0 and the snippets in this bundle
 
 ## Add some models
 
-    ruby script/generate model Post body:text
+    ruby script/generate model Post subject:string body:text
     
 This creates a 001_create_post migration with a create_table:
 
     create_table :posts do |t|
+      t.string :subject
       t.text :body
 
       t.timestamps
@@ -40,7 +41,8 @@ Run the migrations:
 Update the `test/fixtures/posts.yml` file as:
 
     published:
-      body: Some article
+      subject: Some article
+      body: A test article
       published: true
 
     nonpublished:
@@ -58,7 +60,7 @@ Let's do some TDD. First, delete the `test_truth` dummy method.
 
 To create a test to show a list of blog articles:
 
-    defg
+    deftg
 
 and TAB gives:
 
@@ -105,7 +107,7 @@ Our test method is now finished:
       end
     end
 
-NOTE: there is also a `defp` snippet for functional tests to create a POST test stub.
+NOTE: there is also a `deftp` snippet for functional tests to create a POST test stub.
 
 ## Controller actions
 
@@ -215,4 +217,3 @@ Put the cursor after `post: ` and press Alt+Escape. A drop-down box appears with
       name: MyString
       post: published
     
-
