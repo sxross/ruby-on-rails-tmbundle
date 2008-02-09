@@ -191,7 +191,7 @@ class RailsPath
       end
     when :helper     then controller_name + '_helper'
     when :functional_test then controller_name + '_controller_test'
-    when :unit_test  then controller_name + '_test'
+    when :unit_test  then Inflector.singularize(controller_name) + '_test'
     when :model      then Inflector.singularize(controller_name)
     when :fixture    then Inflector.pluralize(controller_name)
     else controller_name
