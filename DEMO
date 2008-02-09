@@ -242,7 +242,10 @@ Create a new line within the `Post` class. Type `hm` and press TAB to generate a
 
     has_many :comments, :class_name => "Comments", :foreign_key => "class_name_id"
 
-Notice the default `:class_name` is `Comments`, not `Comment`. This is wrong, and would need to be fixed, so its really just a helper to remind you to change it. We haven't figured out how to singularize a string using a regular expression; so if you know how let us know. 
+Notice the default `:class_name` is `Comments`, not `Comment`. This is wrong, 
+and would need to be fixed, so its really just a helper to remind you to 
+change it. We haven't figured out how to singularize a string using a regular 
+expression; so if you know how let us know. 
 
 But here, we don't need the options. So press TAB once and then DELETE.
 
@@ -250,9 +253,131 @@ But here, we don't need the options. So press TAB once and then DELETE.
       has_many :comments
     end
 
-Note, there is now a `has_many :through` snippet. Type `hmt` and TAB to activate it.
+Note, there is now a `has_many :through` snippet. Type `hmt` and TAB to 
+activate it.
 
 Finally, we can run our tests since adding the `Comment` model + fixtures.
 
 `rake test`
+
+## Routes
+
+Open the routes file (Cmd+T, type `routes` and press RETURN).
+
+Change the routes file to:
+
+    ActionController::Routing::Routes.draw do |map|
+      map.resources :posts
+      map.connect ':controller/:action/:id'
+      map.connect ':controller/:action/:id.:format'
+    end
+
+## Creating Posts
+
+From the `Post` class (`post.rb`) you can now quickly navigate to a controller 
+of the same name. It supports either singular or plural controller names, but 
+will default to the plural name, which is the REST/resources preferred name.
+
+To create a `PostsController`, use the 'Go To' hot key (as above) Shift+Alt+Cmd+
+DownArrow and select 'Controller'. As there is no `post_controller.rb` nor 
+`posts_controller.rb` it will create a `posts_controller.rb` controller file; 
+which is what we want here.
+
+Note; at this stage you could use the Rails 2.0 `scaffold` generator to create 
+the `posts_controller.rb` (and tests and routes).
+
+In the blank file, we need to create a controller class, and add two methods - new and edit:
+
+    class PostsController < ApplicationController
+      def new
+        @post = Post.new
+      end
+
+      def edit
+        @post = Post.find(params[:id])
+      end
+    end
+
+New classes can be created with `cla` snippet, and new methods created with `def`.
+
+Now we need templates for the `new` and `edit` actions. Place the cursor 
+inside the `new` method, and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow) 
+and select 'View'. A dialog box will pop up asking for the name of the new 
+template (as there are no `app/views/posts/new*` files). By default, the 
+suffix is now `.html.erb` rather than the old `.rhtml`. Press RETURN.
+
+Inside the blank `new.html.erb` file, type `ff` and press TAB, and type `post` 
+and press TAB:
+
+    <% form_for @post do |f| -%>
+
+    <% end -%>
+
+`form_for` is the Rails 2.0 preferred helper for managing forms, and 
+there are now snippets for common form_for helpers.
+
+To create a label and text field for the `subject` attribute:
+
+Press Shift+Ctrl+W, and press TAB and press RETURN, to create a `<p></p>` block.
+Type `f.` and TAB, and select "Label". Type `subject`, press TAB and press DELETE.
+To create a `<br/>`, press Ctrl+RETURN.
+Type `f.` and TAB, and select "Check box". Type `subject`.
+
+This gives us:
+
+    <% form_for @post do |f| -%>
+      <p>
+        <%= f.label :subject %><br />
+        <%= f.text_field :subject %>
+      </p>
+    <% end -%>
+    
+Now repeat for `body` and `published` fields.
+
+Note, for `published`, you might change the label to `Published yet?` by TABbing 
+into the default string file.
+
+Finally, add a "Submit" button using the `f.` snippet tab completion.
+
+You can now view this form at [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
+
+The final form is:
+
+    <% form_for @post do |f| -%>
+      <p>
+        <%= f.label :subject %><br />
+        <%= f.text_field :subject %>
+      </p>
+      <p>
+        <%= f.label :body %><br />
+        <%= f.text_area :body %>
+      </p>
+      <p>
+        <%= f.label :published, "Published yet?" %><br />
+        <%= f.check_box :published %>
+      </p>
+      <p>
+        <%= f.submit "Submit" %>
+      </p>
+    <% end -%>
+    
+## Partials
+
+This form is exactly the same as the form required for the `edit.html.erb` template.
+
+Instead of copy+pasting it into the `edit.html.erb` file, we'll create a partial
+template.
+
+Select the entire form (Cmd+A), and press Shift+Ctrl+H and a dialog box appears.
+Type in `form` and press RETURN.
+
+The form is replaced by:
+
+    <%= render :partial => 'form' %>
+
+Now copy and paste this into the `edit.html.erb` file. To create this file,
+return to the controller (from the `new.html.erb` file, press
+Shift+Alt+Cmd+DownArrow and select "Controller"), go to the `edit` action,
+and use Shift+Alt+Cmd+DownArrow again, and select "View" to create
+the `edit.html.erb` template file.
 
