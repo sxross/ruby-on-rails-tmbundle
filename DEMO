@@ -292,19 +292,41 @@ which is what we want here.
 Note; at this stage you could use the Rails 2.0 `scaffold` generator to create 
 the `posts_controller.rb` (and tests and routes).
 
-In the blank file, we need to create a controller class, and add two methods - new and edit:
+In the blank file, we need to create a controller class.
+
+Type `cla` and TAB, and select "Create controller class". Type `Posts` and TAB, 
+`post` and TAB, and finally, `Post` and TAB. This leaves the cursor in the middle
+of the generated class:
 
     class PostsController < ApplicationController
+      before_filter :find_post
+
+
+
+      private
+      def find_post
+        @post = Post.find(params[:id]) if params[:id]
+      end
+    end
+
+Now add two actions - `new` and `edit`. New methods can be created
+with `def` snippet:
+
+    class PostsController < ApplicationController
+      before_filter :find_post
+
       def new
         @post = Post.new
       end
 
       def edit
-        @post = Post.find(params[:id])
+      end
+      
+      private
+      def find_post
+        @post = Post.find(params[:id]) if params[:id]
       end
     end
-
-New classes can be created with `cla` snippet, and new methods created with `def`.
 
 Now we need templates for the `new` and `edit` actions. Place the cursor 
 inside the `new` method, and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow) 
@@ -499,3 +521,9 @@ The completed `create` action is:
     
 Yes you'd probably only have one `respond_to` block, but this is a
 demo so I am taking the scenic route.
+
+
+# TODO
+
+* Write functional tests for the `posts_controller`
+* Demonstrate new Add/Remove columns - `down` method is in reverse order
