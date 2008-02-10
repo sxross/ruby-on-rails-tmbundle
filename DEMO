@@ -642,10 +642,15 @@ The completed `create` action is:
 Yes you'd probably only have one `respond_to` block, but this is a
 demo so I am taking the scenic route.
 
+## Our application so far
+
+In the browser, we can create posts via
+[http://localhost:3000/posts/new](http://localhost:3000/posts/new)
+and then view them as a blog visitor at 
+[http://localhost:3000/blog](http://localhost:3000/blog).
 
 # TODO
 
-* Write functional tests for the `posts_controller`
 * Demonstrate new Add/Remove columns - `down` method is in reverse order
 
 # Intro video
