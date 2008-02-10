@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>respond_to do |format|
-	$0
-end</string>
+	<string>assert_redirected_to ${2:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})}</string>
 	<key>name</key>
-	<string>respond_to</string>
+	<string>assert_redirected_to (nested path)</string>
 	<key>scope</key>
 	<string>source.ruby.rails</string>
 	<key>tabTrigger</key>
-	<string>rst</string>
+	<string>artnp</string>
 	<key>uuid</key>
-	<string>B41D3164-EA53-4DDC-850E-27B82B24061F</string>
+	<string>97021C0D-EB65-4046-B688-01F09B3B1615</string>
 </dict>
 </plist>

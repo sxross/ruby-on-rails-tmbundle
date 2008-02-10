@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>respond_to do |format|
-	$0
-end</string>
+	<string>assert_redirected_to ${2:${12:model}_path(${13:@}${14:${12}})}</string>
 	<key>name</key>
-	<string>respond_to</string>
+	<string>assert_redirected_to (path)</string>
 	<key>scope</key>
 	<string>source.ruby.rails</string>
 	<key>tabTrigger</key>
-	<string>rst</string>
+	<string>artp</string>
 	<key>uuid</key>
-	<string>B41D3164-EA53-4DDC-850E-27B82B24061F</string>
+	<string>D33EDCE7-F8AF-48D4-AA7A-852BBF03E31D</string>
 </dict>
 </plist>

@@ -6,17 +6,18 @@
 	<string>nop</string>
 	<key>command</key>
 	<string>RUBYLIB="$TM_BUNDLE_SUPPORT/lib:$RUBYLIB"
-"${TM_RUBY:=ruby}" -- "${TM_BUNDLE_SUPPORT}/bin/intelligent_go_to_file.rb"
-</string>
+"${TM_RUBY:=ruby}" -- "${TM_BUNDLE_SUPPORT}/bin/go_to_alternate_file.rb" fixture</string>
 	<key>input</key>
 	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>~$@</string>
 	<key>name</key>
-	<string>Intelligent Go to File</string>
+	<string>Go to Fixture</string>
 	<key>output</key>
-	<string>afterSelectedText</string>
+	<string>showAsTooltip</string>
 	<key>scope</key>
-	<string>source.ruby.rails, text.html.ruby, comment.line.number-sign.ruby, source.yaml</string>
+	<string>meta.rails.model, meta.rails.unit_test</string>
 	<key>uuid</key>
-	<string>43304E62-66F7-424D-8AF6-33E0237BF349</string>
+	<string>638D94A4-BDFC-4FE9-8909-9934F3FD2899</string>
 </dict>
 </plist>

@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>respond_to do |format|
-	$0
-end</string>
+	<string>&lt;%= f.check_box :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>respond_to</string>
+	<string>form_for check_box</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>rst</string>
+	<string>f.</string>
 	<key>uuid</key>
-	<string>B41D3164-EA53-4DDC-850E-27B82B24061F</string>
+	<string>F579F9E7-E072-4BCC-BFF9-C8C5BAE7FFA5</string>
 </dict>
 </plist>

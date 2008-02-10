@@ -3,16 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>respond_to do |format|
-	$0
-end</string>
+	<string>&lt;%= error_messages_for :${1:model} %&gt;
+
+&lt;% form_for @${2:$1} do |f| -%&gt;
+  $0
+&lt;% end -%&gt;</string>
 	<key>name</key>
-	<string>respond_to</string>
+	<string>form_for with errors</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>rst</string>
+	<string>ffe</string>
 	<key>uuid</key>
-	<string>B41D3164-EA53-4DDC-850E-27B82B24061F</string>
+	<string>15BDD7B6-5C15-4684-93C7-A05E3D2221AC</string>
 </dict>
 </plist>

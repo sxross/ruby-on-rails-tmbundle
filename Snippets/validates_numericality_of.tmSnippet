@@ -3,16 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>respond_to do |format|
-	$0
-end</string>
+	<string>validates_numericality_of :${1:attribute}${2:, :on =&gt; :${3:create}, :message =&gt; "${4:is not a number}"}</string>
 	<key>name</key>
-	<string>respond_to</string>
-	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>validates_numericality_of</string>
 	<key>tabTrigger</key>
-	<string>rst</string>
+	<string>vn</string>
 	<key>uuid</key>
-	<string>B41D3164-EA53-4DDC-850E-27B82B24061F</string>
+	<string>B21BA16D-7C04-4912-8488-425CDCC332A8</string>
 </dict>
 </plist>
