@@ -33,7 +33,7 @@ Added so far:
     * Functional Tests
       * assert_redirect_to for resource paths (artp, artpp, artnp, artnpp)
   * Language/Syntax
-    * New keywords: rescue_from
+    * New keywords: rescue_from, alias_method_chain, alias_attribute, delegate
     * Added rb as a valid Rails file type [thx James Deville]
   * Commands
     * html.erb is the default for new templates (backwards compatibility 
