@@ -330,8 +330,9 @@ press TAB now, it creates a generic test method snippet:
 Instead, we will use the `deftg` (GET request) and `deftp` (POST
 request) snippets.
 
-Create a test for the `index`, `new` and `edit` actions. For `new`, we
-can delete the `@model = models(:fixture_name)`, etc parts.
+Create a test for the `index`, `new` and `edit` actions. For 
+`index` and `new`, we can delete the `@model = models(:fixture_name)`, 
+etc parts.
 
 To test for the `create` action, type `deftp` and TAB. Type
 `post` and TAB, and DELETE and TAB, and DELETE and TAB.
@@ -364,12 +365,32 @@ use resourceful routes, like `link_to` and `redirect_to`.
 Type `artpp` and TAB, and type `post`, to assert that the `create`
 action must redirect to the index page.
 
-Now add two actions - `new` and `edit`. New methods can be created
+The final `test_should_post_create` method is:
+
+    def test_should_post_create
+      post :create, :post => { :subject => 'Test', :body => 'Some body', :published => '1' }
+      assert_response :redirect
+      assert_redirected_to posts_path
+    end
+
+Running our tests (`rake test:functionals`) shows all these new tests failing.
+
+## Views
+
+Go back to the `posts_controller.rb` file. Since it is already
+open within TextMate, you can navigate to it via the editor tabs:
+Alt+Cmd+LeftArrow or RightArrow.
+
+Now add three actions - `index`, `new` and `edit`. New methods can be created
 with `def` snippet:
 
     class PostsController < ApplicationController
       before_filter :find_post
-
+      
+      def index
+        @posts = Post.find(:all)
+      end
+      
       def new
         @post = Post.new
       end
@@ -383,11 +404,55 @@ with `def` snippet:
       end
     end
 
-Now we need templates for the `new` and `edit` actions. Place the cursor 
-inside the `new` method, and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow) 
+Now we need templates for the `index`, `new` and `edit` actions. 
+
+Place the cursor inside the `index` method, 
+and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow) 
 and select 'View'. A dialog box will pop up asking for the name of the new 
-template (as there are no `app/views/posts/new*` files). By default, the 
-suffix is now `.html.erb` rather than the old `.rhtml`. Press RETURN.
+template (as there are no `app/views/posts/index*` files). By default, the 
+suffix is now `.html.erb` rather than the old `.rhtml`. Press RETURN,
+to accept `index.html.erb` as your template name.
+
+Let's just create a simple table showing the Posts.
+
+Type `table` and Ctrl+< to generate `<table></table>`, and 
+press RETURN to put the tags on separate lines.
+
+Do the same to create a `<tbody></tbody>` element.
+
+Inside the `<tbody></tbody>` we want to iterate over the `@posts`,
+one per `<tr></tr>` row.
+
+Press Ctrl+>, three times, to create a `<%- -%>` tag. Inside it
+type `@posts.each do |post|`.
+
+On the next line, type `end` and TAB, to create `<% end -%>`.
+We now have a Ruby block within this ERb template.
+
+Inside the block, create a `<tr></tr>` element, and within it
+create a `<td></td>` element. We'll skip over anything fancy
+here, and just put the post's subject here.
+
+Type `@post.subject` and select it. Now press Ctrl+> to wrap
+the selected text inside `<%= @post.selected %>`.
+
+The resulting `index.html.erb` is:
+
+    <table>
+      <tbody>
+        <%- @posts.each do |post| -%>
+          <tr>
+            <td><%= post.subject %></td>
+          </tr>
+        <% end -%>
+      </tbody>
+    </table>
+
+## Forms
+
+Place the cursor inside the `new` method, 
+and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow) 
+and select 'View'. Press RETURN to accept `new.html.erb`.
 
 Inside the blank `new.html.erb` file, type `ffe` and press TAB, and type `post` 
 and press TAB, twice:
@@ -589,6 +654,7 @@ demo so I am taking the scenic route.
 * Styled like a Hollywood trailer
   * The green "safe for advertising screen"
   * The production company logos (Dr Nic Academy, PeepCode, TextMate, Ruby on Rails)
+    * Perhaps 'E Text Editor' logo?
   * Sinister introduction via 'confessions' interlaced between them
   * Fast moving action sequences
   * "Coming soon"
