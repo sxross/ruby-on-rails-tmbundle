@@ -3,10 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>def test_should_post_${2:action}
-	post :${2}${3:, :id =&gt; @${4:object}}
+	<string>def test_should_post_${1:action}
+	${3:@$2 = ${4:$2s}(:${5:fixture_name})
+	}post :${1}${6:, :id =&gt; @$2.to_param}, :${2:model} =&gt; { $0 }
 	assert_response :redirect
-	$0
+	
 end</string>
 	<key>name</key>
 	<string>def test_should_post_action</string>

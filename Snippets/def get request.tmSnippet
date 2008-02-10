@@ -3,8 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>def test_should_get_${2:action}
-	get :${2}${3:, :id =&gt; @${4:object}}
+	<string>def test_should_get_${1:action}
+	${2:@${3:model} = ${4:$3s}(:${5:fixture_name})
+	}get :${1}${6:, :id =&gt; @$3.to_param}
 	assert_response :success
 	$0
 end</string>
