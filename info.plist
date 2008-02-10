@@ -54,6 +54,7 @@
 			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
 			<string>E34453D0-68EB-408C-AE49-990663DE18F7</string>
 			<string>8113246B-122E-4F4A-9B5A-98390900839E</string>
+			<string>9EB71DE4-93D3-466C-B1D8-54892538FF3A</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -236,6 +237,18 @@
 				</array>
 				<key>name</key>
 				<string>Columns</string>
+			</dict>
+			<key>9EB71DE4-93D3-466C-B1D8-54892538FF3A</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>62C3838B-0790-4FC2-8425-F273A57F5D33</string>
+					<string>78FCF992-D01B-404F-BC54-5EE7B91F999A</string>
+					<string>F1BE0C3D-7203-43E9-BEFB-D1A99CDD31C1</string>
+					<string>C12C98A5-74E5-4E70-9ADB-8783455D6539</string>
+				</array>
+				<key>name</key>
+				<string>Ajax Testing</string>
 			</dict>
 			<key>A229B2F8-21B4-4910-AA61-6672A48C2991</key>
 			<dict>
