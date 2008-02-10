@@ -309,6 +309,61 @@ of the generated class:
       end
     end
 
+## TDD for Posts controller
+
+Currently there is not a functional test for our `posts_controller.rb`.
+To create it, use the 'Go To' hot key (Shift+Alt+Cmd+
+DownArrow) and select 'Functional Test'. This will create 
+a blank file.
+
+Type `cla` and TAB, and select "Create functional test class".
+Type `Posts` and TAB. (The functional test class name
+should match the controller class, with `Test` suffixed to it).
+
+The functional test class snippet gives you a `deft` stub. If you 
+press TAB now, it creates a generic test method snippet:
+
+    def test_case_name
+
+    end
+    
+Instead, we will use the `deftg` (GET request) and `deftp` (POST
+request) snippets.
+
+Create a test for the `index`, `new` and `edit` actions. For `new`, we
+can delete the `@model = models(:fixture_name)`, etc parts.
+
+To test for the `create` action, type `deftp` and TAB. Type
+`post` and TAB, and DELETE and TAB, and DELETE and TAB.
+Now enter in a hash of the values to pass in for the test,
+say `:subject => 'Test', :body => 'Some body', :published => '1'`
+
+    def test_should_post_create
+      post :create, :post => { :subject => 'Test', :body => 'Some body', :published => '1' }
+      assert_response :redirect
+
+    end
+
+On the line after the `assert_response` expression, we'll test
+for where we want to be redirected to. 
+
+If you type `art` you create an old-style `assert_redirected_to :action => "index"` 
+snippet.
+
+In addition there are now various `assert_redirected_to` snippets that
+use resourceful routes:
+
+* artp   - `assert_redirected_to model_path(@model)`
+* artpp  - `assert_redirected_to models_path`
+* artnp  - `assert_redirected_to parent_child_path(@parent, @child)`
+* artnpp - `assert_redirected_to parent_child_path(@parent)`
+
+As we'll see later, this naming scheme is used for other snippets that
+use resourceful routes, like `link_to` and `redirect_to`.
+
+Type `artpp` and TAB, and type `post`, to assert that the `create`
+action must redirect to the index page.
+
 Now add two actions - `new` and `edit`. New methods can be created
 with `def` snippet:
 
@@ -527,3 +582,22 @@ demo so I am taking the scenic route.
 
 * Write functional tests for the `posts_controller`
 * Demonstrate new Add/Remove columns - `down` method is in reverse order
+
+# Intro video
+
+* Dramatic theme music
+* Styled like a Hollywood trailer
+  * The green "safe for advertising screen"
+  * The production company logos (Dr Nic Academy, PeepCode, TextMate, Ruby on Rails)
+  * Sinister introduction via 'confessions' interlaced between them
+  * Fast moving action sequences
+  * "Coming soon"
+* Get bundle contributors to submit webcam 'confessions'
+  * MattA: "I'm new to this country, but I must be breaking some laws with this"
+  * Allan O: "I may have to stop development of TextMate"
+* Action sequences
+  * Show text exploding across the screen
+* "Coming soon"
+  * TextMate for Rails 2.0 
+  * Coming Soon to PeepCode
+  * Coincides with "Lost" TV show's noise at the end of each show
