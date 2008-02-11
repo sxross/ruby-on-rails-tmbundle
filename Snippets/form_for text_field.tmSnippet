@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>assert_select '${1:path}'${2:, :${3:text} =&gt; ${4:'${5:inner_html}'}}${6: do
-	$0
-end}</string>
+	<string>&lt;%= f.text_field :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>assert_select</string>
+	<string>form_for text_field</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>ass</string>
+	<string>f.</string>
 	<key>uuid</key>
-	<string>DBE14FE8-B415-4DBC-A316-F8DA63FE9FD7</string>
+	<string>CC1BCD1C-2479-4335-B511-17B880316A75</string>
 </dict>
 </plist>

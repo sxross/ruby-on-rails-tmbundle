@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>assert_select '${1:path}'${2:, :${3:text} =&gt; ${4:'${5:inner_html}'}}${6: do
-	$0
-end}</string>
+	<string>&lt;%= Fixtures.identify(:${1:name}) %&gt;$0</string>
 	<key>name</key>
-	<string>assert_select</string>
+	<string>&lt;%= Fixtures.identify(:symbol) %&gt;</string>
 	<key>scope</key>
-	<string>source.ruby.rails</string>
+	<string>source.yaml</string>
 	<key>tabTrigger</key>
-	<string>ass</string>
+	<string>fi</string>
 	<key>uuid</key>
-	<string>DBE14FE8-B415-4DBC-A316-F8DA63FE9FD7</string>
+	<string>9671EB7A-89D6-4C23-914F-88CBEE0D177A</string>
 </dict>
 </plist>

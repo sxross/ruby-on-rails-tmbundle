@@ -3,16 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>assert_select '${1:path}'${2:, :${3:text} =&gt; ${4:'${5:inner_html}'}}${6: do
-	$0
-end}</string>
+	<string>assert_redirected_to ${2:${12:parent}_${13:child}_path(${14:@}${15:${12}}, ${16:@}${17:${13}})}</string>
 	<key>name</key>
-	<string>assert_select</string>
+	<string>assert_redirected_to (nested path)</string>
 	<key>scope</key>
 	<string>source.ruby.rails</string>
 	<key>tabTrigger</key>
-	<string>ass</string>
+	<string>artnp</string>
 	<key>uuid</key>
-	<string>DBE14FE8-B415-4DBC-A316-F8DA63FE9FD7</string>
+	<string>97021C0D-EB65-4046-B688-01F09B3B1615</string>
 </dict>
 </plist>
