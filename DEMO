@@ -139,6 +139,8 @@ Change the `index` action method to:
 To create/navigate to the view, press Shift+Alt+Cmd+DownArrow and select "View" (like above).
 
 As there is no `app/views/blog/index*` files, it will prompt you to create a blank view file. By default it guesses `index.html.erb`, but of course you can change that in the dialog box.
+  
+If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the file before hitting Shift-Alt-Cmd-DownArrow and selecting "View".  
 
 Press enter to accept `index.html.erb`. You are taken to the new file.
 
@@ -158,14 +160,14 @@ Press Ctrl+> (greater-than) to create a `<%=  %>` element. If you press Ctrl+> a
 
 Enter `post.body` within the ERb template field.
 
-Actually, we'll need to show the subject too, so above the `<%= post.body %>` line
+Actually, we'll need to show the subject too, so above the `<%= post.body %>` line (press UpArrow followed by Cmd-Enter)
 type 'h3', and press Ctrl+< (LessThan), then Ctrl+> (GreatherThan), and `post.subject`.
 
 The resulting line is: `<h3><%= post.subject %></h3>`
 
 Move the cursor down between `<% else %>` and `<% end %>`.
 
-Press Shift+Ctrl+W to create a simple element `<p></p>`. You can change the element type here. Just press TAB to go inside the element. Type `There are no posts available to read. All y'all come back soon, yer hear.` because its funny.
+Press Shift+Ctrl+W or Ctrl+< (LessThan) to create a simple element `<p></p>`. You can change the element type here. Just press TAB to go inside the element. Type `There are no posts available to read. All y'all come back soon, yer hear.` because its funny.
 
 Our `index.html.erb` template is now:
 
@@ -183,7 +185,7 @@ Our `index.html.erb` template is now:
 
     </div>
 
-If we run our functional tests they now pass: `rake test:functionals`
+If we run our functional tests they now pass: run either from the command prompt with `rake test:functionals` or directly from the editor by pressing Ctrl+\ and press 2 for "Test Functionals"
 
 As yet, we have no way for users to leave comments.
 
