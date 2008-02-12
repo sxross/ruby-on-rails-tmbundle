@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
@@ -38,6 +38,7 @@
 		<array>
 			<string>43304E62-66F7-424D-8AF6-33E0237BF349</string>
 			<string>D4D18AD6-11DA-47F2-AAD8-F2F350EE2BB9</string>
+			<string>5FBC0312-D9B1-11DC-94E9-00112475D960</string>
 			<string>------------------------------------</string>
 			<string>4904EDC7-5ED3-4132-AAB2-C2AD87C97EFE</string>
 			<string>46ECE243-0448-4A64-A223-27CC21E7704D</string>
@@ -130,6 +131,21 @@
 				</array>
 				<key>name</key>
 				<string>Models</string>
+			</dict>
+			<key>5FBC0312-D9B1-11DC-94E9-00112475D960</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>DC549A45-D9B0-11DC-94E9-00112475D960</string>
+					<string>F4EA552D-D9B0-11DC-94E9-00112475D960</string>
+					<string>04A30A4D-D9B1-11DC-94E9-00112475D960</string>
+					<string>0D966168-D9B1-11DC-94E9-00112475D960</string>
+					<string>190401C2-D9B1-11DC-94E9-00112475D960</string>
+					<string>212C3047-D9B1-11DC-94E9-00112475D960</string>
+					<string>2C60CBA1-D9B1-11DC-94E9-00112475D960</string>
+				</array>
+				<key>name</key>
+				<string>Run Tests</string>
 			</dict>
 			<key>62D0A466-DB7C-4202-A77B-A89E7F10AE8F</key>
 			<dict>
@@ -412,6 +428,13 @@
 		<string>9A1AE6BA-8350-4AB7-B5BD-969A7E64CF29</string>
 		<string>5EEA0C71-B34B-4408-953B-F47AAD343CCC</string>
 		<string>F758BFD1-00CA-4742-BE71-032580080F5C</string>
+		<string>DC549A45-D9B0-11DC-94E9-00112475D960</string>
+		<string>F4EA552D-D9B0-11DC-94E9-00112475D960</string>
+		<string>04A30A4D-D9B1-11DC-94E9-00112475D960</string>
+		<string>0D966168-D9B1-11DC-94E9-00112475D960</string>
+		<string>190401C2-D9B1-11DC-94E9-00112475D960</string>
+		<string>212C3047-D9B1-11DC-94E9-00112475D960</string>
+		<string>2C60CBA1-D9B1-11DC-94E9-00112475D960</string>
 		<string>0BCF0EE2-35EE-4959-A771-E74D55271D5A</string>
 		<string>275C0B86-F735-49B6-8A22-218A8F4CC2E0</string>
 		<string>310C901C-EF32-4E88-938A-804ABBF8C428</string>
