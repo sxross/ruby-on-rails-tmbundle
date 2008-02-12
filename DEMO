@@ -88,7 +88,6 @@ Type `index` to replace `action`. Press TAB, and then DELETE to remove the first
 
     end
 
-# FIXME: asg doesn't trigger anything    
 Now type `asg`, press TAB, and type `posts`, and press TAB again. This creates an instance variable lookup within an assertion:
 
     assert(posts = assigns(:posts), "Cannot find @posts")
