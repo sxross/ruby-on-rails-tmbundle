@@ -1,6 +1,6 @@
 # A step-by-step project that demonstrates the use of this bundle.
 
-In this demo we'll create a blog; because that's what blogs are form: being 
+In this demo we'll create a blog; because that's what blogs are for: being 
 demonstrations of web frameworks.
 
 The demonstration uses new features of Rails 2.0 and the snippets in this bundle.
@@ -26,15 +26,18 @@ This creates a 001_create_post migration with a create_table:
     
 ## Sexy Migration support
 
-If you put the cursor on the line after `t.text :body`, type `t.` and press TAB. Select "Create boolean column", and type "published" into the template field.
+If you put the cursor on the line after `t.text :body`, type `t.` and press TAB. Select "Create boolean column" (by pressing 0), and type "published" into the template field. If nothing happened when you pressed TAB, check that when you opened the migrations file you've selected the bundle "Ruby on Rails". 
 
 Note that another `t.` was created on the next line! Press TAB and the cursor will be placed after it. You can now press TAB again to create another column, or delete this line.
 
-Here, delete the extraneous `t.` line.
+Here, delete the extraneous `t.` line (Shift-Ctrl-K).
 
-Run the migrations:
+Run the migrations, either from the prompt:
 
-    rake db:migrate
+    rake db:migrate                       
+
+or directly from the editor by pressing ^-| (Ctrl-Pipeline), and choosing option "Migrate to Current".
+
     
 ## Post fixtures
 
@@ -52,9 +55,15 @@ Note, in Rails 2.0 fixtures no longer have explicit ids. Later on we'll look at 
 
 ## Public blog controller
 
-    ruby script/generate controller blog
+Create a controller for our blog, either via the command prompt:
+
+    ruby script/generate controller blog                        
+
+or directly from the editor by pressing ^-|, and choosing option "Call Generate Script", choose "Controller", give it the name "blog", and empty the list of actions.
     
-Now open `blog_controller_test.rb`. Note how much cleaner functional tests are now via `ActionController::TestCase`. 
+Now open `blog_controller_test.rb`. To find this file quickly press Cmd-T, enter bct, and select the file.
+
+Note how much cleaner functional tests are now via `ActionController::TestCase`. 
 
 Let's do some TDD. First, delete the `test_truth` dummy method. 
 
@@ -65,26 +74,28 @@ To create a test to show a list of blog articles:
 and TAB gives:
 
     def test_should_get_action
-      get :action, :id => @object
+      @model = models(:fixture_name)
+      get :action, :id => @model.to_param
       assert_response :success
 
     end
 
-Type `index` to replace `action`. Press TAB, and then DELETE to remove `:id => @object`. The press TAB again to go to the end of the method. Now we have:
+Type `index` to replace `action`. Press TAB, and then DELETE to remove the first line, then press TAB three times and then DELETE to remove the `:id => @model.to_param` part. The press TAB again to go to the end of the method. Now we have:
 
     def test_should_get_index
       get :index
       assert_response :success
 
     end
-    
+
+# FIXME: asg doesn't trigger anything    
 Now type `asg`, press TAB, and type `posts`, and press TAB again. This creates an instance variable lookup within an assertion:
 
     assert(posts = assigns(:posts), "Cannot find @posts")
     
 Now, let's assert the HTML format.
 
-Type `ass` and press TAB. Type `div#posts`, press TAB and DELETE, then TAB again to place the cursor within the `assert_select` block:
+Type `ass` and press TAB. Type `div#posts`, press TAB and DELETE, then TAB twice to place the cursor within the `assert_select` block:
 
     assert_select 'div#posts' do
       
@@ -108,13 +119,15 @@ Our test method is now finished:
     end
 
 NOTE: there is also a `deftp` snippet for functional tests to create a POST test stub.
+To memorize: `deftg` stands for `define test get` and `deftp` stands for `define test post`
 
 ## Controller actions
 
-Now, to navigate to `blog_controller.rb` there are two options:
+Now, to navigate to `blog_controller.rb` there are three options:
 
 * press Shift+Alt+Cmd+DownArrow, and select "Controller" from the drop-down list
 * press Alt+Cmd+DownArrow and you'll go directly to the controller (toggles btw the two files)
+* press Cmd-T, press b, press c, and choose the file.
 
 Change the `index` action method to:
 
@@ -652,6 +665,7 @@ and then view them as a blog visitor at
 # TODO
 
 * Model snippets (validates_...)
+* link_to(model) (ltm)
 * Demonstrate new Add/Remove columns - `down` method is in reverse order
 
 # Intro video
