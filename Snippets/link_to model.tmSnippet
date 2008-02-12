@@ -3,21 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;% if !${1:list}.blank? %&gt;
-  &lt;% for ${2:item} in ${1} %&gt;
-    $3
-  &lt;% end %&gt;
-&lt;% else %&gt;
-  $4
-&lt;% end %&gt;
-</string>
+	<string>&lt;%= link_to ${1:model}.${2:name}, ${1} %&gt;</string>
 	<key>name</key>
-	<string>for loop (erb)</string>
+	<string>link_to model</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>for</string>
+	<string>ltm</string>
 	<key>uuid</key>
-	<string>F7744F07-306C-4951-AB5A-3D69BA5516B7</string>
+	<string>E5E08AA0-4EDD-4583-BF07-5D6C49E98410</string>
 </dict>
 </plist>

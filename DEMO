@@ -665,6 +665,7 @@ and then view them as a blog visitor at
 # TODO
 
 * Model snippets (validates_...)
+* link_to(model) (ltm)
 * Demonstrate new Add/Remove columns - `down` method is in reverse order
 
 # Intro video
