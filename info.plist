@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
@@ -48,15 +48,16 @@
 			<string>7B02ABF8-8763-11D9-897C-000393CBCE2E</string>
 			<string>A229B2F8-21B4-4910-AA61-6672A48C2991</string>
 			<string>------------------------------------</string>
-			<string>6E2BC67D-4CC8-47F1-AF7C-341D74E0F803</string>
 			<string>5CCEA099-4B20-4BC3-96B9-BD9BF57279F5</string>
+			<string>6E2BC67D-4CC8-47F1-AF7C-341D74E0F803</string>
 			<string>EE4BA904-F727-4C6B-A2CB-602E30537E38</string>
+			<string>2005C9DA-00DD-43D7-9F59-169CC8E953FC</string>
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
+			<string>------------------------------------</string>
 			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
 			<string>E34453D0-68EB-408C-AE49-990663DE18F7</string>
 			<string>8113246B-122E-4F4A-9B5A-98390900839E</string>
 			<string>9EB71DE4-93D3-466C-B1D8-54892538FF3A</string>
-			<string>2005C9DA-00DD-43D7-9F59-169CC8E953FC</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -225,7 +226,6 @@
 					<string>1C491A76-751F-44EF-8DFB-0A585C7EEFF6</string>
 					<string>8B9CD068-4338-4039-AA06-D839A6C7A9FF</string>
 					<string>------------------------------------</string>
-					<string>FE9C4B4E-860D-49F0-AAF7-5582B98F5F54</string>
 					<string>2BD82DCB-1F19-4C8F-BC70-C0BBB06A2138</string>
 					<string>CD60F800-850D-47CF-BE32-3DE665DD5C68</string>
 					<string>D33EDCE7-F8AF-48D4-AA7A-852BBF03E31D</string>
@@ -283,7 +283,7 @@
 					<string>C12C98A5-74E5-4E70-9ADB-8783455D6539</string>
 				</array>
 				<key>name</key>
-				<string>Ajax Testing</string>
+				<string>Ajax Tests</string>
 			</dict>
 			<key>A229B2F8-21B4-4910-AA61-6672A48C2991</key>
 			<dict>
@@ -380,10 +380,8 @@
 					<string>74590E16-7BCB-11D9-906A-000D932CD5BA</string>
 					<string>C11C0BF5-7BC8-11D9-906A-000D932CD5BA</string>
 					<string>D21BE958-7BC8-11D9-906A-000D932CD5BA</string>
-					<string>E5E08AA0-4EDD-4583-BF07-5D6C49E98410</string>
-					<string>------------------------------------</string>
-					<string>F7744F07-306C-4951-AB5A-3D69BA5516B7</string>
 					<string>AC385ABF-96CD-4FCB-80AD-BF37D6EE79D2</string>
+					<string>------------------------------------</string>
 					<string>EC605540-C431-4FD0-AD91-D913118DACA7</string>
 				</array>
 				<key>name</key>
@@ -490,8 +488,6 @@
 		<string>74590E16-7BCB-11D9-906A-000D932CD5BA</string>
 		<string>C11C0BF5-7BC8-11D9-906A-000D932CD5BA</string>
 		<string>D21BE958-7BC8-11D9-906A-000D932CD5BA</string>
-		<string>E5E08AA0-4EDD-4583-BF07-5D6C49E98410</string>
-		<string>F7744F07-306C-4951-AB5A-3D69BA5516B7</string>
 		<string>AC385ABF-96CD-4FCB-80AD-BF37D6EE79D2</string>
 		<string>B41D3164-EA53-4DDC-850E-27B82B24061F</string>
 		<string>3BDD0D52-443E-4F5F-AE09-ABCC2ABE9A42</string>
@@ -534,7 +530,6 @@
 		<string>EDA6568B-D533-11DC-BD8E-00112475D960</string>
 		<string>20375601-B13F-4314-B8E4-362706566636</string>
 		<string>F60D0630-CBF5-4283-9D20-FA46C787A88D</string>
-		<string>FE9C4B4E-860D-49F0-AAF7-5582B98F5F54</string>
 		<string>2BD82DCB-1F19-4C8F-BC70-C0BBB06A2138</string>
 		<string>CD60F800-850D-47CF-BE32-3DE665DD5C68</string>
 		<string>D33EDCE7-F8AF-48D4-AA7A-852BBF03E31D</string>
