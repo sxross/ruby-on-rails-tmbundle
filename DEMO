@@ -667,6 +667,7 @@ and then view them as a blog visitor at
 
 * Model snippets (validates_...)
 * link_to(model) (ltm)
+* RJS demo
 * Demonstrate new Add/Remove columns - `down` method is in reverse order
 
 # Intro video
@@ -681,7 +682,7 @@ and then view them as a blog visitor at
   * "Coming soon"
 * Get bundle contributors to submit webcam 'confessions'
   * MattA: "I'm new to this country, but I must be breaking some laws with this"
-  * Allan O: "I may have to stop development of TextMate"
+  * Allan O: "This is getting out of hand; I may have to cease development of TextMate"
 * Action sequences
   * Show text exploding across the screen
 * "Coming soon"
