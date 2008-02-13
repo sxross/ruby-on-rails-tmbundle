@@ -236,6 +236,8 @@
 					<string>DBE14FE8-B415-4DBC-A316-F8DA63FE9FD7</string>
 					<string>------------------------------------</string>
 					<string>E0F281EC-5311-41F8-ADD9-2E2D059DA651</string>
+					<string>------------------------------------</string>
+					<string>FE9C4B4E-860D-49F0-AAF7-5582B98F5F54</string>
 				</array>
 				<key>name</key>
 				<string>Functional Tests</string>
@@ -380,9 +382,12 @@
 					<string>74590E16-7BCB-11D9-906A-000D932CD5BA</string>
 					<string>C11C0BF5-7BC8-11D9-906A-000D932CD5BA</string>
 					<string>D21BE958-7BC8-11D9-906A-000D932CD5BA</string>
+					<string>E5E08AA0-4EDD-4583-BF07-5D6C49E98410</string>
 					<string>AC385ABF-96CD-4FCB-80AD-BF37D6EE79D2</string>
 					<string>------------------------------------</string>
 					<string>EC605540-C431-4FD0-AD91-D913118DACA7</string>
+					<string>------------------------------------</string>
+					<string>F7744F07-306C-4951-AB5A-3D69BA5516B7</string>
 				</array>
 				<key>name</key>
 				<string>ERb Templates</string>
