@@ -35,6 +35,9 @@ Added so far:
     * Functional Tests
       * assert_redirect_to for resource paths (artp, artpp, artnp, artnpp)
       * assert(assigns(:model)) (asg)
+    * Active Support
+      * cattr_accessor/mattr_accessor (crw/mrw) [thx Jaboc Swanner]
+      * returning (returning) [thx Jaboc Swanner]
   * Language/Syntax
     * New keywords: rescue_from, alias_method_chain, alias_attribute, delegate [thx David Lowenfels]
     * Added rb as a valid Rails file type [thx James Deville]
