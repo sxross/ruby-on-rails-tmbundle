@@ -53,6 +53,7 @@
 			<string>EE4BA904-F727-4C6B-A2CB-602E30537E38</string>
 			<string>2005C9DA-00DD-43D7-9F59-169CC8E953FC</string>
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
+			<string>083B7598-7DA0-4BDE-BBD3-290F06927E48</string>
 			<string>------------------------------------</string>
 			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
 			<string>E34453D0-68EB-408C-AE49-990663DE18F7</string>
@@ -72,6 +73,17 @@
 				</array>
 				<key>name</key>
 				<string>Migrations</string>
+			</dict>
+			<key>083B7598-7DA0-4BDE-BBD3-290F06927E48</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>F57522B2-9F5F-4DF9-AE46-9478AF019C63</string>
+					<string>B25B7560-FACB-4A9E-A226-B71C796BD1F3</string>
+					<string>D2783155-23F3-4B90-A317-5BD139471193</string>
+				</array>
+				<key>name</key>
+				<string>ActiveSupport</string>
 			</dict>
 			<key>2005C9DA-00DD-43D7-9F59-169CC8E953FC</key>
 			<dict>
@@ -584,6 +596,8 @@
 		<string>D54FBDED-5481-4CC7-B75F-66465A499882</string>
 		<string>4A3E6DA7-67A3-45B1-9EE0-ECFF9C7FA6C0</string>
 		<string>E0F281EC-5311-41F8-ADD9-2E2D059DA651</string>
+		<string>F57522B2-9F5F-4DF9-AE46-9478AF019C63</string>
+		<string>B25B7560-FACB-4A9E-A226-B71C796BD1F3</string>
 		<string>390A447F-0FA3-4F01-A10C-4F35675E0A43</string>
 		<string>62BEA590-F4EF-4001-B661-764EDFB92811</string>
 		<string>273E5E76-8D13-4476-9C38-8AF87432CB96</string>
@@ -591,6 +605,7 @@
 		<string>5ACBF49D-B5A5-495C-89D8-18AA740D9D02</string>
 		<string>028DA0A4-B310-4BEF-8643-2A22993C21C7</string>
 		<string>CFDC27A3-58CF-4198-8F93-36360978F0D0</string>
+		<string>D2783155-23F3-4B90-A317-5BD139471193</string>
 		<string>F1BE0C3D-7203-43E9-BEFB-D1A99CDD31C1</string>
 		<string>78FCF992-D01B-404F-BC54-5EE7B91F999A</string>
 		<string>62C3838B-0790-4FC2-8425-F273A57F5D33</string>
