@@ -58,11 +58,11 @@ class RailsPath
   def exists?
     File.file?(@filepath)
   end
-  
+
   def basename
     File.basename(@filepath)
   end
-  
+
   def dirname
     File.dirname(@filepath)
   end
@@ -75,7 +75,7 @@ class RailsPath
       Dir.mkdir(new_dir) if !File.exist?(new_dir)
     end
   end
-  
+
   # Make sure the file exists by creating it if it doesn't
   def touch
     if !exists?
@@ -83,7 +83,7 @@ class RailsPath
       f = File.open(@filepath, "w"); f.close
     end
   end
-  
+
   def controller_name
     name = basename
     # Remove extension
@@ -97,10 +97,10 @@ class RailsPath
     when :functional_test then name.sub!(/_controller_test$/, '')
     when :fixture    then Inflector.singularize(name)
     end
-    
+
     return name
   end
-  
+
   def action_name
     name =
       case file_type
@@ -112,10 +112,10 @@ class RailsPath
         buffer.find_method(:direction => :backwards).last.sub('^test_', '')
       else nil
       end
-    
+
     return name.sub(/\.\w+$/, '') rescue nil # Remove extension
   end
-  
+
   def rails_root
     return TextMate.project_directory
     # TODO: Look for the root_indicators inside TM_PROJECT_DIRECTORY and return nil if not found
@@ -126,13 +126,13 @@ class RailsPath
     #  end
     #end
   end
-  
+
   # This is used in :file_type and :rails_path_for_view
   VIEW_EXTENSIONS = %w( erb builder rhtml rxhtml rxml rjs )
 
   def file_type
     return @file_type if @file_type
-    
+
     @file_type =
       case @filepath
       when %r{/controllers/(.+_controller\.(rb))$}      then :controller
@@ -154,24 +154,24 @@ class RailsPath
     @extension = $2
     return @file_type
   end
-  
+
   def tail
     # Get the tail if it's not set yet
     file_type unless @tail
     return @tail
   end
-  
+
   def extension
     # Get the extension if it's not set yet
     file_type unless @extension
     return @extension
   end
-  
+
   # View file that does not begin with _
   def partial?
     file_type == :view and basename !~ /^_/
   end
-  
+
   def modules
     case file_type
     when :view
@@ -180,7 +180,7 @@ class RailsPath
       tail.split('/').slice(0...-1)
     end
   end
-  
+
   def controller_name_possibles_modified_for(type)
     case type
     when :controller
@@ -219,7 +219,7 @@ class RailsPath
     else '.rb'
     end
   end
-  
+
   def rails_path_for(type)
     return rails_path_for_view if type == :view
     if TextMate.project_directory
@@ -231,10 +231,10 @@ class RailsPath
       puts "There needs to be a project associated with this file."
     end
   end
-  
+
   def rails_path_for_view
     return nil if action_name.nil?
-    
+
     file_exists = false
     VIEW_EXTENSIONS.each do |e|
       filename_with_extension = action_name + "." + e
@@ -244,7 +244,7 @@ class RailsPath
     default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view))
     return RailsPath.new(default_view)
   end
-  
+
   def ask_for_view(default_name = action_name)
     if designated_name = TextMate.input("Enter the name of the new view file:", default_name + default_extension_for(:view))
       view_file = File.join(rails_root, stubs[:view], modules, controller_name, designated_name)
@@ -255,7 +255,7 @@ class RailsPath
     end
     return nil
   end
-  
+
   def self.stubs
     { :controller => 'app/controllers',
       :model => 'app/models',
@@ -270,9 +270,9 @@ class RailsPath
       :unit_test => 'test/unit',
       :fixture => 'test/fixtures'}
   end
-  
+
   def stubs; self.class.stubs end
-    
+
   def ==(other)
     other = other.filepath if other.respond_to?(:filepath)
     @filepath == other

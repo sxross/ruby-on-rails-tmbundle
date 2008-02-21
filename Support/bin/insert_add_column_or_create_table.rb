@@ -37,13 +37,13 @@ if self_down = buffer.find { /^(\s*)def\s+self\.down\b/ }
 
       # If a column is specified, get just the column, not the whole create_table
       if column_name
-        to = insert_text_end[0]    
+        to = insert_text_end[0]
         if insert_text = schema.buffer.find { %r{^\s*\w+\.(column|primary_key|string|text|integer|float|decimal|datetime|timestamp|time|date|binary|boolean)\s+['"]#{column_name}['"](.*)$} }
           column_type = ", :#{insert_text[1]}" unless insert_text[1] == "column"
           column_params = insert_text[2]
           insert_text = "add_column :#{table_name}, :#{column_name}#{column_type}#{column_params}\n"
 
-          buffer.lines.insert self_down[0] + 1, prepend(insert_text, indentation + "  ")        
+          buffer.lines.insert self_down[0] + 1, prepend(insert_text, indentation + "  ")
         else
           puts "The db/schema.rb does not have a column matching \"#{column_name}\" within create_table \"#{table_name}\"."
           TextMate.exit_show_tool_tip

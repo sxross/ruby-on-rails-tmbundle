@@ -54,7 +54,7 @@ def find_or_name_view_file(filename, current_file)
     view_file = File.join(current_file.rails_root, 'app', 'views', current_file.modules, current_file.controller_name, filename_with_extension)
     return view_file if File.exist?(view_file)
   end
-  
+
   # No view files found, so ask for the name of a new one
   if filename = TextMate.input("Enter the name of the new view file:", filename + '.html.erb')
     view_file = File.join(current_file.rails_root, 'app', 'views', current_file.modules, current_file.controller_name, filename)
@@ -77,7 +77,7 @@ case TextMate.current_line
   when /render[\s\(].*:partial\s*=>\s*['"](.+?)['"]/
     partial_name = $1
     modules = current_file.modules
-  
+
     # Check for absolute path to partial
     if partial_name.include?('/')
       pieces = partial_name.split('/')
@@ -110,7 +110,7 @@ case TextMate.current_line
       puts "Don't know where to go when redirecting from outside a controller"
       exit
     end
-    
+
     if controller.nil?
       controller_file = current_file
     else
@@ -180,7 +180,7 @@ case TextMate.current_line
   # Other checks...
   else
     # If there's nothing specific on the current line, then try something a little more "out of the box"
-    
+
     # Controllers can go to Views or Helpers
     if current_file.file_type == :controller
       # Jump to the view that corresponds with this action
@@ -193,12 +193,12 @@ case TextMate.current_line
         helper_file = File.join(current_file.rails_root, 'app', 'helpers', current_file.modules, current_file.controller_name + '_helper.rb')
         TextMate.open helper_file
       end
-    
+
     # Helpers can go to Controllers
     elsif current_file.file_type == :helper
       controller_file = current_file.rails_path_for(:controller)
       TextMate.open controller_file
-    
+
     # ActionMailer Models can go to Views
     elsif current_file.file_type == :model
       if current_file.buffer.text.include?("ActionMailer::Base")
@@ -211,7 +211,7 @@ case TextMate.current_line
       else
         TextMate.message "Don't know where to go from a non-actionmailer model"
       end
-    
+
     # Views can go to Controllers or ActionMailer Models
     elsif current_file.file_type == :view
       # Jump to the controller action that corresponds with this view
@@ -219,19 +219,19 @@ case TextMate.current_line
         File.join(current_file.rails_root, 'app', 'controllers',
           current_file.modules.join('/'),
           current_file.controller_for_view + '_controller.rb')
-      
+
       if !File.exist?(full_path)
         # Maybe it's an ActionMailer Model?
         full_path =
           File.join(current_file.rails_root, 'app', 'models',
             current_file.controller_for_view + '.rb')
       end
-      
+
       if !File.exist?(full_path)
         TextMate.message "Couldn't find a controller or ActionMailer model for this view"
         TextMate.exit_discard
       end
-      
+
       lines = IO.read(full_path).to_a
       line_number = nil
       for i in 0..(lines.size)
@@ -240,7 +240,7 @@ case TextMate.current_line
           break
         end
       end
-    
+
       TextMate.open full_path, line_number
     else
       TextMate.message("Nowhere to go.")

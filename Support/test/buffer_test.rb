@@ -29,12 +29,12 @@ class BufferTest < Test::Unit::TestCase
     match = b.find(:from => 2, :to => 1, :direction => :backwards) { /my_method/ }
     assert_nil match
   end
-  
+
   def test_find_method
     b = Buffer.new(TextMate.selected_text)
     match = b.find { /def\s+my_(.+)\W/ }
     assert_equal [0, 'method'], match
-    
+
     b.line_number = 4
     match = b.find(:direction => :backwards) { /def\s+my_(.+)\W/ }
     assert_equal [0, 'method'], match
@@ -42,8 +42,8 @@ class BufferTest < Test::Unit::TestCase
     b.line_number = 5
     match = b.find(:direction => :backwards) { /def\s+my_(.+)\W/ }
     assert_equal [5, 'other_method'], match
-  end      
-  
+  end
+
   def test_find_multiple_matches
     b = Buffer.new(TextMate.selected_text)
     match = b.find { /^\s*x = (\w) \+ (\w)\s*$/ }
@@ -53,12 +53,12 @@ class BufferTest < Test::Unit::TestCase
     match = b.find { /^\s*x = (\w) \+ (\w)(\w?)\s*$/ }
     assert_equal [6, 'y', 'z', ''], match
   end
-  
+
   def test_find_nearest_string_or_symbol
     b = Buffer.new "String :with => 'strings', :and, :symbols"
     match = b.find_nearest_string_or_symbol
     assert_equal ["with", 8], match
-    
+
     b.column_number = 8
     match = b.find_nearest_string_or_symbol
     assert_equal ["with", 8], match
@@ -70,7 +70,7 @@ class BufferTest < Test::Unit::TestCase
     b.column_number = 37
     match = b.find_nearest_string_or_symbol
     assert_equal ["symbols", 34], match
-    
+
     b = Buffer.new "String without symbols or strings"
     match = b.find_nearest_string_or_symbol
     assert_nil match

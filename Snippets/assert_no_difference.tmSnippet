@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>assert_no_difference "${1:Model}.${2:count}" do 
+	<string>assert_no_difference "${1:Model}.${2:count}" do
   $0
 end</string>
 	<key>name</key>

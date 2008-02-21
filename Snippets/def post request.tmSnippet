@@ -7,7 +7,7 @@
 	${3:@$2 = ${4:$2s}(:${5:fixture_name})
 	}post :${1}${6:, :id =&gt; @$2.to_param}, :${2:model} =&gt; { $0 }
 	assert_response :redirect
-	
+
 end</string>
 	<key>name</key>
 	<string>def test_should_post_action</string>

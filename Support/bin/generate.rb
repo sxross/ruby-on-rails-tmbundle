@@ -22,12 +22,12 @@ end
 class Generator
   @@list = []
   attr_accessor :name, :question, :default_answer
-  
+
   def initialize(name, question, default_answer = "")
     @@list << self
     @name, @question, @default_answer = name, question, default_answer
   end
-  
+
   def self.[](name, question, default_answer = "")
     g = new(name, question, default_answer)
   end
@@ -54,7 +54,7 @@ if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Gener
       :title => "#{generators[choice].name.capitalize} Generator")
   if name
     options = ""
-    
+
     case choice
     when 0
       options = TextMate.input("Name the new controller for the scaffold:", "", :title => "Scaffold Controller Name")
@@ -63,7 +63,7 @@ if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Gener
       options = TextMate.input("List any actions you would like created for the controller:",
         "index new create edit update destroy", :title => "Controller Actions")
     end
-    
+
     # add the --svn option, if needed
     proj_dir = ENV["TM_PROJECT_DIRECTORY"]
     if proj_dir and File.exist?(File.join(proj_dir, ".svn"))
@@ -74,7 +74,7 @@ if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Gener
     FileUtils.cd rails_root
     command = "\"script/generate\" #{generators[choice].name} #{name} #{options}"
     $logger.debug "Command: #{command}"
-    
+
     output = ruby(command)
     $logger.debug "Output: #{output}"
     TextMate.refresh_project_drawer
