@@ -41,7 +41,7 @@ end
 
 generated_code = <<-RUBY
 class #{camelized} < ActiveRecord::Migration
-  def self.up    
+  def self.up
     mtab
   end
 

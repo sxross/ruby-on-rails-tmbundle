@@ -32,7 +32,7 @@ case TextMate.current_line
   when /render[\s\(].*:partial\s*=>\s*['"](.+?)['"]/
     partial_name = $1
     modules = current_file.modules + [current_file.controller_name]
-  
+
     # Check for absolute path to partial
     if partial_name.include?('/')
       pieces = partial_name.split('/')
@@ -66,7 +66,7 @@ case TextMate.current_line
       puts "Don't know where to go when redirecting from outside a controller"
       exit
     end
-    
+
     if controller.nil?
       controller_file = current_file
     else
@@ -132,7 +132,7 @@ case TextMate.current_line
     else
       puts "No stylesheet identified"
     end
-  
+
   else
     puts "No 'go to file' directives found on this line."
     # Do nothing -- beep?

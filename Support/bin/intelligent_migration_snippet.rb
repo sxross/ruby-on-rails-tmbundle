@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-# 
+#
 # Copyright (c) 2006 Sami Samhuri
 # Distributed under the MIT license
-# 
+#
 # Inserts a migration snippet into 2 places in the document, one
 # piece in self.up and one in self.down.
 
@@ -10,25 +10,25 @@ snippets = {
   'rename_column' =>
     { :up   => 'rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}$0',
       :down => 'rename_column :$1, :$3, :$2' },
-  
+
   'rename_column_continue' =>
     { :up   => 'rename_column :${1:table_name}, :${2:column_name}, :${3:new_column_name}
 mncc$0',
       :down => 'rename_column :$1, :$3, :$2' },
-  
+
   'rename_table' =>
     { :up   => 'rename_table :${1:old_table_name}, :${2:new_table_name}$0',
       :down => 'rename_table :$2, :$1' },
-  
+
   'rename_table_continue' =>
     { :up   => 'rename_table :${1:old_table_name}, :${2:new_table_name}
 mntc$0',
       :down => 'rename_table :$2, :$1' },
-  
+
   'add_remove_column' =>
     { :up   => 'add_column :${1:table_name}, :${2:column_name}, :${3:string}$0',
       :down => 'remove_column :$1, :$2' },
-  
+
   'add_remove_column_continue' =>
     { :up   => 'add_column :${1:table_name}, :${2:column_name}, :${3:string}
 marcc$0',
@@ -62,16 +62,16 @@ end
 
 def insert_migration(snippet, text)
   lines = text.to_a
-  
+
   up_code = indent(snippet[:up])
   down_code = indent(snippet[:down])
 
   # insert the self.up part of the snippet
   lines[0] = up_code
-                  
+
   # find the beginning of self.down and insert down code, this is hardly robust.
   # assuming self.down is after self.up in the class
-  lines.each_with_index do |line, i|                
+  lines.each_with_index do |line, i|
     if line =~ /^\s*def\s+self\.down\b/
       lines[i, 1] = [lines[i], down_code]
       break

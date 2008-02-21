@@ -35,3 +35,4 @@ Rails 2.0 (copied from CHANGELOG)
 * Plugins
   * Footnote
     * footnote-edge uses .erb for templates [thx Stephen Bannasch]
+

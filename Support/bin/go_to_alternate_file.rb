@@ -14,7 +14,7 @@ current_file = RailsPath.new
 
 if ARGV.empty?
   # Best match
-  choice = 
+  choice =
     case current_file.file_type
     when :controller
       if current_file.action_name
@@ -48,7 +48,7 @@ if rails_path = current_file.rails_path_for(choice.to_sym)
       TextMate.exit_discard
     end
   end
-  
+
   TextMate.open rails_path
 else
   puts "#{current_file.basename} does not have a #{choice}"
