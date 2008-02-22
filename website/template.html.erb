@@ -32,15 +32,23 @@
     <div id="version" class="clickable" onclick='document.location = "<%= download %>"; return false'>
       <p>Get Version</p>
       <a href="<%= download %>" class="numbers"><%= version %></a>
+      <a href="<%= download %>" class="numbers"><img src="images/logo_bundle.png" width="50" height="51" alt="Logo Bundle" border=0></a>
     </div>
     <%= body %>
     <p class="coda">
-      <a href="">TODO</a>, <%= modified.pretty %><br>
+      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, <%= modified.pretty %><br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
 
-<!-- insert site tracking codes here, like Google Urchin -->
-
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-567811-10");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
 </body>
 </html>
