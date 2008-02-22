@@ -56,8 +56,25 @@ class RailsPathTest < Test::Unit::TestCase
 
   def test_controller_name_and_action_name_for_view
     rp = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml')
-    assert_equal "user", rp.controller_name
+    assert_equal "user", rp.controller_name # this was pre-2.0 behavior. s/b "users"
     assert_equal "new", rp.action_name
+  end
+
+  # Rails 2.x convention is for pluralized controllers
+  def test_controller_name_and_action_name_for_2_dot_ooh_views
+    rp = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
+    assert_equal "users", rp.controller_name
+    assert_equal "new", rp.action_name
+  end
+  
+  def test_controller_name_pluralization
+    rp = RailsPath.new(FIXTURE_PATH + '/app/views/people/new.html.erb')
+    assert_equal "people", rp.controller_name
+  end
+  
+  def test_controller_name_suggestion_when_controller_absent
+    rp = RailsPath.new(FIXTURE_PATH + '/app/views/people/new.html.erb')
+    assert_equal "people", rp.controller_name
   end
 
   def test_rails_path_for
@@ -66,8 +83,8 @@ class RailsPathTest < Test::Unit::TestCase
       [FIXTURE_PATH + '/app/controllers/user_controller.rb', :helper, FIXTURE_PATH + '/app/helpers/user_helper.rb'],
       [FIXTURE_PATH + '/app/controllers/user_controller.rb', :javascript, FIXTURE_PATH + '/public/javascripts/user.js'],
       [FIXTURE_PATH + '/app/controllers/user_controller.rb', :functional_test, FIXTURE_PATH + '/test/functional/user_controller_test.rb'],
-      [FIXTURE_PATH + '/app/helpers/user_helper.rb', :controller, FIXTURE_PATH + '/app/controllers/user_controller.rb'],
-      [FIXTURE_PATH + '/app/models/user.rb', :controller, FIXTURE_PATH + '/app/controllers/user_controller.rb'],
+      [FIXTURE_PATH + '/app/helpers/user_helper.rb', :controller, FIXTURE_PATH + '/app/controllers/users_controller.rb'],
+      [FIXTURE_PATH + '/app/models/user.rb', :controller, FIXTURE_PATH + '/app/controllers/users_controller.rb'],
       [FIXTURE_PATH + '/app/models/post.rb', :controller, FIXTURE_PATH + '/app/controllers/posts_controller.rb'],
       [FIXTURE_PATH + '/test/fixtures/users.yml', :model, FIXTURE_PATH + '/app/models/user.rb'],
       [FIXTURE_PATH + '/app/controllers/user_controller.rb', :model, FIXTURE_PATH + '/app/models/user.rb'],
@@ -85,16 +102,29 @@ class RailsPathTest < Test::Unit::TestCase
     end
 
     # Test controller to view
+    ENV['RAILS_VIEW_EXT'] = nil
     TextMate.line_number = '6'
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/user/create.html.erb'), current_file.rails_path_for(:view)
+    
+    # 2.0 plural controllers
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb')
+    assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/users/create.html.erb'), current_file.rails_path_for(:view)
 
     TextMate.line_number = '3'
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb')
-    assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/user/new.html.erb'), current_file.rails_path_for(:view)
+    assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml'), current_file.rails_path_for(:view)
+    
+    # 2.0 plural controllers
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb')
+    assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb'), current_file.rails_path_for(:view)
 
     # Test view to controller
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.html.erb')
-    assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb'), current_file.rails_path_for(:controller)
+    assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb'), current_file.rails_path_for(:controller)
+    
+    # 2.0 plural controllers
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
+    assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb'), current_file.rails_path_for(:controller)
   end
 end
