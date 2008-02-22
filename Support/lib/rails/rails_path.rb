@@ -128,7 +128,7 @@ class RailsPath
   end
 
   # This is used in :file_type and :rails_path_for_view
-  VIEW_EXTENSIONS = %w( erb builder rhtml rxhtml rxml rjs )
+  VIEW_EXTENSIONS = %w( erb builder rhtml rxhtml rxml rjs haml )
 
   def file_type
     return @file_type if @file_type
@@ -212,9 +212,9 @@ class RailsPath
 
   def default_extension_for(type)
     case type
-    when :javascript then '.js'
-    when :stylesheet then '.css'
-    when :view       then '.html.erb'
+    when :javascript then ENV['RAILS_JS_EXT'] || '.js'
+    when :stylesheet then ENV['RAILS_CSS_EXT'] || '.css'
+    when :view       then ENV['RAILS_VIEW_EXT'] || '.html.erb'
     when :fixture    then '.yml'
     else '.rb'
     end
