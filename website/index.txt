@@ -1,4 +1,4 @@
-h1. Ruby on Rails tmbundle
+h1. Ruby on Rails.tmbundle
 
 h2. What
 
@@ -6,7 +6,7 @@ Using "Ruby on Rails":http://rubyonrails.org? Using "TextMate":http://macromates
 
 h2. Download
 
-<a href="dist/Ruby on Rails.tmbundle.tar.gz"><img src="images/logo_bundle.png" width="50" height="51" alt="Logo Bundle"></a>
+<a href="dist/Ruby on Rails.tmbundle.tar.gz"><img src="images/logo_bundle.png" width="50" height="51" alt="Logo Bundle" border=0></a>
 
 <a href="dist/Ruby on Rails.tmbundle.tar.gz">Ruby on Rails.tmbundle</a>
 
