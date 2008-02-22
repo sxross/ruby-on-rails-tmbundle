@@ -87,7 +87,7 @@ class RailsPath
   def controller_name
     name = basename
     # Remove extension
-    name.sub!(/\.\w+$/, '')
+    name.sub!(/\.\w+(\.\w+)*$/, '')
     # Remove extras
     case file_type
     when :controller then name.sub!(/_controller$/, '')
@@ -113,7 +113,7 @@ class RailsPath
       else nil
       end
 
-    return name.sub(/\.\w+$/, '') rescue nil # Remove extension
+    return name.sub(/\.\w+(\.\w+)*$/, '') rescue nil # Remove extension
   end
 
   def rails_root
