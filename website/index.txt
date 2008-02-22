@@ -6,7 +6,7 @@ This JavaScript project ...
 
 h2. Downloading
 
-<a href="dist/Ruby on Rails.tmbundle.js">Ruby on Rails.tmbundle.js</a>
+<a href="dist/Ruby on Rails.tmbundle.tar.gz">Ruby on Rails.tmbundle</a>
 
 
 h2. The basics
