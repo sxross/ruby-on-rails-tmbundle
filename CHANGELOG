@@ -47,6 +47,11 @@ Added so far:
       is being worked on too)
     * 'Go To XXX' - available for wide range of permutations.
       Fixtures -> Models; Models -> Controllers, etc
+    * haml is a valid file extension [thx Steve Ross]
+    * specify alternate default file extensions for: [thx Steve Ross]
+      * javascript - ENV['RAILS_JS_EXT']
+      * stylesheet - ENV['RAILS_CSS_EXT']
+      * view - ENV['RAILS_VIEW_EXT']
   * Plugins
     * Footnote
       * footnote-edge uses .erb for templates [thx Stephen Bannasch]
