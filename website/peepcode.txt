@@ -1,0 +1,23 @@
+h1. Peepcode Script
+
+h2. Introduction
+
+Many many people's first introduction to Ruby on Rails was the 15 minute video from DHH showing how you create a blog application with Rails. Nearly everyone finished that video asking one question: what was that editor? It is awesome.
+
+Let's take a stroll down memory lane. We pick up the action at the X minute mark:
+
+[transition into a portion of the video that shows off TMs features, plus DHH saying "Whooops!"]
+
+h2. Models and Migrations
+
+
+
+h2. Testing
+
+
+
+h2. Controllers and Routing
+
+
+
+h2. Views
