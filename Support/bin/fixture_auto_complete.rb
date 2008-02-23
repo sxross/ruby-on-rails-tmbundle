@@ -15,6 +15,9 @@ def load_referenced_fixture_file(ref)
   ref_plural = Inflector.pluralize(ref)
   ref_file = File.join(TextMate.project_directory, "test", "fixtures", "#{ref_plural}.yml")
   if (!File.exist?(ref_file))
+    ref_file = File.join(TextMate.project_directory, "spec", "fixtures", "#{ref_plural}.yml")
+  end
+  if (!File.exist?(ref_file))
     puts "Could not find any #{ref} fixtures."
     TextMate.exit_show_tool_tip
   end
