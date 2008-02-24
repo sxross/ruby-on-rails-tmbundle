@@ -37,7 +37,8 @@ module AssociationMessages
 end
 
 class RailsPath
-  attr_reader :filepath
+  attr_reader :filepath  
+  attr_reader :path_name, :file_name, :content_type, :extension
 
   include AssociationMessages
 
@@ -49,6 +50,9 @@ class RailsPath
       # Relative file, prepend rails_root
       @filepath = File.join(rails_root, filepath)
     end
+    
+    # Put parts into instance variables to make retrieval more uniform.
+    parse_file_parts
   end
 
   def buffer
@@ -85,9 +89,7 @@ class RailsPath
   end
 
   def controller_name
-    name = basename
-    # Remove extension
-    name.sub!(/\.\w+(\.\w+)*$/, '')
+    name = @file_name
     # Remove extras
     case file_type
     when :controller then name.sub!(/_controller$/, '')
@@ -113,7 +115,7 @@ class RailsPath
       else nil
       end
 
-    return name.sub(/\.\w+(\.\w+)*$/, '') rescue nil # Remove extension
+    return parse_file_name(name)[:file_name] rescue nil # Remove extension
   end
 
   def rails_root
@@ -254,6 +256,24 @@ class RailsPath
       return RailsPath.new(view_file)
     end
     return nil
+  end
+  
+  def parse_file_parts
+    @path_name, @file_name = File.split(@filepath)
+    file_part_hash = parse_file_name(@file_name)
+    @file_name = file_part_hash[:file_name]
+    @content_type = file_part_hash[:content_type]
+    @extension = file_part_hash[:extension]
+    return [@path_name, @file_name, @content_type, @extension]
+  end
+  
+  # File name parser that has no side-effects on object state
+  def parse_file_name(file_name)
+    path_parts = file_name.split('.')
+    extension = path_parts.pop if path_parts.length > 1
+    content_type = path_parts.pop if path_parts.length > 1
+    file_name = path_parts.join('.')
+    return {:extension => extension, :content_type => content_type, :file_name => file_name}
   end
 
   def self.stubs

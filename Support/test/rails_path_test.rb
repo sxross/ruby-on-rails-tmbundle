@@ -127,4 +127,30 @@ class RailsPathTest < Test::Unit::TestCase
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb'), current_file.rails_path_for(:controller)
   end
+  
+  def test_file_parts
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
+    assert_equal(FIXTURE_PATH + '/app/views/users/new.html.erb', current_file.filepath)
+    pathname, basename, content_type, extension = current_file.parse_file_parts
+    assert_equal(FIXTURE_PATH + '/app/views/users', pathname)
+    assert_equal('new', basename)
+    assert_equal('html', content_type)
+    assert_equal('erb', extension)
+    
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml')
+    pathname, basename, content_type, extension = current_file.parse_file_parts
+    assert_equal(FIXTURE_PATH + '/app/views/user', pathname)
+    assert_equal('new', basename)
+    assert_equal(nil, content_type)
+    assert_equal('rhtml', extension)
+  end
+  
+  def test_new_rails_path_has_parts
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
+    assert_equal(FIXTURE_PATH + '/app/views/users/new.html.erb', current_file.filepath)
+    assert_equal(FIXTURE_PATH + '/app/views/users', current_file.path_name)
+    assert_equal('new', current_file.file_name)
+    assert_equal('html', current_file.content_type)
+    assert_equal('erb', current_file.extension)
+  end
 end
