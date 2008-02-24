@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>respond_to do |format|
-	format.html do
+	<string>respond_to do |wants|
+	wants.html do
 		$TM_SELECTED_TEXT
 	end
-	format.${1:js} { $0 }
+	wants.${1:js} { $0 }
 end</string>
 	<key>keyEquivalent</key>
-	<string>@R</string>
+	<string>@H</string>
 	<key>name</key>
 	<string>respond_to (html)</string>
 	<key>scope</key>

@@ -9,7 +9,7 @@ Added so far:
       * assert_difference/assert_no_difference (asd/asnd)
       * GET+POST test method stubs (deftg+deftp)
     * Controllers
-      * respond_to (rst) and respond_to(html) (Shift+Cmd+R)
+      * respond_to (rst) and respond_to(html) (Shift+Cmd+H)
       * REMOVED: render_component snippets
       * loggers - pass a block instead of raw string to save time if
         logging not used (e.g. production) [thx Stephen Touset]
