@@ -8,7 +8,15 @@ Let's take a stroll down memory lane. We pick up the action at the X minute mark
 
 [transition into a portion of the video that shows off TMs features, plus DHH saying "Whooops!"]
 
-Working with Rails with TextMate uses several "bundles" - extensions of the core application specifically for certain
+Working with Rails with TextMate uses several "bundles" - extensions of the core application specifically for certain:
+
+* HTML
+* Ruby
+* Ruby on Rails
+
+h2. Know thy Editor
+
+Preferences > Advanced > Folder References > Folder Patterns: add 'vendor/rails' and it will ignore that folder in any project - both from the Dock and from Search.
 
 h2. Models and Migrations
 
