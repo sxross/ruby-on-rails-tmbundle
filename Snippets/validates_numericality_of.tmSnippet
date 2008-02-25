@@ -6,6 +6,8 @@
 	<string>validates_numericality_of :${1:attribute}${2:, :on =&gt; :${3:create}, :message =&gt; "${4:is not a number}"}</string>
 	<key>name</key>
 	<string>validates_numericality_of</string>
+	<key>scope</key>
+	<string>source.ruby.rails</string>
 	<key>tabTrigger</key>
 	<string>vn</string>
 	<key>uuid</key>

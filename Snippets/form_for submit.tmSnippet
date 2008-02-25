@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= f.submit "${1:Submit}" %&gt;</string>
+	<string>&lt;%= f.submit "${1:Submit}"${2:, :disable_with =&gt; '$1ing...'} %&gt;</string>
 	<key>name</key>
 	<string>form_for submit</string>
 	<key>scope</key>

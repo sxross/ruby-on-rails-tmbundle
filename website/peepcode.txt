@@ -139,8 +139,11 @@ Our test method is now finished:
   end
 end</pre>
 
+To run our functional tests, use Ctrl+\.
 
 h2. Controllers and Routing
+
+
 
 h2. Views
 
