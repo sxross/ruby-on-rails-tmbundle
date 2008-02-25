@@ -9,7 +9,7 @@ TextMate.call_with_progress(:title => "Contacting database", :message => "Fetchi
   require "#{project}/config/boot"
   require "#{project}/config/environment"
 
-  klass = Object.const_get(word) rescue nil
+  klass = word.camelcase.singularize.constantize rescue nil
   if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Base)
     columns = klass.columns_hash
 
