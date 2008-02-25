@@ -41,7 +41,7 @@ Added so far:
       * cattr_accessor/mattr_accessor (crw/mrw) [thx Jacob Swanner]
       * returning (returning) [thx Jacob Swanner]
   * Language/Syntax
-    * New keywords: rescue_from, alias_method_chain, alias_attribute, delegate [thx David Lowenfels]
+    * New keywords: rescue_from, alias_method_chain, alias_attribute, delegate, respond_to [thx David Lowenfels, Jacob Swanner]
     * Added rb as a valid Rails file type [thx James Deville]
   * Commands
     * Auto-completion for Foxy Fixtures
