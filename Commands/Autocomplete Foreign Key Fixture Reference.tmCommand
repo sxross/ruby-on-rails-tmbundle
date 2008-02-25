@@ -18,7 +18,7 @@
 	<key>output</key>
 	<string>insertAsSnippet</string>
 	<key>scope</key>
-	<string>source.yaml</string>
+	<string>source.yaml, meta.rails.unit_test, meta.rails.functional_test</string>
 	<key>uuid</key>
 	<string>0BCF0EE2-35EE-4959-A771-E74D55271D5A</string>
 </dict>
