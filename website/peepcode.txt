@@ -59,11 +59,44 @@ h2. Models and Migrations
   * bt + post; notice the autocompletions are correct here, but still optional for rails so can be deleted
   * vp + name, body
   * [Ctrl-Esc -> Models] All the validations are available as snippets based on the first letter of each word.
-* Place the cursor on 'Comment' class name, S+Ctrl+Cmd+S -> shows schema for this class
+* Place the cursor on 'Comment' class name, Sft+Ctrl+Cmd+S -> shows schema for this class. Alternately, place it on 'post' to get the schema for Post class.
 
 h2. Testing
 
+I'll talk more about navigating between files in a Rails application later, but for the moment, know that there is a special relationship between a model file and a unit test file. You can toggle between them with Alt+Cmd+DownArrow.
 
+The Rails generator for models created this unit test file and a fixtures file.
+
+First, let's set up some fixtures for posts and comments. Go to posts.yml and create a "with_comments"
+and a "without_comments" fixture. Now go to comments.yml - using Ctrl+Cmd+R to show posts.yml in the dock.
+
+TODO - how to move focus from editor to dock?
+
+Within comments, create one comment:
+
+<pre>valid:
+  name: Dr Nic
+  body: Cool post
+  post:</pre>
+
+With Rails 2.0, your fixture ids are no longer required, and you can use Foxy Fixtures to select an associated fixture. Here we'd type 'with_comments' to reference that posts.yml fixture. But, since the column name is 'post' we can get a drop-down list using Alt+Esc. We'll use this same fixture autocompletion feature again within the test files.
+
+Back to the comments unit test, and that dummy test needs removing.
+
+Create a new test method with <code>deft</code> + <code>should_require_title</code>.
+
+Type <code>posts(:)</code> and Alt+Esc to access the fixtures autocompletion. You can now select a posts.yml fixture. Note, the current implementation replaces the whole line, so if you need multiple or want a different instance variable you'll need to make some manual changes.
+
+Finished:
+
+<pre syntax="ruby">def test_should_require_title
+  @post = posts(:one)
+  @comment = @post.comments.create
+  @comment.valid?
+  assert(@comment.errors[:name], "Should be errors for name field")
+end</pre>
+
+To run your unit tests, Ctrl-\ + 'Test Units' or 'Test Recent'.
 
 h2. Controllers and Routing
 
