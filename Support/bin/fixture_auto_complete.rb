@@ -1,14 +1,22 @@
 #!/usr/bin/env ruby
 
 require 'rails_bundle_tools'
+require "rails/rails_path"
+require "rails/inflector"
 require 'yaml'
 require File.join(ENV['TM_SUPPORT_PATH'], "lib", "escape")
 DIALOG = ENV['DIALOG']
 
 def parse_line
   current_line = TextMate.current_line
-  line_parts = current_line.split(":")
-  line_parts.map { |p| p.strip }
+  if RailsPath.new.file_type == :fixture
+    line_parts = current_line.split(":")
+    [:fixture] + line_parts.map { |p| p.strip }
+  else
+    if fixture_finder = current_line.match(/\b([a-z_]+)\(\:([a-z_]*)\)/)
+      [:test] + fixture_finder[1..2]
+    end
+  end
 end
 
 def load_referenced_fixture_file(ref)
@@ -45,7 +53,7 @@ def filter_fixtures(fixtures, filter)
   end
 end
 
-ref, filter = parse_line
+filetype, ref, filter = parse_line
 filter = "" if filter.nil?
 foreign_fixtures = load_referenced_fixture_file(ref).keys
 candidates = filter_fixtures(foreign_fixtures, filter)
@@ -64,5 +72,9 @@ if ARGV[0] == "preserve"
   end
   print selected_fixture
 else
-  print "  #{ref}: #{selected_fixture}"
+  if filetype == :fixture
+    print "  #{ref}: #{selected_fixture}"
+  else
+    print "    @#{Inflector.singularize ref} = #{ref}(:#{selected_fixture})"
+  end
 end
