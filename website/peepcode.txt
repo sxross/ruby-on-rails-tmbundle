@@ -68,8 +68,7 @@ I'll talk more about navigating between files in a Rails application later, but 
 
 The Rails generator for models created this unit test file and a fixtures file.
 
-First, let's set up some fixtures for posts and comments. Go to posts.yml and create a "published"
-and a "unpublished" fixture. Now go to comments.yml - using Ctrl+Cmd+R to show posts.yml in the dock.
+First, let's set up some fixtures for posts and comments. Go to posts.yml and create a "published" and a "unpublished" fixture. Now go to comments.yml - using Ctrl+Cmd+R to show posts.yml in the dock.
 
 TODO - how to move focus from editor to dock?
 
@@ -91,7 +90,7 @@ Type <code>posts(:)</code> and Alt+Esc to access the fixtures autocompletion. Yo
 Finished:
 
 <pre syntax="ruby">def test_should_require_title
-  @post = posts(:one)
+  @post = posts(:published)
   @comment = @post.comments.create
   @comment.valid?
   assert(@comment.errors[:name], "Should be errors for name field")

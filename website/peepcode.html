@@ -29,10 +29,10 @@
 <div id="main">
 
     <h1>Peepcode Script</h1>
-    <div id="version" class="clickable" onclick='document.location = "http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz/"; return false'>
+    <div id="version" class="clickable" onclick='document.location = "http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz"; return false'>
       <p>Get Version</p>
-      <a href="http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz/" class="numbers">2.0.0</a>
-      <a href="http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz/" class="numbers"><img src="images/logo_bundle.png" width="50" height="51" alt="Logo Bundle" border=0></a>
+      <a href="http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz" class="numbers">2.0.0</a>
+      <a href="http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz" class="numbers"><img src="images/logo_bundle.png" width="50" height="51" alt="Logo Bundle" border=0></a>
     </div>
     <h2>Introduction</h2>
 
@@ -46,18 +46,139 @@
 	<p>[transition into a portion of the video that shows off TMs features, plus <span class="caps">DHH</span> saying &#8220;Whooops!&#8221;]</p>
 
 
+	<p>What is interesting, is that as fast as David is able to write his blog application, even with his detour demonstrating the now deleted scaffold command, he never uses any special TextMate extensions for Rails. He uses some <span class="caps">HTML</span> snippets and commands and some Ruby snippets and commands. The original Ruby on Rails extensions were in their infancy.</p>
+
+
+	<p>[Open Bundle Editor] A collection of TextMate extensions is called a &#8220;bundle&#8221;.</p>
+
+
+	<p>When working with Rails with TextMate you&#8217;ll use several <a href="</p">bundles</a>&gt;
+
+
+	<ul>
+	<li><span class="caps">HTML</span></li>
+		<li>Ruby</li>
+		<li>Ruby on Rails</li>
+		<li>JavaScript</li>
+	</ul>
+
+
+	<p>You might also use the ProtoType, jQuery or other JavaScript bundle if you use those libraries.</p>
+
+
+Ruby on Rails 2.0 was recently released and includes many improvements to
+	<ul>
+	<li>the syntax that you type [<code>redirect_to :action =&gt; 'show', :id =&gt; @person</code> became <code>redirect_to @person</code>]</li>
+		<li>changes to some file extensions [rhtml -&gt; html.erb] and</li>
+		<li>changes to some file name conventions [user_controller.rb -&gt; users_controller.rb, more commonly].</li>
+	</ul>
+
+
+	<p>The Ruby on Rails bundle has also been given a major upgrade to match all the changes for developing Rails 2.0 applications.</p>
+
+
+	<p>The snippets and commands we&#8217;re going to look at are actually described across all three bundles. Often it is the Rails bundle that reuses the <span class="caps">HTML</span> and Ruby bundles. For example, in an <span class="caps">HTML</span> file you have a variety of ways to create new elements. [examples] Within an html.erb file you can reuse all the same snippets and commands.</p>
+
+
+	<h2>Know thy Editor</h2>
+
+
+	<p>Overview key icons (see PeepCode TM video)</p>
+
+
+	<p>Preferences &gt; Advanced &gt; Folder References &gt; Folder Patterns: add &#8216;vendor/rails&#8217; and it will ignore that folder in any project &#8211; both from the Dock and from Search.</p>
+
+
 	<h2>Models and Migrations</h2>
 
 
+	<ul>
+	<li>Create new app</li>
+		<li>Go to app/controllers/application.rb (need a Ruby on Rails file)</li>
+		<li><sup>| + 1 &#8211; Call Generate Script &#8211; create new model &#8220;Post&#8221;  <span class="caps">TODO</span> &#8211; not working @ moment
+  <span class="caps">OR CLI</span>:script/generate model Post title:string</li>
+		<li>Go to migration file: Cmd+T + 001</li>
+		<li>t. &#8211; list of available sexy migration columns; when selecting one, another t. is automatically created for you. (create body:text + published:boolean)</li>
+		<li>Shft+</sup>+K &#8211; remove a line</li>
+		<li><span class="caps">CLI</span>:script/generate model Comment</li>
+		<li>Cmd+T + 002 &#8211; comment migration + add t.references :post, body:text, name:string</li>
+		<li>Ctrl+| + 3 &#8211; run migrations
+  * See error?
+  * In terminal, go to &#8221;/Applications/TextMate.app/Contents/SharedSupport/Support/lib&#8221; and rename/remove Builder.rb
+  * Run migrations again</li>
+	</ul>
+
+
+	<ul>
+	<li>Go to post.rb
+  * hm + comments; notice you can tab across to change fields if required
+  * Also, hmt -&gt; for has_many :through*</li>
+		<li>Go to comments.rb
+  * bt + post; notice the autocompletions are correct here, but still optional for rails so can be deleted
+  * vp + name, body
+  * [Ctrl-Esc -&gt; Models] All the validations are available as snippets based on the first letter of each word.</li>
+		<li>Place the cursor on &#8216;Comment&#8217; class name, Sft+Ctrl+Cmd+S -&gt; shows schema for this class. Alternately, place it on &#8216;post&#8217; to get the schema for Post class.</li>
+	</ul>
+
+
 	<h2>Testing</h2>
+
+
+	<p>I&#8217;ll talk more about navigating between files in a Rails application later, but for the moment, know that there is a special relationship between a model file and a unit test file. You can toggle between them with Alt+Cmd+DownArrow.</p>
+
+
+	<p>The Rails generator for models created this unit test file and a fixtures file.</p>
+
+
+	<p>First, let&#8217;s set up some fixtures for posts and comments. Go to posts.yml and create a &#8220;published&#8221; and a &#8220;unpublished&#8221; fixture. Now go to comments.yml &#8211; using Ctrl+Cmd+R to show posts.yml in the dock.</p>
+
+
+	<p><span class="caps">TODO</span> &#8211; how to move focus from editor to dock?</p>
+
+
+	<p>Within comments, create one comment:</p>
+
+
+<pre>valid:
+  name: Dr Nic
+  body: Cool post
+  post:</pre>
+
+	<p>With Rails 2.0, your fixture ids are no longer required, and you can use Foxy Fixtures to select an associated fixture. Here we&#8217;d type &#8216;published&#8217; to reference that posts.yml fixture. But, since the column name is &#8216;post&#8217; we can get a drop-down list using Alt+Esc. We&#8217;ll use this same fixture autocompletion feature again within the test files.</p>
+
+
+	<p>Back to the comments unit test, and that dummy test needs removing.</p>
+
+
+	<p>Create a new test method with <code>deft</code> + <code>should_require_title</code>.</p>
+
+
+	<p>Type <code>posts(:)</code> and Alt+Esc to access the fixtures autocompletion. You can now select a posts.yml fixture. Note, the current implementation replaces the whole line, so if you need multiple or want a different instance variable you&#8217;ll need to make some manual changes.</p>
+
+
+	<p>Finished:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_should_require_title</span>
+  <span class="attribute">@post</span> <span class="punct">=</span> <span class="ident">posts</span><span class="punct">(</span><span class="symbol">:published</span><span class="punct">)</span>
+  <span class="attribute">@comment</span> <span class="punct">=</span> <span class="attribute">@post</span><span class="punct">.</span><span class="ident">comments</span><span class="punct">.</span><span class="ident">create</span>
+  <span class="attribute">@comment</span><span class="punct">.</span><span class="ident">valid?</span>
+  <span class="ident">assert</span><span class="punct">(</span><span class="attribute">@comment</span><span class="punct">.</span><span class="ident">errors</span><span class="punct">[</span><span class="symbol">:name</span><span class="punct">],</span> <span class="punct">&quot;</span><span class="string">Should be errors for name field</span><span class="punct">&quot;)</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>To run your unit tests, Ctrl-\ + &#8216;Test Units&#8217; or &#8216;Test Recent&#8217;.</p>
 
 
 	<h2>Controllers and Routing</h2>
 
 
 	<h2>Views</h2>
+
+
+	<h2>Extending</h2>
     <p class="coda">
-      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 23rd February 2008<br>
+      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 25th February 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
