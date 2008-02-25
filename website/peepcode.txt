@@ -56,9 +56,10 @@ h2. Models and Migrations
 * Go to post.rb
   * hm + comments; notice you can tab across to change fields if required
 * Go to comments.rb
-  * bt + post
+  * bt + post; notice the autocompletions are correct here, but still optional for rails so can be deleted
   * vp + name, body
-  * *
+  * [Ctrl-Esc -> Models] All the validations are available as snippets based on the first letter of each word.
+* Place the cursor on 'Comment' class name, S+Ctrl+Cmd+S -> shows schema for this class
 
 h2. Testing
 
