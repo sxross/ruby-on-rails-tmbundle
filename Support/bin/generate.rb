@@ -18,13 +18,13 @@ end
 
 Generator.setup
 
-if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Generator")
-  name =
+if choice = TextMate.choose("Generate:", Generator.names.map { |name| Inflector.humanize name }, :title => "Rails Generator")
+  arguments =
     TextMate.input(
       Generator.generators[choice].question,
       Generator.generators[choice].default_answer,
-      :title => "#{Generator.generators[choice].name.capitalize} Generator")
-  if name
+      :title => "#{Inflector.humanize Generator.generators[choice].name} Generator")
+  if arguments
     options = ""
 
     case choice
@@ -44,7 +44,7 @@ if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Gener
 
     rails_root = RailsPath.new.rails_root
     FileUtils.cd rails_root
-    command = "\"script/generate\" #{generators[choice].name} #{name} #{options}"
+    command = "script/generate #{Generator.generators[choice].name} #{arguments} #{options}"
     $logger.debug "Command: #{command}"
 
     output = ruby(command)
@@ -52,6 +52,6 @@ if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Gener
     TextMate.refresh_project_drawer
     files = files_from_generator_output(output)
     files.each { |f| TextMate.open(File.join(rails_root, f)) }
-    TextMate.textbox("Done generating #{generators[choice].name}", output, :title => "Done")
+    TextMate.textbox("Done generating #{Generator.generators[choice].name}", output, :title => "Done")
   end
 end

@@ -19,6 +19,7 @@ class TestBinGenerate < Test::Unit::TestCase
 
   def test_generators
     generators = Generator.setup_generators
+    assert(generators.length > 6, "Failure message.")
     assert_equal(Array, generators.class)
     generators.each do |gen|
       assert_equal(Generator, gen.class)

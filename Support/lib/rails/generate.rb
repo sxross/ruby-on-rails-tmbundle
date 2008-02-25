@@ -38,7 +38,7 @@ class Generator
     list = nil
     FileUtils.chdir(RailsPath.new.rails_root) do
       output = ruby 'script/generate | grep "^  [A-Z]" | sed -e "s/  //"'
-      list = output.split.reject {|f| f =~ /:/}
+      list = output.split(/[,\s]+/).reject {|f| f =~ /:/}
     end
     list
   end
