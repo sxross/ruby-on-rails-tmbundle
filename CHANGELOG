@@ -55,6 +55,10 @@ Added so far:
   * Plugins
     * Footnote
       * footnote-edge uses .erb for templates [thx Stephen Bannasch]
+  * Internals
+    * Rakefile - test runner [thx Steve Ross]
+    * Added generator_test
+    * Removed unnecessary misc_test
 
 For thoughts and patches, email drnicwilliams@gmail.com
 
