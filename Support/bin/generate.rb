@@ -9,6 +9,7 @@
 
 require 'rails_bundle_tools'
 require 'fileutils'
+require File.dirname(__FILE__) + "/../lib/rails/generate"
 
 # Look for (created) files and return an array of them
 def files_from_generator_output(output, type = 'create')
@@ -19,39 +20,14 @@ def ruby(command)
   `/usr/bin/env ruby #{command}`
 end
 
-class Generator
-  @@list = []
-  attr_accessor :name, :question, :default_answer
-
-  def initialize(name, question, default_answer = "")
-    @@list << self
-    @name, @question, @default_answer = name, question, default_answer
-  end
-
-  def self.[](name, question, default_answer = "")
-    g = new(name, question, default_answer)
-  end
-
-  # Collect the names from each generator
-  def self.names
-    @@list.map { |g| g.name.capitalize }
-  end
-end
-
-generators = [
-  Generator["scaffold",   "Name of the model to scaffold:", "User"],
-  Generator["controller", "Name the new controller:",       "admin/user_accounts"],
-  Generator["model",      "Name the new model:",            "User"],
-  Generator["mailer",     "Name the new mailer:",           "Notify"],
-  Generator["migration",  "Name the new migration:",        "CreateUserTable"],
-  Generator["plugin",     "Name the new plugin:",           "ActsAsPlugin"]
-]
+Generator.setup
 
 if choice = TextMate.choose("Generate:", Generator.names, :title => "Rails Generator")
   name =
     TextMate.input(
-      generators[choice].question, generators[choice].default_answer,
-      :title => "#{generators[choice].name.capitalize} Generator")
+      Generator.generators[choice].question,
+      Generator.generators[choice].default_answer,
+      :title => "#{Generator.generators[choice].name.capitalize} Generator")
   if name
     options = ""
 

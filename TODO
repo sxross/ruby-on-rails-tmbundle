@@ -1,4 +1,8 @@
-== TODO ==
+== TODO - From Dr Nic ==
+
+- Call Generate Script - dynamically load generator names (bin/generate.rb)
+
+== TODO - From Duane ==
 - Let RailsPath recognize application.rb as a controller
 - Remove extraneous dirname from setting each RUBYLIB -- remove from plugins too?
 - License for footnotes?
