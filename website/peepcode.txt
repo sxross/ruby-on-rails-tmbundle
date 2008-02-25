@@ -98,9 +98,49 @@ end</pre>
 
 To run your unit tests, Ctrl-\ + 'Test Units' or 'Test Recent'.
 
+
+In order to write some functional tests for our blog, let's generate a controller as it generates the functional test at the same time. [Ctrl-|] We won't specify any actions for the moment, and we'll clean away the open windows for the controller and the helper.
+
+For now, let's write some functional tests. [remove the test_truth method]
+
+h3. Diagram
+
+* deftg -> test GET action
+* deftp -> test POST action
+
+Since many functional tests start with the same setup, there are two functional test snippets to write tests faster. The last letter maps the the http method to be used for the test: g for GET and p for POST.
+
+To create a test for the index action, use <code>deftg + 'index'</code>. Then delete the two optional @model sections.
+
+Next, to load an instance variable into the test, type <code>asg + 'posts'</code>
+
+Now, let's assert the HTML format.
+
+Type <code>ass</code> and press TAB. Type <code>div#posts</code>, press TAB and DELETE, then TAB twice to place the cursor within the <code>assert_select</code> block:
+
+<pre syntax="ruby">assert_select 'div#posts' do
+
+end</pre>
+
+Now we'll check that the <code>@posts</code> objects are represented in the <code>div#posts</code> element.
+
+With the cursor inside the <code>assert_select</code>:
+
+Type <code>ass</code>, press TAB, type <code>div.post</code>, press TAB, press TAB again, and type <code>count</code> (to replace the <code>text</code>). Now press TAB again, and type <code>@posts.size</code>. Press TAB a final time (it will highlight the <code>do...end</code> block), and press DELETE.
+
+Our test method is now finished:
+
+<pre syntax="ruby">def test_should_get_index
+  get :index
+  assert_response :success
+  assert(posts = assigns(:posts), "Cannot find @posts")
+  assert_select 'div#posts' do
+    assert_select 'div.post', :count => posts.size
+  end
+end</pre>
+
+
 h2. Controllers and Routing
-
-
 
 h2. Views
 
