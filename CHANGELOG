@@ -53,6 +53,7 @@ Added so far:
       * javascript - ENV['RAILS_JS_EXT']
       * stylesheet - ENV['RAILS_CSS_EXT']
       * view - ENV['RAILS_VIEW_EXT']
+    * 'Call Generate Script' now accesses all a project's generators
   * Plugins
     * Footnote
       * footnote-edge uses .erb for templates [thx Stephen Bannasch]
