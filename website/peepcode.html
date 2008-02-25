@@ -170,6 +170,66 @@ Ruby on Rails 2.0 was recently released and includes many improvements to
 	<p>To run your unit tests, Ctrl-\ + &#8216;Test Units&#8217; or &#8216;Test Recent&#8217;.</p>
 
 
+	<p>In order to write some functional tests for our blog, let&#8217;s generate a controller as it generates the functional test at the same time. [Ctrl-|] We won&#8217;t specify any actions for the moment, and we&#8217;ll clean away the open windows for the controller and the helper.</p>
+
+
+	<p>For now, let&#8217;s write some functional tests. [remove the test_truth method]</p>
+
+
+	<h3>Diagram</h3>
+
+
+	<ul>
+	<li>deftg -&gt; test <span class="caps">GET</span> action</li>
+		<li>deftp -&gt; test <span class="caps">POST</span> action</li>
+	</ul>
+
+
+	<p>Since many functional tests start with the same setup, there are two functional test snippets to write tests faster. The last letter maps the the http method to be used for the test: g for <span class="caps">GET</span> and p for <span class="caps">POST</span>.</p>
+
+
+	<p>To create a test for the index action, use <code>deftg + 'index'</code>. Then delete the two optional @model sections.</p>
+
+
+	<p>Next, to load an instance variable into the test, type <code>asg + 'posts'</code></p>
+
+
+	<p>Now, let&#8217;s assert the <span class="caps">HTML</span> format.</p>
+
+
+	<p>Type <code>ass</code> and press <span class="caps">TAB</span>. Type <code>div#posts</code>, press <span class="caps">TAB</span> and <span class="caps">DELETE</span>, then <span class="caps">TAB</span> twice to place the cursor within the <code>assert_select</code> block:</p>
+
+
+	<p><pre class='syntax'><span class="ident">assert_select</span> <span class="punct">'</span><span class="string">div#posts</span><span class="punct">'</span> <span class="keyword">do</span>
+
+<span class="keyword">end</span></pre></p>
+
+
+	<p>Now we&#8217;ll check that the <code>@posts</code> objects are represented in the <code>div#posts</code> element.</p>
+
+
+	<p>With the cursor inside the <code>assert_select</code>:</p>
+
+
+	<p>Type <code>ass</code>, press <span class="caps">TAB</span>, type <code>div.post</code>, press <span class="caps">TAB</span>, press <span class="caps">TAB</span> again, and type <code>count</code> (to replace the <code>text</code>). Now press <span class="caps">TAB</span> again, and type <code>@posts.size</code>. Press <span class="caps">TAB</span> a final time (it will highlight the <code>do...end</code> block), and press <span class="caps">DELETE</span>.</p>
+
+
+	<p>Our test method is now finished:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_should_get_index</span>
+  <span class="ident">get</span> <span class="symbol">:index</span>
+  <span class="ident">assert_response</span> <span class="symbol">:success</span>
+  <span class="ident">assert</span><span class="punct">(</span><span class="ident">posts</span> <span class="punct">=</span> <span class="ident">assigns</span><span class="punct">(</span><span class="symbol">:posts</span><span class="punct">),</span> <span class="punct">&quot;</span><span class="string">Cannot find @posts</span><span class="punct">&quot;)</span>
+  <span class="ident">assert_select</span> <span class="punct">'</span><span class="string">div#posts</span><span class="punct">'</span> <span class="keyword">do</span>
+    <span class="ident">assert_select</span> <span class="punct">'</span><span class="string">div.post</span><span class="punct">',</span> <span class="symbol">:count</span> <span class="punct">=&gt;</span> <span class="ident">posts</span><span class="punct">.</span><span class="ident">size</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>To run our functional tests, use Ctrl+\.</p>
+
+
 	<h2>Controllers and Routing</h2>
 
 
@@ -178,7 +238,7 @@ Ruby on Rails 2.0 was recently released and includes many improvements to
 
 	<h2>Extending</h2>
     <p class="coda">
-      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 25th February 2008<br>
+      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 26th February 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
