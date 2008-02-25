@@ -1,0 +1,21 @@
+require 'rake'
+require 'rake/testtask'
+
+desc 'Run the default tasks'
+task :default => :test
+
+desc 'Run the test suite. Use FILTER to add to the command line.'
+task :test do
+  RUBY_FLAGS = "" # for future use
+  FILTER = ENV['FILTER'] # for tests (eg FILTER="-n test_blah")
+  test_globs = ['test/**/*_test.rb']
+  cmd = if test ?f, 'test/test_all.rb' then
+          "#{RUBY_FLAGS} test/test_all.rb #{FILTER}"
+        else
+          tests = test_globs.map { |g| Dir.glob(g) }.flatten << 'test/unit'
+          tests.map! {|f| %Q(require "#{f}")}
+          "#{RUBY_FLAGS} -e '#{tests.join("; ")}' #{FILTER}"
+        end
+  puts cmd
+  ruby cmd
+end
