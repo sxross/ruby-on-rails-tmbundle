@@ -9,6 +9,11 @@ TextMate.call_with_progress(:title => "Contacting database", :message => "Fetchi
   require "#{project}/config/boot"
   require "#{project}/config/environment"
 
+  if word.blank?
+    STDOUT << "Place cursor on class name (or variation) to show its schema"
+    exit
+  end
+
   klass = word.camelcase.singularize.constantize rescue nil
   if klass and klass.class == Class and klass.ancestors.include?(ActiveRecord::Base)
     columns = klass.columns_hash
@@ -22,9 +27,9 @@ TextMate.call_with_progress(:title => "Contacting database", :message => "Fetchi
       output + array.inject('') { |row_str, value| row_str + value.ljust(20) } + "\n"
     end
   elsif klass and klass.class == Class and not klass.ancestors.include?(ActiveRecord::Base)
-    STDOUT << "#{word} is not an Active Record derived class"
+    STDOUT << "'#{word}' is not an Active Record derived class"
   else
-    STDOUT << "#{word} was not recognised as a class"
+    STDOUT << "'#{word}' was not recognised as a class"
   end
 
 end
