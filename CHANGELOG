@@ -33,6 +33,7 @@ Added so far:
       * Migration classes have own textmate scope
       * Add/Remove Columns - the 'down' statements are in reverse
         order [thx Lawrence Pit, Daniel Kristensen]
+      * Added 'Redo Last Migration' [thx Simon Jefford]
     * Functional Tests
       * assert_redirect_to for resource paths (artp, artpp, artnp, artnpp)
       * assert(assigns(:model)) (asg)
