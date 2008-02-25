@@ -27,7 +27,7 @@ if ARGV.empty?
         end
       end
     when :model
-      if current_file.rails_path_for(:view).exists?
+      if (path = current_file.rails_path_for(:view)) && path.exists?
         :view
       else
         current_file.associations[current_file.file_type].first
