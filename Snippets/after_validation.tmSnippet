@@ -9,7 +9,7 @@
 	<key>scope</key>
 	<string>source.ruby.rails</string>
 	<key>tabTrigger</key>
-	<string>val</string>
+	<string>aftv</string>
 	<key>uuid</key>
 	<string>44FBD811-70A9-462B-AC56-F975ADAD62AF</string>
 </dict>
