@@ -289,7 +289,12 @@ Now we create index.html.erb and use <%=  %> with 'rpc' and 'post'. The tests re
 
 h3. Diagram: Link helpers; lip - link_to "label", model_path(@model), etc.
 
-Finally, we'll add some links to our templates.
+* lip   - <code><%= link_to "link text...", model_path(@model) %></code>
+* lipp  - <code><%= link_to "link text...", models_path %></code>
+* linp  - <code><%= link_to "link text...", parent_child_path(@parent, @child) %></code>
+* linpp - <code><%= link_to "link text...", parent_child_path(@parent) %></code>
+* lim   - <code><%= link_to model.name, model %></code>
+gs
 
 h2. Alternate templates
 
@@ -297,6 +302,20 @@ h3. Diagram: html.erb, js.erb, js.rjs, xml.builder, xml.erb, html.builder
 
 In addition to html.erb templates, Rails supports any combination of output format and template engine. As appropriate you can combine html or javascript or xml with erb or rjs or builder, or any other 3rd party templating system such as haml.
 
-The Rails TextMate bundle attempts to support these different formats.
+The Rails TextMate bundle provides varying support for different combinations.
+
+h3. Diagram: wants.js -> .js.rjs; wants.xml -> .xml.builder; wants.different -> .different.erb
+
+Navigation (e.g. tasty tidbit)
+
+Go to posts_controller, add wants.js to create action. Navigate and create posts/create.js.rjs.
+
+h3. Diagram: RJS snippets - hide, insert_html (ins), replace (rep), replace_html (reph), show, toggle (tog), visual_effect (vis)
+
+All these snippets include the page prefix and are nice ways to start each RJS expression.
+
+[remove all lines; rename with .erb] Another way to generate JavaScript within Rails is with the .js.erb extension. Instead of RJS expressions, you write pure JavaScript, but you can embed ruby using erb.
+
+A new syntax supported in the bundle is JavaScript (Rails), which maps to .js.erb files. That is, JavaScript files that permit embedded Ruby. This means, within the <%= %> tags you have access to your Ruby snippets and syntax highlighting.
 
 h2. Extending
