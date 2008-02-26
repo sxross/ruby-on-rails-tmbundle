@@ -283,7 +283,7 @@ The returned 'render' expression isn't quite right as we need to pass the @post 
 
 h3. Diagram: render :partial - rp; render :partial, :object - rpo; render :partial, :collection - rpc; render :partial, :locals - rpl
 
-Create <%= %> and inside use rpo and set the :object => @post.
+Create <%= %> and inside use 'rpo' and set the :object => @post.
 
 
 h2. Extending
