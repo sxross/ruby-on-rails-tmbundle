@@ -32,7 +32,7 @@ Added so far:
       * validates_numericality_of (vn,vnif) [thx Tom Morris]
       * before/after callbacks (prefix bef/aft + 1st letter of words) [thx Sam Granieri]
     * Migrations
-      * Sexy Migrations now available as "t." snippets [thx Lawrence Pit]
+      * Sexy Migrations now available as "t." snippets and regular snippets [thx Lawrence Pit]
       * Migration classes have own textmate scope
       * Add/Remove Columns - the 'down' statements are in reverse
         order [thx Lawrence Pit, Daniel Kristensen]
