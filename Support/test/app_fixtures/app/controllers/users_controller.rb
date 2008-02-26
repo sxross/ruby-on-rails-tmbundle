@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         # format with a multi-line block
       end
       wants.xml # format without a block
+      wants.wacky # non-standard format
     end
   end
 
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
         # format with a multi-line block
       end
       wants.xml # format without a block
+      wants.wacky # non-standard format
     end
   end
 end

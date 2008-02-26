@@ -227,7 +227,7 @@ class RailsPath
       case view_format.to_sym
       when :xml then '.xml.builder'
       when :js  then '.js.rjs'
-      else           '.html.erb'
+      else           ".#{view_format}.erb"
       end
     end
     when :fixture    then '.yml'
