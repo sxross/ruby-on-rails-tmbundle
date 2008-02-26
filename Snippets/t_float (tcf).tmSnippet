@@ -4,14 +4,14 @@
 <dict>
 	<key>content</key>
 	<string>t.float :${1:title}
-$0</string>
+t.$0</string>
 	<key>name</key>
-	<string>Table column float</string>
+	<string>t.float (tcf)</string>
 	<key>scope</key>
 	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
-	<string>tcf</string>
+	<string>t.</string>
 	<key>uuid</key>
-	<string>8AF989C4-D52E-11DC-BD8E-00112475D960</string>
+	<string>1BDC463A-E4BE-11DC-A11A-00112475D960</string>
 </dict>
 </plist>

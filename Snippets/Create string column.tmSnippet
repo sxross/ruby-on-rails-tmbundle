@@ -4,13 +4,13 @@
 <dict>
 	<key>content</key>
 	<string>t.string :${1:title}
-t.$0</string>
+$0</string>
 	<key>name</key>
-	<string>Create string column</string>
+	<string>Table column string</string>
 	<key>scope</key>
 	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
-	<string>t.</string>
+	<string>tcs</string>
 	<key>uuid</key>
 	<string>377BF814-D52D-11DC-BD8E-00112475D960</string>
 </dict>
