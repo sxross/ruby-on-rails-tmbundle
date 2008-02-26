@@ -203,6 +203,7 @@ We could place this route within a with_options block, using 'mapwo'.
 
 For our posts controller, we'll use the resources snippets. We use 'maprs' and change 'resource' to 'post' and then we can tab into the block. Say we wanted comments to be a nested resource of posts, then we'd use 'maprs' again, and change 'map' to 'post' and remove the block. [then delete the comment resource + post's block].
 
+There is also a shortcut for the respond_to block - 'rest', which gives a default html response. To add additional response formats, tab on 'wants'. [remove these examples from new method]
 
 h2. Views
 
