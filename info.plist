@@ -53,6 +53,7 @@
 			<string>EE4BA904-F727-4C6B-A2CB-602E30537E38</string>
 			<string>2005C9DA-00DD-43D7-9F59-169CC8E953FC</string>
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
+			<string>A1D9600C-4E0B-4ABF-9C0A-19AD7A168A15</string>
 			<string>083B7598-7DA0-4BDE-BBD3-290F06927E48</string>
 			<string>------------------------------------</string>
 			<string>4D3A01D4-ACA8-49AF-B1DD-428B823964C3</string>
@@ -305,6 +306,17 @@
 				</array>
 				<key>name</key>
 				<string>Ajax Tests</string>
+			</dict>
+			<key>A1D9600C-4E0B-4ABF-9C0A-19AD7A168A15</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>91C543BF-7BD8-4E3A-B493-AE572C5472A0</string>
+					<string>0FF86C46-0E01-4D03-8232-72CA5BD55706</string>
+					<string>2183A9A9-17ED-4A4F-ABB6-668EDDD3A6E4</string>
+				</array>
+				<key>name</key>
+				<string>Routes</string>
 			</dict>
 			<key>A229B2F8-21B4-4910-AA61-6672A48C2991</key>
 			<dict>
@@ -563,6 +575,9 @@
 		<string>67C5082F-5011-434A-8EAA-6B8D3600935F</string>
 		<string>ECB10C0B-E8B7-4606-ABF5-4A2A26E5AB1A</string>
 		<string>54F61419-001F-4B71-83AC-8DC633694AF0</string>
+		<string>91C543BF-7BD8-4E3A-B493-AE572C5472A0</string>
+		<string>0FF86C46-0E01-4D03-8232-72CA5BD55706</string>
+		<string>2183A9A9-17ED-4A4F-ABB6-668EDDD3A6E4</string>
 		<string>16A705EB-10DC-42B5-9FF2-377E206421DC</string>
 		<string>7592CA99-75D7-48B6-9133-00B9F148FF43</string>
 		<string>67FD2F8F-5F25-45F2-A451-2F39977A9EDE</string>

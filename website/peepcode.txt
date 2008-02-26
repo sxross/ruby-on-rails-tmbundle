@@ -185,9 +185,21 @@ For simpler actions, use the standard techniques for new methods, def + 'new' to
 
 For some of the common, more complex controller actions there are also snippets. For the create action, type 'defcreate' and fill out the template with 'post'.
 
-What I want the 'create' action to do is redirect back to the main blog page for
+What I want the 'create' action to do is redirect back to the main blog controller for a page. Originally, I could use 'recai' for <code>redirect_to :controller => "blog", :action => "show", :id => @post</code> but its uncool to use anonymous paths.
 
-Now change the redirect from <code>@post</code>, to <code>public_post_path(@post)</code>. That
+So instead let's just enter a named route that sounds nice, replace <code>@post</code> with  <code>public_post_path(@post)</code>.
+
+[Change to the 'routes.rb' file.] So finally let's setup our routes. I'm going to delete all the default comments and default routes, and reconstruct it with named routes.
+
+h3. Diagram: Routes: map - named routes; maprs - map.resources; mapr - map.resource
+
+Within a routes file, you have the three 'map' snippets. As you'll see in moment, the resources snippets include a block for nested resources.
+
+So we'll use 'map' to create named routes. Leave the name as 'connect' for anonymous routes. It is handy to know a Ruby snippet here: tabbing on colon (:) creates a hash key/value pair.
+
+<pre>map.public_page 'blog/show/:id', :controller => "blog", :action => "show"</pre>
+
+For our posts controller, we'll use the resources snippets. We use 'maprs' and change 'resource' to 'post' and then we can tab into the block. Say we wanted comments to be a nested resource of posts, then we'd use 'maprs' again, and change 'map' to 'post' and remove the block. [then delete the comment resource + post's block].
 
 
 h2. Views
