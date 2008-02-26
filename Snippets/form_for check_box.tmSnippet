@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= f.text_area :${1:attribute} %&gt;</string>
+	<string>&lt;%= f.check_box :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>form_for text_area (f.)</string>
+	<string>form_for check_box</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>f.</string>
+	<string>ffcb</string>
 	<key>uuid</key>
-	<string>06498926-F84D-466C-8736-B8A0AC586A94</string>
+	<string>F0DB6886-4FFE-45BA-907F-44326AD8142D</string>
 </dict>
 </plist>

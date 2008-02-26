@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= f.text_area :${1:attribute} %&gt;</string>
+	<string>&lt;%= f.hidden_field :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>form_for text_area (f.)</string>
+	<string>form_for hidden_field</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>f.</string>
+	<string>ffhf</string>
 	<key>uuid</key>
-	<string>06498926-F84D-466C-8736-B8A0AC586A94</string>
+	<string>99FEFD9B-5A07-46E3-950D-5C474E42B695</string>
 </dict>
 </plist>

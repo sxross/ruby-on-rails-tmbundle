@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.radio_box :${1:attribute}, :${2:tag_value} %&gt;</string>
 	<key>name</key>
-	<string>form_for radio_box</string>
+	<string>form_for radio_box (f.)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>

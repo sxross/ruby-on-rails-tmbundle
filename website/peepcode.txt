@@ -187,7 +187,7 @@ For some of the common, more complex controller actions there are also snippets.
 
 What I want the 'create' action to do is redirect back to the main blog controller for a page. Originally, I could use 'recai' for <code>redirect_to :controller => "blog", :action => "show", :id => @post</code> but its uncool to use anonymous paths.
 
-So instead let's just enter a named route that sounds nice, replace <code>@post</code> with  <code>public_post_path(@post)</code>.
+So instead let's just enter a named route that sounds nice, replace <code>@post</code> with  <code>blog_post_path(@post)</code>.
 
 [Change to the 'routes.rb' file.] So finally let's setup our routes. I'm going to delete all the default comments and default routes, and reconstruct it with named routes.
 
@@ -199,13 +199,48 @@ So we'll use 'map' to create named routes. Leave the name as 'connect' for anony
 
 <pre>map.public_page 'blog/show/:id', :controller => "blog", :action => "show"</pre>
 
-We could place this route within a with_options block, using 'mapwo'.
+We could place this route within a with_options block, using 'mapwo'. Then add <code>map.root</code> within it.
 
-For our posts controller, we'll use the resources snippets. We use 'maprs' and change 'resource' to 'post' and then we can tab into the block. Say we wanted comments to be a nested resource of posts, then we'd use 'maprs' again, and change 'map' to 'post' and remove the block. [then delete the comment resource + post's block].
+For our posts controller, we'll use the resources snippets. We use 'maprs' and change 'resource' to 'posts' and then we can tab into the block. Say we wanted comments to be a nested resource of posts, then we'd use 'maprs' again, and change 'map' to 'post' and remove the block. [then delete the comment resource + post's block].
 
 There is also a shortcut for the respond_to block - 'rest', which gives a default html response. To add additional response formats, tab on 'wants'. [remove these examples from new method]
 
+Now let's have a final look at functional tests for our create actions, which will require a POST request. [try to change to functional test] We don't have a posts_controller_test.rb, so it creates a blank file for us.
+
+To create a functional test class, use 'cla' again and select 'Create functional test class', and type 'Posts' for the class name prefix. Save the file, close the window and reopen within the project, otherwise some commands might not work if the file is initially not saved.
+
+Remember that test methods are created with 'deft', and the GET + POST methods are created with deftg and deftp. Let's test our create action with 'deftp'.
+
+Enter 'post', but remove the two optional sections as we're creating a new object, not updating an existing object. Within the <code>:post => {  }</code>, type : and tab to create the hash key values.
+
+Fetch the resulting object with <code>asg</code> + 'post'.
+
+Add a redirection assertion with <code>artp</code>.
+
+<pre syntax="ruby">def test_should_post_create
+  post :create, :post => { :title => "hi there", :body => "oh yeah" }
+  assert_response :redirect
+  assert(post = assigns(:post), "Cannot find @post")
+
+  assert_redirected_to blog_post_path(post)
+end</pre>
+
+If you just want to run the tests in the current file, or in fact run any Ruby file, use Cmd+R. As we can see, this test passes.
+
 h2. Views
+
+[back to posts_controller.rb]
+
+In the posts controller, we have a new action but we haven't created a template yet. As before, we can use the Navigation cmd to change from the controller to a view. In this case, the view is based on the current method. So we place the cursor in the new method, and it will ask us to create a new.html.erb file. Here is your opportunity to rename the template with alternate format or template extensions, say .xml.builder. But we'll use .html.erb for now.
+
+h3. Diagram: form_for - ff, form_for with error output - ffe
+
+We'll use 'ffe' and enter 'post'. In Rails 2.0, the form_for helper is very powerful and knows from the object it is passed whether it is creating or updating an object.
+
+h3. Diagram: f. - list of available helpers; or use first initial of helpers' names (tf - text_field)
+
+Inside the form_for block we have two ways to access the common helpers.
+
 
 
 h2. Extending

@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= f.text_area :${1:attribute} %&gt;</string>
+	<string>&lt;%= f.label :${1:attribute}${2:, "${3:${1/[[:alpha:]]+|(_)/(?1: :\u$0)/g}}"} %&gt;</string>
 	<key>name</key>
-	<string>form_for text_area (f.)</string>
+	<string>form_for label</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
-	<string>f.</string>
+	<string>ffl</string>
 	<key>uuid</key>
-	<string>06498926-F84D-466C-8736-B8A0AC586A94</string>
+	<string>B31822D9-2048-4D16-B2AF-00E0B4E5C368</string>
 </dict>
 </plist>
