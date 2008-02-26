@@ -37,6 +37,12 @@ Overview key icons (see PeepCode TM video)
 
 Preferences > Advanced > Folder References > Folder Patterns: add 'vendor/rails' and it will ignore that folder in any project - both from the Dock and from Search.
 
+Access your bundles via Ctrl+Alt+Cmd+B.
+
+Quick menu: Ctrl+Esc
+
+
+
 h2. Models and Migrations
 
 * Create new app
