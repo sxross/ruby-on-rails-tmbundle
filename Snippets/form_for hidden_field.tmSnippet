@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.hidden_field :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>form_for hidden_field</string>
+	<string>form_for hidden_field (f.)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>

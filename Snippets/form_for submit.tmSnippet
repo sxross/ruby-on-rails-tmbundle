@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.submit "${1:Submit}"${2:, :disable_with =&gt; '$1ing...'} %&gt;</string>
 	<key>name</key>
-	<string>form_for submit</string>
+	<string>form_for submit (f.)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
