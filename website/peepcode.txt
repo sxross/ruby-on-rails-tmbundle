@@ -150,7 +150,9 @@ To load all Posts:
 
 <pre syntax="ruby">@posts = Post.fina</pre>
 
-Pressing TAB creates <code>find(:all, :conditions => [...])</code>. Delete the conditions options.
+Pressing TAB creates <code>find(:all, :conditions => [...])</code>. Tab and change 'field' to 'published'.
+
+h3. Diagram: fina - find(:all); finf - find(:first)
 
 
 h2. Views
