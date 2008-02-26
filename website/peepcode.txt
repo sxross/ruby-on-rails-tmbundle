@@ -98,7 +98,6 @@ end</pre>
 
 To run your unit tests, Ctrl-\ + 'Test Units' or 'Test Recent'.
 
-
 In order to write some functional tests for our blog, let's generate a controller as it generates the functional test at the same time. [Ctrl-|] We won't specify any actions for the moment, and we'll clean away the open windows for the controller and the helper.
 
 For now, let's write some functional tests. [remove the test_truth method]
@@ -143,6 +142,15 @@ To run our functional tests, use Ctrl+\.
 
 h2. Controllers and Routing
 
+Similarly to navigating between model and unit test files, you can toggle between functional tests and controllers via Alt+Cmd+DownArrow.
+
+In the controller, type <code>index</code> and use Shift+Enter to convert it to a method. Press BackSpace to delete the arguments.
+
+To load all Posts:
+
+<pre syntax="ruby">@posts = Post.fina</pre>
+
+Pressing TAB creates <code>find(:all, :conditions => [...])</code>. Delete the conditions options.
 
 
 h2. Views
