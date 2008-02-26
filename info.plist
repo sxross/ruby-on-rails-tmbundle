@@ -119,28 +119,9 @@
 				<array>
 					<string>1970AE74-3949-40B3-B263-727AA3FF167A</string>
 					<string>------------------------------------</string>
-					<string>B8F08BD7-6160-482C-8A3D-CBC6BD2079A4</string>
-					<string>2AC3AC1F-743B-4A33-863C-C37885073806</string>
-					<string>BD2E4045-54E6-450E-B31B-5E1865CFFBC9</string>
-					<string>F396B7BD-8255-48B1-904A-06E7D7CC2741</string>
-					<string>9D58B6C9-BA52-48B3-B639-D5CB894AF810</string>
-					<string>------------------------------------</string>
-					<string>47944705-F605-4ED4-B4C0-9E823EE25138</string>
-					<string>85E9264C-5414-4FA0-AC07-F305A798ED46</string>
-					<string>B5893618-D07C-48F1-8867-736D0AAFF0E7</string>
-					<string>1354726C-DA64-4CA6-A099-26626A865D8D</string>
-					<string>4CC98A56-B60B-4A89-80E0-400C5314A050</string>
-					<string>869AB0B7-12DD-440A-905A-BFB1E0E16E1C</string>
-					<string>EB47FBA1-AFB3-42F9-94A4-552D3175C17A</string>
-					<string>14BF0586-F2E8-4AB3-BB4B-E49099384403</string>
-					<string>5CE8838A-BF2C-497E-B87A-E90C3BC482E0</string>
-					<string>EC511A43-D3B7-11DC-BA49-00112475D960</string>
-					<string>B21BA16D-7C04-4912-8488-425CDCC332A8</string>
-					<string>CF506019-E964-4172-A3DA-475AE3B65558</string>
-					<string>5DAC28A7-33C8-4DA7-9E85-56618D6BEC9F</string>
-					<string>F5CBBE16-F5CC-4EDA-8BC6-30281BD7D854</string>
-					<string>F8316545-9AE4-4C7F-87ED-A2C00E6637FA</string>
-					<string>43680344-0818-42BF-95B4-58CD2D76545B</string>
+					<string>B89CD2E9-4271-41BB-8AF6-A747553D99EB</string>
+					<string>A26B8A37-FAC0-4F44-B18D-6BE30D84F27E</string>
+					<string>7D9194BB-2BCC-4E20-84C8-0990B77D5515</string>
 				</array>
 				<key>name</key>
 				<string>Models</string>
@@ -230,6 +211,30 @@
 				<key>name</key>
 				<string>Controllers</string>
 			</dict>
+			<key>7D9194BB-2BCC-4E20-84C8-0990B77D5515</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>47944705-F605-4ED4-B4C0-9E823EE25138</string>
+					<string>85E9264C-5414-4FA0-AC07-F305A798ED46</string>
+					<string>B5893618-D07C-48F1-8867-736D0AAFF0E7</string>
+					<string>1354726C-DA64-4CA6-A099-26626A865D8D</string>
+					<string>4CC98A56-B60B-4A89-80E0-400C5314A050</string>
+					<string>869AB0B7-12DD-440A-905A-BFB1E0E16E1C</string>
+					<string>EB47FBA1-AFB3-42F9-94A4-552D3175C17A</string>
+					<string>14BF0586-F2E8-4AB3-BB4B-E49099384403</string>
+					<string>5CE8838A-BF2C-497E-B87A-E90C3BC482E0</string>
+					<string>EC511A43-D3B7-11DC-BA49-00112475D960</string>
+					<string>B21BA16D-7C04-4912-8488-425CDCC332A8</string>
+					<string>CF506019-E964-4172-A3DA-475AE3B65558</string>
+					<string>5DAC28A7-33C8-4DA7-9E85-56618D6BEC9F</string>
+					<string>F5CBBE16-F5CC-4EDA-8BC6-30281BD7D854</string>
+					<string>F8316545-9AE4-4C7F-87ED-A2C00E6637FA</string>
+					<string>43680344-0818-42BF-95B4-58CD2D76545B</string>
+				</array>
+				<key>name</key>
+				<string>Validations</string>
+			</dict>
 			<key>8113246B-122E-4F4A-9B5A-98390900839E</key>
 			<dict>
 				<key>items</key>
@@ -314,6 +319,16 @@
 				<key>name</key>
 				<string>Logger</string>
 			</dict>
+			<key>A26B8A37-FAC0-4F44-B18D-6BE30D84F27E</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>A017AB39-A875-40DC-8ACF-7E3551057CA0</string>
+					<string>FE430ECD-5D40-4D95-A73B-F064C73992DE</string>
+				</array>
+				<key>name</key>
+				<string>Finders</string>
+			</dict>
 			<key>A66D3FEE-D537-11DC-BD8E-00112475D960</key>
 			<dict>
 				<key>items</key>
@@ -335,6 +350,19 @@
 				</array>
 				<key>name</key>
 				<string>Columns</string>
+			</dict>
+			<key>B89CD2E9-4271-41BB-8AF6-A747553D99EB</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>B8F08BD7-6160-482C-8A3D-CBC6BD2079A4</string>
+					<string>2AC3AC1F-743B-4A33-863C-C37885073806</string>
+					<string>BD2E4045-54E6-450E-B31B-5E1865CFFBC9</string>
+					<string>F396B7BD-8255-48B1-904A-06E7D7CC2741</string>
+					<string>9D58B6C9-BA52-48B3-B639-D5CB894AF810</string>
+				</array>
+				<key>name</key>
+				<string>Associations</string>
 			</dict>
 			<key>D4D18AD6-11DA-47F2-AAD8-F2F350EE2BB9</key>
 			<dict>
@@ -612,6 +640,8 @@
 		<string>78FCF992-D01B-404F-BC54-5EE7B91F999A</string>
 		<string>62C3838B-0790-4FC2-8425-F273A57F5D33</string>
 		<string>C12C98A5-74E5-4E70-9ADB-8783455D6539</string>
+		<string>A017AB39-A875-40DC-8ACF-7E3551057CA0</string>
+		<string>FE430ECD-5D40-4D95-A73B-F064C73992DE</string>
 	</array>
 	<key>uuid</key>
 	<string>467A60E0-6227-11D9-BFB1-000D93589AF6</string>
