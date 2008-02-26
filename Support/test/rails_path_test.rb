@@ -136,15 +136,17 @@ class RailsPathTest < Test::Unit::TestCase
       [14, 'no_existing_views.js.rjs'],
       [15, 'no_existing_views.js.rjs'],
       [16, 'no_existing_views.xml.builder'],
-      [17, 'no_existing_views.xml.builder'],
+      [17, 'no_existing_views.wacky.erb'],
+      [18, 'no_existing_views.wacky.erb'],
 
-      [21, 'existing_views.html.erb'],
       [22, 'existing_views.html.erb'],
-      [23, 'existing_views.js.rjs'],
+      [23, 'existing_views.html.erb'],
       [24, 'existing_views.js.rjs'],
       [25, 'existing_views.js.rjs'],
-      [26, 'existing_views.xml.builder'],
+      [26, 'existing_views.js.rjs'],
       [27, 'existing_views.xml.builder'],
+      [28, 'existing_views.wacky.erb'],
+      [28, 'existing_views.wacky.erb'],
     ]
     challenges.each do |line, expected|
       TextMate.line_number = line.to_s
