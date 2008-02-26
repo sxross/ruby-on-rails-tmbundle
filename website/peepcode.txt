@@ -191,13 +191,15 @@ So instead let's just enter a named route that sounds nice, replace <code>@post<
 
 [Change to the 'routes.rb' file.] So finally let's setup our routes. I'm going to delete all the default comments and default routes, and reconstruct it with named routes.
 
-h3. Diagram: Routes: map - named routes; maprs - map.resources; mapr - map.resource
+h3. Diagram: Routes: map - named routes; maprs - map.resources; mapr - map.resource; mapwo - map.with_options
 
 Within a routes file, you have the three 'map' snippets. As you'll see in moment, the resources snippets include a block for nested resources.
 
 So we'll use 'map' to create named routes. Leave the name as 'connect' for anonymous routes. It is handy to know a Ruby snippet here: tabbing on colon (:) creates a hash key/value pair.
 
 <pre>map.public_page 'blog/show/:id', :controller => "blog", :action => "show"</pre>
+
+We could place this route within a with_options block, using 'mapwo'.
 
 For our posts controller, we'll use the resources snippets. We use 'maprs' and change 'resource' to 'post' and then we can tab into the block. Say we wanted comments to be a nested resource of posts, then we'd use 'maprs' again, and change 'map' to 'post' and remove the block. [then delete the comment resource + post's block].
 
