@@ -138,6 +138,10 @@ Our test method is now finished:
   end
 end</pre>
 
+Now we create a test for the 'show' action. Type deftg and 'show', and then 'post'. Then tab into 'fixture_name' and delete it. Now we'll autocomplete on fixtures again. Alt+Esc and select 'published'.
+
+Now copy the 'div.post' assert_select line for this test, but change the :count to 1.
+
 To run our functional tests, use Ctrl+\.
 
 h2. Controllers and Routing
@@ -152,7 +156,38 @@ To load all Posts:
 
 Pressing TAB creates <code>find(:all, :conditions => [...])</code>. Tab and change 'field' to 'published'.
 
-h3. Diagram: fina - find(:all); finf - find(:first)
+h3. Diagram: fina - find(:all); finf - find(:first); fini - find(id); ^-| - params[:id]
+
+Now create a 'show' action, with @post = Post.fini + tab. Use ^-| to insert params[:id].
+
+We'll come back and look at views for our index action later. Instead, let's create a controller for creating + updating posts for the admin of the site.
+
+We could use the scaffold generator to create a posts controller, with functional tests and default views. Instead, we'll build this controller from the ground up.
+
+h3. Diagram: Navigation between file types
+
+Shift+Alt+Cmd+DownArrow:
+
+TODO - finish this
+
+* post.rb -> post_test.rb, posts_controller.rb, etc
+* post_test.rb -> post.rb, posts_controller.rb, etc
+
+h3. Diagram: views/users/show.rhtml -> user_controller.rb; views/users/show.html.erb -> users_controller.rb
+
+One thing to note for developers of Rails apps using older versions of Rails. If you are in a template file with the extension .rhtml, then it will navigate to the singular controller name 'post', rather than the plural default for controllers. This is for backwards compatibility with older naming conventions.
+
+So we can create a new <code>posts_controller.rb</code> by returning to the post.rb or post_test.rb files, and navigating to the matching controller. It doesn't exist so a blank file is created.
+
+We have a simple way to create new controller classes; the <code>cla</code> snippet has a 'Create controller class' option. Select that, and type 'Posts' and then 'post' to create our posts_controller.rb class.
+
+For simpler actions, use the standard techniques for new methods, def + 'new' to create the 'new' method.
+
+For some of the common, more complex controller actions there are also snippets. For the create action, type 'defcreate' and fill out the template with 'post'.
+
+What I want the 'create' action to do is redirect back to the main blog page for
+
+Now change the redirect from <code>@post</code>, to <code>public_post_path(@post)</code>. That
 
 
 h2. Views
