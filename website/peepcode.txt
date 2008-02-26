@@ -294,7 +294,6 @@ h3. Diagram: Link helpers; lip - link_to "label", model_path(@model), etc.
 * linp  - <code><%= link_to "link text...", parent_child_path(@parent, @child) %></code>
 * linpp - <code><%= link_to "link text...", parent_child_path(@parent) %></code>
 * lim   - <code><%= link_to model.name, model %></code>
-gs
 
 h2. Alternate templates
 
