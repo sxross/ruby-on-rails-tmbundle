@@ -237,9 +237,25 @@ h3. Diagram: form_for - ff, form_for with error output - ffe
 
 We'll use 'ffe' and enter 'post'. In Rails 2.0, the form_for helper is very powerful and knows from the object it is passed whether it is creating or updating an object.
 
-h3. Diagram: f. - list of available helpers; or use first initial of helpers' names (tf - text_field)
+h3. Diagram: f. - list of available helpers; or use first initial of helpers' names (fftf - text_field)
 
 Inside the form_for block we have two ways to access the common helpers.
+
+By using 'f.' it reminds us what helpers are available and tells us what their tab completions are.
+
+So, let's use the tab completion versions. ffl for label, fftf for text field.
+
+<pre><%= error_messages_for :post %>
+
+<% form_for @post do |f| -%>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :body, "Body" %>
+  <%= f.text_area :body, :rows => 10 %>
+  <%= f.submit "Post", :disable_with => 'Posting...' %>
+<% end -%></pre>
+
+Now let's put each label or form field in a separate paragraph. Select those lines and use 'Wrap Each Selected Line in Open/Close' - Shift+Ctrl+Cmd+W, and type 'p'.
 
 
 
