@@ -227,13 +227,263 @@ Ruby on Rails 2.0 was recently released and includes many improvements to
 <span class="keyword">end</span></pre></p>
 
 
+	<p>Now we create a test for the &#8216;show&#8217; action. Type deftg and &#8216;show&#8217;, and then &#8216;post&#8217;. Then tab into &#8216;fixture_name&#8217; and delete it. Now we&#8217;ll autocomplete on fixtures again. Alt+Esc and select &#8216;published&#8217;.</p>
+
+
+	<p>Now copy the &#8216;div.post&#8217; assert_select line for this test, but change the :count to 1.</p>
+
+
 	<p>To run our functional tests, use Ctrl+\.</p>
 
 
 	<h2>Controllers and Routing</h2>
 
 
+	<p>Similarly to navigating between model and unit test files, you can toggle between functional tests and controllers via Alt+Cmd+DownArrow.</p>
+
+
+	<p>In the controller, type <code>index</code> and use Shift+Enter to convert it to a method. Press BackSpace to delete the arguments.</p>
+
+
+	<p>To load all Posts:</p>
+
+
+	<p><pre class='syntax'><span class="attribute">@posts</span> <span class="punct">=</span> <span class="constant">Post</span><span class="punct">.</span><span class="ident">fina</span></pre></p>
+
+
+	<p>Pressing <span class="caps">TAB</span> creates <code>find(:all, :conditions =&gt; [...])</code>. Tab and change &#8216;field&#8217; to &#8216;published&#8217;.</p>
+
+
+	<h3>Diagram: fina &#8211; find(:all); finf &#8211; find(:first); fini &#8211; find(id); ^-| &#8211; params[:id]</h3>
+
+
+	<p>Now create a &#8216;show&#8217; action, with @post = Post.fini + tab. Use ^-| to insert params[:id].</p>
+
+
+	<p>We&#8217;ll come back and look at views for our index action later. Instead, let&#8217;s create a controller for creating + updating posts for the admin of the site.</p>
+
+
+	<p>We could use the scaffold generator to create a posts controller, with functional tests and default views. Instead, we&#8217;ll build this controller from the ground up.</p>
+
+
+	<h3>Diagram: Navigation between file types</h3>
+
+
+	<p>Shift+Alt+Cmd+DownArrow:</p>
+
+
+	<p><span class="caps">TODO</span> &#8211; finish this</p>
+
+
+	<ul>
+	<li>post.rb -&gt; post_test.rb, posts_controller.rb, etc</li>
+		<li>post_test.rb -&gt; post.rb, posts_controller.rb, etc</li>
+	</ul>
+
+
+	<h3>Diagram: views/users/show.rhtml -&gt; user_controller.rb; views/users/show.html.erb -&gt; users_controller.rb</h3>
+
+
+	<p>One thing to note for developers of Rails apps using older versions of Rails. If you are in a template file with the extension .rhtml, then it will navigate to the singular controller name &#8216;post&#8217;, rather than the plural default for controllers. This is for backwards compatibility with older naming conventions.</p>
+
+
+	<p>So we can create a new <code>posts_controller.rb</code> by returning to the post.rb or post_test.rb files, and navigating to the matching controller. It doesn&#8217;t exist so a blank file is created.</p>
+
+
+	<p>We have a simple way to create new controller classes; the <code>cla</code> snippet has a &#8216;Create controller class&#8217; option. Select that, and type &#8216;Posts&#8217; and then &#8216;post&#8217; to create our posts_controller.rb class.</p>
+
+
+	<p>For simpler actions, use the standard techniques for new methods, def + &#8216;new&#8217; to create the &#8216;new&#8217; method.</p>
+
+
+	<p>For some of the common, more complex controller actions there are also snippets. For the create action, type &#8216;defcreate&#8217; and fill out the template with &#8216;post&#8217;.</p>
+
+
+	<p>What I want the &#8216;create&#8217; action to do is redirect back to the main blog controller for a page. Originally, I could use &#8216;recai&#8217; for <code>redirect_to :controller =&gt; "blog", :action =&gt; "show", :id =&gt; @post</code> but its uncool to use anonymous paths.</p>
+
+
+	<p>So instead let&#8217;s just enter a named route that sounds nice, replace <code>@post</code> with  <code>blog_post_path(@post)</code>.</p>
+
+
+	<p>[Change to the &#8216;routes.rb&#8217; file.] So finally let&#8217;s setup our routes. I&#8217;m going to delete all the default comments and default routes, and reconstruct it with named routes.</p>
+
+
+	<h3>Diagram: Routes: map &#8211; named routes; maprs &#8211; map.resources; mapr &#8211; map.resource; mapwo &#8211; map.with_options</h3>
+
+
+	<p>Within a routes file, you have the three &#8216;map&#8217; snippets. As you&#8217;ll see in moment, the resources snippets include a block for nested resources.</p>
+
+
+	<p>So we&#8217;ll use &#8216;map&#8217; to create named routes. Leave the name as &#8216;connect&#8217; for anonymous routes. It is handy to know a Ruby snippet here: tabbing on colon (:) creates a hash key/value pair.</p>
+
+
+<pre>map.public_page 'blog/show/:id', :controller =&gt; "blog", :action =&gt; "show"</pre>
+
+	<p>We could place this route within a with_options block, using &#8216;mapwo&#8217;. Then add <code>map.root</code> within it.</p>
+
+
+	<p>For our posts controller, we&#8217;ll use the resources snippets. We use &#8216;maprs&#8217; and change &#8216;resource&#8217; to &#8216;posts&#8217; and then we can tab into the block. Say we wanted comments to be a nested resource of posts, then we&#8217;d use &#8216;maprs&#8217; again, and change &#8216;map&#8217; to &#8216;post&#8217; and remove the block. [then delete the comment resource + post&#8217;s block].</p>
+
+
+	<p>There is also a shortcut for the respond_to block &#8211; &#8216;rest&#8217;, which gives a default html response. To add additional response formats, tab on &#8216;wants&#8217;. [remove these examples from new method]</p>
+
+
+	<p>Now let&#8217;s have a final look at functional tests for our create actions, which will require a <span class="caps">POST</span> request. [try to change to functional test] We don&#8217;t have a posts_controller_test.rb, so it creates a blank file for us.</p>
+
+
+	<p>To create a functional test class, use &#8216;cla&#8217; again and select &#8216;Create functional test class&#8217;, and type &#8216;Posts&#8217; for the class name prefix. Save the file, close the window and reopen within the project, otherwise some commands might not work if the file is initially not saved.</p>
+
+
+	<p>Remember that test methods are created with &#8216;deft&#8217;, and the <span class="caps">GET</span> + <span class="caps">POST</span> methods are created with deftg and deftp. Let&#8217;s test our create action with &#8216;deftp&#8217;.</p>
+
+
+	<p>Enter &#8216;post&#8217;, but remove the two optional sections as we&#8217;re creating a new object, not updating an existing object. Within the <code>:post =&gt; {  }</code>, type : and tab to create the hash key values.</p>
+
+
+	<p>Fetch the resulting object with <code>asg</code> + &#8216;post&#8217;.</p>
+
+
+	<p>Add a redirection assertion with <code>artp</code>.</p>
+
+
+	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_should_post_create</span>
+  <span class="ident">post</span> <span class="symbol">:create</span><span class="punct">,</span> <span class="symbol">:post</span> <span class="punct">=&gt;</span> <span class="punct">{</span> <span class="symbol">:title</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">hi there</span><span class="punct">&quot;,</span> <span class="symbol">:body</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">oh yeah</span><span class="punct">&quot;</span> <span class="punct">}</span>
+  <span class="ident">assert_response</span> <span class="symbol">:redirect</span>
+  <span class="ident">assert</span><span class="punct">(</span><span class="ident">post</span> <span class="punct">=</span> <span class="ident">assigns</span><span class="punct">(</span><span class="symbol">:post</span><span class="punct">),</span> <span class="punct">&quot;</span><span class="string">Cannot find @post</span><span class="punct">&quot;)</span>
+
+  <span class="ident">assert_redirected_to</span> <span class="ident">blog_post_path</span><span class="punct">(</span><span class="ident">post</span><span class="punct">)</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>If you just want to run the tests in the current file, or in fact run any Ruby file, use Cmd+R. As we can see, this test passes.</p>
+
+
 	<h2>Views</h2>
+
+
+	<p>[back to posts_controller.rb]</p>
+
+
+	<p>In the posts controller, we have a new action but we haven&#8217;t created a template yet. As before, we can use the Navigation cmd to change from the controller to a view. In this case, the view is based on the current method. So we place the cursor in the new method, and it will ask us to create a new.html.erb file. Here is your opportunity to rename the template with alternate format or template extensions, say .xml.builder. But we&#8217;ll use .html.erb for now.</p>
+
+
+	<h3>Diagram: form_for &#8211; ff, form_for with error output &#8211; ffe</h3>
+
+
+	<p>We&#8217;ll use &#8216;ffe&#8217; and enter &#8216;post&#8217;. In Rails 2.0, the form_for helper is very powerful and knows from the object it is passed whether it is creating or updating an object.</p>
+
+
+	<h3>Diagram: f. &#8211; list of available helpers; or use first initial of helpers&#8217; names (fftf &#8211; text_field)</h3>
+
+
+	<p>Inside the form_for block we have two ways to access the common helpers.</p>
+
+
+	<p>By using &#8216;f.&#8217; it reminds us what helpers are available and tells us what their tab completions are.</p>
+
+
+	<p>So, let&#8217;s use the tab completion versions. ffl for label, fftf for text field.</p>
+
+
+<pre>&lt;%= error_messages_for :post %&gt;
+
+&lt;% form_for @post do |f| -%&gt;
+  &lt;%= f.label :title, "Title" %&gt;
+  &lt;%= f.text_field :title %&gt;
+  &lt;%= f.label :body, "Body" %&gt;
+  &lt;%= f.text_area :body, :rows =&gt; 10 %&gt;
+  &lt;%= f.submit "Post", :disable_with =&gt; 'Posting...' %&gt;
+&lt;% end -%&gt;</pre>
+
+	<p>Now let&#8217;s put each label or form field in a separate paragraph. Select those lines and use &#8216;Wrap Each Selected Line in Open/Close&#8217; &#8211; Shift+Ctrl+Cmd+W, and type &#8216;p&#8217;.</p>
+
+
+	<h3>Diagram: Partials &#8211; Shift-Ctrl-H</h3>
+
+
+	<p>Since the form_for helper works with saved and unsaved model objects its easily reusable within new and edit templates. So let&#8217;s extract it as a partial. [do it] And now the render can be pasted into an edit.html.erb file as required.</p>
+
+
+	<p>[go to browser http://localhost:3000/posts/new]
+Now we can fire up the server and have a look at our form and use it. [submit form]</p>
+
+
+	<p>As requested, the browser is redirected to the public post page; which we haven&#8217;t implemented yet. So let&#8217;s do that.</p>
+
+
+	<p>We head back to the blog_controller, and create the show.html.erb via navigating away from the show action.</p>
+
+
+	<p>Create a div and set its class to post, then layout the title and body:</p>
+
+
+<div class="post">
+  <h3>&lt;%= @post.title %&gt;</h3>
+  &lt;%= @post.body %&gt;
+</div>
+
+	<p>If we run our tests, the &#8216;show&#8217; action test is now passing.</p>
+
+
+	<p>[Shft+Ctrl+H] So we can reuse it in the index.html.erb file, let&#8217;s move it to a partial called &#8216;post&#8217; and remove the &#8217;@&#8217; signs to reference a local variable instead of an instance variable.</p>
+
+
+	<p>The returned &#8216;render&#8217; expression isn&#8217;t quite right as we need to pass the @post object into the partial. Let&#8217;s remove it and use the &#8216;render partial&#8217; snippets.</p>
+
+
+	<h3>Diagram: render :partial &#8211; rp; render :partial, :object &#8211; rpo; render :partial, :collection &#8211; rpc; render :partial, :locals &#8211; rpl</h3>
+
+
+	<p>Create &lt;%= %&gt; and inside use &#8216;rpo&#8217; and set the :object =&gt; @post.</p>
+
+
+	<p>Now we create index.html.erb and use &lt;%=  %&gt; with &#8216;rpc&#8217; and &#8216;post&#8217;. The tests require that its wrapped in a div with id=&#8221;posts&#8221;. So select all, and Shift+Ctrl+W + div id=&#8221;posts&#8221;.</p>
+
+
+	<h3>Diagram: Link helpers; lip &#8211; link_to &#8220;label&#8221;, model_path(@model), etc.</h3>
+
+
+	<ul>
+	<li>lip   &#8211; <code>&lt;%= link_to "link text...", model_path(@model) %&gt;</code></li>
+		<li>lipp  &#8211; <code>&lt;%= link_to "link text...", models_path %&gt;</code></li>
+		<li>linp  &#8211; <code>&lt;%= link_to "link text...", parent_child_path(@parent, @child) %&gt;</code></li>
+		<li>linpp &#8211; <code>&lt;%= link_to "link text...", parent_child_path(@parent) %&gt;</code></li>
+		<li>lim   &#8211; <code>&lt;%= link_to model.name, model %&gt;</code>
+gs</li>
+	</ul>
+
+
+	<h2>Alternate templates</h2>
+
+
+	<h3>Diagram: html.erb, js.erb, js.rjs, xml.builder, xml.erb, html.builder</h3>
+
+
+	<p>In addition to html.erb templates, Rails supports any combination of output format and template engine. As appropriate you can combine html or javascript or xml with erb or rjs or builder, or any other 3rd party templating system such as haml.</p>
+
+
+	<p>The Rails TextMate bundle provides varying support for different combinations.</p>
+
+
+	<h3>Diagram: wants.js -&gt; .js.rjs; wants.xml -&gt; .xml.builder; wants.different -&gt; .different.erb</h3>
+
+
+	<p>Navigation (e.g. tasty tidbit)</p>
+
+
+	<p>Go to posts_controller, add wants.js to create action. Navigate and create posts/create.js.rjs.</p>
+
+
+	<h3>Diagram: <span class="caps">RJS</span> snippets &#8211; hide, insert_html (ins), replace (rep), replace_html (reph), show, toggle (tog), visual_effect (vis)</h3>
+
+
+	<p>All these snippets include the page prefix and are nice ways to start each <span class="caps">RJS</span> expression.</p>
+
+
+	<p>[remove all lines; rename with .erb] Another way to generate JavaScript within Rails is with the .js.erb extension. Instead of <span class="caps">RJS</span> expressions, you write pure JavaScript, but you can embed ruby using erb.</p>
+
+
+	<p>A new syntax supported in the bundle is JavaScript (Rails), which maps to .js.erb files. That is, JavaScript files that permit embedded Ruby. This means, within the &lt;%= %&gt; tags you have access to your Ruby snippets and syntax highlighting.</p>
 
 
 	<h2>Extending</h2>
