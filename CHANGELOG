@@ -40,6 +40,9 @@ Added so far:
     * Functional Tests
       * assert_redirect_to for resource paths (artp, artpp, artnp, artnpp)
       * assert(assigns(:model)) (asg)
+    * Routes
+      * named routes, resources snippets (map, mapr, maprs)
+      * catch_all (mapca) [thx Sam Granieri]
     * Active Support
       * cattr_accessor/mattr_accessor (crw/mrw) [thx Jacob Swanner]
       * returning (returning) [thx Jacob Swanner]
