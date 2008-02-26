@@ -117,6 +117,13 @@ class RailsPath
 
     return parse_file_name(name)[:file_name] rescue nil # Remove extension
   end
+  
+  def respond_to_format
+    return nil unless file_type == :controller
+    method_line_start = buffer.find_method(:direction => :backwards).first
+    buffer.find_respond_to_format(:direction => :backwards, 
+      :from => method_line_start, :to => TextMate.line_number)
+  end
 
   def rails_root
     return TextMate.project_directory
@@ -212,11 +219,17 @@ class RailsPath
     controller_names
   end
 
-  def default_extension_for(type)
+  def default_extension_for(type, view_format = "html")
     case type
     when :javascript then ENV['RAILS_JS_EXT'] || '.js'
     when :stylesheet then ENV['RAILS_CSS_EXT'] || '.css'
-    when :view       then ENV['RAILS_VIEW_EXT'] || '.html.erb'
+    when :view       then ENV['RAILS_VIEW_EXT'] || begin
+      case view_format.to_sym
+      when :xml then '.xml.builder'
+      when :js  then '.js.rjs'
+      else           '.html.erb'
+      end
+    end
     when :fixture    then '.yml'
     else '.rb'
     end
@@ -236,17 +249,24 @@ class RailsPath
 
   def rails_path_for_view
     return nil if action_name.nil?
+    line, view_format = respond_to_format
+    view_format ||= 'html'
 
     file_exists = false
-    VIEW_EXTENSIONS.each do |e|
-      filename_with_extension = action_name + "." + e
+    VIEW_EXTENSIONS.each do |ext|
+      filename_with_extension = action_name + "." + ext
       existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
       return RailsPath.new(existing_view) if File.exist?(existing_view)
     end
-    default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view))
+    VIEW_EXTENSIONS.each do |ext|
+      filename_with_extension = "#{action_name}.#{view_format}.#{ext}"
+      existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
+      return RailsPath.new(existing_view) if File.exist?(existing_view)
+    end
+    default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view, view_format))
     return RailsPath.new(default_view)
   end
-
+  
   def ask_for_view(default_name = action_name)
     if designated_name = TextMate.input("Enter the name of the new view file:", default_name + default_extension_for(:view))
       view_file = File.join(rails_root, stubs[:view], modules, controller_name, designated_name)

@@ -285,5 +285,18 @@ h3. Diagram: render :partial - rp; render :partial, :object - rpo; render :parti
 
 Create <%= %> and inside use 'rpo' and set the :object => @post.
 
+Now we create index.html.erb and use <%=  %> with 'rpc' and 'post'. The tests require that its wrapped in a div with id="posts". So select all, and Shift+Ctrl+W + div id="posts".
+
+h3. Diagram: Link helpers; lip - link_to "label", model_path(@model), etc.
+
+Finally, we'll add some links to our templates.
+
+h2. Alternate templates
+
+h3. Diagram: html.erb, js.erb, js.rjs, xml.builder, xml.erb, html.builder
+
+In addition to html.erb templates, Rails supports any combination of output format and template engine. As appropriate you can combine html or javascript or xml with erb or rjs or builder, or any other 3rd party templating system such as haml.
+
+The Rails TextMate bundle attempts to support these different formats.
 
 h2. Extending

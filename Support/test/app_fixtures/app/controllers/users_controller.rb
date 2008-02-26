@@ -6,4 +6,24 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
   end
+  
+  def no_existing_views
+    respond_to do |wants|
+      wants.html {  } # format with an inline block
+      wants.js do
+        # format with a multi-line block
+      end
+      wants.xml # format without a block
+    end
+  end
+
+  def existing_views
+    respond_to do |wants|
+      wants.html {  } # format with an inline block
+      wants.js do
+        # format with a multi-line block
+      end
+      wants.xml # format without a block
+    end
+  end
 end

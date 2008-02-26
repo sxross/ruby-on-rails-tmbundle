@@ -126,6 +126,36 @@ class RailsPathTest < Test::Unit::TestCase
     # 2.0 plural controllers
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb'), current_file.rails_path_for(:controller)
+
+    ENV['RAILS_VIEW_EXT'] = nil
+    # view defaults from respond_to block
+    challenges = [
+      [11, 'no_existing_views.html.erb'],
+      [12, 'no_existing_views.html.erb'],
+      [13, 'no_existing_views.js.rjs'],
+      [14, 'no_existing_views.js.rjs'],
+      [15, 'no_existing_views.js.rjs'],
+      [16, 'no_existing_views.xml.builder'],
+      [17, 'no_existing_views.xml.builder'],
+
+      [21, 'existing_views.html.erb'],
+      [22, 'existing_views.html.erb'],
+      [23, 'existing_views.js.rjs'],
+      [24, 'existing_views.js.rjs'],
+      [25, 'existing_views.js.rjs'],
+      [26, 'existing_views.xml.builder'],
+      [27, 'existing_views.xml.builder'],
+    ]
+    challenges.each do |line, expected|
+      TextMate.line_number = line.to_s
+      current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb')
+      assert_equal(
+        RailsPath.new(FIXTURE_PATH + '/app/views/users/' + expected), 
+        current_file.rails_path_for(:view),
+        "Mismatch for line #{line}, should be #{expected}"
+      )
+    end
+
   end
   
   def test_file_parts
