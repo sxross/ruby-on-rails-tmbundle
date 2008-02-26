@@ -8,7 +8,7 @@
   $0
   respond_to do |format|
   if @$1.save
-    flash[:notice] = '$1 was successfully created.'
+    flash[:notice] = '$2 was successfully created.'
     format.html { redirect_to(@$1) }
     format.xml { render :xml =&gt; @$1, :status =&gt; :created, :location =&gt; @$1 }
   else
