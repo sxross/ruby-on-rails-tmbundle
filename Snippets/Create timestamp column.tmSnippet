@@ -4,13 +4,13 @@
 <dict>
 	<key>content</key>
 	<string>t.timestamp :${1:title}
-t.$0</string>
+$0</string>
 	<key>name</key>
-	<string>Create timestamp column</string>
+	<string>Table column timestamp</string>
 	<key>scope</key>
 	<string>meta.rails.migration.create_table</string>
 	<key>tabTrigger</key>
-	<string>t.</string>
+	<string>tcts</string>
 	<key>uuid</key>
 	<string>4600CE20-D532-11DC-BD8E-00112475D960</string>
 </dict>
