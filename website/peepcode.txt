@@ -257,6 +257,15 @@ So, let's use the tab completion versions. ffl for label, fftf for text field.
 
 Now let's put each label or form field in a separate paragraph. Select those lines and use 'Wrap Each Selected Line in Open/Close' - Shift+Ctrl+Cmd+W, and type 'p'.
 
+h3. Diagram: Partials - Shift-Ctrl-H
+
+Since the form_for helper works with saved and unsaved model objects its easily reusable within new and edit templates. So let's extract it as a partial. [do it] And now the render can be pasted into an edit.html.erb file as required.
+
+[go to browser http://localhost:3000/posts/new]
+Now we can fire up the server and have a look at our form and use it. [submit form]
+
+As requested, the browser is redirected to the public post page; which we haven't implemented yet. So let's do that.
+
 
 
 h2. Extending
