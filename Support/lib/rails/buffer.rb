@@ -99,6 +99,13 @@ class Buffer
     find(options) { %r{def\s+(\w+)} }
   end
 
+  # Search for the nearest "wants.xml" or "format.html" declaration
+  def find_respond_to_format(options = {})
+    options = {:direction => :backwards}.update(options)
+    find(options) { %r{wants\.(\w+)} }
+    # find(options) {|lines| p lines}
+  end
+
   def find_nearest_string_or_symbol(current_line = current_line)
     current_line.find_nearest_string_or_symbol(column_number)
   end
