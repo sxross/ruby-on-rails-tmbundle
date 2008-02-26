@@ -266,6 +266,24 @@ Now we can fire up the server and have a look at our form and use it. [submit fo
 
 As requested, the browser is redirected to the public post page; which we haven't implemented yet. So let's do that.
 
+We head back to the blog_controller, and create the show.html.erb via navigating away from the show action.
+
+Create a div and set its class to post, then layout the title and body:
+
+<div class="post">
+  <h3><%= @post.title %></h3>
+  <%= @post.body %>
+</div>
+
+If we run our tests, the 'show' action test is now passing.
+
+[Shft+Ctrl+H] So we can reuse it in the index.html.erb file, let's move it to a partial called 'post' and remove the '@' signs to reference a local variable instead of an instance variable.
+
+The returned 'render' expression isn't quite right as we need to pass the @post object into the partial. Let's remove it and use the 'render partial' snippets.
+
+h3. Diagram: render :partial - rp; render :partial, :object - rpo; render :partial, :collection - rpc; render :partial, :locals - rpl
+
+Create <%= %> and inside use rpo and set the :object => @post.
 
 
 h2. Extending
