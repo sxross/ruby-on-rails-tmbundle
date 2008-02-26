@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.label :${1:attribute}${2:, "${3:${1/[[:alpha:]]+|(_)/(?1: :\u$0)/g}}"} %&gt;</string>
 	<key>name</key>
-	<string>form_for label (f.)</string>
+	<string>f.label (ffl)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>

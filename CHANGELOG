@@ -18,7 +18,8 @@ Added so far:
       * render :update (ru) [thx Simon Jefford]
     * Views
       * form_for and form_for(with errors) (ff,ffe)
-      * Various form_for field helpers, e.g. f.text_field (f.)
+      * Various form_for helpers in a drop-down list, e.g. f.text_field (f.)
+      * Various form_for helpers with own tab completion, e.g. f.text_field (fftf)
       * link_to for resource paths (lip, lipp, linp, linpp)
       * <% end -%> (end)
       * for-loop (for)
