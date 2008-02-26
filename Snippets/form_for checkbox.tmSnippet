@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.check_box :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>form_for check_box (f.)</string>
+	<string>f.check_box (ffcb)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>

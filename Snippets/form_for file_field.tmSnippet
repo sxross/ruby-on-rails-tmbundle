@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.file_field :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>form_for file_field (f.)</string>
+	<string>f.file_field (ffff)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>

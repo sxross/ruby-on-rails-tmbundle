@@ -5,7 +5,7 @@
 	<key>content</key>
 	<string>&lt;%= f.text_area :${1:attribute} %&gt;</string>
 	<key>name</key>
-	<string>form_for text_area (f.)</string>
+	<string>f.text_area (ffta)</string>
 	<key>scope</key>
 	<string>text.html.ruby</string>
 	<key>tabTrigger</key>
