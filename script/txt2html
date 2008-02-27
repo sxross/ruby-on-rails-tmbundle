@@ -68,22 +68,22 @@ File.open(src) do |fsrc|
   
   # a few extra supported markup commands specifically for documenting tm bundles
   [
-    [%r!COMMAND!, '&#x2318;'],         
-    [%r!TAB!, '&#x21E5;'],
-    [%r!SHIFT!, '&#x21E7;'],
-    [%r!OPTION!, '&#x2325;'],
-    [%r!CONTROL!, '&#x2303;'],
-    [%r!BACKSPACE!, '&#x232B;'],
-    [%r!DELETE!, '&#x2326;'],
-    [%r!RETURN!, '&#x21A9;'],
-    [%r!ENTER!, '&#x2305;'],
-    [%r!ESCAPE!, '&#x238B;'],
-    [%r!DOWN!, '&#x2193;'],
-    [%r!UP!, '&#x2191;'],
-    [%r!LEFT!, '&#x2190;'],
-    [%r!RIGHT!, '&#x2192;']    
+    ['COMMAND', '&#x2318;'],         
+    ['TAB', '&#x21E5;'],
+    ['SHIFT', '&#x21E7;'],
+    ['OPTION', '&#x2325;'],
+    ['CONTROL', '&#x2303;'],
+    ['BACKSPACE', '&#x232B;'],
+    ['DELETE', '&#x2326;'],
+    ['RETURN', '&#x21A9;'],
+    ['ENTER', '&#x2305;'],
+    ['ESCAPE', '&#x238B;'],
+    ['DOWN', '&#x2193;'],
+    ['UP', '&#x2191;'],
+    ['LEFT', '&#x2190;'],
+    ['RIGHT', '&#x2192;']    
   ].map do |regexp, replacement|
-    body_text.gsub!(regexp, replacement)
+    body_text.gsub!(Regexp.new(regexp), replacement)
   end 
   
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
