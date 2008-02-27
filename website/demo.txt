@@ -126,7 +126,7 @@ To navigate to <code>blog_controller.rb</code> there are three options:
 
 * press SHIFT OPTION COMMAND DOWN, and select "Controller" from the drop-down list
 * press OPTION COMMAND DOWN and you'll go directly to the controller (toggles between the two files)
-* press COMMAND T, press b, press c, and choose the file.
+* press COMMAND T, type <code>bc</code>, choose the file, press RETURN.
 
 Add the <code>index</code> action method:
 
@@ -160,7 +160,7 @@ Create a <code><%=  %></code> element (CONTROL >). If you press CONTROL > again,
 
 Enter <code>post.body</code> within the ERb template field.
 
-Actually, we'll need to show the subject too, so above the <code><%= post.body %></code> line (press UP followed by COMMAND ENTER)
+Actually, we'll need to show the subject too, so above the <code><%= post.body %></code> line (press UP followed by COMMAND RETURN)
 type 'h3', and press CONTROL < (LessThan), then CONTROL > (GreatherThan), and <code>post.subject</code>.
 
 The resulting line is: <code><h3><%= post.subject %></h3></code>
@@ -209,7 +209,7 @@ end</pre>
 
 Run <code>rake db:migrate</code>, or directly from the editor with CONTROL | and choose option "Migrate to Current".
 
-Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (COMMAND T, press c, press y, press ENTER).
+Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (COMMAND T, type <code>cy</code>, press RETURN).
 
 By default, the generated <code>comments.yml</code> starts like:
 
@@ -241,48 +241,41 @@ h2. Associations
 
 To enable the Foxy Fixtures, we need to add associations to the model classes.
 
-You can now quickly toggle from a fixtures file (we're in comments.yml now) to the
-model file with SHIFT OPTION COMMAND DOWN.
+You can now quickly go from a fixtures file (we're in comments.yml) to the model file (SHIFT OPTION COMMAND DOWN).
 
 Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press TAB. Type <code>post</code>. This creates a snippet:
 
 <pre syntax="ruby">belongs_to :post, :class_name => "Post", :foreign_key => "post_id"</pre>
 
-The class name and foreign key are now generated from the association name. You can change them by TABbing across. But, we only need the default, so we can delete these options.
+The class name and foreign key are now generated from the association name. You can change them by tabbing across. But, we only need the default, so we can delete these options.
 
-Press TAB and DELETE to remove the <code>:class_name</code> and <code>:foreign_key</code> options. The <code>Comment</code> class is now:
+Press TAB and BACKSPACE to remove the <code>:class_name</code> and <code>:foreign_key</code> options. The <code>Comment</code> class is now:
 
 <pre syntax="ruby">class Comment < ActiveRecord::Base
   belongs_to :post
 end</pre>
 
-Now go to the <code>Post</code> class. Press Cmd+T and type <code>post</code> and select the model file, and press enter.
+Now go to the <code>Post</code> class. Press COMMAND T and type <code>post</code> and select the model file, and press RETURN.
 
-Create a new line within the <code>Post</code> class. Type <code>hm</code> and press TAB to generate a <code>has_many</code> association. Type <code>comments</code>, and the resulting snippet is:
+Create a new line within the <code>Post</code> class (COMMAND RETURN). Type <code>hm</code> and press TAB to generate a <code>has_many</code> association. Type <code>comment</code>, and the resulting snippet is:
 
-<pre syntax="ruby">has_many :comments, :class_name => "Comments", :foreign_key => "class_name_id"</pre>
+<pre syntax="ruby">has_many :comments, :class_name => "comment", :foreign_key => "class_name_id"</pre>
 
-Notice the default <code>:class_name</code> is <code>Comments</code>, not <code>Comment</code>. This is wrong,
-and would need to be fixed, so its really just a helper to remind you to
-change it. We haven't figured out how to singularize a string using a regular
-expression; so if you know how let us know.
-
-But here, we don't need the options. So press TAB once and then DELETE.
+We don't need the options. So press TAB once and then BACKSPACE.
 
 <pre syntax="ruby">class Post < ActiveRecord::Base
   has_many :comments
 end</pre>
 
-Note, there is now a <code>has_many :through</code> snippet. Type <code>hmt</code> and TAB to
-activate it.
+Note: there is also a <code>has_many :through</code> snippet. Type <code>hmt</code> and TAB to activate it.
 
-Finally, we can run our tests since adding the <code>Comment</code> model + fixtures.
+Finally, we can run our tests since adding the <code>Comment</code> model + fixtures (CONTROL \).
 
 <pre>rake test</pre>
 
 h2. Routes
 
-Open the routes file (Cmd+T, type <code>routes</code> and press RETURN).
+Open the routes file (COMMAND T, type <code>routes</code> and press RETURN).
 
 Change the routes file to:
 
@@ -294,17 +287,13 @@ end</pre>
 
 h2. Creating Posts
 
-From the <code>Post</code> class (<code>post.rb</code>) you can now quickly navigate to a controller
+From the <code>Post</code> model class (<code>post.rb</code>) you can now quickly navigate to a controller
 of the same name. It supports either singular or plural controller names, but
 will default to the plural name, which is the REST/resources preferred name.
 
-To create a <code>PostsController</code>, use the 'Go To' hot key (as above) Shift+Alt+Cmd+
-DownArrow and select 'Controller'. As there is no <code>post_controller.rb</code> nor
-<code>posts_controller.rb</code> it will create a <code>posts_controller.rb</code> controller file;
-which is what we want here.
+To create a <code>PostsController</code>, use the 'Go To' hot key (as above) SHIFT OPTION COMMAND DOWN and select 'Controller'. As there is no <code>post_controller.rb</code> nor <code>posts_controller.rb</code> it will create a <code>posts_controller.rb</code> controller file; which is what we want here.
 
-Note; at this stage you could use the Rails 2.0 <code>scaffold</code> generator to create
-the <code>posts_controller.rb</code> (and tests and routes).
+Note; at this stage you could use the Rails 2.0 <code>scaffold</code> generator to create the <code>posts_controller.rb</code> (and tests and routes).
 
 In the blank file, we need to create a controller class.
 
@@ -325,10 +314,7 @@ end</pre>
 
 h2. TDD for Posts controller
 
-Currently there is not a functional test for our <code>posts_controller.rb</code>.
-To create it, use the 'Go To' hot key (Shift+Alt+Cmd+
-DownArrow) and select 'Functional Test'. This will create
-a blank file.
+Currently there is not a functional test for our <code>posts_controller.rb</code>. To create it, use the 'Go To' hot key (SHIFT OPTION COMMAND DOWN) and select 'Functional Test'. This will create a blank file.
 
 Type <code>cla</code> and TAB, and select "Create functional test class".
 Type <code>Posts</code> and TAB. (The functional test class name
@@ -341,17 +327,12 @@ press TAB now, it creates a generic test method snippet:
 
 end</pre>
 
-Instead, we will use the <code>deftg</code> (GET request) and <code>deftp</code> (POST
-request) snippets.
+Instead, we will use the <code>deftg</code> (GET request) and <code>deftp</code> (POST request) snippets.
 
-Create a test for the <code>index</code>, <code>new</code> and <code>edit</code> actions. For
-<code>index</code> and <code>new</code>, we can delete the <code>@model = models(:fixture_name)</code>,
+Create a test for the <code>index</code>, <code>new</code> and <code>edit</code> actions. For <code>index</code> and <code>new</code>, we can delete the <code>@model = models(:fixture_name)</code>,
 etc parts.
 
-To test for the <code>create</code> action, type <code>deftp</code> and TAB. Type
-<code>post</code> and TAB, and DELETE and TAB, and DELETE and TAB.
-Now enter in a hash of the values to pass in for the test,
-say <code>:subject => 'Test', :body => 'Some body', :published => '1'</code>
+To test for the <code>create</code> action, type <code>deftp</code> and TAB. Type <code>create</code> and TAB, type <code>post</code> and TAB, type BACKSPACE and TAB, and again BACKSPACE and TAB. Now enter in a hash of the values to pass in for the test, say <code>:subject => 'Test', :body => 'Some body', :published => '1'</code>. The result should look like:
 
 <pre syntax="ruby">def test_should_post_create
   post :create, :post => { :subject => 'Test', :body => 'Some body', :published => '1' }
@@ -387,16 +368,14 @@ The final <code>test_should_post_create</code> method is:
   assert_redirected_to posts_path
 end</pre>
 
-Running our tests (<code>rake test:functionals</code>) shows all these new tests failing.
+Running our tests (<code>rake test:functionals</code> or CONTROL \) shows all these new tests failing.
 
 h2. Views
 
-Go back to the <code>posts_controller.rb</code> file. Since it is already
-open within TextMate, you can navigate to it via the editor tabs:
-Alt+Cmd+LeftArrow or RightArrow.
+Go back to the <code>posts_controller.rb</code> file (OPTION COMMAND DOWN).
 
 Now add three actions - <code>index</code>, <code>new</code> and <code>edit</code>. New methods can be created
-with <code>def</code> snippet:
+with the <code>def</code> snippet:
 
 <pre syntax="ruby">class PostsController < ApplicationController
   before_filter :find_post
@@ -416,12 +395,14 @@ with <code>def</code> snippet:
   def find_post
     @post = Post.find(params[:id]) if params[:id]
   end
-end</pre>
+end</pre>   
+
+Note: the <code>index</code> method could be created by typing <code>def</code>, TAB, <code>index</code>, TAB,  <code>@posts = Post.fina</code>, TAB, BACKSPACE.
 
 Now we need templates for the <code>index</code>, <code>new</code> and <code>edit</code> actions.
 
 Place the cursor inside the <code>index</code> method,
-and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow)
+and use the 'Go To' hot key (SHIFT OPTION COMMAND DOWN)
 and select 'View'. A dialog box will pop up asking for the name of the new
 template (as there are no <code>app/views/posts/index*</code> files). By default, the
 suffix is now <code>.html.erb</code> rather than the old <code>.rhtml</code>. Press RETURN,
@@ -429,7 +410,7 @@ to accept <code>index.html.erb</code> as your template name.
 
 Let's just create a simple table showing the Posts.
 
-Type <code>table</code> and Ctrl+< to generate <code><table></table></code>, and
+Type <code>table</code> and CONTROL < to generate <code><table></table></code>, and
 press RETURN to put the tags on separate lines.
 
 Do the same to create a <code><tbody></tbody></code> element.
@@ -437,17 +418,17 @@ Do the same to create a <code><tbody></tbody></code> element.
 Inside the <code><tbody></tbody></code> we want to iterate over the <code>@posts</code>,
 one per <code><tr></tr></code> row.
 
-Press Ctrl+>, three times, to create a <code><%- -%></code> tag. Inside it
+Press CONTROL >, three times, to create a <code><%- -%></code> tag. Inside it
 type <code>@posts.each do |post|</code>.
 
-On the next line, type <code>end</code> and TAB, to create <code><% end -%></code>.
+On the next line (COMMAND RETURN), type <code>end</code> and TAB, to create <code><% end -%></code>.
 We now have a Ruby block within this ERb template.
 
 Inside the block, create a <code><tr></tr></code> element, and within it
 create a <code><td></td></code> element. We'll skip over anything fancy
 here, and just put the post's subject here.
 
-Type <code>@post.subject</code> and select it. Now press Ctrl+> to wrap
+Type <code>@post.subject</code> and select it. Now press CONTROL > to wrap
 the selected text inside <code><%= @post.selected %></code>.
 
 The resulting <code>index.html.erb</code> is:

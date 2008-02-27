@@ -203,7 +203,7 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<ul>
 	<li>press &#x21E7; &#x2325; &#x2318; &#x2193;, and select &#8220;Controller&#8221; from the drop-down list</li>
 		<li>press &#x2325; &#x2318; &#x2193; and you&#8217;ll go directly to the controller (toggles between the two files)</li>
-		<li>press &#x2318; T, press b, press c, and choose the file.</li>
+		<li>press &#x2318; T, type <code>bc</code>, choose the file, press &#x21A9;.</li>
 	</ul>
 
 
@@ -253,7 +253,7 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<p>Enter <code>post.body</code> within the ERb template field.</p>
 
 
-	<p>Actually, we&#8217;ll need to show the subject too, so above the <code>&lt;%= post.body %&gt;</code> line (press &#x2191; followed by &#x2318; <span class="caps">ENTER</span>)
+	<p>Actually, we&#8217;ll need to show the subject too, so above the <code>&lt;%= post.body %&gt;</code> line (press &#x2191; followed by &#x2318; &#x21A9;)
 type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (GreatherThan), and <code>post.subject</code>.</p>
 
 
@@ -317,7 +317,7 @@ type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (G
 	<p>Run <code>rake db:migrate</code>, or directly from the editor with &#x2303; | and choose option &#8220;Migrate to Current&#8221;.</p>
 
 
-	<p>Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (&#x2318; T, press c, press y, press <span class="caps">ENTER</span>).</p>
+	<p>Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (&#x2318; T, type <code>cy</code>, press &#x21A9;).</p>
 
 
 	<p>By default, the generated <code>comments.yml</code> starts like:</p>
@@ -355,8 +355,7 @@ two:
 	<p>To enable the Foxy Fixtures, we need to add associations to the model classes.</p>
 
 
-	<p>You can now quickly toggle from a fixtures file (we&#8217;re in comments.yml now) to the
-model file with &#x21E7; &#x2325; &#x2318; &#x2193;.</p>
+	<p>You can now quickly go from a fixtures file (we&#8217;re in comments.yml) to the model file (&#x21E7; &#x2325; &#x2318; &#x2193;).</p>
 
 
 	<p>Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press &#x21E5;. Type <code>post</code>. This creates a snippet:</p>
@@ -365,10 +364,10 @@ model file with &#x21E7; &#x2325; &#x2318; &#x2193;.</p>
 	<p><pre class='syntax'><span class="ident">belongs_to</span> <span class="symbol">:post</span><span class="punct">,</span> <span class="symbol">:class_name</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Post</span><span class="punct">&quot;,</span> <span class="symbol">:foreign_key</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">post_id</span><span class="punct">&quot;</span></pre></p>
 
 
-	<p>The class name and foreign key are now generated from the association name. You can change them by &#x21E5;bing across. But, we only need the default, so we can delete these options.</p>
+	<p>The class name and foreign key are now generated from the association name. You can change them by tabbing across. But, we only need the default, so we can delete these options.</p>
 
 
-	<p>Press &#x21E5; and &#x2326; to remove the <code>:class_name</code> and <code>:foreign_key</code> options. The <code>Comment</code> class is now:</p>
+	<p>Press &#x21E5; and &#x232B; to remove the <code>:class_name</code> and <code>:foreign_key</code> options. The <code>Comment</code> class is now:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Comment</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
@@ -376,22 +375,16 @@ model file with &#x21E7; &#x2325; &#x2318; &#x2193;.</p>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Now go to the <code>Post</code> class. Press Cmd+T and type <code>post</code> and select the model file, and press enter.</p>
+	<p>Now go to the <code>Post</code> class. Press &#x2318; T and type <code>post</code> and select the model file, and press &#x21A9;.</p>
 
 
-	<p>Create a new line within the <code>Post</code> class. Type <code>hm</code> and press &#x21E5; to generate a <code>has_many</code> association. Type <code>comments</code>, and the resulting snippet is:</p>
+	<p>Create a new line within the <code>Post</code> class (&#x2318; &#x21A9;). Type <code>hm</code> and press &#x21E5; to generate a <code>has_many</code> association. Type <code>comment</code>, and the resulting snippet is:</p>
 
 
-	<p><pre class='syntax'><span class="ident">has_many</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:class_name</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Comments</span><span class="punct">&quot;,</span> <span class="symbol">:foreign_key</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">class_name_id</span><span class="punct">&quot;</span></pre></p>
+	<p><pre class='syntax'><span class="ident">has_many</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:class_name</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">comment</span><span class="punct">&quot;,</span> <span class="symbol">:foreign_key</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">class_name_id</span><span class="punct">&quot;</span></pre></p>
 
 
-	<p>Notice the default <code>:class_name</code> is <code>Comments</code>, not <code>Comment</code>. This is wrong,
-and would need to be fixed, so its really just a helper to remind you to
-change it. We haven&#8217;t figured out how to singularize a string using a regular
-expression; so if you know how let us know.</p>
-
-
-	<p>But here, we don&#8217;t need the options. So press &#x21E5; once and then &#x2326;.</p>
+	<p>We don&#8217;t need the options. So press &#x21E5; once and then &#x232B;.</p>
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Post</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
@@ -399,11 +392,10 @@ expression; so if you know how let us know.</p>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Note, there is now a <code>has_many :through</code> snippet. Type <code>hmt</code> and &#x21E5; to
-activate it.</p>
+	<p>Note: there is also a <code>has_many :through</code> snippet. Type <code>hmt</code> and &#x21E5; to activate it.</p>
 
 
-	<p>Finally, we can run our tests since adding the <code>Comment</code> model + fixtures.</p>
+	<p>Finally, we can run our tests since adding the <code>Comment</code> model + fixtures (&#x2303; \).</p>
 
 
 <pre>rake test</pre>
@@ -411,7 +403,7 @@ activate it.</p>
 	<h2>Routes</h2>
 
 
-	<p>Open the routes file (Cmd+T, type <code>routes</code> and press &#x21A9;).</p>
+	<p>Open the routes file (&#x2318; T, type <code>routes</code> and press &#x21A9;).</p>
 
 
 	<p>Change the routes file to:</p>
@@ -427,18 +419,15 @@ activate it.</p>
 	<h2>Creating Posts</h2>
 
 
-	<p>From the <code>Post</code> class (<code>post.rb</code>) you can now quickly navigate to a controller
+	<p>From the <code>Post</code> model class (<code>post.rb</code>) you can now quickly navigate to a controller
 of the same name. It supports either singular or plural controller names, but
 will default to the plural name, which is the <span class="caps">REST</span>/resources preferred name.</p>
 
 
-To create a <code>PostsController</code>, use the &#8216;Go To&#8217; hot key (as above) Shift+Alt+Cmd+
-DownArrow and select &#8216;Controller&#8217;. As there is no <code>post_controller.rb</code> nor
-<code>posts_controller.rb</code> it will create a <code>posts_controller.rb</code> controller file;
-which is what we want here.
+	<p>To create a <code>PostsController</code>, use the &#8216;Go To&#8217; hot key (as above) &#x21E7; &#x2325; &#x2318; &#x2193; and select &#8216;Controller&#8217;. As there is no <code>post_controller.rb</code> nor <code>posts_controller.rb</code> it will create a <code>posts_controller.rb</code> controller file; which is what we want here.</p>
 
-	<p>Note; at this stage you could use the Rails 2.0 <code>scaffold</code> generator to create
-the <code>posts_controller.rb</code> (and tests and routes).</p>
+
+	<p>Note; at this stage you could use the Rails 2.0 <code>scaffold</code> generator to create the <code>posts_controller.rb</code> (and tests and routes).</p>
 
 
 	<p>In the blank file, we need to create a controller class.</p>
@@ -463,10 +452,7 @@ of the generated class:
 	<h2><span class="caps">TDD</span> for Posts controller</h2>
 
 
-	<p>Currently there is not a functional test for our <code>posts_controller.rb</code>.
-To create it, use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+
-DownArrow) and select &#8216;Functional Test&#8217;. This will create
-a blank file.</p>
+	<p>Currently there is not a functional test for our <code>posts_controller.rb</code>. To create it, use the &#8216;Go To&#8217; hot key (&#x21E7; &#x2325; &#x2318; &#x2193;) and select &#8216;Functional Test&#8217;. This will create a blank file.</p>
 
 
 	<p>Type <code>cla</code> and &#x21E5;, and select &#8220;Create functional test class&#8221;.
@@ -483,18 +469,15 @@ press &#x21E5; now, it creates a generic test method snippet:</p>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Instead, we will use the <code>deftg</code> (GET request) and <code>deftp</code> (POST
-request) snippets.</p>
+	<p>Instead, we will use the <code>deftg</code> (GET request) and <code>deftp</code> (POST request) snippets.</p>
 
 
-Create a test for the <code>index</code>, <code>new</code> and <code>edit</code> actions. For
-<code>index</code> and <code>new</code>, we can delete the <code>@model = models(:fixture_name)</code>,
-etc parts.
+	<p>Create a test for the <code>index</code>, <code>new</code> and <code>edit</code> actions. For <code>index</code> and <code>new</code>, we can delete the <code>@model = models(:fixture_name)</code>,
+etc parts.</p>
 
-To test for the <code>create</code> action, type <code>deftp</code> and &#x21E5;. Type
-<code>post</code> and &#x21E5;, and &#x2326; and &#x21E5;, and &#x2326; and &#x21E5;.
-Now enter in a hash of the values to pass in for the test,
-say <code>:subject =&gt; 'Test', :body =&gt; 'Some body', :published =&gt; '1'</code>
+
+	<p>To test for the <code>create</code> action, type <code>deftp</code> and &#x21E5;. Type <code>create</code> and &#x21E5;, type <code>post</code> and &#x21E5;, type &#x232B; and &#x21E5;, and again &#x232B; and &#x21E5;. Now enter in a hash of the values to pass in for the test, say <code>:subject =&gt; 'Test', :body =&gt; 'Some body', :published =&gt; '1'</code>. The result should look like:</p>
+
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_should_post_create</span>
   <span class="ident">post</span> <span class="symbol">:create</span><span class="punct">,</span> <span class="symbol">:post</span> <span class="punct">=&gt;</span> <span class="punct">{</span> <span class="symbol">:subject</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">Test</span><span class="punct">',</span> <span class="symbol">:body</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">Some body</span><span class="punct">',</span> <span class="symbol">:published</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">1</span><span class="punct">'</span> <span class="punct">}</span>
@@ -541,19 +524,17 @@ action must redirect to the index page.</p>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Running our tests (<code>rake test:functionals</code>) shows all these new tests failing.</p>
+	<p>Running our tests (<code>rake test:functionals</code> or &#x2303; \) shows all these new tests failing.</p>
 
 
 	<h2>Views</h2>
 
 
-	<p>Go back to the <code>posts_controller.rb</code> file. Since it is already
-open within TextMate, you can navigate to it via the editor tabs:
-Alt+Cmd+LeftArrow or RightArrow.</p>
+	<p>Go back to the <code>posts_controller.rb</code> file (&#x2325; &#x2318; &#x2193;).</p>
 
 
 	<p>Now add three actions &#8211; <code>index</code>, <code>new</code> and <code>edit</code>. New methods can be created
-with <code>def</code> snippet:</p>
+with the <code>def</code> snippet:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">PostsController</span> <span class="punct">&lt;</span> <span class="constant">ApplicationController</span>
@@ -577,11 +558,14 @@ with <code>def</code> snippet:</p>
 <span class="keyword">end</span></pre></p>
 
 
+	<p>Note: the <code>index</code> method could be created by typing <code>def</code>, &#x21E5;, <code>index</code>, &#x21E5;,  <code>@posts = Post.fina</code>, &#x21E5;, &#x232B;.</p>
+
+
 	<p>Now we need templates for the <code>index</code>, <code>new</code> and <code>edit</code> actions.</p>
 
 
 	<p>Place the cursor inside the <code>index</code> method,
-and use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+DownArrow)
+and use the &#8216;Go To&#8217; hot key (&#x21E7; &#x2325; &#x2318; &#x2193;)
 and select &#8216;View&#8217;. A dialog box will pop up asking for the name of the new
 template (as there are no <code>app/views/posts/index*</code> files). By default, the
 suffix is now <code>.html.erb</code> rather than the old <code>.rhtml</code>. Press &#x21A9;,
@@ -591,7 +575,7 @@ to accept <code>index.html.erb</code> as your template name.</p>
 	<p>Let&#8217;s just create a simple table showing the Posts.</p>
 
 
-	<p>Type <code>table</code> and Ctrl+&lt; to generate <code>&lt;table&gt;&lt;/table&gt;</code>, and
+	<p>Type <code>table</code> and &#x2303; &lt; to generate <code>&lt;table&gt;&lt;/table&gt;</code>, and
 press &#x21A9; to put the tags on separate lines.</p>
 
 
@@ -602,11 +586,11 @@ press &#x21A9; to put the tags on separate lines.</p>
 one per <code>&lt;tr&gt;&lt;/tr&gt;</code> row.</p>
 
 
-	<p>Press Ctrl+&gt;, three times, to create a <code>&lt;%- -%&gt;</code> tag. Inside it
+	<p>Press &#x2303; &gt;, three times, to create a <code>&lt;%- -%&gt;</code> tag. Inside it
 type <code>@posts.each do |post|</code>.</p>
 
 
-	<p>On the next line, type <code>end</code> and &#x21E5;, to create <code>&lt;% end -%&gt;</code>.
+	<p>On the next line (&#x2318; &#x21A9;), type <code>end</code> and &#x21E5;, to create <code>&lt;% end -%&gt;</code>.
 We now have a Ruby block within this ERb template.</p>
 
 
