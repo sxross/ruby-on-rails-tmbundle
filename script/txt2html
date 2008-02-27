@@ -67,20 +67,24 @@ File.open(src) do |fsrc|
   }                
   
   # a few extra supported markup commands specifically for documenting tm bundles
-  body_text.gsub!(%r!COMMAND!, '&#x2318;')                                       
-  body_text.gsub!(%r!TAB!, '&#x21E5;')
-  body_text.gsub!(%r!SHIFT!, '&#x21E7;')
-  body_text.gsub!(%r!OPTION!, '&#x2325;')
-  body_text.gsub!(%r!CONTROL!, '&#x2303;')
-  body_text.gsub!(%r!BACKSPACE!, '&#x232B;')
-  body_text.gsub!(%r!DELETE!, '&#x2326;') 
-  body_text.gsub!(%r!RETURN!, '&#x21A9;')  
-  body_text.gsub!(%r!ENTER!, '&#x2305;')
-  body_text.gsub!(%r!ESCAPE!, '&#x238B;')
-  body_text.gsub!(%r!DOWN!, '&#x2193;')
-  body_text.gsub!(%r!UP!, '&#x2191;')
-  body_text.gsub!(%r!LEFT!, '&#x2190;')
-  body_text.gsub!(%r!RIGHT!, '&#x2192;')        
+  [
+    [%r!COMMAND!, '&#x2318;'],         
+    [%r!TAB!, '&#x21E5;'],
+    [%r!SHIFT!, '&#x21E7;'],
+    [%r!OPTION!, '&#x2325;'],
+    [%r!CONTROL!, '&#x2303;'],
+    [%r!BACKSPACE!, '&#x232B;'],
+    [%r!DELETE!, '&#x2326;'],
+    [%r!RETURN!, '&#x21A9;'],
+    [%r!ENTER!, '&#x2305;'],
+    [%r!ESCAPE!, '&#x238B;'],
+    [%r!DOWN!, '&#x2193;'],
+    [%r!UP!, '&#x2191;'],
+    [%r!LEFT!, '&#x2190;'],
+    [%r!RIGHT!, '&#x2192;']    
+  ].map do |regexp, replacement|
+    body_text.gsub!(regexp, replacement)
+  end 
   
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
   body = RedCloth.new(body_text).to_html
