@@ -13,6 +13,10 @@ require 'rails_bundle_tools'
 current_file = RailsPath.new
 
 if ARGV.empty?
+  if current_file.associations[current_file.file_type].nil?
+    puts "This file is not associated with any other files" 
+    exit
+  end
   # Best match
   choice =
     case current_file.file_type
