@@ -700,28 +700,27 @@ into the default string file.</p>
 	<h2>Partials</h2>
 
 
-	<p>This form is exactly the same as the form required for the <code>edit.html.erb</code> template.</p>
+	<p>The form we just created is exactly the same as the form required for the <code>edit.html.erb</code> template.</p>
 
 
 	<p>Instead of copy+pasting it into the <code>edit.html.erb</code> file, we&#8217;ll create a partial
 template.</p>
 
 
-	<p>Select the entire form (Cmd+A), and press Shift+Ctrl+H and a dialog box appears.
+	<p>Select the entire form (&#x2318; A), and press &#x21E7; &#x2303; H and a dialog box appears.
 Type in <code>form</code> and press &#x21A9;.</p>
 
 
-	<p>The form is replaced by:</p>
+	<p>You&#8217;ll notice a new file <code>_form.html.erb</code> has appeared which contains the code you had selected,
+while the code in the file <code>new.html.erb</code> has been replaced by:</p>
 
 
 	<pre><code>&lt;%= render :partial =&gt; 'form' %&gt;</code></pre>
 
 
 	<p>Now copy and paste this into the <code>edit.html.erb</code> file. To create this file,
-return to the controller (from the <code>new.html.erb</code> file, press
-Shift+Alt+Cmd+DownArrow and select &#8220;Controller&#8221;), go to the <code>edit</code> action,
-and use Shift+Alt+Cmd+DownArrow again, and select &#8220;View&#8221; to create
-the <code>edit.html.erb</code> template file.</p>
+return to the controller (from the <code>new.html.erb</code> file, press &#x2325; &#x2318; &#x2193;), go to the <code>edit</code> action,
+and use &#x2325; &#x2318; &#x2193; again to create the <code>edit.html.erb</code> template file.</p>
 
 
 	<h2>Link helpers</h2>
@@ -747,7 +746,7 @@ will be the <code>index</code> action, and will be accessible via the resources 
 
 
 So, to create our link to the posts page, type <code>lipp</code> and &#x21E5;, type
-<code>Show all posts</code>, press &#x21E5; and type <code>post</code>.
+<code>Show all posts</code>, press &#x21E5; twice and type <code>post</code>.
 
 	<h2>Controllers: <code>respond_to</code> and <code>redirect_to</code></h2>
 
@@ -880,7 +879,7 @@ demo so I am taking the scenic route.</p>
 		<li>Demonstrate new Add/Remove columns &#8211; <code>down</code> method is in reverse order</li>
 	</ul>
     <p class="coda">
-      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 27th February 2008<br>
+      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 28th February 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
