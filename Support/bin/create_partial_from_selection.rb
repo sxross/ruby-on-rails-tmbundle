@@ -37,6 +37,7 @@ if TextMate.selected_text
     end
 
     file = File.open(partial, "w") { |f| f.write(TextMate.selected_text) }
+    TextMate.refresh_project_drawer
 
     # Return the new render :partial line
     print "<%= render :partial => '#{partial_name}' %>\n"

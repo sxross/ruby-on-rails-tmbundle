@@ -510,23 +510,22 @@ The final form is:
 
 h2. Partials
 
-This form is exactly the same as the form required for the <code>edit.html.erb</code> template.
+The form we just created is exactly the same as the form required for the <code>edit.html.erb</code> template.
 
 Instead of copy+pasting it into the <code>edit.html.erb</code> file, we'll create a partial
 template.
 
-Select the entire form (Cmd+A), and press Shift+Ctrl+H and a dialog box appears.
+Select the entire form (COMMAND A), and press SHIFT CONTROL H and a dialog box appears.
 Type in <code>form</code> and press RETURN.
 
-The form is replaced by:
+You'll notice a new file <code>_form.html.erb</code> has appeared which contains the code you had selected,
+while the code in the file <code>new.html.erb</code> has been replaced by:
 
     <%= render :partial => 'form' %>
 
 Now copy and paste this into the <code>edit.html.erb</code> file. To create this file,
-return to the controller (from the <code>new.html.erb</code> file, press
-Shift+Alt+Cmd+DownArrow and select "Controller"), go to the <code>edit</code> action,
-and use Shift+Alt+Cmd+DownArrow again, and select "View" to create
-the <code>edit.html.erb</code> template file.
+return to the controller (from the <code>new.html.erb</code> file, press OPTION COMMAND DOWN), go to the <code>edit</code> action,
+and use OPTION COMMAND DOWN again to create the <code>edit.html.erb</code> template file.
 
 h2. Link helpers
 
