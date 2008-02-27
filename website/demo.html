@@ -73,7 +73,7 @@ mate .</pre>
 	<p>Note that another <code>t.</code> was created on the next line! Press &#x21E5; and the cursor will be placed after it. You can now press &#x21E5; again to create another column, or delete this line.</p>
 
 
-	<p>Here, delete the extraneous <code>t.</code> line (&#x21E7; &#x2303; K). And save the file (&#x2318; S).</p>
+	<p>Here, delete the extraneous <code>t.</code> line (&#x2303; &#x21E7; K). And save the file (&#x2318; S).</p>
 
 
 	<p>Run the migrations, either from the prompt:</p>
@@ -263,7 +263,7 @@ type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (G
 	<p>Move the cursor down between <code>&lt;% else %&gt;</code> and <code>&lt;% end %&gt;</code>.</p>
 
 
-	<p>Create a simple element <code>&lt;p&gt;&lt;/p&gt;</code> (&#x21E7; &#x2303; W or &#x2303; &lt;). You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
+	<p>Create a simple element <code>&lt;p&gt;&lt;/p&gt;</code> (&#x2303; &#x21E7; W or &#x2303; &lt;). You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
 
 
 	<p>Our <code>index.html.erb</code> template is now:</p>
@@ -709,7 +709,7 @@ into the default string file.</p>
 template.</p>
 
 
-	<p>Select the entire form (&#x2318; A), and press &#x21E7; &#x2303; H and a dialog box appears.
+	<p>Select the entire form (&#x2318; A), and press &#x2303; &#x21E7; H and a dialog box appears.
 Type in <code>form</code> and press &#x21A9;.</p>
 
 
@@ -832,7 +832,7 @@ refactor your existing html respond code, and support a second response
 format.</p>
 
 
-	<p>For now remove the line with <code>wants.js</code> (&#x21E7; &#x2303; K).</p>
+	<p>For now remove the line with <code>wants.js</code> (&#x2303; &#x21E7; K).</p>
 
 
 	<p>The completed <code>create</code> action is:</p>
@@ -865,6 +865,56 @@ demo so I am taking the scenic route.</p>
 and then view them as a blog visitor at <a href="http://localhost:3000/blog">http://localhost:3000/blog</a>.</p>
 
 
+	<h2>Some more migrations</h2>
+
+
+	<p>We&#8217;re looking for the following additions:                  </p>
+
+
+	<ul>
+	<li>rename the column <code>name</code> of table <code>comments</code> to <code>author</code></li>
+		<li>add a new column <code>author_url</code> to table <code>comments</code></li>
+		<li>add an index to the column <code>post_id</code> of the <code>comments</code> table</li>
+	</ul>
+
+
+	<p>Let&#8217;s try to do this all in one migrations file. Start Quick Migration (&#x2303; &#x21E7; M). Let&#8217;s name it <code>ModifyComments</code>. A new migrations file <code>003_modify_comments.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. For now delete <code>mtab</code> and instead enter <code>mcol</code> and press &#x21E5;. Choose <code>Rename / Rename Column</code> (3). Type <code>comments</code> &#x21E5; <code>name</code> &#x21E5; <code>author</code> &#x21E5; &#x21A9;.</p>
+
+
+	<p>Again type <code>mcol</code> and &#x21E5;. This time choose <code>Add / Remove Column</code> (1). Type <code>comments</code> &#x21E5; <code>author_url</code>, then &#x21E5; twice, and press &#x21A9;.</p>
+
+
+	<p>Now type <code>mind</code> and &#x21E5;. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> &#x21E5; <code>post_id</code>.</p>
+
+
+	<p>The end result looks like this:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">class </span><span class="class">ModifyComments</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Migration</span>
+  <span class="keyword">def </span><span class="method">self.up</span>
+    <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:name</span><span class="punct">,</span> <span class="symbol">:author</span>
+    <span class="ident">add_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author_url</span><span class="punct">,</span> <span class="symbol">:string</span>
+    <span class="ident">add_index</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:post_id</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">self.down</span>
+    <span class="ident">remove_index</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:post_id</span>
+    <span class="ident">remove_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author_url</span>
+    <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author</span><span class="punct">,</span> <span class="symbol">:name</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre></p>
+
+
+	<p>Notice how the <code>down</code> method calls are in reversed order of the <code>up</code> method calls.</p>
+
+
+	<ul>
+	<li>keep track of the datetime when a post was published.</li>
+		<li>remove the column published from the posts table because it can be determined if a post is published by looking at whether or not a value is present for the published date.</li>
+	</ul>
+
+
 	<h1><span class="caps">TODO</span></h1>
 
 
@@ -872,7 +922,6 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
 	<li>Model snippets (validates_&#8230;)</li>
 		<li>link_to(model) (ltm)</li>
 		<li><span class="caps">RJS</span> demo</li>
-		<li>Demonstrate new Add/Remove columns &#8211; <code>down</code> method is in reverse order</li>
 	</ul>
     <p class="coda">
       <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 28th February 2008<br>
