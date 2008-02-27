@@ -531,13 +531,11 @@ action must redirect to the index page.</p>
 	<h2>Views</h2>
 
 
-	<p>Go back to the <code>posts_controller.rb</code> file. Since it is already
-open within TextMate, you can navigate to it via the editor tabs:
-Alt+Cmd+LeftArrow or RightArrow.</p>
+	<p>Go back to the <code>posts_controller.rb</code> file (&#x2325; &#x2318; &#x2193;).</p>
 
 
 	<p>Now add three actions &#8211; <code>index</code>, <code>new</code> and <code>edit</code>. New methods can be created
-with <code>def</code> snippet:</p>
+with the <code>def</code> snippet:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">PostsController</span> <span class="punct">&lt;</span> <span class="constant">ApplicationController</span>
@@ -561,11 +559,14 @@ with <code>def</code> snippet:</p>
 <span class="keyword">end</span></pre></p>
 
 
+	<p>Note: the <code>index</code> method could be created by typing <code>def</code>, &#x21E5;, <code>index</code>, &#x21E5;,  <code>@posts = Post.fina</code>, &#x21E5;, &#x232B;.</p>
+
+
 	<p>Now we need templates for the <code>index</code>, <code>new</code> and <code>edit</code> actions.</p>
 
 
 	<p>Place the cursor inside the <code>index</code> method,
-and use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+DownArrow)
+and use the &#8216;Go To&#8217; hot key (&#x21E7; &#x2325; &#x2318; &#x2193;)
 and select &#8216;View&#8217;. A dialog box will pop up asking for the name of the new
 template (as there are no <code>app/views/posts/index*</code> files). By default, the
 suffix is now <code>.html.erb</code> rather than the old <code>.rhtml</code>. Press &#x21A9;,
@@ -575,7 +576,7 @@ to accept <code>index.html.erb</code> as your template name.</p>
 	<p>Let&#8217;s just create a simple table showing the Posts.</p>
 
 
-	<p>Type <code>table</code> and Ctrl+&lt; to generate <code>&lt;table&gt;&lt;/table&gt;</code>, and
+	<p>Type <code>table</code> and &#x2303; &lt; to generate <code>&lt;table&gt;&lt;/table&gt;</code>, and
 press &#x21A9; to put the tags on separate lines.</p>
 
 
@@ -586,11 +587,11 @@ press &#x21A9; to put the tags on separate lines.</p>
 one per <code>&lt;tr&gt;&lt;/tr&gt;</code> row.</p>
 
 
-	<p>Press Ctrl+&gt;, three times, to create a <code>&lt;%- -%&gt;</code> tag. Inside it
+	<p>Press &#x2303; &gt;, three times, to create a <code>&lt;%- -%&gt;</code> tag. Inside it
 type <code>@posts.each do |post|</code>.</p>
 
 
-	<p>On the next line, type <code>end</code> and &#x21E5;, to create <code>&lt;% end -%&gt;</code>.
+	<p>On the next line (&#x2318; &#x21A9;), type <code>end</code> and &#x21E5;, to create <code>&lt;% end -%&gt;</code>.
 We now have a Ruby block within this ERb template.</p>
 
 
