@@ -8,7 +8,8 @@
 require 'rails/misc'
 require 'rails/text_mate'
 require 'rails/buffer'
-require 'rails/inflector'
+require 'rails/inflector'  
+require 'fileutils'
 
 module AssociationMessages
   # Return associated_with_*? methods
@@ -71,20 +72,11 @@ class RailsPath
     File.dirname(@filepath)
   end
 
-  def touch_directories
-    return if dirname[0..0] != '/'
-    dirs = dirname[1..-1].split('/')
-    for i in 0..(dirs.size)
-      new_dir = '/' + File.join(dirs[0..i])
-      Dir.mkdir(new_dir) if !File.exist?(new_dir)
-    end
-  end
-
   # Make sure the file exists by creating it if it doesn't
-  def touch
+  def touch 
     if !exists?
-      touch_directories
-      f = File.open(@filepath, "w"); f.close
+      FileUtils.mkdir_p dirname      
+      FileUtils.touch @filepath
     end
   end
 
