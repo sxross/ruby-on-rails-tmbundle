@@ -9,20 +9,6 @@
 
 require 'rails_bundle_tools'
 
-def strip_erb(string)
-  string.gsub('<%=', '').gsub('<%', '').gsub('%>', '')
-end
-
-def remove_quotes_or_colon(string_or_array)
-  if string_or_array.is_a? Array
-    string_or_array.map { |s| (s.scan(/^['"](.+)['"]$/).flatten.first || s.scan(/^:(.+)$/).flatten.first || s).strip }
-  else
-    (string_or_array.scan(/^['"](.+)['"]$/).flatten.first ||
-     string_or_array.scan(/^:(.+)$/).flatten.first ||
-     string_or_array).strip
-  end
-end
-
 current_file = RailsPath.new
 
 # If the current line contains "render :partial", then open the partial.
