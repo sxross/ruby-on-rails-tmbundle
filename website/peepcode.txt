@@ -41,7 +41,8 @@ Access your bundles via Ctrl+Alt+Cmd+B.
 
 Quick menu: Ctrl+Esc
 
-
+Change language for a file, e.g. Ruby <--> Ruby on Rails. Either click the "L" section of the status bar and select the Language; or learn the Language shortcut. These always start with Shift+Alt+Cmd with a letter. Typically the letter is the first letter of the Language. So to choose either Ruby or Ruby on Rails, use Shift+Alt+Cmd+R and choose the language from the drop-down.
+ 
 
 h2. Models and Migrations
 
