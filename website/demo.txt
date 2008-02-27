@@ -548,10 +548,9 @@ So, to create our link to the posts page, type <code>lipp</code> and TAB, type
 
 h2. Controllers: <code>respond_to</code> and <code>redirect_to</code>
 
-Now we'll add a <code>create</code> action to the <code>posts_controller.rb</code>. Press
-Shift+Alt+Cmd+DownArrow and select "Controller" to go there.
+Now we'll add a <code>create</code> action to the <code>posts_controller.rb</code>. Let's go there (OPTION COMMAND DOWN).
 
-Within the class, go to the end, and type <code>def</code> and TAB, and type
+Below the <code>edit</code> method type <code>def</code> and TAB, and type
 <code>create</code> and TAB. Now fill out the <code>create</code> action like:
 
 <pre syntax="ruby">def create
@@ -564,8 +563,8 @@ Within the class, go to the end, and type <code>def</code> and TAB, and type
 end</pre>
 
 Place the cursor in the <code>true</code> section of the <code>if</code> statement.
-Type <code>repp</code> and TAB to create a <code>redirect_to</code> expression. Replace
-the selected text with <code>post</code>.
+Type <code>repp</code> and TAB to create a <code>redirect_to</code> expression. Press TAB
+again and replace the selected text with <code>post</code>.
 
 Like the various <code>link_to</code> snippets, there are matching <code>redirect_to</code>
 snippets.
@@ -576,9 +575,6 @@ snippets.
 * renpp - <code>redirect_to(parent_child_path(@parent))</code>
 
 There are tab stops in useful places.
-
-We're going with <code>redirect_to(posts_path)</code> here, even though
-we don't yet have an <code>index</code> action yet.
 
 In the <code>false</code> section of the <code>if</code> expression, we'll demonstrate the
 <code>respond_to</code> block. There are two ways to generate a <code>respond_to</code> block.
