@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= link_to "${1:link text...}", ${10:${2:model}s_path} %&gt;</string>
+	<string>&lt;%= link_to "${1:link text...}", ${2:${10:model}s_path} %&gt;</string>
 	<key>name</key>
 	<string>link_to (path plural)</string>
 	<key>scope</key>

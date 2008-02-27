@@ -544,7 +544,7 @@ There are several <code>link_to</code> snippets that support the resources route
 The tab stop points are in useful places.
 
 So, to create our link to the posts page, type <code>lipp</code> and TAB, type
-<code>Show all posts</code>, press TAB and type <code>post</code>.
+<code>Show all posts</code>, press TAB twice and type <code>post</code>.
 
 h2. Controllers: <code>respond_to</code> and <code>redirect_to</code>
 
