@@ -299,7 +299,7 @@ type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (G
 	<pre><code>ruby script/generate model Comment body:text name:string post:references</code></pre>
 
 
-	<p>Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.</p>
+	<p>Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> and <code>tcr</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.</p>
 
 
 	<p>The generated <code>create_table</code> in <code>002_create_comments.rb</code> is:</p>
@@ -314,10 +314,10 @@ type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (G
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Run <code>rake db:migrate</code>.</p>
+	<p>Run <code>rake db:migrate</code>, or directly from the editor with &#x2303; | and choose option &#8220;Migrate to Current&#8221;.</p>
 
 
-	<p>Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code>.</p>
+	<p>Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (&#x2318; T, press c, press y, press <span class="caps">ENTER</span>).</p>
 
 
 	<p>By default, the generated <code>comments.yml</code> starts like:</p>
@@ -336,7 +336,7 @@ two:
 	<p>The <code>post</code> fields replace the rails1.2 <code>post_id</code> fields. Now, we can specify the <code>post.yml</code> labels for a post. From above we have <code>published</code> and <code>unpublished</code>. It can be hard to remember what fixtures we have, so there is a key-combo helper.</p>
 
 
-	<p>Put the cursor after <code>post: </code> and press Alt+Escape. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press return. Repeat for the 2nd fixture. This gives us:</p>
+	<p>Put the cursor after <code>post: </code> and press &#x2325; &#x238B;. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press &#x21A9;. Repeat for the 2nd fixture. This gives us:</p>
 
 
 <pre>one:

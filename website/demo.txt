@@ -209,7 +209,7 @@ end</pre>
 
 Run <code>rake db:migrate</code>, or directly from the editor with CONTROL | and choose option "Migrate to Current".
 
-Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code>.
+Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (COMMAND T, press c, press y, press ENTER).
 
 By default, the generated <code>comments.yml</code> starts like:
 
@@ -225,7 +225,7 @@ two:
 
 The <code>post</code> fields replace the rails1.2 <code>post_id</code> fields. Now, we can specify the <code>post.yml</code> labels for a post. From above we have <code>published</code> and <code>unpublished</code>. It can be hard to remember what fixtures we have, so there is a key-combo helper.
 
-Put the cursor after <code>post: </code> and press Alt+Escape. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press return. Repeat for the 2nd fixture. This gives us:
+Put the cursor after <code>post:</code> and press OPTION ESCAPE. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press RETURN. Repeat for the 2nd fixture. This gives us:
 
 <pre>one:
   body: MyText
@@ -242,7 +242,7 @@ h2. Associations
 To enable the Foxy Fixtures, we need to add associations to the model classes.
 
 You can now quickly toggle from a fixtures file (we're in comments.yml now) to the
-model file with Shift+Alt+Cmd+DownArrow hot key.
+model file with SHIFT OPTION COMMAND DOWN.
 
 Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press TAB. Type <code>post</code>. This creates a snippet:
 
