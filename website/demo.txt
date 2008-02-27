@@ -30,7 +30,7 @@ If you put the cursor on the line after <code>t.text :body</code>, type <code>t.
 
 Note that another <code>t.</code> was created on the next line! Press TAB and the cursor will be placed after it. You can now press TAB again to create another column, or delete this line.
 
-Here, delete the extraneous <code>t.</code> line (SHIFT CONTROL K). And save the file (COMMAND S).
+Here, delete the extraneous <code>t.</code> line (CONTROL SHIFT K). And save the file (COMMAND S).
 
 Run the migrations, either from the prompt:
 
@@ -167,7 +167,7 @@ The resulting line is: <code><h3><%= post.subject %></h3></code>
 
 Move the cursor down between <code><% else %></code> and <code><% end %></code>.
 
-Create a simple element <code><p></p></code> (SHIFT CONTROL W or CONTROL <). You can change the element type here. Just press TAB to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.
+Create a simple element <code><p></p></code> (CONTROL SHIFT W or CONTROL <). You can change the element type here. Just press TAB to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.
 
 Our <code>index.html.erb</code> template is now:
 
@@ -517,7 +517,7 @@ The form we just created is exactly the same as the form required for the <code>
 Instead of copy+pasting it into the <code>edit.html.erb</code> file, we'll create a partial
 template.
 
-Select the entire form (COMMAND A), and press SHIFT CONTROL H and a dialog box appears.
+Select the entire form (COMMAND A), and press CONTROL SHIFT H and a dialog box appears.
 Type in <code>form</code> and press RETURN.
 
 You'll notice a new file <code>_form.html.erb</code> has appeared which contains the code you had selected,
@@ -613,7 +613,7 @@ The <code>js</code> is the first tab stop. The point of this hot key is to insta
 refactor your existing html respond code, and support a second response
 format.
 
-For now remove the line with <code>wants.js</code> (SHIFT CONTROL K).
+For now remove the line with <code>wants.js</code> (CONTROL SHIFT K).
 
 The completed <code>create</code> action is:
 
@@ -639,11 +639,75 @@ h2. Our application so far
 
 In the browser, we can create posts via [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
 and then view them as a blog visitor at [http://localhost:3000/blog](http://localhost:3000/blog).
+       
+h2. Some more migrations
+
+We're looking for the following additions:                  
+
+* rename the column <code>name</code> of table <code>comments</code> to <code>author</code>
+* add a new column <code>author_url</code> to table <code>comments</code>
+* add an index to the column <code>post_id</code> of the <code>comments</code> table
+
+Let's try to do this all in one migrations file. Start Quick Migration (CONTROL SHIFT M). Let's name it <code>ModifyComments</code>. A new migrations file <code>003_modify_comments.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. For now delete <code>mtab</code> and instead enter <code>mcol</code> and press TAB. Choose <code>Rename / Rename Column</code> (3). Type <code>comments</code> TAB <code>name</code> TAB <code>author</code> TAB RETURN.
+
+Again type <code>mcol</code> and TAB. This time choose <code>Add / Remove Column</code> (1). Type <code>comments</code> TAB <code>author_url</code>, then TAB twice, and press RETURN.
+	
+Now type <code>mind</code> and TAB. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> TAB <code>post_id</code>.	                                             
+	
+The end result looks like this:
+
+<pre syntax="ruby">class ModifyComments < ActiveRecord::Migration
+  def self.up
+    rename_column :comments, :name, :author
+    add_column :comments, :author_url, :string
+    add_index :comments, :post_id
+  end
+
+  def self.down
+    remove_index :comments, :post_id
+    remove_column :comments, :author_url
+    rename_column :comments, :author, :name
+  end
+end</pre>
+
+Notice how the <code>down</code> method calls are in reversed order of the <code>up</code> method calls.
+
+Save the file (COMMAND S) and migrate to current (CONTROL |, option 3).
+
+Be sure to modify the comments fixture file. Go there (COMMAND T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (CONTROL \, choose option 1). All tests should pass. 
+                      
+Futhermore we'd like to know when a post was published. To do this we'll want the following modifications: 
+
+* keep track of the datetime when a post was published.
+* remove the column published from the posts table because it can be determined if a post is published by looking at whether or not a value is present for the published date.
+
+Start Quick Migration (CONTROL SHIFT M). Let's name it <code>AddPublishedAtForPosts</code>. A new migrations file <code>004_add_published_at_for_posts.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. Again delete <code>mtab</code> and instead enter <code>mcol</code> and press TAB. Choose <code>Add / Remove Column</code> (1). Type <code>posts</code> TAB <code>published_at</code> TAB <code>datetime</code> TAB and RETURN.
+
+Again type <code>mcol</code> and TAB. Choose <code>Remove / Add Column</code> (5). Type <code>posts</code> TAB <code>published</code> and press TAB twice.
+
+The end result looks like this:
+
+<pre syntax="ruby">class AddPublishedAtForPosts < ActiveRecord::Migration
+  def self.up
+    add_column :posts, :published_at, :datetime
+    remove_column :posts, :published
+  end
+
+  def self.down
+    add_column :posts, :published, :boolean
+    remove_column :posts, :published_at
+  end
+end</pre>
+
+Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.   
+                               
+Save the file (COMMAND S) and migrate to current (CONTROL |, option 3).
+
+Now we need to modify the posts fixtures file. Go there (COMMAND T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>.
 
 h1. TODO
 
 * Model snippets (validates_...)
 * link_to(model) (ltm)
 * RJS demo
-* Demonstrate new Add/Remove columns - <code>down</code> method is in reverse order
 
