@@ -10,7 +10,7 @@ Added so far:
       * GET+POST test method stubs (deftg+deftp)
       * posts(:) + Alt+Esc allows you to select a posts.yml fixture
     * Controllers
-      * respond_to (rst) and respond_to(html) (Shift+Cmd+H)
+      * respond_to (rest) and respond_to(html) (Shift+Cmd+H)
       * 'Go To View' within a respond_to will use the format/wants type as the default
       * REMOVED: render_component snippets
       * loggers - pass a block instead of raw string to save time if

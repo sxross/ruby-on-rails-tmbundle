@@ -507,6 +507,8 @@ The final form is:
     <%= f.submit "Submit" %>
   </p>
 <% end -%></pre>
+                                              
+Note: if you got <code><br></code> when hitting CONTROL RETURN instead of <code><br /></code> then you might want to go to the preferences of TextMate (COMMAND ,), choose tab "Advanced", choose "Shell Variables", click the + sign to add a new shell variable, and give it the name <code>TM_XHTML</code> and a value of <code> /</code> 
 
 h2. Partials
 

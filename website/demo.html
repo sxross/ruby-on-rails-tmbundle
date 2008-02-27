@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="main">
-
+	
     <h1>Step-by-step demonstration</h1>
     <div id="version" class="clickable" onclick='document.location = "http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz"; return false'>
       <p>Get Version</p>
@@ -696,6 +696,9 @@ into the default string file.</p>
 &lt;% end -%&gt;</pre></p>
 
 
+	<p>Note: if you got <code>&lt;br&gt;</code> when hitting &#x2303; &#x21A9; instead of <code>&lt;br /&gt;</code> then you might want to go to the preferences of TextMate (&#x2318; ,), choose tab &#8220;Advanced&#8221;, choose &#8220;Shell Variables&#8221;, click the + sign to add a new shell variable, and give it the name <code>TM_XHTML</code> and a value of <code> /</code></p>
+
+
 	<h2>Partials</h2>
 
 
@@ -738,6 +741,7 @@ will be the <code>index</code> action, and will be accessible via the resources 
 		<li>lipp  &#8211; <code>&lt;%= link_to "link text...", models_path %&gt;</code></li>
 		<li>linp  &#8211; <code>&lt;%= link_to "link text...", parent_child_path(@parent, @child) %&gt;</code></li>
 		<li>linpp &#8211; <code>&lt;%= link_to "link text...", parent_child_path(@parent) %&gt;</code></li>
+		<li>lim   &#8211; <code>&lt;%= link_to model.name, model_path(model) %&gt;</code></li>
 	</ul>
 
 
@@ -873,7 +877,13 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
     <p class="coda">
       <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 28th February 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
-    </p>
+    </p>    
+
+    <!--
+	  * Matt A: "I'm new to this country, but I must be breaking some laws with this"
+	  * Allan O: "This is getting out of hand; I may have to cease development of TextMate"
+	  * Steve J: "This puts a ding in the universe"
+	//-->
 </div>
 
 <script type="text/javascript">
