@@ -64,7 +64,22 @@ File.open(src) do |fsrc|
     element, syntax, source = $1, $2, $3
     syntax_items << "<#{element} class='syntax'>#{convert_syntax(syntax, source)}</#{element}>"
     "syntax-temp-#{ident}"
-  }
+  }                
+  
+  # a few extra supported markup commands specifically for documenting tm bundles
+  body_text.gsub!(%r!COMMAND!, '&#x2318;')                                       
+  body_text.gsub!(%r!TAB!, '&#x21E5;')
+  body_text.gsub!(%r!SHIFT!, '&#x21E7;')
+  body_text.gsub!(%r!OPTION!, '&#x2325;')
+  body_text.gsub!(%r!CONTROL!, '&#x2303;')
+  body_text.gsub!(%r!BACKSPACE!, '&#x232B;')
+  body_text.gsub!(%r!DELETE!, '&#x2326;') 
+  body_text.gsub!(%r!RETURN!, '&#x21A9;')
+  body_text.gsub!(%r!DOWN!, '&#x2193;')
+  body_text.gsub!(%r!UP!, '&#x2191;')
+  body_text.gsub!(%r!LEFT!, '&#x2190;')
+  body_text.gsub!(%r!RIGHT!, '&#x2192;')        
+  
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
   body = RedCloth.new(body_text).to_html
   body.gsub!(%r!(?:<pre><code>)?syntax-temp-(\d+)(?:</code></pre>)?!){ syntax_items[$1.to_i] }
