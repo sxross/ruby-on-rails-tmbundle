@@ -36,7 +36,7 @@ Run the migrations, either from the prompt:
 
     rake db:migrate
 
-or directly from the editor with ^ | (Ctrl-Pipeline), and choosing option "Migrate to Current".
+or directly from the editor with CONTROL | (Ctrl-Pipeline), and choosing option "Migrate to Current".
 
 
 h2. Post fixtures
@@ -104,7 +104,7 @@ Now we'll check that the <code>@posts</code> objects are represented in the <cod
 
 With the cursor inside the <code>assert_select</code>:
 
-Type <code>ass</code>, press TAB, type <code>div.post</code>, press TAB twice, and type <code>count</code> (to replace the <code>text</code>). Now press TAB again, and type <code>@posts.size</code>. Press TAB a final time (it will highlight the <code>do...end</code> block), and press BACKSPACE.
+Type <code>ass</code>, press TAB, type <code>div.post</code>, press TAB twice, and type <code>count</code> (to replace the <code>text</code>). Now press TAB again, and type <code>posts.size</code>. Press TAB a final time (it will highlight the <code>do...end</code> block), and press BACKSPACE.
 
 Our test method is now finished:
 
@@ -122,10 +122,10 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 
 h2. Controller actions
 
-Now, to navigate to <code>blog_controller.rb</code> there are three options:
+To navigate to <code>blog_controller.rb</code> there are three options:
 
 * press SHIFT OPTION COMMAND DOWN, and select "Controller" from the drop-down list
-* press OPTION COMMAND DOWN and you'll go directly to the controller (toggles btw the two files)
+* press OPTION COMMAND DOWN and you'll go directly to the controller (toggles between the two files)
 * press COMMAND T, press b, press c, and choose the file.
 
 Add the <code>index</code> action method:
@@ -136,11 +136,11 @@ end</pre>
 
 h2. Action views
 
-To create/navigate to the view, press SHIFT OPTION COMMAND DOWN and select "View" (like above).
+To create/navigate to the view, press SHIFT OPTION COMMAND DOWN and select "View" (like above). Or press OPTION COMMAND DOWN to toggle between a controller method and it's view.
 
-As there is no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code>, but of course you can change that in the dialog box.
+As there are no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code> (because the method was named <code>index</code>), but of course you can change that in the dialog box.
 
-If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the file before hitting SHIFT OPTION COMMAND DOWN and selecting "View".
+If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the controller file before hitting SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN. Also note that the cursor must be within the scope of a method for SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN to work. 
 
 Press enter to accept <code>index.html.erb</code>. You are taken to the new file.
 
@@ -195,7 +195,7 @@ Create a comment model:
 
     ruby script/generate model Comment body:text name:string post:references
 
-Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.
+Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> and <code>tcr</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.
 
 The generated <code>create_table</code> in <code>002_create_comments.rb</code> is:
 
@@ -207,7 +207,7 @@ The generated <code>create_table</code> in <code>002_create_comments.rb</code> i
   t.timestamps
 end</pre>
 
-Run <code>rake db:migrate</code>.
+Run <code>rake db:migrate</code>, or directly from the editor with CONTROL | and choose option "Migrate to Current".
 
 Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code>.
 
