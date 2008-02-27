@@ -446,11 +446,11 @@ The resulting <code>index.html.erb</code> is:
 h2. Forms
 
 Place the cursor inside the <code>new</code> method,
-and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow)
+and use the 'Go To' hot key (SHIFT OPTION COMMAND DOWN)
 and select 'View'. Press RETURN to accept <code>new.html.erb</code>.
 
 Inside the blank <code>new.html.erb</code> file, type <code>ffe</code> and press TAB, and type <code>post</code>
-and press TAB, twice:
+and press TAB twice:
 
 <pre syntax="html"><%= error_messages_for :post %>
 <% form_for @post do |f| -%>
@@ -463,10 +463,10 @@ snippets; the former does not have the error messages section.
 
 To create a label and text field for the <code>subject</code> attribute:
 
-Press Shift+Ctrl+W, and press TAB and press RETURN, to create a <code><p></p></code> block.
-Type <code>f.</code> and TAB, and select "Label". Type <code>subject</code>, press TAB and press DELETE.
-To create a <code><br/></code>, press Ctrl+RETURN.
-Type <code>f.</code> and TAB, and select "Check box". Type <code>subject</code>.
+Create a <code><p></p></code> block (Press CONTROL <, then TAB, then RETURN).
+Type <code>f.</code> and TAB, and select "Label". Type <code>subject</code>, press TAB and press BACKSPACE.
+Create a <code><br /></code> (CONTROL RETURN).
+Type <code>f.</code> and TAB, and select "Text Field". Type <code>subject</code>.
 
 This gives us:
 
@@ -480,12 +480,12 @@ This gives us:
 
 Now repeat for <code>body</code> and <code>published</code> fields.
 
-Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by TABbing
+Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by tabbing
 into the default string file.
 
 Finally, add a "Submit" button using the <code>f.</code> snippet tab completion.
-
-You can now view this form at [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
+                                                    
+Start <code>script/server</code> from the prompt and you can now view this form at [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
 
 The final form is:
 
