@@ -78,7 +78,8 @@
 			<dict>
 				<key>items</key>
 				<array>
-					<string>62D0A466-DB7C-4202-A77B-A89E7F10AE8F</string>
+					<string>D696FA2C-785A-4B73-A2F6-F750904DD7C2</string>
+					<string>------------------------------------</string>
 					<string>8D802011-B3E5-4BC1-A3E1-5B78A2A49C28</string>
 					<string>6909D8A7-461B-4D29-956F-8E633DD49A90</string>
 					<string>F4DD75AA-A954-4FBE-A03F-28718335414E</string>
@@ -199,15 +200,6 @@
 				</array>
 				<key>name</key>
 				<string>Run Tests</string>
-			</dict>
-			<key>62D0A466-DB7C-4202-A77B-A89E7F10AE8F</key>
-			<dict>
-				<key>items</key>
-				<array>
-					<string>D696FA2C-785A-4B73-A2F6-F750904DD7C2</string>
-				</array>
-				<key>name</key>
-				<string>Generate Code</string>
 			</dict>
 			<key>6909D8A7-461B-4D29-956F-8E633DD49A90</key>
 			<dict>
