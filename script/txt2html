@@ -75,6 +75,7 @@ File.open(src) do |fsrc|
   body_text.gsub!(%r!BACKSPACE!, '&#x232B;')
   body_text.gsub!(%r!DELETE!, '&#x2326;') 
   body_text.gsub!(%r!RETURN!, '&#x21A9;')  
+  body_text.gsub!(%r!ENTER!, '&#x2305;')
   body_text.gsub!(%r!ESCAPE!, '&#x238B;')
   body_text.gsub!(%r!DOWN!, '&#x2193;')
   body_text.gsub!(%r!UP!, '&#x2191;')
