@@ -372,12 +372,10 @@ Running our tests (<code>rake test:functionals</code> or CONTROL \) shows all th
 
 h2. Views
 
-Go back to the <code>posts_controller.rb</code> file. Since it is already
-open within TextMate, you can navigate to it via the editor tabs:
-Alt+Cmd+LeftArrow or RightArrow.
+Go back to the <code>posts_controller.rb</code> file (OPTION COMMAND DOWN).
 
 Now add three actions - <code>index</code>, <code>new</code> and <code>edit</code>. New methods can be created
-with <code>def</code> snippet:
+with the <code>def</code> snippet:
 
 <pre syntax="ruby">class PostsController < ApplicationController
   before_filter :find_post
@@ -397,12 +395,14 @@ with <code>def</code> snippet:
   def find_post
     @post = Post.find(params[:id]) if params[:id]
   end
-end</pre>
+end</pre>   
+
+Note: the <code>index</code> method could be created by typing <code>def</code>, TAB, <code>index</code>, TAB,  <code>@posts = Post.fina</code>, TAB, BACKSPACE.
 
 Now we need templates for the <code>index</code>, <code>new</code> and <code>edit</code> actions.
 
 Place the cursor inside the <code>index</code> method,
-and use the 'Go To' hot key (Shift+Alt+Cmd+DownArrow)
+and use the 'Go To' hot key (SHIFT OPTION COMMAND DOWN)
 and select 'View'. A dialog box will pop up asking for the name of the new
 template (as there are no <code>app/views/posts/index*</code> files). By default, the
 suffix is now <code>.html.erb</code> rather than the old <code>.rhtml</code>. Press RETURN,
@@ -410,7 +410,7 @@ to accept <code>index.html.erb</code> as your template name.
 
 Let's just create a simple table showing the Posts.
 
-Type <code>table</code> and Ctrl+< to generate <code><table></table></code>, and
+Type <code>table</code> and CONTROL < to generate <code><table></table></code>, and
 press RETURN to put the tags on separate lines.
 
 Do the same to create a <code><tbody></tbody></code> element.
@@ -418,17 +418,17 @@ Do the same to create a <code><tbody></tbody></code> element.
 Inside the <code><tbody></tbody></code> we want to iterate over the <code>@posts</code>,
 one per <code><tr></tr></code> row.
 
-Press Ctrl+>, three times, to create a <code><%- -%></code> tag. Inside it
+Press CONTROL >, three times, to create a <code><%- -%></code> tag. Inside it
 type <code>@posts.each do |post|</code>.
 
-On the next line, type <code>end</code> and TAB, to create <code><% end -%></code>.
+On the next line (COMMAND RETURN), type <code>end</code> and TAB, to create <code><% end -%></code>.
 We now have a Ruby block within this ERb template.
 
 Inside the block, create a <code><tr></tr></code> element, and within it
 create a <code><td></td></code> element. We'll skip over anything fancy
 here, and just put the post's subject here.
 
-Type <code>@post.subject</code> and select it. Now press Ctrl+> to wrap
+Type <code>@post.subject</code> and select it. Now press CONTROL > to wrap
 the selected text inside <code><%= @post.selected %></code>.
 
 The resulting <code>index.html.erb</code> is:
