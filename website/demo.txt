@@ -428,8 +428,8 @@ Inside the block, create a <code><tr></tr></code> element, and within it
 create a <code><td></td></code> element. We'll skip over anything fancy
 here, and just put the post's subject here.
 
-Type <code>@post.subject</code> and select it. Now press CONTROL > to wrap
-the selected text inside <code><%= @post.selected %></code>.
+Type <code>post.subject</code> and select it. Now press CONTROL > to wrap
+the selected text inside <code><%= post.subject %></code>.
 
 The resulting <code>index.html.erb</code> is:
 
@@ -540,6 +540,7 @@ There are several <code>link_to</code> snippets that support the resources route
 * lipp  - <code><%= link_to "link text...", models_path %></code>
 * linp  - <code><%= link_to "link text...", parent_child_path(@parent, @child) %></code>
 * linpp - <code><%= link_to "link text...", parent_child_path(@parent) %></code>
+* lim   - <code><%= link_to model.name, model_path(model) %></code>
 
 The tab stop points are in useful places.
 
@@ -579,54 +580,54 @@ There are tab stops in useful places.
 In the <code>false</code> section of the <code>if</code> expression, we'll demonstrate the
 <code>respond_to</code> block. There are two ways to generate a <code>respond_to</code> block.
 
-Type <code>rst</code> and TAB, and you get a standard empty block you can work with:
+Type <code>rest</code> and TAB, and you get a standard empty block you can work with:
 
-<pre syntax="ruby">respond_to do |format|
-
+<pre syntax="ruby">respond_to do |wants|
+  wants.html {  }
 end</pre>
 
-Inside the block, type <code>ra</code> and press TAB, then type <code>new</code>. The final block
-is:
+Press TAB twice to get inside the <code>wants.html</code> block, type <code>ra</code>, press TAB, then type <code>new</code>. The final block is:
 
-<pre syntax="ruby">respond_to do |format|
-  render :action => "new"
+<pre syntax="ruby">respond_to do |wants|
+  wants.html { render :action => "new" }
 end</pre>
 
-Alternately, there is the "upgrade" hot key. Where you can convert some
+Alternately, there is the "upgrade" hot key (SHIFT COMMAND H), where you can convert some
 existing selected code, into a <code>respond_to</code> block.
 
 Select the whole line containing the <code>redirect_to</code> expression from the
-<code>true</code> section of the <code>if</code> statement.
+<code>true</code> section of the <code>if</code> statement (SHIFT COMMAND L).
 
-Press Shift+Cmd+R (TODO - a better hot key?) and the line is replaced
-with:
+Press SHIFT COMMAND H and the line is replaced with:
 
-<pre syntax="ruby">format.html do
-  redirect_to(@post)
-end
-format.js {  }</pre>
+<pre syntax="ruby">respond_to do |wants|
+  wants.html do
+    redirect_to(posts_path)
+  end
+  wants.js {  }
+end</pre>
 
 The <code>js</code> is the first tab stop. The point of this hot key is to instantly
 refactor your existing html respond code, and support a second response
 format.
 
-Select the whole <code>format.js</code> line (Shift+Cmd+L) and delete it.
+For now remove the line with <code>wants.js</code> (SHIFT CONTROL K).
 
 The completed <code>create</code> action is:
 
 <pre syntax="ruby">def create
   @post = Post.new(params[:post])
   if @post.save
-    respond_to do |format|
-      format.html do
+    respond_to do |wants|
+      wants.html do
         redirect_to(posts_path)
       end
     end
   else
-    respond_to do |format|
-      render :action => "new"
+    respond_to do |wants|
+      wants.html { render :action => "new" }
     end
-  end
+  end    
 end</pre>
 
 Yes you'd probably only have one <code>respond_to</code> block, but this is a
@@ -634,10 +635,8 @@ demo so I am taking the scenic route.
 
 h2. Our application so far
 
-In the browser, we can create posts via
-[http://localhost:3000/posts/new](http://localhost:3000/posts/new)
-and then view them as a blog visitor at
-[http://localhost:3000/blog](http://localhost:3000/blog).
+In the browser, we can create posts via [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
+and then view them as a blog visitor at [http://localhost:3000/blog](http://localhost:3000/blog).
 
 h1. TODO
 
