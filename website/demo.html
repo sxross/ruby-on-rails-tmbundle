@@ -600,7 +600,7 @@ create a <code>&lt;td&gt;&lt;/td&gt;</code> element. We&#8217;ll skip over anyth
 here, and just put the post&#8217;s subject here.</p>
 
 
-	<p>Type <code>@post.subject</code> and select it. Now press Ctrl+&gt; to wrap
+	<p>Type <code>@post.subject</code> and select it. Now press &#x2303; &gt; to wrap
 the selected text inside <code>&lt;%= @post.selected %&gt;</code>.</p>
 
 
@@ -622,12 +622,12 @@ the selected text inside <code>&lt;%= @post.selected %&gt;</code>.</p>
 
 
 	<p>Place the cursor inside the <code>new</code> method,
-and use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+DownArrow)
+and use the &#8216;Go To&#8217; hot key (&#x21E7; &#x2325; &#x2318; &#x2193;)
 and select &#8216;View&#8217;. Press &#x21A9; to accept <code>new.html.erb</code>.</p>
 
 
 	<p>Inside the blank <code>new.html.erb</code> file, type <code>ffe</code> and press &#x21E5;, and type <code>post</code>
-and press &#x21E5;, twice:</p>
+and press &#x21E5; twice:</p>
 
 
 	<p><pre class='syntax'>&lt;%= error_messages_for :post %&gt;
@@ -643,10 +643,10 @@ snippets; the former does not have the error messages section.
 	<p>To create a label and text field for the <code>subject</code> attribute:</p>
 
 
-	<p>Press Shift+Ctrl+W, and press &#x21E5; and press &#x21A9;, to create a <code>&lt;p&gt;&lt;/p&gt;</code> block.
-Type <code>f.</code> and &#x21E5;, and select &#8220;Label&#8221;. Type <code>subject</code>, press &#x21E5; and press &#x2326;.
-To create a <code>&lt;br/&gt;</code>, press Ctrl+&#x21A9;.
-Type <code>f.</code> and &#x21E5;, and select &#8220;Check box&#8221;. Type <code>subject</code>.</p>
+	<p>Create a <code>&lt;p&gt;&lt;/p&gt;</code> block (Press &#x2303; &lt;, then &#x21E5;, then &#x21A9;).
+Type <code>f.</code> and &#x21E5;, and select &#8220;Label&#8221;. Type <code>subject</code>, press &#x21E5; and press &#x232B;.
+Create a <code>&lt;br /&gt;</code> (&#x2303; &#x21A9;).
+Type <code>f.</code> and &#x21E5;, and select &#8220;Text Field&#8221;. Type <code>subject</code>.</p>
 
 
 	<p>This gives us:</p>
@@ -664,14 +664,14 @@ Type <code>f.</code> and &#x21E5;, and select &#8220;Check box&#8221;. Type <cod
 	<p>Now repeat for <code>body</code> and <code>published</code> fields.</p>
 
 
-	<p>Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by &#x21E5;bing
+	<p>Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by tabbing
 into the default string file.</p>
 
 
 	<p>Finally, add a &#8220;Submit&#8221; button using the <code>f.</code> snippet tab completion.</p>
 
 
-	<p>You can now view this form at <a href="http://localhost:3000/posts/new">http://localhost:3000/posts/new</a></p>
+	<p>Start <code>script/server</code> from the prompt and you can now view this form at <a href="http://localhost:3000/posts/new">http://localhost:3000/posts/new</a></p>
 
 
 	<p>The final form is:</p>
