@@ -15,7 +15,7 @@ h2. Add some models
 
 <pre>ruby script/generate model Post subject:string body:text</pre>
 
-This creates a 001_create_post migration with a create_table:
+This creates a 001_create_posts migration with a create_table:
 
 <pre syntax="ruby">create_table :posts do |t|
   t.string :subject
@@ -25,18 +25,18 @@ This creates a 001_create_post migration with a create_table:
 end</pre>
 
 h2. Sexy Migration support
-
+                                                                                                  
 If you put the cursor on the line after <code>t.text :body</code>, type <code>t.</code> and press TAB. Select "Create boolean column" (by pressing 0), and type "published" into the template field. If nothing happened when you pressed TAB, check that when you opened the migrations file you've selected the bundle "Ruby on Rails".
 
 Note that another <code>t.</code> was created on the next line! Press TAB and the cursor will be placed after it. You can now press TAB again to create another column, or delete this line.
 
-Here, delete the extraneous <code>t.</code> line (Shift-Ctrl-K).
+Here, delete the extraneous <code>t.</code> line (SHIFT CONTROL K). And save the file (COMMAND S).
 
 Run the migrations, either from the prompt:
 
     rake db:migrate
 
-or directly from the editor by pressing ^-| (Ctrl-Pipeline), and choosing option "Migrate to Current".
+or directly from the editor with CONTROL | (Ctrl-Pipeline), and choosing option "Migrate to Current".
 
 
 h2. Post fixtures
@@ -59,9 +59,9 @@ Create a controller for our blog, either via the command prompt:
 
     ruby script/generate controller blog
 
-or directly from the editor by pressing ^-|, and choosing option "Call Generate Script", choose "Controller", give it the name "blog", and empty the list of actions.
+or directly from the editor with CONTROL |, and choosing option "Call Generate Script", choose "Controller", give it the name "blog", and empty the list of actions.
 
-Now open <code>blog_controller_test.rb</code>. To find this file quickly press Cmd-T, enter bct, and select the file.
+Now open <code>blog_controller_test.rb</code>. To find this file quickly press COMMAND T, enter bct, and select the file.
 
 Note how much cleaner functional tests are now via <code>ActionController::TestCase</code>.
 
@@ -80,7 +80,7 @@ and TAB gives:
 
 end</pre>
 
-Type <code>index</code> to replace <code>action</code>. Press TAB, and then DELETE to remove the first line, then press TAB three times and then DELETE to remove the <code>:id => @model.to_param</code> part. The press TAB again to go to the end of the method. Now we have:
+Type <code>index</code> to replace <code>action</code>. Press TAB, and then BACKSPACE to remove the first line, then press TAB three times and then BACKSPACE to remove the <code>:id => @model.to_param</code> part. The press TAB again to go to the end of the method. Now we have:
 
 <pre syntax="ruby">def test_should_get_index
   get :index
@@ -94,7 +94,7 @@ Now type <code>asg</code>, press TAB, and type <code>posts</code>, and press TAB
 
 Now, let's assert the HTML format.
 
-Type <code>ass</code> and press TAB. Type <code>div#posts</code>, press TAB and DELETE, then TAB twice to place the cursor within the <code>assert_select</code> block:
+Type <code>ass</code> and press TAB. Type <code>div#posts</code>, press TAB and BACKSPACE, then TAB twice to place the cursor within the <code>assert_select</code> block:
 
 <pre syntax="ruby">assert_select 'div#posts' do
 
@@ -104,7 +104,7 @@ Now we'll check that the <code>@posts</code> objects are represented in the <cod
 
 With the cursor inside the <code>assert_select</code>:
 
-Type <code>ass</code>, press TAB, type <code>div.post</code>, press TAB, press TAB again, and type <code>count</code> (to replace the <code>text</code>). Now press TAB again, and type <code>@posts.size</code>. Press TAB a final time (it will highlight the <code>do...end</code> block), and press DELETE.
+Type <code>ass</code>, press TAB, type <code>div.post</code>, press TAB twice, and type <code>count</code> (to replace the <code>text</code>). Now press TAB again, and type <code>posts.size</code>. Press TAB a final time (it will highlight the <code>do...end</code> block), and press BACKSPACE.
 
 Our test method is now finished:
 
@@ -122,13 +122,13 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 
 h2. Controller actions
 
-Now, to navigate to <code>blog_controller.rb</code> there are three options:
+To navigate to <code>blog_controller.rb</code> there are three options:
 
-* press Shift+Alt+Cmd+DownArrow, and select "Controller" from the drop-down list
-* press Alt+Cmd+DownArrow and you'll go directly to the controller (toggles btw the two files)
-* press Cmd-T, press b, press c, and choose the file.
+* press SHIFT OPTION COMMAND DOWN, and select "Controller" from the drop-down list
+* press OPTION COMMAND DOWN and you'll go directly to the controller (toggles between the two files)
+* press COMMAND T, press b, press c, and choose the file.
 
-Change the <code>index</code> action method to:
+Add the <code>index</code> action method:
 
 <pre syntax="ruby">def index
   @posts = Post.find_all_by_published(true)
@@ -136,11 +136,11 @@ end</pre>
 
 h2. Action views
 
-To create/navigate to the view, press Shift+Alt+Cmd+DownArrow and select "View" (like above).
+To create/navigate to the view, press SHIFT OPTION COMMAND DOWN and select "View" (like above). Or press OPTION COMMAND DOWN to toggle between a controller method and it's view.
 
-As there is no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code>, but of course you can change that in the dialog box.
+As there are no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code> (because the method was named <code>index</code>), but of course you can change that in the dialog box.
 
-If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the file before hitting Shift-Alt-Cmd-DownArrow and selecting "View".
+If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the controller file before hitting SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN. Also note that the cursor must be within the scope of a method for SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN to work. 
 
 Press enter to accept <code>index.html.erb</code>. You are taken to the new file.
 
@@ -154,20 +154,20 @@ Type <code>div</code> and press TAB twice, then type <code>posts</code> and pres
 
 Inside the <code>div</code> element, type <code>for</code> and press TAB. This expands into a large ERb-enabled for-loop. Type <code>@posts</code>, press TAB, type <code>post</code> and press TAB. The cursor is now inside the for-loop.
 
-Inside the for-loop, type: <code>div</code> and press TAB. Press DELETE, and type <code> class='post'</code> and press TAB to enter the <code>div</code> element.
+Inside the for-loop, type: <code>div</code> and press TAB. Press BACKSPACE, and type <code> class='post'</code> and press TAB to enter the <code>div</code> element.
 
-Press Ctrl+> (greater-than) to create a <code><%=  %></code> element. If you press Ctrl+> again, it toggles to <code><%  %></code>, and then again and it becomes <code><%-  -%></code>, and again and it becomes <code><%#  %></code> (a Ruby comment). Pressing Ctrl+> again starts at <code><%=  %></code> again.
+Create a <code><%=  %></code> element (CONTROL >). If you press CONTROL > again, it toggles to <code><%  %></code>, and then again and it becomes <code><%-  -%></code>, and again and it becomes <code><%#  %></code> (a Ruby comment). Pressing CONTROL > again starts at <code><%=  %></code> again.
 
 Enter <code>post.body</code> within the ERb template field.
 
-Actually, we'll need to show the subject too, so above the <code><%= post.body %></code> line (press UpArrow followed by Cmd-Enter)
-type 'h3', and press Ctrl+< (LessThan), then Ctrl+> (GreatherThan), and <code>post.subject</code>.
+Actually, we'll need to show the subject too, so above the <code><%= post.body %></code> line (press UP followed by COMMAND ENTER)
+type 'h3', and press CONTROL < (LessThan), then CONTROL > (GreatherThan), and <code>post.subject</code>.
 
 The resulting line is: <code><h3><%= post.subject %></h3></code>
 
 Move the cursor down between <code><% else %></code> and <code><% end %></code>.
 
-Press Shift+Ctrl+W or Ctrl+< (LessThan) to create a simple element <code><p></p></code>. You can change the element type here. Just press TAB to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.
+Create a simple element <code><p></p></code> (SHIFT CONTROL W or CONTROL <). You can change the element type here. Just press TAB to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.
 
 Our <code>index.html.erb</code> template is now:
 
@@ -185,7 +185,7 @@ Our <code>index.html.erb</code> template is now:
 
 </div></pre>
 
-If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing Ctrl+\ and press 2 for "Test Functionals"
+If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing CONTROL \ and press 2 for "Test Functionals"
 
 As yet, we have no way for users to leave comments.
 
@@ -195,7 +195,7 @@ Create a comment model:
 
     ruby script/generate model Comment body:text name:string post:references
 
-Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.
+Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> and <code>tcr</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.
 
 The generated <code>create_table</code> in <code>002_create_comments.rb</code> is:
 
@@ -207,9 +207,9 @@ The generated <code>create_table</code> in <code>002_create_comments.rb</code> i
   t.timestamps
 end</pre>
 
-Run <code>rake db:migrate</code>.
+Run <code>rake db:migrate</code>, or directly from the editor with CONTROL | and choose option "Migrate to Current".
 
-Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code>.
+Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (COMMAND T, press c, press y, press ENTER).
 
 By default, the generated <code>comments.yml</code> starts like:
 
@@ -225,7 +225,7 @@ two:
 
 The <code>post</code> fields replace the rails1.2 <code>post_id</code> fields. Now, we can specify the <code>post.yml</code> labels for a post. From above we have <code>published</code> and <code>unpublished</code>. It can be hard to remember what fixtures we have, so there is a key-combo helper.
 
-Put the cursor after <code>post: </code> and press Alt+Escape. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press return. Repeat for the 2nd fixture. This gives us:
+Put the cursor after <code>post:</code> and press OPTION ESCAPE. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press RETURN. Repeat for the 2nd fixture. This gives us:
 
 <pre>one:
   body: MyText
@@ -242,7 +242,7 @@ h2. Associations
 To enable the Foxy Fixtures, we need to add associations to the model classes.
 
 You can now quickly toggle from a fixtures file (we're in comments.yml now) to the
-model file with Shift+Alt+Cmd+DownArrow hot key.
+model file with SHIFT OPTION COMMAND DOWN.
 
 Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press TAB. Type <code>post</code>. This creates a snippet:
 

@@ -53,7 +53,7 @@ mate .</pre>
 
 <pre>ruby script/generate model Post subject:string body:text</pre>
 
-	<p>This creates a 001_create_post migration with a create_table:</p>
+	<p>This creates a 001_create_posts migration with a create_table:</p>
 
 
 	<p><pre class='syntax'><span class="ident">create_table</span> <span class="symbol">:posts</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">t</span><span class="punct">|</span>
@@ -67,13 +67,13 @@ mate .</pre>
 	<h2>Sexy Migration support</h2>
 
 
-	<p>If you put the cursor on the line after <code>t.text :body</code>, type <code>t.</code> and press <span class="caps">TAB</span>. Select &#8220;Create boolean column&#8221; (by pressing 0), and type &#8220;published&#8221; into the template field. If nothing happened when you pressed <span class="caps">TAB</span>, check that when you opened the migrations file you&#8217;ve selected the bundle &#8220;Ruby on Rails&#8221;.</p>
+	<p>If you put the cursor on the line after <code>t.text :body</code>, type <code>t.</code> and press &#x21E5;. Select &#8220;Create boolean column&#8221; (by pressing 0), and type &#8220;published&#8221; into the template field. If nothing happened when you pressed &#x21E5;, check that when you opened the migrations file you&#8217;ve selected the bundle &#8220;Ruby on Rails&#8221;.</p>
 
 
-	<p>Note that another <code>t.</code> was created on the next line! Press <span class="caps">TAB</span> and the cursor will be placed after it. You can now press <span class="caps">TAB</span> again to create another column, or delete this line.</p>
+	<p>Note that another <code>t.</code> was created on the next line! Press &#x21E5; and the cursor will be placed after it. You can now press &#x21E5; again to create another column, or delete this line.</p>
 
 
-	<p>Here, delete the extraneous <code>t.</code> line (Shift-Ctrl-K).</p>
+	<p>Here, delete the extraneous <code>t.</code> line (&#x21E7; &#x2303; K). And save the file (&#x2318; S).</p>
 
 
 	<p>Run the migrations, either from the prompt:</p>
@@ -82,7 +82,7 @@ mate .</pre>
 	<pre><code>rake db:migrate</code></pre>
 
 
-	<p>or directly from the editor by pressing ^-| (Ctrl-Pipeline), and choosing option &#8220;Migrate to Current&#8221;.</p>
+	<p>or directly from the editor with &#x2303; | (Ctrl-Pipeline), and choosing option &#8220;Migrate to Current&#8221;.</p>
 
 
 	<h2>Post fixtures</h2>
@@ -112,10 +112,10 @@ mate .</pre>
 	<pre><code>ruby script/generate controller blog</code></pre>
 
 
-	<p>or directly from the editor by pressing ^-|, and choosing option &#8220;Call Generate Script&#8221;, choose &#8220;Controller&#8221;, give it the name &#8220;blog&#8221;, and empty the list of actions.</p>
+	<p>or directly from the editor with &#x2303; |, and choosing option &#8220;Call Generate Script&#8221;, choose &#8220;Controller&#8221;, give it the name &#8220;blog&#8221;, and empty the list of actions.</p>
 
 
-	<p>Now open <code>blog_controller_test.rb</code>. To find this file quickly press Cmd-T, enter bct, and select the file.</p>
+	<p>Now open <code>blog_controller_test.rb</code>. To find this file quickly press &#x2318; T, enter bct, and select the file.</p>
 
 
 	<p>Note how much cleaner functional tests are now via <code>ActionController::TestCase</code>.</p>
@@ -130,7 +130,7 @@ mate .</pre>
 	<pre><code>deftg</code></pre>
 
 
-	<p>and <span class="caps">TAB</span> gives:</p>
+	<p>and &#x21E5; gives:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_should_get_action</span>
@@ -141,7 +141,7 @@ mate .</pre>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Type <code>index</code> to replace <code>action</code>. Press <span class="caps">TAB</span>, and then <span class="caps">DELETE</span> to remove the first line, then press <span class="caps">TAB</span> three times and then <span class="caps">DELETE</span> to remove the <code>:id =&gt; @model.to_param</code> part. The press <span class="caps">TAB</span> again to go to the end of the method. Now we have:</p>
+	<p>Type <code>index</code> to replace <code>action</code>. Press &#x21E5;, and then &#x232B; to remove the first line, then press &#x21E5; three times and then &#x232B; to remove the <code>:id =&gt; @model.to_param</code> part. The press &#x21E5; again to go to the end of the method. Now we have:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_should_get_index</span>
@@ -151,7 +151,7 @@ mate .</pre>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Now type <code>asg</code>, press <span class="caps">TAB</span>, and type <code>posts</code>, and press <span class="caps">TAB</span> again. This creates an instance variable lookup within an assertion:</p>
+	<p>Now type <code>asg</code>, press &#x21E5;, and type <code>posts</code>, and press &#x21E5; again. This creates an instance variable lookup within an assertion:</p>
 
 
 	<p><pre class='syntax'><span class="ident">assert</span><span class="punct">(</span><span class="ident">posts</span> <span class="punct">=</span> <span class="ident">assigns</span><span class="punct">(</span><span class="symbol">:posts</span><span class="punct">),</span> <span class="punct">&quot;</span><span class="string">Cannot find @posts</span><span class="punct">&quot;)</span></pre></p>
@@ -160,7 +160,7 @@ mate .</pre>
 	<p>Now, let&#8217;s assert the <span class="caps">HTML</span> format.</p>
 
 
-	<p>Type <code>ass</code> and press <span class="caps">TAB</span>. Type <code>div#posts</code>, press <span class="caps">TAB</span> and <span class="caps">DELETE</span>, then <span class="caps">TAB</span> twice to place the cursor within the <code>assert_select</code> block:</p>
+	<p>Type <code>ass</code> and press &#x21E5;. Type <code>div#posts</code>, press &#x21E5; and &#x232B;, then &#x21E5; twice to place the cursor within the <code>assert_select</code> block:</p>
 
 
 	<p><pre class='syntax'><span class="ident">assert_select</span> <span class="punct">'</span><span class="string">div#posts</span><span class="punct">'</span> <span class="keyword">do</span>
@@ -174,7 +174,7 @@ mate .</pre>
 	<p>With the cursor inside the <code>assert_select</code>:</p>
 
 
-	<p>Type <code>ass</code>, press <span class="caps">TAB</span>, type <code>div.post</code>, press <span class="caps">TAB</span>, press <span class="caps">TAB</span> again, and type <code>count</code> (to replace the <code>text</code>). Now press <span class="caps">TAB</span> again, and type <code>@posts.size</code>. Press <span class="caps">TAB</span> a final time (it will highlight the <code>do...end</code> block), and press <span class="caps">DELETE</span>.</p>
+	<p>Type <code>ass</code>, press &#x21E5;, type <code>div.post</code>, press &#x21E5; twice, and type <code>count</code> (to replace the <code>text</code>). Now press &#x21E5; again, and type <code>posts.size</code>. Press &#x21E5; a final time (it will highlight the <code>do...end</code> block), and press &#x232B;.</p>
 
 
 	<p>Our test method is now finished:</p>
@@ -197,17 +197,17 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<h2>Controller actions</h2>
 
 
-	<p>Now, to navigate to <code>blog_controller.rb</code> there are three options:</p>
+	<p>To navigate to <code>blog_controller.rb</code> there are three options:</p>
 
 
 	<ul>
-	<li>press Shift+Alt+Cmd+DownArrow, and select &#8220;Controller&#8221; from the drop-down list</li>
-		<li>press Alt+Cmd+DownArrow and you&#8217;ll go directly to the controller (toggles btw the two files)</li>
-		<li>press Cmd-T, press b, press c, and choose the file.</li>
+	<li>press &#x21E7; &#x2325; &#x2318; &#x2193;, and select &#8220;Controller&#8221; from the drop-down list</li>
+		<li>press &#x2325; &#x2318; &#x2193; and you&#8217;ll go directly to the controller (toggles between the two files)</li>
+		<li>press &#x2318; T, press b, press c, and choose the file.</li>
 	</ul>
 
 
-	<p>Change the <code>index</code> action method to:</p>
+	<p>Add the <code>index</code> action method:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">index</span>
@@ -218,13 +218,13 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<h2>Action views</h2>
 
 
-	<p>To create/navigate to the view, press Shift+Alt+Cmd+DownArrow and select &#8220;View&#8221; (like above).</p>
+	<p>To create/navigate to the view, press &#x21E7; &#x2325; &#x2318; &#x2193; and select &#8220;View&#8221; (like above). Or press &#x2325; &#x2318; &#x2193; to toggle between a controller method and it&#8217;s view.</p>
 
 
-	<p>As there is no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code>, but of course you can change that in the dialog box.</p>
+	<p>As there are no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code> (because the method was named <code>index</code>), but of course you can change that in the dialog box.</p>
 
 
-	<p>If instead you got the message &#8220;blog_controller.rb does not have a view&#8221;, note that you first need to save the file before hitting Shift-Alt-Cmd-DownArrow and selecting &#8220;View&#8221;.</p>
+	<p>If instead you got the message &#8220;blog_controller.rb does not have a view&#8221;, note that you first need to save the controller file before hitting &#x21E7; &#x2325; &#x2318; &#x2193; or &#x2325; &#x2318; &#x2193;. Also note that the cursor must be within the scope of a method for &#x21E7; &#x2325; &#x2318; &#x2193; or &#x2325; &#x2318; &#x2193; to work.</p>
 
 
 	<p>Press enter to accept <code>index.html.erb</code>. You are taken to the new file.</p>
@@ -233,7 +233,7 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<p>Let&#8217;s create <span class="caps">HTML</span> to match the earlier tests.</p>
 
 
-	<p>Type <code>div</code> and press <span class="caps">TAB</span> twice, then type <code>posts</code> and press <span class="caps">TAB</span>:</p>
+	<p>Type <code>div</code> and press &#x21E5; twice, then type <code>posts</code> and press &#x21E5;:</p>
 
 
 	<p><pre class='syntax'>&lt;div id=&quot;posts&quot;&gt;
@@ -241,20 +241,20 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 &lt;/div&gt;</pre></p>
 
 
-	<p>Inside the <code>div</code> element, type <code>for</code> and press <span class="caps">TAB</span>. This expands into a large ERb-enabled for-loop. Type <code>@posts</code>, press <span class="caps">TAB</span>, type <code>post</code> and press <span class="caps">TAB</span>. The cursor is now inside the for-loop.</p>
+	<p>Inside the <code>div</code> element, type <code>for</code> and press &#x21E5;. This expands into a large ERb-enabled for-loop. Type <code>@posts</code>, press &#x21E5;, type <code>post</code> and press &#x21E5;. The cursor is now inside the for-loop.</p>
 
 
-	<p>Inside the for-loop, type: <code>div</code> and press <span class="caps">TAB</span>. Press <span class="caps">DELETE</span>, and type <code> class='post'</code> and press <span class="caps">TAB</span> to enter the <code>div</code> element.</p>
+	<p>Inside the for-loop, type: <code>div</code> and press &#x21E5;. Press &#x232B;, and type <code> class='post'</code> and press &#x21E5; to enter the <code>div</code> element.</p>
 
 
-	<p>Press Ctrl+&gt; (greater-than) to create a <code>&lt;%=  %&gt;</code> element. If you press Ctrl+&gt; again, it toggles to <code>&lt;%  %&gt;</code>, and then again and it becomes <code>&lt;%-  -%&gt;</code>, and again and it becomes <code>&lt;%#  %&gt;</code> (a Ruby comment). Pressing Ctrl+&gt; again starts at <code>&lt;%=  %&gt;</code> again.</p>
+	<p>Create a <code>&lt;%=  %&gt;</code> element (&#x2303; &gt;). If you press &#x2303; &gt; again, it toggles to <code>&lt;%  %&gt;</code>, and then again and it becomes <code>&lt;%-  -%&gt;</code>, and again and it becomes <code>&lt;%#  %&gt;</code> (a Ruby comment). Pressing &#x2303; &gt; again starts at <code>&lt;%=  %&gt;</code> again.</p>
 
 
 	<p>Enter <code>post.body</code> within the ERb template field.</p>
 
 
-	<p>Actually, we&#8217;ll need to show the subject too, so above the <code>&lt;%= post.body %&gt;</code> line (press UpArrow followed by Cmd-Enter)
-type &#8216;h3&#8217;, and press Ctrl+&lt; (LessThan), then Ctrl+&gt; (GreatherThan), and <code>post.subject</code>.</p>
+	<p>Actually, we&#8217;ll need to show the subject too, so above the <code>&lt;%= post.body %&gt;</code> line (press &#x2191; followed by &#x2318; <span class="caps">ENTER</span>)
+type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (GreatherThan), and <code>post.subject</code>.</p>
 
 
 	<p>The resulting line is: <code>&lt;h3&gt;&lt;%= post.subject %&gt;&lt;/h3&gt;</code></p>
@@ -263,7 +263,7 @@ type &#8216;h3&#8217;, and press Ctrl+&lt; (LessThan), then Ctrl+&gt; (GreatherT
 	<p>Move the cursor down between <code>&lt;% else %&gt;</code> and <code>&lt;% end %&gt;</code>.</p>
 
 
-	<p>Press Shift+Ctrl+W or Ctrl+&lt; (LessThan) to create a simple element <code>&lt;p&gt;&lt;/p&gt;</code>. You can change the element type here. Just press <span class="caps">TAB</span> to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
+	<p>Create a simple element <code>&lt;p&gt;&lt;/p&gt;</code> (&#x21E7; &#x2303; W or &#x2303; &lt;). You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
 
 
 	<p>Our <code>index.html.erb</code> template is now:</p>
@@ -284,7 +284,7 @@ type &#8216;h3&#8217;, and press Ctrl+&lt; (LessThan), then Ctrl+&gt; (GreatherT
 &lt;/div&gt;</pre></p>
 
 
-	<p>If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing Ctrl+\ and press 2 for &#8220;Test Functionals&#8221;</p>
+	<p>If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing &#x2303; \ and press 2 for &#8220;Test Functionals&#8221;</p>
 
 
 	<p>As yet, we have no way for users to leave comments.</p>
@@ -299,7 +299,7 @@ type &#8216;h3&#8217;, and press Ctrl+&lt; (LessThan), then Ctrl+&gt; (GreatherT
 	<pre><code>ruby script/generate model Comment body:text name:string post:references</code></pre>
 
 
-	<p>Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.</p>
+	<p>Note: here <code>post:references</code> is effectively the same as <code>post_id:integer</code>. Within the generated migration it creates <code>t.reference :post</code>. There is also a <code>t.</code> and <code>tcr</code> snippet for references, as for other standard datatypes, which helps setup polymorphic associations.</p>
 
 
 	<p>The generated <code>create_table</code> in <code>002_create_comments.rb</code> is:</p>
@@ -314,10 +314,10 @@ type &#8216;h3&#8217;, and press Ctrl+&lt; (LessThan), then Ctrl+&gt; (GreatherT
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Run <code>rake db:migrate</code>.</p>
+	<p>Run <code>rake db:migrate</code>, or directly from the editor with &#x2303; | and choose option &#8220;Migrate to Current&#8221;.</p>
 
 
-	<p>Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code>.</p>
+	<p>Now create some comment fixtures so we can look at Foxy Fixtures. Open <code>text/fixtures/comments.yml</code> (&#x2318; T, press c, press y, press <span class="caps">ENTER</span>).</p>
 
 
 	<p>By default, the generated <code>comments.yml</code> starts like:</p>
@@ -336,7 +336,7 @@ two:
 	<p>The <code>post</code> fields replace the rails1.2 <code>post_id</code> fields. Now, we can specify the <code>post.yml</code> labels for a post. From above we have <code>published</code> and <code>unpublished</code>. It can be hard to remember what fixtures we have, so there is a key-combo helper.</p>
 
 
-	<p>Put the cursor after <code>post: </code> and press Alt+Escape. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press return. Repeat for the 2nd fixture. This gives us:</p>
+	<p>Put the cursor after <code>post: </code> and press &#x2325; &#x238B;. A drop-down box appears with the names of the <code>posts.yml</code> fixtures. Select <code>published</code> and press &#x21A9;. Repeat for the 2nd fixture. This gives us:</p>
 
 
 <pre>one:
@@ -359,16 +359,16 @@ two:
 model file with Shift+Alt+Cmd+DownArrow hot key.</p>
 
 
-	<p>Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press <span class="caps">TAB</span>. Type <code>post</code>. This creates a snippet:</p>
+	<p>Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press &#x21E5;. Type <code>post</code>. This creates a snippet:</p>
 
 
 	<p><pre class='syntax'><span class="ident">belongs_to</span> <span class="symbol">:post</span><span class="punct">,</span> <span class="symbol">:class_name</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Post</span><span class="punct">&quot;,</span> <span class="symbol">:foreign_key</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">post_id</span><span class="punct">&quot;</span></pre></p>
 
 
-	<p>The class name and foreign key are now generated from the association name. You can change them by TABbing across. But, we only need the default, so we can delete these options.</p>
+	<p>The class name and foreign key are now generated from the association name. You can change them by &#x21E5;bing across. But, we only need the default, so we can delete these options.</p>
 
 
-	<p>Press <span class="caps">TAB</span> and <span class="caps">DELETE</span> to remove the <code>:class_name</code> and <code>:foreign_key</code> options. The <code>Comment</code> class is now:</p>
+	<p>Press &#x21E5; and &#x2326; to remove the <code>:class_name</code> and <code>:foreign_key</code> options. The <code>Comment</code> class is now:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Comment</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
@@ -379,7 +379,7 @@ model file with Shift+Alt+Cmd+DownArrow hot key.</p>
 	<p>Now go to the <code>Post</code> class. Press Cmd+T and type <code>post</code> and select the model file, and press enter.</p>
 
 
-	<p>Create a new line within the <code>Post</code> class. Type <code>hm</code> and press <span class="caps">TAB</span> to generate a <code>has_many</code> association. Type <code>comments</code>, and the resulting snippet is:</p>
+	<p>Create a new line within the <code>Post</code> class. Type <code>hm</code> and press &#x21E5; to generate a <code>has_many</code> association. Type <code>comments</code>, and the resulting snippet is:</p>
 
 
 	<p><pre class='syntax'><span class="ident">has_many</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:class_name</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">Comments</span><span class="punct">&quot;,</span> <span class="symbol">:foreign_key</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">class_name_id</span><span class="punct">&quot;</span></pre></p>
@@ -391,7 +391,7 @@ change it. We haven&#8217;t figured out how to singularize a string using a regu
 expression; so if you know how let us know.</p>
 
 
-	<p>But here, we don&#8217;t need the options. So press <span class="caps">TAB</span> once and then <span class="caps">DELETE</span>.</p>
+	<p>But here, we don&#8217;t need the options. So press &#x21E5; once and then &#x2326;.</p>
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Post</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
@@ -399,7 +399,7 @@ expression; so if you know how let us know.</p>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Note, there is now a <code>has_many :through</code> snippet. Type <code>hmt</code> and <span class="caps">TAB</span> to
+	<p>Note, there is now a <code>has_many :through</code> snippet. Type <code>hmt</code> and &#x21E5; to
 activate it.</p>
 
 
@@ -411,7 +411,7 @@ activate it.</p>
 	<h2>Routes</h2>
 
 
-	<p>Open the routes file (Cmd+T, type <code>routes</code> and press <span class="caps">RETURN</span>).</p>
+	<p>Open the routes file (Cmd+T, type <code>routes</code> and press &#x21A9;).</p>
 
 
 	<p>Change the routes file to:</p>
@@ -444,8 +444,8 @@ the <code>posts_controller.rb</code> (and tests and routes).</p>
 	<p>In the blank file, we need to create a controller class.</p>
 
 
-Type <code>cla</code> and <span class="caps">TAB</span>, and select &#8220;Create controller class&#8221;. Type <code>Posts</code> and <span class="caps">TAB</span>,
-<code>post</code> and <span class="caps">TAB</span>, and finally, <code>Post</code> and <span class="caps">TAB</span>. This leaves the cursor in the middle
+Type <code>cla</code> and &#x21E5;, and select &#8220;Create controller class&#8221;. Type <code>Posts</code> and &#x21E5;,
+<code>post</code> and &#x21E5;, and finally, <code>Post</code> and &#x21E5;. This leaves the cursor in the middle
 of the generated class:
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">PostsController</span> <span class="punct">&lt;</span> <span class="constant">ApplicationController</span>
@@ -469,13 +469,13 @@ DownArrow) and select &#8216;Functional Test&#8217;. This will create
 a blank file.</p>
 
 
-	<p>Type <code>cla</code> and <span class="caps">TAB</span>, and select &#8220;Create functional test class&#8221;.
-Type <code>Posts</code> and <span class="caps">TAB</span>. (The functional test class name
+	<p>Type <code>cla</code> and &#x21E5;, and select &#8220;Create functional test class&#8221;.
+Type <code>Posts</code> and &#x21E5;. (The functional test class name
 should match the controller class, with <code>Test</code> suffixed to it).</p>
 
 
 	<p>The functional test class snippet gives you a <code>deft</code> stub. If you
-press <span class="caps">TAB</span> now, it creates a generic test method snippet:</p>
+press &#x21E5; now, it creates a generic test method snippet:</p>
 
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">test_case_name</span>
@@ -491,8 +491,8 @@ Create a test for the <code>index</code>, <code>new</code> and <code>edit</code>
 <code>index</code> and <code>new</code>, we can delete the <code>@model = models(:fixture_name)</code>,
 etc parts.
 
-To test for the <code>create</code> action, type <code>deftp</code> and <span class="caps">TAB</span>. Type
-<code>post</code> and <span class="caps">TAB</span>, and <span class="caps">DELETE</span> and <span class="caps">TAB</span>, and <span class="caps">DELETE</span> and <span class="caps">TAB</span>.
+To test for the <code>create</code> action, type <code>deftp</code> and &#x21E5;. Type
+<code>post</code> and &#x21E5;, and &#x2326; and &#x21E5;, and &#x2326; and &#x21E5;.
 Now enter in a hash of the values to pass in for the test,
 say <code>:subject =&gt; 'Test', :body =&gt; 'Some body', :published =&gt; '1'</code>
 
@@ -527,7 +527,7 @@ use resourceful routes:</p>
 use resourceful routes, like <code>link_to</code> and <code>redirect_to</code>.</p>
 
 
-	<p>Type <code>artpp</code> and <span class="caps">TAB</span>, and type <code>post</code>, to assert that the <code>create</code>
+	<p>Type <code>artpp</code> and &#x21E5;, and type <code>post</code>, to assert that the <code>create</code>
 action must redirect to the index page.</p>
 
 
@@ -584,7 +584,7 @@ with <code>def</code> snippet:</p>
 and use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+DownArrow)
 and select &#8216;View&#8217;. A dialog box will pop up asking for the name of the new
 template (as there are no <code>app/views/posts/index*</code> files). By default, the
-suffix is now <code>.html.erb</code> rather than the old <code>.rhtml</code>. Press <span class="caps">RETURN</span>,
+suffix is now <code>.html.erb</code> rather than the old <code>.rhtml</code>. Press &#x21A9;,
 to accept <code>index.html.erb</code> as your template name.</p>
 
 
@@ -592,7 +592,7 @@ to accept <code>index.html.erb</code> as your template name.</p>
 
 
 	<p>Type <code>table</code> and Ctrl+&lt; to generate <code>&lt;table&gt;&lt;/table&gt;</code>, and
-press <span class="caps">RETURN</span> to put the tags on separate lines.</p>
+press &#x21A9; to put the tags on separate lines.</p>
 
 
 	<p>Do the same to create a <code>&lt;tbody&gt;&lt;/tbody&gt;</code> element.</p>
@@ -606,7 +606,7 @@ one per <code>&lt;tr&gt;&lt;/tr&gt;</code> row.</p>
 type <code>@posts.each do |post|</code>.</p>
 
 
-	<p>On the next line, type <code>end</code> and <span class="caps">TAB</span>, to create <code>&lt;% end -%&gt;</code>.
+	<p>On the next line, type <code>end</code> and &#x21E5;, to create <code>&lt;% end -%&gt;</code>.
 We now have a Ruby block within this ERb template.</p>
 
 
@@ -638,11 +638,11 @@ the selected text inside <code>&lt;%= @post.selected %&gt;</code>.</p>
 
 	<p>Place the cursor inside the <code>new</code> method,
 and use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+DownArrow)
-and select &#8216;View&#8217;. Press <span class="caps">RETURN</span> to accept <code>new.html.erb</code>.</p>
+and select &#8216;View&#8217;. Press &#x21A9; to accept <code>new.html.erb</code>.</p>
 
 
-	<p>Inside the blank <code>new.html.erb</code> file, type <code>ffe</code> and press <span class="caps">TAB</span>, and type <code>post</code>
-and press <span class="caps">TAB</span>, twice:</p>
+	<p>Inside the blank <code>new.html.erb</code> file, type <code>ffe</code> and press &#x21E5;, and type <code>post</code>
+and press &#x21E5;, twice:</p>
 
 
 	<p><pre class='syntax'>&lt;%= error_messages_for :post %&gt;
@@ -658,10 +658,10 @@ snippets; the former does not have the error messages section.
 	<p>To create a label and text field for the <code>subject</code> attribute:</p>
 
 
-	<p>Press Shift+Ctrl+W, and press <span class="caps">TAB</span> and press <span class="caps">RETURN</span>, to create a <code>&lt;p&gt;&lt;/p&gt;</code> block.
-Type <code>f.</code> and <span class="caps">TAB</span>, and select &#8220;Label&#8221;. Type <code>subject</code>, press <span class="caps">TAB</span> and press <span class="caps">DELETE</span>.
-To create a <code>&lt;br/&gt;</code>, press Ctrl+RETURN.
-Type <code>f.</code> and <span class="caps">TAB</span>, and select &#8220;Check box&#8221;. Type <code>subject</code>.</p>
+	<p>Press Shift+Ctrl+W, and press &#x21E5; and press &#x21A9;, to create a <code>&lt;p&gt;&lt;/p&gt;</code> block.
+Type <code>f.</code> and &#x21E5;, and select &#8220;Label&#8221;. Type <code>subject</code>, press &#x21E5; and press &#x2326;.
+To create a <code>&lt;br/&gt;</code>, press Ctrl+&#x21A9;.
+Type <code>f.</code> and &#x21E5;, and select &#8220;Check box&#8221;. Type <code>subject</code>.</p>
 
 
 	<p>This gives us:</p>
@@ -679,7 +679,7 @@ Type <code>f.</code> and <span class="caps">TAB</span>, and select &#8220;Check 
 	<p>Now repeat for <code>body</code> and <code>published</code> fields.</p>
 
 
-	<p>Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by TABbing
+	<p>Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by &#x21E5;bing
 into the default string file.</p>
 
 
@@ -723,7 +723,7 @@ template.</p>
 
 
 	<p>Select the entire form (Cmd+A), and press Shift+Ctrl+H and a dialog box appears.
-Type in <code>form</code> and press <span class="caps">RETURN</span>.</p>
+Type in <code>form</code> and press &#x21A9;.</p>
 
 
 	<p>The form is replaced by:</p>
@@ -761,8 +761,8 @@ will be the <code>index</code> action, and will be accessible via the resources 
 	<p>The tab stop points are in useful places.</p>
 
 
-So, to create our link to the posts page, type <code>lipp</code> and <span class="caps">TAB</span>, type
-<code>Show all posts</code>, press <span class="caps">TAB</span> and type <code>post</code>.
+So, to create our link to the posts page, type <code>lipp</code> and &#x21E5;, type
+<code>Show all posts</code>, press &#x21E5; and type <code>post</code>.
 
 	<h2>Controllers: <code>respond_to</code> and <code>redirect_to</code></h2>
 
@@ -771,8 +771,8 @@ So, to create our link to the posts page, type <code>lipp</code> and <span class
 Shift+Alt+Cmd+DownArrow and select &#8220;Controller&#8221; to go there.</p>
 
 
-Within the class, go to the end, and type <code>def</code> and <span class="caps">TAB</span>, and type
-<code>create</code> and <span class="caps">TAB</span>. Now fill out the <code>create</code> action like:
+Within the class, go to the end, and type <code>def</code> and &#x21E5;, and type
+<code>create</code> and &#x21E5;. Now fill out the <code>create</code> action like:
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">create</span>
   <span class="attribute">@post</span> <span class="punct">=</span> <span class="constant">Post</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="ident">params</span><span class="punct">[</span><span class="symbol">:post</span><span class="punct">])</span>
@@ -785,7 +785,7 @@ Within the class, go to the end, and type <code>def</code> and <span class="caps
 
 
 	<p>Place the cursor in the <code>true</code> section of the <code>if</code> statement.
-Type <code>repp</code> and <span class="caps">TAB</span> to create a <code>redirect_to</code> expression. Replace
+Type <code>repp</code> and &#x21E5; to create a <code>redirect_to</code> expression. Replace
 the selected text with <code>post</code>.</p>
 
 
@@ -811,7 +811,7 @@ we don&#8217;t yet have an <code>index</code> action yet.</p>
 In the <code>false</code> section of the <code>if</code> expression, we&#8217;ll demonstrate the
 <code>respond_to</code> block. There are two ways to generate a <code>respond_to</code> block.
 
-	<p>Type <code>rst</code> and <span class="caps">TAB</span>, and you get a standard empty block you can work with:</p>
+	<p>Type <code>rst</code> and &#x21E5;, and you get a standard empty block you can work with:</p>
 
 
 	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
@@ -819,7 +819,7 @@ In the <code>false</code> section of the <code>if</code> expression, we&#8217;ll
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Inside the block, type <code>ra</code> and press <span class="caps">TAB</span>, then type <code>new</code>. The final block
+	<p>Inside the block, type <code>ra</code> and press &#x21E5;, then type <code>new</code>. The final block
 is:</p>
 
 
