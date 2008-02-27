@@ -30,13 +30,13 @@ If you put the cursor on the line after <code>t.text :body</code>, type <code>t.
 
 Note that another <code>t.</code> was created on the next line! Press TAB and the cursor will be placed after it. You can now press TAB again to create another column, or delete this line.
 
-Here, delete the extraneous <code>t.</code> line (SHIFT-CONTROL-K). And save the file (COMMAND-S).
+Here, delete the extraneous <code>t.</code> line (SHIFT CONTROL K). And save the file (COMMAND S).
 
 Run the migrations, either from the prompt:
 
     rake db:migrate
 
-or directly from the editor by pressing ^-| (Ctrl-Pipeline), and choosing option "Migrate to Current".
+or directly from the editor with ^ | (Ctrl-Pipeline), and choosing option "Migrate to Current".
 
 
 h2. Post fixtures
@@ -59,9 +59,9 @@ Create a controller for our blog, either via the command prompt:
 
     ruby script/generate controller blog
 
-or directly from the editor by pressing CONTROL-|, and choosing option "Call Generate Script", choose "Controller", give it the name "blog", and empty the list of actions.
+or directly from the editor with CONTROL |, and choosing option "Call Generate Script", choose "Controller", give it the name "blog", and empty the list of actions.
 
-Now open <code>blog_controller_test.rb</code>. To find this file quickly press COMMAND-T, enter bct, and select the file.
+Now open <code>blog_controller_test.rb</code>. To find this file quickly press COMMAND T, enter bct, and select the file.
 
 Note how much cleaner functional tests are now via <code>ActionController::TestCase</code>.
 
@@ -124,9 +124,9 @@ h2. Controller actions
 
 Now, to navigate to <code>blog_controller.rb</code> there are three options:
 
-* press SHIFT+OPTION+COMMAND+DOWN, and select "Controller" from the drop-down list
-* press OPTION+COMMAND+DOWN and you'll go directly to the controller (toggles btw the two files)
-* press COMMAND-T, press b, press c, and choose the file.
+* press SHIFT OPTION COMMAND DOWN, and select "Controller" from the drop-down list
+* press OPTION COMMAND DOWN and you'll go directly to the controller (toggles btw the two files)
+* press COMMAND T, press b, press c, and choose the file.
 
 Add the <code>index</code> action method:
 
@@ -136,11 +136,11 @@ end</pre>
 
 h2. Action views
 
-To create/navigate to the view, press SHIFT+OPTION+COMMAND+DOWN and select "View" (like above).
+To create/navigate to the view, press SHIFT OPTION COMMAND DOWN and select "View" (like above).
 
 As there is no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code>, but of course you can change that in the dialog box.
 
-If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the file before hitting SHIFT-OPTION-COMMAND-DOWN and selecting "View".
+If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the file before hitting SHIFT OPTION COMMAND DOWN and selecting "View".
 
 Press enter to accept <code>index.html.erb</code>. You are taken to the new file.
 
@@ -156,18 +156,18 @@ Inside the <code>div</code> element, type <code>for</code> and press TAB. This e
 
 Inside the for-loop, type: <code>div</code> and press TAB. Press BACKSPACE, and type <code> class='post'</code> and press TAB to enter the <code>div</code> element.
 
-Press CONTROL+> (greater-than) to create a <code><%=  %></code> element. If you press CONTROL+> again, it toggles to <code><%  %></code>, and then again and it becomes <code><%-  -%></code>, and again and it becomes <code><%#  %></code> (a Ruby comment). Pressing CONTROL+> again starts at <code><%=  %></code> again.
+Create a <code><%=  %></code> element (CONTROL >). If you press CONTROL > again, it toggles to <code><%  %></code>, and then again and it becomes <code><%-  -%></code>, and again and it becomes <code><%#  %></code> (a Ruby comment). Pressing CONTROL > again starts at <code><%=  %></code> again.
 
 Enter <code>post.body</code> within the ERb template field.
 
-Actually, we'll need to show the subject too, so above the <code><%= post.body %></code> line (press UP followed by COMMNNS-ENTER)
-type 'h3', and press CONTROL+< (LessThan), then CONTROL+> (GreatherThan), and <code>post.subject</code>.
+Actually, we'll need to show the subject too, so above the <code><%= post.body %></code> line (press UP followed by COMMAND ENTER)
+type 'h3', and press CONTROL < (LessThan), then CONTROL > (GreatherThan), and <code>post.subject</code>.
 
 The resulting line is: <code><h3><%= post.subject %></h3></code>
 
 Move the cursor down between <code><% else %></code> and <code><% end %></code>.
 
-Press SHIFT+CONTROL+W or CONTROL+< (LessThan) to create a simple element <code><p></p></code>. You can change the element type here. Just press TAB to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.
+Create a simple element <code><p></p></code> (SHIFT CONTROL W or CONTROL <). You can change the element type here. Just press TAB to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.
 
 Our <code>index.html.erb</code> template is now:
 
@@ -185,7 +185,7 @@ Our <code>index.html.erb</code> template is now:
 
 </div></pre>
 
-If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing CONTROL+\ and press 2 for "Test Functionals"
+If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing CONTROL \ and press 2 for "Test Functionals"
 
 As yet, we have no way for users to leave comments.
 

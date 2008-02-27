@@ -73,7 +73,7 @@ mate .</pre>
 	<p>Note that another <code>t.</code> was created on the next line! Press &#x21E5; and the cursor will be placed after it. You can now press &#x21E5; again to create another column, or delete this line.</p>
 
 
-	<p>Here, delete the extraneous <code>t.</code> line (&#x21E7;-&#x2303;-K). And save the file (&#x2318;-S).</p>
+	<p>Here, delete the extraneous <code>t.</code> line (&#x21E7; &#x2303; K). And save the file (&#x2318; S).</p>
 
 
 	<p>Run the migrations, either from the prompt:</p>
@@ -82,7 +82,7 @@ mate .</pre>
 	<pre><code>rake db:migrate</code></pre>
 
 
-	<p>or directly from the editor by pressing ^-| (Ctrl-Pipeline), and choosing option &#8220;Migrate to Current&#8221;.</p>
+	<p>or directly from the editor with ^ | (Ctrl-Pipeline), and choosing option &#8220;Migrate to Current&#8221;.</p>
 
 
 	<h2>Post fixtures</h2>
@@ -112,10 +112,10 @@ mate .</pre>
 	<pre><code>ruby script/generate controller blog</code></pre>
 
 
-	<p>or directly from the editor by pressing &#x2303;-|, and choosing option &#8220;Call Generate Script&#8221;, choose &#8220;Controller&#8221;, give it the name &#8220;blog&#8221;, and empty the list of actions.</p>
+	<p>or directly from the editor with &#x2303; |, and choosing option &#8220;Call Generate Script&#8221;, choose &#8220;Controller&#8221;, give it the name &#8220;blog&#8221;, and empty the list of actions.</p>
 
 
-	<p>Now open <code>blog_controller_test.rb</code>. To find this file quickly press &#x2318;-T, enter bct, and select the file.</p>
+	<p>Now open <code>blog_controller_test.rb</code>. To find this file quickly press &#x2318; T, enter bct, and select the file.</p>
 
 
 	<p>Note how much cleaner functional tests are now via <code>ActionController::TestCase</code>.</p>
@@ -201,9 +201,9 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 
 
 	<ul>
-	<li>press &#x21E7;<ins>&#x2325;</ins>&#x2318;+&#x2193;, and select &#8220;Controller&#8221; from the drop-down list</li>
-		<li>press &#x2325;<ins>&#x2318;</ins>&#x2193; and you&#8217;ll go directly to the controller (toggles btw the two files)</li>
-		<li>press &#x2318;-T, press b, press c, and choose the file.</li>
+	<li>press &#x21E7; &#x2325; &#x2318; &#x2193;, and select &#8220;Controller&#8221; from the drop-down list</li>
+		<li>press &#x2325; &#x2318; &#x2193; and you&#8217;ll go directly to the controller (toggles btw the two files)</li>
+		<li>press &#x2318; T, press b, press c, and choose the file.</li>
 	</ul>
 
 
@@ -218,13 +218,13 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<h2>Action views</h2>
 
 
-	<p>To create/navigate to the view, press &#x21E7;<ins>&#x2325;</ins>&#x2318;+&#x2193; and select &#8220;View&#8221; (like above).</p>
+	<p>To create/navigate to the view, press &#x21E7; &#x2325; &#x2318; &#x2193; and select &#8220;View&#8221; (like above).</p>
 
 
 	<p>As there is no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code>, but of course you can change that in the dialog box.</p>
 
 
-	<p>If instead you got the message &#8220;blog_controller.rb does not have a view&#8221;, note that you first need to save the file before hitting &#x21E7;<del>&#x2325;</del>&#x2318;-&#x2193; and selecting &#8220;View&#8221;.</p>
+	<p>If instead you got the message &#8220;blog_controller.rb does not have a view&#8221;, note that you first need to save the file before hitting &#x21E7; &#x2325; &#x2318; &#x2193; and selecting &#8220;View&#8221;.</p>
 
 
 	<p>Press enter to accept <code>index.html.erb</code>. You are taken to the new file.</p>
@@ -247,14 +247,14 @@ To memorize: <code>deftg</code> stands for <code>define test get</code> and <cod
 	<p>Inside the for-loop, type: <code>div</code> and press &#x21E5;. Press &#x232B;, and type <code> class='post'</code> and press &#x21E5; to enter the <code>div</code> element.</p>
 
 
-	<p>Press &#x2303;<ins>&gt; (greater-than) to create a <code>&lt;%=  %&gt;</code> element. If you press &#x2303;</ins>&gt; again, it toggles to <code>&lt;%  %&gt;</code>, and then again and it becomes <code>&lt;%-  -%&gt;</code>, and again and it becomes <code>&lt;%#  %&gt;</code> (a Ruby comment). Pressing &#x2303;+&gt; again starts at <code>&lt;%=  %&gt;</code> again.</p>
+	<p>Create a <code>&lt;%=  %&gt;</code> element (&#x2303; &gt;). If you press &#x2303; &gt; again, it toggles to <code>&lt;%  %&gt;</code>, and then again and it becomes <code>&lt;%-  -%&gt;</code>, and again and it becomes <code>&lt;%#  %&gt;</code> (a Ruby comment). Pressing &#x2303; &gt; again starts at <code>&lt;%=  %&gt;</code> again.</p>
 
 
 	<p>Enter <code>post.body</code> within the ERb template field.</p>
 
 
-	<p>Actually, we&#8217;ll need to show the subject too, so above the <code>&lt;%= post.body %&gt;</code> line (press &#x2191; followed by <span class="caps">COMMNNS</span>-ENTER)
-type &#8216;h3&#8217;, and press &#x2303;<ins>&lt; (LessThan), then &#x2303;</ins>&gt; (GreatherThan), and <code>post.subject</code>.</p>
+	<p>Actually, we&#8217;ll need to show the subject too, so above the <code>&lt;%= post.body %&gt;</code> line (press &#x2191; followed by &#x2318; <span class="caps">ENTER</span>)
+type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (GreatherThan), and <code>post.subject</code>.</p>
 
 
 	<p>The resulting line is: <code>&lt;h3&gt;&lt;%= post.subject %&gt;&lt;/h3&gt;</code></p>
@@ -263,7 +263,7 @@ type &#8216;h3&#8217;, and press &#x2303;<ins>&lt; (LessThan), then &#x2303;</in
 	<p>Move the cursor down between <code>&lt;% else %&gt;</code> and <code>&lt;% end %&gt;</code>.</p>
 
 
-	<p>Press &#x21E7;<ins>&#x2303;+W or &#x2303;</ins>&lt; (LessThan) to create a simple element <code>&lt;p&gt;&lt;/p&gt;</code>. You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
+	<p>Create a simple element <code>&lt;p&gt;&lt;/p&gt;</code> (&#x21E7; &#x2303; W or &#x2303; &lt;). You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
 
 
 	<p>Our <code>index.html.erb</code> template is now:</p>
@@ -284,7 +284,7 @@ type &#8216;h3&#8217;, and press &#x2303;<ins>&lt; (LessThan), then &#x2303;</in
 &lt;/div&gt;</pre></p>
 
 
-	<p>If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing &#x2303;+\ and press 2 for &#8220;Test Functionals&#8221;</p>
+	<p>If we run our functional tests they now pass: run either from the command prompt with <code>rake test:functionals</code> or directly from the editor by pressing &#x2303; \ and press 2 for &#8220;Test Functionals&#8221;</p>
 
 
 	<p>As yet, we have no way for users to leave comments.</p>
