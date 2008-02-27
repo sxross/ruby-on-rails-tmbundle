@@ -257,9 +257,9 @@ end</pre>
 
 Now go to the <code>Post</code> class. Press COMMAND T and type <code>post</code> and select the model file, and press RETURN.
 
-Create a new line within the <code>Post</code> class (COMMAND RETURN). Type <code>hm</code> and press TAB to generate a <code>has_many</code> association. Type <code>comments</code>, and the resulting snippet is:
+Create a new line within the <code>Post</code> class (COMMAND RETURN). Type <code>hm</code> and press TAB to generate a <code>has_many</code> association. Type <code>comment</code>, and the resulting snippet is:
 
-<pre syntax="ruby">has_many :comments, :class_name => "ClassName", :foreign_key => "class_name_id"</pre>
+<pre syntax="ruby">has_many :comments, :class_name => "comment", :foreign_key => "class_name_id"</pre>
 
 We don't need the options. So press TAB once and then BACKSPACE.
 
