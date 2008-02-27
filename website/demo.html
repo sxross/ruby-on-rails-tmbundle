@@ -599,8 +599,8 @@ create a <code>&lt;td&gt;&lt;/td&gt;</code> element. We&#8217;ll skip over anyth
 here, and just put the post&#8217;s subject here.</p>
 
 
-	<p>Type <code>@post.subject</code> and select it. Now press &#x2303; &gt; to wrap
-the selected text inside <code>&lt;%= @post.selected %&gt;</code>.</p>
+	<p>Type <code>post.subject</code> and select it. Now press &#x2303; &gt; to wrap
+the selected text inside <code>&lt;%= post.subject %&gt;</code>.</p>
 
 
 	<p>The resulting <code>index.html.erb</code> is:</p>
@@ -750,11 +750,10 @@ So, to create our link to the posts page, type <code>lipp</code> and &#x21E5;, t
 	<h2>Controllers: <code>respond_to</code> and <code>redirect_to</code></h2>
 
 
-	<p>Now we&#8217;ll add a <code>create</code> action to the <code>posts_controller.rb</code>. Press
-Shift+Alt+Cmd+DownArrow and select &#8220;Controller&#8221; to go there.</p>
+	<p>Now we&#8217;ll add a <code>create</code> action to the <code>posts_controller.rb</code>. Let&#8217;s go there (&#x2325; &#x2318; &#x2193;).</p>
 
 
-Within the class, go to the end, and type <code>def</code> and &#x21E5;, and type
+Below the <code>edit</code> method type <code>def</code> and &#x21E5;, and type
 <code>create</code> and &#x21E5;. Now fill out the <code>create</code> action like:
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">create</span>
@@ -768,8 +767,8 @@ Within the class, go to the end, and type <code>def</code> and &#x21E5;, and typ
 
 
 	<p>Place the cursor in the <code>true</code> section of the <code>if</code> statement.
-Type <code>repp</code> and &#x21E5; to create a <code>redirect_to</code> expression. Replace
-the selected text with <code>post</code>.</p>
+Type <code>repp</code> and &#x21E5; to create a <code>redirect_to</code> expression. Press &#x21E5;
+again and replace the selected text with <code>post</code>.</p>
 
 
 	<p>Like the various <code>link_to</code> snippets, there are matching <code>redirect_to</code>
@@ -787,45 +786,41 @@ snippets.</p>
 	<p>There are tab stops in useful places.</p>
 
 
-	<p>We&#8217;re going with <code>redirect_to(posts_path)</code> here, even though
-we don&#8217;t yet have an <code>index</code> action yet.</p>
-
-
 In the <code>false</code> section of the <code>if</code> expression, we&#8217;ll demonstrate the
 <code>respond_to</code> block. There are two ways to generate a <code>respond_to</code> block.
 
-	<p>Type <code>rst</code> and &#x21E5;, and you get a standard empty block you can work with:</p>
+	<p>Type <code>rest</code> and &#x21E5;, and you get a standard empty block you can work with:</p>
 
 
-	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-
+	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span>  <span class="punct">}</span>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Inside the block, type <code>ra</code> and press &#x21E5;, then type <code>new</code>. The final block
-is:</p>
+	<p>Press &#x21E5; twice to get inside the <code>wants.html</code> block, type <code>ra</code>, press &#x21E5;, then type <code>new</code>. The final block is:</p>
 
 
-	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-  <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span>
+	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span> <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span> <span class="punct">}</span>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Alternately, there is the &#8220;upgrade&#8221; hot key. Where you can convert some
+	<p>Alternately, there is the &#8220;upgrade&#8221; hot key (&#x21E7; &#x2318; H), where you can convert some
 existing selected code, into a <code>respond_to</code> block.</p>
 
 
 Select the whole line containing the <code>redirect_to</code> expression from the
-<code>true</code> section of the <code>if</code> statement.
+<code>true</code> section of the <code>if</code> statement (&#x21E7; &#x2318; L).
 
-	<p>Press Shift+Cmd+R (TODO &#8211; a better hot key?) and the line is replaced
-with:</p>
+	<p>Press &#x21E7; &#x2318; H and the line is replaced with:</p>
 
 
-	<p><pre class='syntax'><span class="ident">format</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
-  <span class="ident">redirect_to</span><span class="punct">(</span><span class="attribute">@post</span><span class="punct">)</span>
-<span class="keyword">end</span>
-<span class="ident">format</span><span class="punct">.</span><span class="ident">js</span> <span class="punct">{</span>  <span class="punct">}</span></pre></p>
+	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
+    <span class="ident">redirect_to</span><span class="punct">(</span><span class="ident">posts_path</span><span class="punct">)</span>
+  <span class="keyword">end</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">js</span> <span class="punct">{</span>  <span class="punct">}</span>
+<span class="keyword">end</span></pre></p>
 
 
 	<p>The <code>js</code> is the first tab stop. The point of this hot key is to instantly
@@ -833,7 +828,7 @@ refactor your existing html respond code, and support a second response
 format.</p>
 
 
-	<p>Select the whole <code>format.js</code> line (Shift+Cmd+L) and delete it.</p>
+	<p>For now remove the line with <code>wants.js</code> (&#x21E7; &#x2303; K).</p>
 
 
 	<p>The completed <code>create</code> action is:</p>
@@ -842,16 +837,16 @@ format.</p>
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">create</span>
   <span class="attribute">@post</span> <span class="punct">=</span> <span class="constant">Post</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="ident">params</span><span class="punct">[</span><span class="symbol">:post</span><span class="punct">])</span>
   <span class="keyword">if</span> <span class="attribute">@post</span><span class="punct">.</span><span class="ident">save</span>
-    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-      <span class="ident">format</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
+    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+      <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
         <span class="ident">redirect_to</span><span class="punct">(</span><span class="ident">posts_path</span><span class="punct">)</span>
       <span class="keyword">end</span>
     <span class="keyword">end</span>
   <span class="keyword">else</span>
-    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-      <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span>
+    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+      <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span> <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span> <span class="punct">}</span>
     <span class="keyword">end</span>
-  <span class="keyword">end</span>
+  <span class="keyword">end</span>    
 <span class="keyword">end</span></pre></p>
 
 
@@ -862,10 +857,8 @@ demo so I am taking the scenic route.</p>
 	<h2>Our application so far</h2>
 
 
-	<p>In the browser, we can create posts via</p>
-
-
-	<p>and then view them as a blog visitor at</p>
+	<p>In the browser, we can create posts via <a href="http://localhost:3000/posts/new">http://localhost:3000/posts/new</a>
+and then view them as a blog visitor at <a href="http://localhost:3000/blog">http://localhost:3000/blog</a>.</p>
 
 
 	<h1><span class="caps">TODO</span></h1>
