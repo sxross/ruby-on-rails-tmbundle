@@ -869,7 +869,7 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
 	<h2>Some more migrations</h2>
 
 
-	<p>We&#8217;re looking for the following additions:                  </p>
+	<p>We&#8217;re looking for the following additions:</p>
 
 
 	<ul>
@@ -903,17 +903,59 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
     <span class="ident">remove_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author_url</span>
     <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author</span><span class="punct">,</span> <span class="symbol">:name</span>
   <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre></p>
+<span class="keyword">end</span></pre></p>
 
 
 	<p>Notice how the <code>down</code> method calls are in reversed order of the <code>up</code> method calls.</p>
+
+
+	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |, option 3).</p>
+
+
+	<p>Be sure to modify the comments fixture file. Go there (&#x2318; T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (&#x2303; \, choose option 1). All tests should pass.</p>
+
+
+	<p>Futhermore we&#8217;d like to know when a post was published. To do this we&#8217;ll want the following modifications:</p>
 
 
 	<ul>
 	<li>keep track of the datetime when a post was published.</li>
 		<li>remove the column published from the posts table because it can be determined if a post is published by looking at whether or not a value is present for the published date.</li>
 	</ul>
+
+
+	<p>Start Quick Migration (&#x2303; &#x21E7; M). Let&#8217;s name it <code>AddPublishedAtForPosts</code>. A new migrations file <code>004_add_published_at_for_posts.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. Again delete <code>mtab</code> and instead enter <code>mcol</code> and press &#x21E5;. Choose <code>Add / Remove Column</code> (1). Type <code>posts</code> &#x21E5; <code>published_at</code> &#x21E5; <code>datetime</code> &#x21E5; and &#x21A9;.</p>
+
+
+	<p>Again type <code>mcol</code> and &#x21E5;. Choose <code>Remove / Add Column</code> (5). Type <code>posts</code> &#x21E5; <code>published</code> and press &#x21E5; twice.</p>
+
+
+	<p>The end result looks like this:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">class </span><span class="class">AddPublishedAtForPosts</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Migration</span>
+  <span class="keyword">def </span><span class="method">self.up</span>
+    <span class="ident">add_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published_at</span><span class="punct">,</span> <span class="symbol">:datetime</span>
+    <span class="ident">remove_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">self.down</span>
+    <span class="ident">add_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published</span><span class="punct">,</span> <span class="symbol">:boolean</span>
+    <span class="ident">remove_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published_at</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.</p>
+
+
+	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |, option 3).</p>
+
+
+	<p>Now we need to modify the posts fixtures file. Go there (&#x2318; T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>.</p>
+
+
+	<p>Modify the posts functional test, first go there (&#x21E7; &#x2325; &#x2318; &#x2193;, choose &#8220;Go to Functional Test&#8221;). Replace <code>:published =&gt; '1'</code> by <code>:published_at =&gt; Date.new(2008, 1, 1)</code>.</p>
 
 
 	<h1><span class="caps">TODO</span></h1>
