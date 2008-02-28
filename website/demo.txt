@@ -61,7 +61,7 @@ Create a controller for our blog, either via the command prompt:
 
 or directly from the editor with CONTROL |, and choosing option "Call Generate Script", choose "Controller", give it the name "blog", and empty the list of actions.
 
-Now open <code>blog_controller_test.rb</code>. To find this file quickly press COMMAND T, enter bct, and select the file.
+Now open <code>blog_controller_test.rb</code>. To find this file quickly press COMMAND T, type <code>bct</code>, and select the file.
 
 Note how much cleaner functional tests are now via <code>ActionController::TestCase</code>.
 
