@@ -672,7 +672,7 @@ end</pre>
 
 Notice how the <code>down</code> method calls are in reversed order of the <code>up</code> method calls.
 
-Save the file (COMMAND S) and migrate to current (CONTROL |, option 3).
+Save the file (COMMAND S) and migrate to current (CONTROL |).
 
 Be sure to modify the comments fixture file. Go there (COMMAND T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (CONTROL \, choose option 1). All tests should pass. 
                       
@@ -701,11 +701,34 @@ end</pre>
 
 Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.   
                                
-Save the file (COMMAND S) and migrate to current (CONTROL |, option 3).
+Save the file (COMMAND S) and migrate to current (CONTROL |).
 
 Now we need to modify the posts fixtures file. Go there (COMMAND T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>. 
 
-Modify the posts functional test, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Functional Test"). Replace <code>:published => '1'</code> by <code>:published_at => Date.new(2008, 1, 1)</code>.
+Modify the posts functional test, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Functional Test"). Replace <code>:published => '1'</code> by <code>:published_at => Date.new(2008, 1, 1)</code>. 
+
+Modify the post model, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Model"). Have the code look like:
+
+<pre syntax="ruby">class Post < ActiveRecord::Base
+  has_many :comments        
+  
+  def published
+    !self.published_at.nil?
+  end
+  
+  def published=(publish)
+    if publish 
+      self.published_at = DateTime.now if self.published_at.nil?
+    else
+      self.published_at = nil
+    end
+  end
+end</pre>
+      
+Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions => "published_at IS NOT NULL")</code>.           
+                                                 
+Finally, check your tests again (CONTROL \). All tests should pass.  
+
 
 h1. TODO
 
