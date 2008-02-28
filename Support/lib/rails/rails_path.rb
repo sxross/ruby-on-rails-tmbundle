@@ -89,7 +89,7 @@ class RailsPath
   end     
   
   def append(str)
-    File.open(@filepath, "w") { |f| f.write str }          
+    File.open(@filepath, "a") { |f| f.write str }          
   end
 
   def controller_name
