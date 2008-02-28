@@ -24,8 +24,15 @@ elsif rails_path = current_file.rails_path_for(choice.to_sym)
     end
   end
   
-  if !rails_path.exists?
+  if !rails_path.exists? 
     rails_path.touch
+    if choice.to_sym == :helper
+      generated_code = <<-RUBY
+module #{rails_path.controller_name.camelize}Helper
+end
+RUBY
+      rails_path.append generated_code
+    end
     TextMate.refresh_project_drawer
   end
  
