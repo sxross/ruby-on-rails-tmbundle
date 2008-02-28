@@ -12,6 +12,21 @@ require 'rails/inflector'
 require 'fileutils'
 
 module AssociationMessages
+  @@associations = {
+    :controller => [:functional_test, :helper, :model, :javascript, :stylesheet, :fixture],
+    :helper => [:controller, :model, :unit_test, :functional_test, :javascript, :stylesheet, :fixture],
+    :view => [:controller, :javascript, :stylesheet, :helper, :model],
+    :model => [:unit_test, :functional_test, :controller, :helper, :fixture],
+    :fixture => [:unit_test, :functional_test, :controller, :helper, :model],
+    :functional_test => [:controller, :helper, :model, :unit_test, :fixture],
+    :unit_test => [:model, :controller, :helper, :functional_test, :fixture],
+    :javascript => [:helper, :controller],
+    :stylesheet => [:helper, :controller] 
+  }
+
+  # Make associations hash publicly available to each object
+  def associations; self.class.class_eval("@@associations") end
+
   # Return associated_with_*? methods
   def method_missing(method, *args)
     case method.to_s
@@ -20,21 +35,14 @@ module AssociationMessages
     else
       super(method, *args)
     end
+  end    
+  
+  def best_match  
+    return nil if associations[file_type].nil?    
+    return :view if file_type == :controller && action_name
+    associations[file_type].each { |x| return x if rails_path_for(x).exists? }
+    return associations[file_type].first
   end
-
-  @@associations = {
-    :controller => [:view, :helper, :functional_test, :model, :javascript, :stylesheet, :fixture],
-    :helper => [:controller, :model, :unit_test, :functional_test, :javascript, :stylesheet, :fixture],
-    :view => [:controller, :javascript, :stylesheet, :helper, :model],
-    :model => [:unit_test, :functional_test, :controller, :helper, :fixture],
-    :fixture => [:unit_test, :functional_test, :controller, :helper, :model],
-    :functional_test => [:controller, :helper, :model, :unit_test, :fixture],
-    :unit_test => [:model, :controller, :helper, :model, :functional_test, :fixture],
-    :javascript => [:helper, :controller],
-    :stylesheet => [:helper, :controller] }
-
-  # Make associations hash publicly available to each object
-  def associations; self.class.class_eval("@@associations") end
 end
 
 class RailsPath
@@ -244,9 +252,8 @@ class RailsPath
     line, view_format = respond_to_format
     view_format ||= 'html'
 
-    file_exists = false
     VIEW_EXTENSIONS.each do |ext|
-      filename_with_extension = action_name + "." + ext
+      filename_with_extension = "#{action_name}.#{ext}"
       existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
       return RailsPath.new(existing_view) if File.exist?(existing_view)
     end
