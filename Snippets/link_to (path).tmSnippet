@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= link_to "${1:link text...}", ${2:${12:model}_path(${13:@}${14:${12}})} %&gt;</string>
+	<string>&lt;%= link_to ${1:"${2:link text...}"}, ${3:${12:model}_path(${13:@}${14:${12}})} %&gt;</string>
 	<key>name</key>
 	<string>link_to (path)</string>
 	<key>scope</key>
