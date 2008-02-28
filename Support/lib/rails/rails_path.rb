@@ -11,37 +11,9 @@ require 'rails/buffer'
 require 'rails/inflector'  
 require 'fileutils'
 
-module AssociationMessages
-  # Return associated_with_*? methods
-  def method_missing(method, *args)
-    case method.to_s
-    when /^associated_with_(.+)\?$/
-      return associations[$1.to_sym].include?(file_type)
-    else
-      super(method, *args)
-    end
-  end
-
-  @@associations = {
-    :controller => [:view, :helper, :functional_test, :javascript, :stylesheet],
-    :helper => [:controller, :unit_test, :javascript, :stylesheet],
-    :view => [:controller, :javascript, :stylesheet, :model],
-    :model => [:unit_test, :fixture, :view],
-    :fixture => [:unit_test, :model],
-    :functional_test => [:controller],
-    :unit_test => [:model, :helper],
-    :javascript => [:helper, :controller],
-    :stylesheet => [:helper, :controller] }
-
-  # Make associations hash publicly available to each object
-  def associations; self.class.class_eval("@@associations") end
-end
-
 class RailsPath
   attr_reader :filepath  
   attr_reader :path_name, :file_name, :content_type, :extension
-
-  include AssociationMessages
 
   def initialize(filepath = TextMate.filepath)
     if filepath[0..0] == '/'
