@@ -184,5 +184,22 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal('new', current_file.file_name)
     assert_equal('html', current_file.content_type)
     assert_equal('erb', current_file.extension)
+  end              
+  
+  def test_best_match
+    assert_equal(nil, RailsPath.new(FIXTURE_PATH + '/config/boot.rb').best_match)
+    assert_equal(:functional_test, RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb').best_match)   
+    assert_equal(:model, RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb').best_match)   
+    assert_equal(:functional_test, RailsPath.new(FIXTURE_PATH + '/app/controllers/admin/base_controller.rb').best_match)   
+   
+    TextMate.line_number = '3' # edit action
+    assert_equal(:view, RailsPath.new(FIXTURE_PATH + '/app/controllers/admin/base_controller.rb').best_match)   
+    TextMate.line_number = '0'
+    
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb').best_match)
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml').best_match)      
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/admin/base/action.html.erb').best_match)      
+    assert_equal(:model, RailsPath.new(FIXTURE_PATH + '/app/views/notifier/forgot_password.html.erb').best_match)      
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/books/new.haml').best_match)      
   end
 end
