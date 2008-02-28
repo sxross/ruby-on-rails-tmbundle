@@ -107,11 +107,11 @@ class RailsPath
     name =
       case file_type
       when :controller, :model
-        buffer.find_method(:direction => :backwards).last rescue nil
+        buffer.find_method(:direction => :backward).last rescue nil
       when :view
         basename
       when :functional_test
-        buffer.find_method(:direction => :backwards).last.sub('^test_', '')
+        buffer.find_method(:direction => :backward).last.sub('^test_', '')
       else nil
       end
 
@@ -120,9 +120,7 @@ class RailsPath
   
   def respond_to_format
     return nil unless file_type == :controller
-    method_line_start = buffer.find_method(:direction => :backwards).first
-    buffer.find_respond_to_format(:direction => :backwards, 
-      :from => method_line_start, :to => TextMate.line_number)
+    buffer.find_respond_to_format
   end
 
   def rails_root
@@ -219,17 +217,25 @@ class RailsPath
     controller_names
   end
 
-  def default_extension_for(type, view_format = "html")
+  def default_extension_for(type, view_format = nil)
     case type
     when :javascript then ENV['RAILS_JS_EXT'] || '.js'
     when :stylesheet then ENV['RAILS_CSS_EXT'] || '.css'
-    when :view       then ENV['RAILS_VIEW_EXT'] || begin
-      case view_format.to_sym
-      when :xml then '.xml.builder'
-      when :js  then '.js.rjs'
-      else           ".#{view_format}.erb"
+    when :view       then 
+      begin
+        if ENV['RAILS_VIEW_EXT']
+          view_format ? ".#{view_format}#{ENV['RAILS_VIEW_EXT']}" : ENV['RAILS_VIEW_EXT']
+        else
+          if view_format.nil?
+            view_format = :html
+          end 
+          case view_format.to_sym
+          when :xml then '.xml.builder'
+          when :js  then '.js.rjs'
+          else           ".#{view_format}.erb"
+          end
+        end
       end
-    end
     when :fixture    then '.yml'
     else '.rb'
     end
@@ -248,33 +254,23 @@ class RailsPath
   end
 
   def rails_path_for_view
-    return nil if action_name.nil?
+    return nil if action_name.nil?        
     line, view_format = respond_to_format
-    view_format ||= 'html'
 
+    if view_format  
+      VIEW_EXTENSIONS.each do |ext|
+        filename_with_extension = "#{action_name}.#{view_format}.#{ext}"
+        existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
+        return RailsPath.new(existing_view) if File.exist?(existing_view)
+      end
+    end
     VIEW_EXTENSIONS.each do |ext|
       filename_with_extension = "#{action_name}.#{ext}"
       existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
       return RailsPath.new(existing_view) if File.exist?(existing_view)
     end
-    VIEW_EXTENSIONS.each do |ext|
-      filename_with_extension = "#{action_name}.#{view_format}.#{ext}"
-      existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
-      return RailsPath.new(existing_view) if File.exist?(existing_view)
-    end
     default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view, view_format))
     return RailsPath.new(default_view)
-  end
-  
-  def ask_for_view(default_name = action_name)
-    if designated_name = TextMate.input("Enter the name of the new view file:", default_name + default_extension_for(:view))
-      view_file = File.join(rails_root, stubs[:view], modules, controller_name, designated_name)
-      f = File.open(view_file, "w"); f.close
-      # FIXME: For some reason the following line freezes TextMate
-      # TextMate.refresh_project_drawer
-      return RailsPath.new(view_file)
-    end
-    return nil
   end
   
   def parse_file_parts
