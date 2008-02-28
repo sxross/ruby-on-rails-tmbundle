@@ -5,7 +5,11 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>open "$TM_BUNDLE_SUPPORT/../website/demo.html"
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+html_header "Ruby on Rails Bundle Help" "Rails"
+cat "$TM_BUNDLE_SUPPORT/../website/demo.html"
+html_footer
+
 </string>
 	<key>input</key>
 	<string>none</string>
@@ -14,7 +18,7 @@
 	<key>name</key>
 	<string>View demo help</string>
 	<key>output</key>
-	<string>discard</string>
+	<string>showAsHTML</string>
 	<key>scope</key>
 	<string>source.ruby.rails</string>
 	<key>uuid</key>
