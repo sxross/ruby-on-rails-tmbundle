@@ -86,6 +86,10 @@ class RailsPath
       FileUtils.mkdir_p dirname      
       FileUtils.touch @filepath
     end
+  end     
+  
+  def append(str)
+    File.open(@filepath, "w") { |f| f.write str }          
   end
 
   def controller_name
