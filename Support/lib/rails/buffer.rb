@@ -103,8 +103,8 @@ class Buffer
   def find_respond_to_format
     m = find_method 
     return nil if m.nil?
-    from, wants = find(:direction => :backward, :from => m.first) { %r{\brespond_to\s.+\|(\w+)\|} }
-    return nil if wants.nil?               
+    from, wants = find(:direction => :backward, :from => m.first) { %r{\brespond_to\s.+\|\s*(\w+)\s*\|} }
+    return nil if wants.nil?
     options = {:direction => lines[from] == current_line ? :forward : :backward, :from => from}
     find(options) { Regexp.new(wants + '\.(\w+)') }
   end
