@@ -909,7 +909,7 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
 	<p>Notice how the <code>down</code> method calls are in reversed order of the <code>up</code> method calls.</p>
 
 
-	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |, option 3).</p>
+	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |).</p>
 
 
 	<p>Be sure to modify the comments fixture file. Go there (&#x2318; T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (&#x2303; \, choose option 1). All tests should pass.</p>
@@ -949,13 +949,39 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
 	<p>Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.</p>
 
 
-	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |, option 3).</p>
+	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |).</p>
 
 
 	<p>Now we need to modify the posts fixtures file. Go there (&#x2318; T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>.</p>
 
 
 	<p>Modify the posts functional test, first go there (&#x21E7; &#x2325; &#x2318; &#x2193;, choose &#8220;Go to Functional Test&#8221;). Replace <code>:published =&gt; '1'</code> by <code>:published_at =&gt; Date.new(2008, 1, 1)</code>.</p>
+
+
+	<p>Modify the post model, first go there (&#x21E7; &#x2325; &#x2318; &#x2193;, choose &#8220;Go to Model&#8221;). Have the code look like:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Post</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
+  <span class="ident">has_many</span> <span class="symbol">:comments</span>        
+  
+  <span class="keyword">def </span><span class="method">published</span>
+    <span class="punct">!</span><span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span><span class="punct">.</span><span class="ident">nil?</span>
+  <span class="keyword">end</span>
+  
+  <span class="keyword">def </span><span class="method">published=</span><span class="punct">(</span><span class="ident">publish</span><span class="punct">)</span>
+    <span class="keyword">if</span> <span class="ident">publish</span> 
+      <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span> <span class="punct">=</span> <span class="constant">DateTime</span><span class="punct">.</span><span class="ident">now</span> <span class="keyword">if</span> <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span><span class="punct">.</span><span class="ident">nil?</span>
+    <span class="keyword">else</span>
+      <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span> <span class="punct">=</span> <span class="constant">nil</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions =&gt; "published_at IS NOT NULL")</code>.</p>
+
+
+	<p>Finally, check your tests again (&#x2303; \). All tests should pass.</p>
 
 
 	<h1><span class="caps">TODO</span></h1>
