@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= link_to "${1:link text...}", ${2:${10:parent}_${11:child}_path(${12:@}${13:${10}})} %&gt;</string>
+	<string>&lt;%= link_to ${1:"${2:link text...}"}, ${10:${3:parent}_${4:child}_path(${5:@}${6:${3}})} %&gt;</string>
 	<key>name</key>
 	<string>link_to (nested path plural)</string>
 	<key>scope</key>
