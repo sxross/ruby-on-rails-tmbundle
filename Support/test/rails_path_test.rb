@@ -75,6 +75,12 @@ class RailsPathTest < Test::Unit::TestCase
   def test_controller_name_suggestion_when_controller_absent
     rp = RailsPath.new(FIXTURE_PATH + '/app/views/people/new.html.erb')
     assert_equal "people", rp.controller_name
+  end              
+  
+  def test_respond_to_format
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb')  
+    TextMate.line_number = '13'
+    assert_equal [12, 'js'], current_file.respond_to_format           
   end
 
   def test_rails_path_for
