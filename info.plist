@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
@@ -51,6 +51,7 @@
 			<string>5CCEA099-4B20-4BC3-96B9-BD9BF57279F5</string>
 			<string>6E2BC67D-4CC8-47F1-AF7C-341D74E0F803</string>
 			<string>EE4BA904-F727-4C6B-A2CB-602E30537E38</string>
+			<string>5103D78F-C1FA-46F4-B6C7-39FC59EC591B</string>
 			<string>2005C9DA-00DD-43D7-9F59-169CC8E953FC</string>
 			<string>054985A5-E001-462A-8674-47C02C751A80</string>
 			<string>A1D9600C-4E0B-4ABF-9C0A-19AD7A168A15</string>
@@ -144,6 +145,16 @@
 				</array>
 				<key>name</key>
 				<string>Fixtures</string>
+			</dict>
+			<key>5103D78F-C1FA-46F4-B6C7-39FC59EC591B</key>
+			<dict>
+				<key>items</key>
+				<array>
+					<string>FEF49C86-9386-405E-A191-684D1C963E3A</string>
+					<string>980C7667-9D60-49FF-AF74-A7B19B379F45</string>
+				</array>
+				<key>name</key>
+				<string>Layouts</string>
 			</dict>
 			<key>53D8F022-29C2-4E3D-B83E-801DD80683FE</key>
 			<dict>
@@ -801,6 +812,8 @@
 		<string>E0F281EC-5311-41F8-ADD9-2E2D059DA651</string>
 		<string>F57522B2-9F5F-4DF9-AE46-9478AF019C63</string>
 		<string>B25B7560-FACB-4A9E-A226-B71C796BD1F3</string>
+		<string>FEF49C86-9386-405E-A191-684D1C963E3A</string>
+		<string>980C7667-9D60-49FF-AF74-A7B19B379F45</string>
 		<string>390A447F-0FA3-4F01-A10C-4F35675E0A43</string>
 		<string>62BEA590-F4EF-4001-B661-764EDFB92811</string>
 		<string>273E5E76-8D13-4476-9C38-8AF87432CB96</string>

@@ -25,6 +25,9 @@ Added so far:
       * <% end -%> (end)
       * for-loop (for)
       * link_to(@model.name, @model) (ltm)
+    * Layouts
+      * javascript_include_tag - jit
+      * stylesheet_link_tag - slt
     * Models
       * has_many :though (hmt)
       * association snippets give better defaults (e.g. bt + hm)
