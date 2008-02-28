@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= javascript_include_tag :${1:all}${2:, :cache =&gt; ${3:true}} %&gt;</string>
+	<string>&lt;%= javascript_include_tag ${1::all}${2:, :cache =&gt; ${3:true}} %&gt;</string>
 	<key>name</key>
 	<string>javascript_include_tag</string>
 	<key>scope</key>
