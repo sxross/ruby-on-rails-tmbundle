@@ -36,6 +36,15 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal ['admin'], @rp_controller_with_module.modules
     assert_equal [], @rp_view.modules
     assert_equal ['admin'], @rp_view_with_module.modules
+  end             
+  
+  def test_controller_name
+    rp = RailsPath.new(FIXTURE_PATH + '/app/models/person.rb')
+    assert_equal "people", rp.controller_name 
+    rp = RailsPath.new(FIXTURE_PATH + '/app/models/user.rb')
+    assert_equal "user", rp.controller_name    
+    rp = RailsPath.new(FIXTURE_PATH + '/app/models/users.rb')
+    assert_equal "users", rp.controller_name    
   end
 
   def test_controller_name_and_action_name_for_controller
