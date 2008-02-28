@@ -22,8 +22,8 @@ def index
     wants.js   { }
     wants.css  { }
   end
-  respond_to { |format|
-    format.html { }
+  respond_to { | wacky |
+    wacky.wackier { }
   }
 end
 
@@ -71,15 +71,15 @@ class BufferTest < Test::Unit::TestCase
      b.line_number = 15
      assert_equal [14, 'css'], b.find_respond_to_format
      b.line_number = 16
-     assert_equal [17, 'html'], b.find_respond_to_format
+     assert_equal [17, 'wackier'], b.find_respond_to_format
      b.line_number = 17
-     assert_equal [17, 'html'], b.find_respond_to_format
+     assert_equal [17, 'wackier'], b.find_respond_to_format
      b.line_number = 18
-     assert_equal [17, 'html'], b.find_respond_to_format
+     assert_equal [17, 'wackier'], b.find_respond_to_format
      b.line_number = 19
-     assert_equal [17, 'html'], b.find_respond_to_format
+     assert_equal [17, 'wackier'], b.find_respond_to_format
      b.line_number = 20
-     assert_equal [17, 'html'], b.find_respond_to_format
+     assert_equal [17, 'wackier'], b.find_respond_to_format
      b.line_number = 21
      assert_equal nil, b.find_respond_to_format
   end
