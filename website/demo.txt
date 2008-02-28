@@ -703,7 +703,9 @@ Notice how the <code>Remove / Add Column</code> command automagically determined
                                
 Save the file (COMMAND S) and migrate to current (CONTROL |, option 3).
 
-Now we need to modify the posts fixtures file. Go there (COMMAND T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>.
+Now we need to modify the posts fixtures file. Go there (COMMAND T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>. 
+
+Modify the posts functional test, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Functional Test"). Replace <code>:published => '1'</code> by <code>:published_at => Date.new(2008, 1, 1)</code>.
 
 h1. TODO
 
