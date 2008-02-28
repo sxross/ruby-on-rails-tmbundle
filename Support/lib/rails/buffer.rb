@@ -95,15 +95,18 @@ class Buffer
 
   # Search for the nearest "def [method]" declaration
   def find_method(options = {})
-    options = {:direction => :backwards}.update(options)
+    options = {:direction => :backward}.update(options)
     find(options) { %r{def\s+(\w+)} }
   end
 
-  # Search for the nearest "wants.xml" or "format.html" declaration
-  def find_respond_to_format(options = {})
-    options = {:direction => :backwards}.update(options)
-    find(options) { %r{wants\.(\w+)} }
-    # find(options) {|lines| p lines}
+  # Search for the nearest "wants." declaration within a "respond_to" section.
+  def find_respond_to_format
+    m = find_method
+    return nil if m.nil?
+    from, wants = find(:direction => :backward, :from => m.first) { %r{\brespond_to\s.+\|(\w+)\|} }
+    return nil if wants.nil?
+    options = {:direction => lines[from] == current_line ? :forward : :backward, :from => from}
+    find(options) { Regexp.new(wants + '\.(\w+)') }
   end
 
   def find_nearest_string_or_symbol(current_line = current_line)

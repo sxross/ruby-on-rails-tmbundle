@@ -38,6 +38,15 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal ['admin'], @rp_view_with_module.modules
   end
 
+  def test_controller_name
+    rp = RailsPath.new(FIXTURE_PATH + '/app/models/person.rb')
+    assert_equal "people", rp.controller_name
+    rp = RailsPath.new(FIXTURE_PATH + '/app/models/user.rb')
+    assert_equal "user", rp.controller_name
+    rp = RailsPath.new(FIXTURE_PATH + '/app/models/users.rb')
+    assert_equal "users", rp.controller_name
+  end
+
   def test_controller_name_and_action_name_for_controller
     rp = RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb')
     assert_equal "user", rp.controller_name
@@ -66,15 +75,21 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal "users", rp.controller_name
     assert_equal "new", rp.action_name
   end
-  
+
   def test_controller_name_pluralization
     rp = RailsPath.new(FIXTURE_PATH + '/app/views/people/new.html.erb')
     assert_equal "people", rp.controller_name
   end
-  
+
   def test_controller_name_suggestion_when_controller_absent
     rp = RailsPath.new(FIXTURE_PATH + '/app/views/people/new.html.erb')
     assert_equal "people", rp.controller_name
+  end
+
+  def test_respond_to_format
+    current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb')
+    TextMate.line_number = '13'
+    assert_equal [12, 'js'], current_file.respond_to_format
   end
 
   def test_rails_path_for
@@ -106,7 +121,7 @@ class RailsPathTest < Test::Unit::TestCase
     TextMate.line_number = '6'
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/user/create.html.erb'), current_file.rails_path_for(:view)
-    
+
     # 2.0 plural controllers
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/users/create.html.erb'), current_file.rails_path_for(:view)
@@ -114,7 +129,7 @@ class RailsPathTest < Test::Unit::TestCase
     TextMate.line_number = '3'
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml'), current_file.rails_path_for(:view)
-    
+
     # 2.0 plural controllers
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb'), current_file.rails_path_for(:view)
@@ -122,7 +137,7 @@ class RailsPathTest < Test::Unit::TestCase
     # Test view to controller
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.html.erb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb'), current_file.rails_path_for(:controller)
-    
+
     # 2.0 plural controllers
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
     assert_equal RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb'), current_file.rails_path_for(:controller)
@@ -152,14 +167,14 @@ class RailsPathTest < Test::Unit::TestCase
       TextMate.line_number = line.to_s
       current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb')
       assert_equal(
-        RailsPath.new(FIXTURE_PATH + '/app/views/users/' + expected), 
+        RailsPath.new(FIXTURE_PATH + '/app/views/users/' + expected),
         current_file.rails_path_for(:view),
         "Mismatch for line #{line}, should be #{expected}"
       )
     end
 
   end
-  
+
   def test_file_parts
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
     assert_equal(FIXTURE_PATH + '/app/views/users/new.html.erb', current_file.filepath)
@@ -168,7 +183,7 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal('new', basename)
     assert_equal('html', content_type)
     assert_equal('erb', extension)
-    
+
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml')
     pathname, basename, content_type, extension = current_file.parse_file_parts
     assert_equal(FIXTURE_PATH + '/app/views/user', pathname)
@@ -176,7 +191,7 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal(nil, content_type)
     assert_equal('rhtml', extension)
   end
-  
+
   def test_new_rails_path_has_parts
     current_file = RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb')
     assert_equal(FIXTURE_PATH + '/app/views/users/new.html.erb', current_file.filepath)
@@ -184,5 +199,22 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal('new', current_file.file_name)
     assert_equal('html', current_file.content_type)
     assert_equal('erb', current_file.extension)
+  end
+
+  def test_best_match
+    assert_equal(nil, RailsPath.new(FIXTURE_PATH + '/config/boot.rb').best_match)
+    assert_equal(:functional_test, RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb').best_match)
+    assert_equal(:model, RailsPath.new(FIXTURE_PATH + '/app/controllers/users_controller.rb').best_match)
+    assert_equal(:functional_test, RailsPath.new(FIXTURE_PATH + '/app/controllers/admin/base_controller.rb').best_match)
+
+    TextMate.line_number = '3' # edit action
+    assert_equal(:view, RailsPath.new(FIXTURE_PATH + '/app/controllers/admin/base_controller.rb').best_match)
+    TextMate.line_number = '0'
+
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/users/new.html.erb').best_match)
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml').best_match)
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/admin/base/action.html.erb').best_match)
+    assert_equal(:model, RailsPath.new(FIXTURE_PATH + '/app/views/notifier/forgot_password.html.erb').best_match)
+    assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/books/new.haml').best_match)
   end
 end

@@ -8,10 +8,25 @@
 require 'rails/misc'
 require 'rails/text_mate'
 require 'rails/buffer'
-require 'rails/inflector'  
+require 'rails/inflector'
 require 'fileutils'
 
 module AssociationMessages
+  @@associations = {
+    :controller => [:functional_test, :helper, :model, :javascript, :stylesheet, :fixture],
+    :helper => [:controller, :model, :unit_test, :functional_test, :javascript, :stylesheet, :fixture],
+    :view => [:controller, :javascript, :stylesheet, :helper, :model],
+    :model => [:unit_test, :functional_test, :controller, :helper, :fixture],
+    :fixture => [:unit_test, :functional_test, :controller, :helper, :model],
+    :functional_test => [:controller, :helper, :model, :unit_test, :fixture],
+    :unit_test => [:model, :controller, :helper, :functional_test, :fixture],
+    :javascript => [:helper, :controller],
+    :stylesheet => [:helper, :controller]
+  }
+
+  # Make associations hash publicly available to each object
+  def associations; self.class.class_eval("@@associations") end
+
   # Return associated_with_*? methods
   def method_missing(method, *args)
     case method.to_s
@@ -22,23 +37,16 @@ module AssociationMessages
     end
   end
 
-  @@associations = {
-    :controller => [:view, :helper, :functional_test, :javascript, :stylesheet],
-    :helper => [:controller, :unit_test, :javascript, :stylesheet],
-    :view => [:controller, :javascript, :stylesheet, :model],
-    :model => [:unit_test, :fixture, :view],
-    :fixture => [:unit_test, :model],
-    :functional_test => [:controller],
-    :unit_test => [:model, :helper],
-    :javascript => [:helper, :controller],
-    :stylesheet => [:helper, :controller] }
-
-  # Make associations hash publicly available to each object
-  def associations; self.class.class_eval("@@associations") end
+  def best_match
+    return nil if associations[file_type].nil?
+    return :view if file_type == :controller && action_name
+    associations[file_type].each { |x| return x if rails_path_for(x).exists? }
+    return associations[file_type].first
+  end
 end
 
 class RailsPath
-  attr_reader :filepath  
+  attr_reader :filepath
   attr_reader :path_name, :file_name, :content_type, :extension
 
   include AssociationMessages
@@ -51,7 +59,7 @@ class RailsPath
       # Relative file, prepend rails_root
       @filepath = File.join(rails_root, filepath)
     end
-    
+
     # Put parts into instance variables to make retrieval more uniform.
     parse_file_parts
   end
@@ -73,11 +81,15 @@ class RailsPath
   end
 
   # Make sure the file exists by creating it if it doesn't
-  def touch 
+  def touch
     if !exists?
-      FileUtils.mkdir_p dirname      
+      FileUtils.mkdir_p dirname
       FileUtils.touch @filepath
     end
+  end
+
+  def append(str)
+    File.open(@filepath, "a") { |f| f.write str }
   end
 
   def controller_name
@@ -89,9 +101,11 @@ class RailsPath
     when :unit_test  then name.sub!(/_test$/, '')
     when :view       then name = dirname.split('/').pop
     when :functional_test then name.sub!(/_controller_test$/, '')
-    when :fixture    then Inflector.singularize(name)
+    else
+      if !File.file?(File.join(rails_root, stubs[:controller], '/', name + '_controller.rb'))
+        name = Inflector.pluralize(name)
+      end
     end
-
     return name
   end
 
@@ -99,22 +113,20 @@ class RailsPath
     name =
       case file_type
       when :controller, :model
-        buffer.find_method(:direction => :backwards).last rescue nil
+        buffer.find_method(:direction => :backward).last rescue nil
       when :view
         basename
       when :functional_test
-        buffer.find_method(:direction => :backwards).last.sub('^test_', '')
+        buffer.find_method(:direction => :backward).last.sub('^test_', '')
       else nil
       end
 
     return parse_file_name(name)[:file_name] rescue nil # Remove extension
   end
-  
+
   def respond_to_format
     return nil unless file_type == :controller
-    method_line_start = buffer.find_method(:direction => :backwards).first
-    buffer.find_respond_to_format(:direction => :backwards, 
-      :from => method_line_start, :to => TextMate.line_number)
+    buffer.find_respond_to_format
   end
 
   def rails_root
@@ -211,17 +223,25 @@ class RailsPath
     controller_names
   end
 
-  def default_extension_for(type, view_format = "html")
+  def default_extension_for(type, view_format = nil)
     case type
     when :javascript then ENV['RAILS_JS_EXT'] || '.js'
     when :stylesheet then ENV['RAILS_CSS_EXT'] || '.css'
-    when :view       then ENV['RAILS_VIEW_EXT'] || begin
-      case view_format.to_sym
-      when :xml then '.xml.builder'
-      when :js  then '.js.rjs'
-      else           ".#{view_format}.erb"
+    when :view       then
+      begin
+        if ENV['RAILS_VIEW_EXT']
+          view_format ? ".#{view_format}#{ENV['RAILS_VIEW_EXT']}" : ENV['RAILS_VIEW_EXT']
+        else
+          if view_format.nil?
+            view_format = :html
+          end
+          case view_format.to_sym
+          when :xml then '.xml.builder'
+          when :js  then '.js.rjs'
+          else           ".#{view_format}.erb"
+          end
+        end
       end
-    end
     when :fixture    then '.yml'
     else '.rb'
     end
@@ -242,34 +262,23 @@ class RailsPath
   def rails_path_for_view
     return nil if action_name.nil?
     line, view_format = respond_to_format
-    view_format ||= 'html'
 
-    file_exists = false
-    VIEW_EXTENSIONS.each do |ext|
-      filename_with_extension = action_name + "." + ext
-      existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
-      return RailsPath.new(existing_view) if File.exist?(existing_view)
+    if view_format
+      VIEW_EXTENSIONS.each do |ext|
+        filename_with_extension = "#{action_name}.#{view_format}.#{ext}"
+        existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
+        return RailsPath.new(existing_view) if File.exist?(existing_view)
+      end
     end
     VIEW_EXTENSIONS.each do |ext|
-      filename_with_extension = "#{action_name}.#{view_format}.#{ext}"
+      filename_with_extension = "#{action_name}.#{ext}"
       existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
       return RailsPath.new(existing_view) if File.exist?(existing_view)
     end
     default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view, view_format))
     return RailsPath.new(default_view)
   end
-  
-  def ask_for_view(default_name = action_name)
-    if designated_name = TextMate.input("Enter the name of the new view file:", default_name + default_extension_for(:view))
-      view_file = File.join(rails_root, stubs[:view], modules, controller_name, designated_name)
-      f = File.open(view_file, "w"); f.close
-      # FIXME: For some reason the following line freezes TextMate
-      # TextMate.refresh_project_drawer
-      return RailsPath.new(view_file)
-    end
-    return nil
-  end
-  
+
   def parse_file_parts
     @path_name, @file_name = File.split(@filepath)
     file_part_hash = parse_file_name(@file_name)
@@ -278,7 +287,7 @@ class RailsPath
     @extension = file_part_hash[:extension]
     return [@path_name, @file_name, @content_type, @extension]
   end
-  
+
   # File name parser that has no side-effects on object state
   def parse_file_name(file_name)
     path_parts = file_name.split('.')

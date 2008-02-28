@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="main">
-
+	
     <h1>Step-by-step demonstration</h1>
     <div id="version" class="clickable" onclick='document.location = "http://railsbundle.com/dist/JavaScript Unit Testing.tar.gz"; return false'>
       <p>Get Version</p>
@@ -73,7 +73,7 @@ mate .</pre>
 	<p>Note that another <code>t.</code> was created on the next line! Press &#x21E5; and the cursor will be placed after it. You can now press &#x21E5; again to create another column, or delete this line.</p>
 
 
-	<p>Here, delete the extraneous <code>t.</code> line (&#x21E7; &#x2303; K). And save the file (&#x2318; S).</p>
+	<p>Here, delete the extraneous <code>t.</code> line (&#x2303; &#x21E7; K). And save the file (&#x2318; S).</p>
 
 
 	<p>Run the migrations, either from the prompt:</p>
@@ -263,7 +263,7 @@ type &#8216;h3&#8217;, and press &#x2303; &lt; (LessThan), then &#x2303; &gt; (G
 	<p>Move the cursor down between <code>&lt;% else %&gt;</code> and <code>&lt;% end %&gt;</code>.</p>
 
 
-	<p>Create a simple element <code>&lt;p&gt;&lt;/p&gt;</code> (&#x21E7; &#x2303; W or &#x2303; &lt;). You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
+	<p>Create a simple element <code>&lt;p&gt;&lt;/p&gt;</code> (&#x2303; &#x21E7; W or &#x2303; &lt;). You can change the element type here. Just press &#x21E5; to go inside the element. Type <code>There are no posts available to read. All y'all come back soon, yer hear.</code> because its funny.</p>
 
 
 	<p>Our <code>index.html.erb</code> template is now:</p>
@@ -599,8 +599,8 @@ create a <code>&lt;td&gt;&lt;/td&gt;</code> element. We&#8217;ll skip over anyth
 here, and just put the post&#8217;s subject here.</p>
 
 
-	<p>Type <code>@post.subject</code> and select it. Now press Ctrl+&gt; to wrap
-the selected text inside <code>&lt;%= @post.selected %&gt;</code>.</p>
+	<p>Type <code>post.subject</code> and select it. Now press &#x2303; &gt; to wrap
+the selected text inside <code>&lt;%= post.subject %&gt;</code>.</p>
 
 
 	<p>The resulting <code>index.html.erb</code> is:</p>
@@ -621,12 +621,12 @@ the selected text inside <code>&lt;%= @post.selected %&gt;</code>.</p>
 
 
 	<p>Place the cursor inside the <code>new</code> method,
-and use the &#8216;Go To&#8217; hot key (Shift+Alt+Cmd+DownArrow)
+and use the &#8216;Go To&#8217; hot key (&#x21E7; &#x2325; &#x2318; &#x2193;)
 and select &#8216;View&#8217;. Press &#x21A9; to accept <code>new.html.erb</code>.</p>
 
 
 	<p>Inside the blank <code>new.html.erb</code> file, type <code>ffe</code> and press &#x21E5;, and type <code>post</code>
-and press &#x21E5;, twice:</p>
+and press &#x21E5; twice:</p>
 
 
 	<p><pre class='syntax'>&lt;%= error_messages_for :post %&gt;
@@ -642,10 +642,10 @@ snippets; the former does not have the error messages section.
 	<p>To create a label and text field for the <code>subject</code> attribute:</p>
 
 
-	<p>Press Shift+Ctrl+W, and press &#x21E5; and press &#x21A9;, to create a <code>&lt;p&gt;&lt;/p&gt;</code> block.
-Type <code>f.</code> and &#x21E5;, and select &#8220;Label&#8221;. Type <code>subject</code>, press &#x21E5; and press &#x2326;.
-To create a <code>&lt;br/&gt;</code>, press Ctrl+&#x21A9;.
-Type <code>f.</code> and &#x21E5;, and select &#8220;Check box&#8221;. Type <code>subject</code>.</p>
+	<p>Create a <code>&lt;p&gt;&lt;/p&gt;</code> block (Press &#x2303; &lt;, then &#x21E5;, then &#x21A9;).
+Type <code>f.</code> and &#x21E5;, and select &#8220;Label&#8221;. Type <code>subject</code>, press &#x21E5; and press &#x232B;.
+Create a <code>&lt;br /&gt;</code> (&#x2303; &#x21A9;).
+Type <code>f.</code> and &#x21E5;, and select &#8220;Text Field&#8221;. Type <code>subject</code>.</p>
 
 
 	<p>This gives us:</p>
@@ -663,14 +663,14 @@ Type <code>f.</code> and &#x21E5;, and select &#8220;Check box&#8221;. Type <cod
 	<p>Now repeat for <code>body</code> and <code>published</code> fields.</p>
 
 
-	<p>Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by &#x21E5;bing
+	<p>Note, for <code>published</code>, you might change the label to <code>Published yet?</code> by tabbing
 into the default string file.</p>
 
 
 	<p>Finally, add a &#8220;Submit&#8221; button using the <code>f.</code> snippet tab completion.</p>
 
 
-	<p>You can now view this form at <a href="http://localhost:3000/posts/new">http://localhost:3000/posts/new</a></p>
+	<p>Start <code>script/server</code> from the prompt and you can now view this form at <a href="http://localhost:3000/posts/new">http://localhost:3000/posts/new</a></p>
 
 
 	<p>The final form is:</p>
@@ -696,31 +696,33 @@ into the default string file.</p>
 &lt;% end -%&gt;</pre></p>
 
 
+	<p>Note: if you got <code>&lt;br&gt;</code> when hitting &#x2303; &#x21A9; instead of <code>&lt;br /&gt;</code> then you might want to go to the preferences of TextMate (&#x2318; ,), choose tab &#8220;Advanced&#8221;, choose &#8220;Shell Variables&#8221;, click the + sign to add a new shell variable, and give it the name <code>TM_XHTML</code> and a value of <code> /</code></p>
+
+
 	<h2>Partials</h2>
 
 
-	<p>This form is exactly the same as the form required for the <code>edit.html.erb</code> template.</p>
+	<p>The form we just created is exactly the same as the form required for the <code>edit.html.erb</code> template.</p>
 
 
 	<p>Instead of copy+pasting it into the <code>edit.html.erb</code> file, we&#8217;ll create a partial
 template.</p>
 
 
-	<p>Select the entire form (Cmd+A), and press Shift+Ctrl+H and a dialog box appears.
+	<p>Select the entire form (&#x2318; A), and press &#x2303; &#x21E7; H and a dialog box appears.
 Type in <code>form</code> and press &#x21A9;.</p>
 
 
-	<p>The form is replaced by:</p>
+	<p>You&#8217;ll notice a new file <code>_form.html.erb</code> has appeared which contains the code you had selected,
+while the code in the file <code>new.html.erb</code> has been replaced by:</p>
 
 
 	<pre><code>&lt;%= render :partial =&gt; 'form' %&gt;</code></pre>
 
 
 	<p>Now copy and paste this into the <code>edit.html.erb</code> file. To create this file,
-return to the controller (from the <code>new.html.erb</code> file, press
-Shift+Alt+Cmd+DownArrow and select &#8220;Controller&#8221;), go to the <code>edit</code> action,
-and use Shift+Alt+Cmd+DownArrow again, and select &#8220;View&#8221; to create
-the <code>edit.html.erb</code> template file.</p>
+return to the controller (from the <code>new.html.erb</code> file, press &#x2325; &#x2318; &#x2193;), go to the <code>edit</code> action,
+and use &#x2325; &#x2318; &#x2193; again to create the <code>edit.html.erb</code> template file.</p>
 
 
 	<h2>Link helpers</h2>
@@ -739,6 +741,7 @@ will be the <code>index</code> action, and will be accessible via the resources 
 		<li>lipp  &#8211; <code>&lt;%= link_to "link text...", models_path %&gt;</code></li>
 		<li>linp  &#8211; <code>&lt;%= link_to "link text...", parent_child_path(@parent, @child) %&gt;</code></li>
 		<li>linpp &#8211; <code>&lt;%= link_to "link text...", parent_child_path(@parent) %&gt;</code></li>
+		<li>lim   &#8211; <code>&lt;%= link_to model.name, model_path(model) %&gt;</code></li>
 	</ul>
 
 
@@ -746,16 +749,15 @@ will be the <code>index</code> action, and will be accessible via the resources 
 
 
 So, to create our link to the posts page, type <code>lipp</code> and &#x21E5;, type
-<code>Show all posts</code>, press &#x21E5; and type <code>post</code>.
+<code>Show all posts</code>, press &#x21E5; twice and type <code>post</code>.
 
 	<h2>Controllers: <code>respond_to</code> and <code>redirect_to</code></h2>
 
 
-	<p>Now we&#8217;ll add a <code>create</code> action to the <code>posts_controller.rb</code>. Press
-Shift+Alt+Cmd+DownArrow and select &#8220;Controller&#8221; to go there.</p>
+	<p>Now we&#8217;ll add a <code>create</code> action to the <code>posts_controller.rb</code>. Let&#8217;s go there (&#x2325; &#x2318; &#x2193;).</p>
 
 
-Within the class, go to the end, and type <code>def</code> and &#x21E5;, and type
+Below the <code>edit</code> method type <code>def</code> and &#x21E5;, and type
 <code>create</code> and &#x21E5;. Now fill out the <code>create</code> action like:
 
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">create</span>
@@ -769,8 +771,8 @@ Within the class, go to the end, and type <code>def</code> and &#x21E5;, and typ
 
 
 	<p>Place the cursor in the <code>true</code> section of the <code>if</code> statement.
-Type <code>repp</code> and &#x21E5; to create a <code>redirect_to</code> expression. Replace
-the selected text with <code>post</code>.</p>
+Type <code>repp</code> and &#x21E5; to create a <code>redirect_to</code> expression. Press &#x21E5;
+again and replace the selected text with <code>post</code>.</p>
 
 
 	<p>Like the various <code>link_to</code> snippets, there are matching <code>redirect_to</code>
@@ -788,45 +790,41 @@ snippets.</p>
 	<p>There are tab stops in useful places.</p>
 
 
-	<p>We&#8217;re going with <code>redirect_to(posts_path)</code> here, even though
-we don&#8217;t yet have an <code>index</code> action yet.</p>
-
-
 In the <code>false</code> section of the <code>if</code> expression, we&#8217;ll demonstrate the
 <code>respond_to</code> block. There are two ways to generate a <code>respond_to</code> block.
 
-	<p>Type <code>rst</code> and &#x21E5;, and you get a standard empty block you can work with:</p>
+	<p>Type <code>rest</code> and &#x21E5;, and you get a standard empty block you can work with:</p>
 
 
-	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-
+	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span>  <span class="punct">}</span>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Inside the block, type <code>ra</code> and press &#x21E5;, then type <code>new</code>. The final block
-is:</p>
+	<p>Press &#x21E5; twice to get inside the <code>wants.html</code> block, type <code>ra</code>, press &#x21E5;, then type <code>new</code>. The final block is:</p>
 
 
-	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-  <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span>
+	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span> <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span> <span class="punct">}</span>
 <span class="keyword">end</span></pre></p>
 
 
-	<p>Alternately, there is the &#8220;upgrade&#8221; hot key. Where you can convert some
+	<p>Alternately, there is the &#8220;upgrade&#8221; hot key (&#x21E7; &#x2318; H), where you can convert some
 existing selected code, into a <code>respond_to</code> block.</p>
 
 
 Select the whole line containing the <code>redirect_to</code> expression from the
-<code>true</code> section of the <code>if</code> statement.
+<code>true</code> section of the <code>if</code> statement (&#x21E7; &#x2318; L).
 
-	<p>Press Shift+Cmd+R (TODO &#8211; a better hot key?) and the line is replaced
-with:</p>
+	<p>Press &#x21E7; &#x2318; H and the line is replaced with:</p>
 
 
-	<p><pre class='syntax'><span class="ident">format</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
-  <span class="ident">redirect_to</span><span class="punct">(</span><span class="attribute">@post</span><span class="punct">)</span>
-<span class="keyword">end</span>
-<span class="ident">format</span><span class="punct">.</span><span class="ident">js</span> <span class="punct">{</span>  <span class="punct">}</span></pre></p>
+	<p><pre class='syntax'><span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
+    <span class="ident">redirect_to</span><span class="punct">(</span><span class="ident">posts_path</span><span class="punct">)</span>
+  <span class="keyword">end</span>
+  <span class="ident">wants</span><span class="punct">.</span><span class="ident">js</span> <span class="punct">{</span>  <span class="punct">}</span>
+<span class="keyword">end</span></pre></p>
 
 
 	<p>The <code>js</code> is the first tab stop. The point of this hot key is to instantly
@@ -834,7 +832,7 @@ refactor your existing html respond code, and support a second response
 format.</p>
 
 
-	<p>Select the whole <code>format.js</code> line (Shift+Cmd+L) and delete it.</p>
+	<p>For now remove the line with <code>wants.js</code> (&#x2303; &#x21E7; K).</p>
 
 
 	<p>The completed <code>create</code> action is:</p>
@@ -843,14 +841,14 @@ format.</p>
 	<p><pre class='syntax'><span class="keyword">def </span><span class="method">create</span>
   <span class="attribute">@post</span> <span class="punct">=</span> <span class="constant">Post</span><span class="punct">.</span><span class="ident">new</span><span class="punct">(</span><span class="ident">params</span><span class="punct">[</span><span class="symbol">:post</span><span class="punct">])</span>
   <span class="keyword">if</span> <span class="attribute">@post</span><span class="punct">.</span><span class="ident">save</span>
-    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-      <span class="ident">format</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
+    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+      <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="keyword">do</span>
         <span class="ident">redirect_to</span><span class="punct">(</span><span class="ident">posts_path</span><span class="punct">)</span>
       <span class="keyword">end</span>
     <span class="keyword">end</span>
   <span class="keyword">else</span>
-    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">format</span><span class="punct">|</span>
-      <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span>
+    <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
+      <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span> <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span> <span class="punct">}</span>
     <span class="keyword">end</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></pre></p>
@@ -863,10 +861,126 @@ demo so I am taking the scenic route.</p>
 	<h2>Our application so far</h2>
 
 
-	<p>In the browser, we can create posts via</p>
+	<p>In the browser, we can create posts via <a href="http://localhost:3000/posts/new">http://localhost:3000/posts/new</a>
+and then view them as a blog visitor at <a href="http://localhost:3000/blog">http://localhost:3000/blog</a>.</p>
 
 
-	<p>and then view them as a blog visitor at</p>
+	<h2>Some more migrations</h2>
+
+
+	<p>We&#8217;re looking for the following additions:</p>
+
+
+	<ul>
+	<li>rename the column <code>name</code> of table <code>comments</code> to <code>author</code></li>
+		<li>add a new column <code>author_url</code> to table <code>comments</code></li>
+		<li>add an index to the column <code>post_id</code> of the <code>comments</code> table</li>
+	</ul>
+
+
+	<p>Let&#8217;s try to do this all in one migrations file. Start Quick Migration (&#x2303; &#x21E7; M). Let&#8217;s name it <code>ModifyComments</code>. A new migrations file <code>003_modify_comments.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. For now delete <code>mtab</code> and instead enter <code>mcol</code> and press &#x21E5;. Choose <code>Rename / Rename Column</code> (3). Type <code>comments</code> &#x21E5; <code>name</code> &#x21E5; <code>author</code> &#x21E5; &#x21A9;.</p>
+
+
+	<p>Again type <code>mcol</code> and &#x21E5;. This time choose <code>Add / Remove Column</code> (1). Type <code>comments</code> &#x21E5; <code>author_url</code>, then &#x21E5; twice, and press &#x21A9;.</p>
+
+
+	<p>Now type <code>mind</code> and &#x21E5;. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> &#x21E5; <code>post_id</code>.</p>
+
+
+	<p>The end result looks like this:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">class </span><span class="class">ModifyComments</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Migration</span>
+  <span class="keyword">def </span><span class="method">self.up</span>
+    <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:name</span><span class="punct">,</span> <span class="symbol">:author</span>
+    <span class="ident">add_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author_url</span><span class="punct">,</span> <span class="symbol">:string</span>
+    <span class="ident">add_index</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:post_id</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">self.down</span>
+    <span class="ident">remove_index</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:post_id</span>
+    <span class="ident">remove_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author_url</span>
+    <span class="ident">rename_column</span> <span class="symbol">:comments</span><span class="punct">,</span> <span class="symbol">:author</span><span class="punct">,</span> <span class="symbol">:name</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>Notice how the <code>down</code> method calls are in reversed order of the <code>up</code> method calls.</p>
+
+
+	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |).</p>
+
+
+	<p>Be sure to modify the comments fixture file. Go there (&#x2318; T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (&#x2303; \, choose option 1). All tests should pass.</p>
+
+
+	<p>Futhermore we&#8217;d like to know when a post was published. To do this we&#8217;ll want the following modifications:</p>
+
+
+	<ul>
+	<li>keep track of the datetime when a post was published.</li>
+		<li>remove the column published from the posts table because it can be determined if a post is published by looking at whether or not a value is present for the published date.</li>
+	</ul>
+
+
+	<p>Start Quick Migration (&#x2303; &#x21E7; M). Let&#8217;s name it <code>AddPublishedAtForPosts</code>. A new migrations file <code>004_add_published_at_for_posts.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. Again delete <code>mtab</code> and instead enter <code>mcol</code> and press &#x21E5;. Choose <code>Add / Remove Column</code> (1). Type <code>posts</code> &#x21E5; <code>published_at</code> &#x21E5; <code>datetime</code> &#x21E5; and &#x21A9;.</p>
+
+
+	<p>Again type <code>mcol</code> and &#x21E5;. Choose <code>Remove / Add Column</code> (5). Type <code>posts</code> &#x21E5; <code>published</code> and press &#x21E5; twice.</p>
+
+
+	<p>The end result looks like this:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">class </span><span class="class">AddPublishedAtForPosts</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Migration</span>
+  <span class="keyword">def </span><span class="method">self.up</span>
+    <span class="ident">add_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published_at</span><span class="punct">,</span> <span class="symbol">:datetime</span>
+    <span class="ident">remove_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">self.down</span>
+    <span class="ident">add_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published</span><span class="punct">,</span> <span class="symbol">:boolean</span>
+    <span class="ident">remove_column</span> <span class="symbol">:posts</span><span class="punct">,</span> <span class="symbol">:published_at</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.</p>
+
+
+	<p>Save the file (&#x2318; S) and migrate to current (&#x2303; |).</p>
+
+
+	<p>Now we need to modify the posts fixtures file. Go there (&#x2318; T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>.</p>
+
+
+	<p>Modify the posts functional test, first go there (&#x21E7; &#x2325; &#x2318; &#x2193;, choose &#8220;Go to Functional Test&#8221;). Replace <code>:published =&gt; '1'</code> by <code>:published_at =&gt; Date.new(2008, 1, 1)</code>.</p>
+
+
+	<p>Modify the post model, first go there (&#x21E7; &#x2325; &#x2318; &#x2193;, choose &#8220;Go to Model&#8221;). Have the code look like:</p>
+
+
+	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Post</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
+  <span class="ident">has_many</span> <span class="symbol">:comments</span>
+
+  <span class="keyword">def </span><span class="method">published</span>
+    <span class="punct">!</span><span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span><span class="punct">.</span><span class="ident">nil?</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def </span><span class="method">published=</span><span class="punct">(</span><span class="ident">publish</span><span class="punct">)</span>
+    <span class="keyword">if</span> <span class="ident">publish</span>
+      <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span> <span class="punct">=</span> <span class="constant">DateTime</span><span class="punct">.</span><span class="ident">now</span> <span class="keyword">if</span> <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span><span class="punct">.</span><span class="ident">nil?</span>
+    <span class="keyword">else</span>
+      <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span> <span class="punct">=</span> <span class="constant">nil</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></pre></p>
+
+
+	<p>Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions =&gt; "published_at IS NOT NULL")</code>.</p>
+
+
+	<p>Finally, check your tests again (&#x2303; \). All tests should pass.</p>
 
 
 	<h1><span class="caps">TODO</span></h1>
@@ -876,12 +990,17 @@ demo so I am taking the scenic route.</p>
 	<li>Model snippets (validates_&#8230;)</li>
 		<li>link_to(model) (ltm)</li>
 		<li><span class="caps">RJS</span> demo</li>
-		<li>Demonstrate new Add/Remove columns &#8211; <code>down</code> method is in reverse order</li>
 	</ul>
     <p class="coda">
-      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 27th February 2008<br>
+      <a href="http://drnicwilliams.com">Dr Nic Williams</a>, 28th February 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
-    </p>
+    </p>    
+
+    <!--
+	  * Matt A: "I'm new to this country, but I must be breaking some laws with this"
+	  * Allan O: "This is getting out of hand; I may have to cease development of TextMate"
+	  * Steve J: "This puts a ding in the universe"
+	//-->
 </div>
 
 <script type="text/javascript">

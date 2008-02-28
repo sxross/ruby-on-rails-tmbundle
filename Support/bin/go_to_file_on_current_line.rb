@@ -66,7 +66,7 @@ case TextMate.current_line
       controller_file = RailsPath.new(other_path)
     end
 
-    if search = controller_file.buffer.find(:direction => :backwards) { /def\s+#{action}\b/ }
+    if search = controller_file.buffer.find(:direction => :backward) { /def\s+#{action}\b/ }
       TextMate.open(controller_file, search[0])
     else
       puts "Couldn't find the #{action} action inside '#{controller_file.basename}'"
