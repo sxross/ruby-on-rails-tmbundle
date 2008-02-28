@@ -101,9 +101,11 @@ class RailsPath
     when :unit_test  then name.sub!(/_test$/, '')
     when :view       then name = dirname.split('/').pop
     when :functional_test then name.sub!(/_controller_test$/, '')
-    when :fixture    then Inflector.singularize(name)
-    end
-
+    else                                                                               
+      if !File.file?(File.join(rails_root, stubs[:controller], '/', name + '_controller.rb')) 
+        name = Inflector.pluralize(name) 
+      end
+    end                                                          
     return name
   end
 
