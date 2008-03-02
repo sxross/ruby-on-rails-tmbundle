@@ -10,7 +10,7 @@ require 'find'
 require 'fileutils'
 include FileUtils::Verbose
 
-DIR_TO_CLEAN = File.dirname(__FILE__) + "/../"
+DIR_TO_CLEAN = File.expand_path(File.dirname(__FILE__) + "/../")
 BADCHARS = /([<>\|:\*…\"\?\\“”↵—↓↵‘’¬])/
 
 def sanitize(f)
@@ -25,6 +25,8 @@ end
 # Sanitize the transit dir
 bad_dirs = []
 Find.find(DIR_TO_CLEAN) do |f|
+  f = File.expand_path(f).sub(DIR_TO_CLEAN, '')
+  next if f =~ /\/?\.(git|svn)/
   orig_name = File.basename(f)
   next if orig_name === ( clean_name = sanitize(File.basename(f)) )
   if File.directory? f
