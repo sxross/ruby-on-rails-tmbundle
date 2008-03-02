@@ -71,6 +71,7 @@ Added so far:
     * Rakefile - test runner [thx Steve Ross]
     * Added generator_test
     * Removed unnecessary misc_test
+    * script/clean_bundle_file_names - rename non-os-agnostic file names [Charles Roper]
 
 For thoughts and patches, email drnicwilliams@gmail.com
 
