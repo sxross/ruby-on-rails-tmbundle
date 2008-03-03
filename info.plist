@@ -62,6 +62,7 @@
 			<string>8113246B-122E-4F4A-9B5A-98390900839E</string>
 			<string>9EB71DE4-93D3-466C-B1D8-54892538FF3A</string>
 			<string>------------------------------------</string>
+			<string>964436B8-E578-11DC-8177-00112475D960</string>
 		</array>
 		<key>submenus</key>
 		<dict>
@@ -560,6 +561,7 @@
 					<string>E3C11C94-8472-45CC-9258-1E5EEC7657A8</string>
 					<string>------------------------------------</string>
 					<string>F0F6DACA-6A0B-11D9-BDC2-000D932CD5BA</string>
+					<string>D0E29200-E910-11DC-A399-00112475D960</string>
 					<string>245AD020-669A-46E1-8123-4B9CFDF8075A</string>
 					<string>AC385ABF-96CD-4FCB-80AD-BF37D6EE79D2</string>
 					<string>------------------------------------</string>
@@ -805,11 +807,6 @@
 		<string>7B15B396-1F41-4529-9253-32761E94448C</string>
 		<string>786980D8-FA69-4542-85A3-5E48CFAA6814</string>
 		<string>9671EB7A-89D6-4C23-914F-88CBEE0D177A</string>
-		<string>54D6E91E-8F31-11D9-90C5-0011242E4184</string>
-		<string>45D7E1FC-7D0B-4105-A1A2-3D10BB555A5C</string>
-		<string>4A3E6DA7-67A3-45B1-9EE0-ECFF9C7FA6C0</string>
-		<string>A6AE60CD-18CA-4474-BE7A-5255BC3EF083</string>
-		<string>D54FBDED-5481-4CC7-B75F-66465A499882</string>
 		<string>E0F281EC-5311-41F8-ADD9-2E2D059DA651</string>
 		<string>F57522B2-9F5F-4DF9-AE46-9478AF019C63</string>
 		<string>B25B7560-FACB-4A9E-A226-B71C796BD1F3</string>
@@ -827,6 +824,13 @@
 		<string>78FCF992-D01B-404F-BC54-5EE7B91F999A</string>
 		<string>62C3838B-0790-4FC2-8425-F273A57F5D33</string>
 		<string>C12C98A5-74E5-4E70-9ADB-8783455D6539</string>
+		<string>45D7E1FC-7D0B-4105-A1A2-3D10BB555A5C</string>
+		<string>54D6E91E-8F31-11D9-90C5-0011242E4184</string>
+		<string>4A3E6DA7-67A3-45B1-9EE0-ECFF9C7FA6C0</string>
+		<string>A6AE60CD-18CA-4474-BE7A-5255BC3EF083</string>
+		<string>D54FBDED-5481-4CC7-B75F-66465A499882</string>
+		<string>87EF33FE-E918-11DC-A399-00112475D960</string>
+		<string>C0FD2646-E924-11DC-A399-00112475D960</string>
 	</array>
 	<key>uuid</key>
 	<string>467A60E0-6227-11D9-BFB1-000D93589AF6</string>

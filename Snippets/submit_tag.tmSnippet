@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= submit_tag "${1:Save changes}"${2:, :id =&gt; "${3:submit}"}${4:, :name =&gt; "${5:$3}"}${6:, :class =&gt; "${7:form_$3}"}${8:, :disable =&gt; ${9:false}}${10:, :disable_with =&gt; "${11:Please wait...}"} %&gt;</string>
+	<string>${TM_TEMPLATE_START_RUBY}submit_tag "${1:Save changes}"${2:, :id =&gt; "${3:submit}"}${4:, :name =&gt; "${5:$3}"}${6:, :class =&gt; "${7:form_$3}"}${8:, :disable =&gt; ${9:false}}${10:, :disable_with =&gt; "${11:Please wait...}"}${TM_TEMPLATE_END_RUBY}</string>
 	<key>name</key>
 	<string>submit_tag</string>
 	<key>scope</key>
-	<string>text.html.ruby</string>
+	<string>text.html.ruby, text.haml</string>
 	<key>tabTrigger</key>
 	<string>st</string>
 	<key>uuid</key>
