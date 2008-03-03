@@ -13,7 +13,6 @@ require 'rails/rails_path'
 require 'rails/unobtrusive_logger'
 require 'rails/misc'
 require 'rails/inflector'   
-require 'rails/command_go_to_file'
 
 def ruby(command)
   `/usr/bin/env ruby #{command}`
