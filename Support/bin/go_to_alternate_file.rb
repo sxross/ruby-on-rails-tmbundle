@@ -25,24 +25,31 @@ elsif rails_path = current_file.rails_path_for(choice.to_sym)
   end
 
   if !rails_path.exists? 
-    if !TextMate.message_ok_cancel("Create missing #{rails_path.basename}?")
+    if choice.to_sym != :view && !TextMate.message_ok_cancel("Create missing #{rails_path.basename}?")
       TextMate.exit_discard
-    end
-    rails_path.touch    
-    if choice.to_sym == :controller
-      generated_code = <<-RUBY
-class #{rails_path.controller_name.camelize}Controller < ApplicationController
-end
-RUBY
-      rails_path.append generated_code
-    elsif choice.to_sym == :helper
-fixes + tests for defs modules, rails_path_for, file_type:Support/bin/go_to_alternate_file.rb
-      generated_code = <<-RUBY
-module #{rails_path.controller_name.camelize}Helper
-end
-RUBY
-      rails_path.append generated_code
-    end
+    end                             
+    generated_code = case choice.to_sym
+    when :controller 
+      "class #{rails_path.controller_name.camelize}Controller < ApplicationController\nend"
+    when :helper
+      "module #{rails_path.controller_name.camelize}Helper\nend"
+    when :unit_test
+      "require File.dirname(__FILE__) + '/../test_helper'
+
+class #{Inflector.singularize(rails_path.controller_name).camelize}Test < ActiveSupport::TestCase
+  # Replace this with your real tests.
+  def test_truth
+    assert true
+  end
+end"   
+    when :functional_test
+      "require File.dirname(__FILE__) + '/../test_helper'
+
+class #{rails_path.controller_name.camelize}ControllerTest < ActionController::TestCase     
+end"
+    end 
+    rails_path.touch
+    rails_path.append generated_code if generated_code
     TextMate.refresh_project_drawer
   end
  
