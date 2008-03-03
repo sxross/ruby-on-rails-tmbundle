@@ -9,5 +9,4 @@
 
 require 'rails_bundle_tools'
 
-Command.go_to_alternate_file(ARGV)
-tested:Support/bin/go_to_alternate_file.rb
+CommandGoToFile.alternate(ARGV)
