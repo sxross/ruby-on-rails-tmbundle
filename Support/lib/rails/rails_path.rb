@@ -153,7 +153,7 @@ class RailsPath
       when %r{/helpers/(.+_helper\.rb)$}                then :helper
       when %r{/views/(.+\.(#{VIEW_EXTENSIONS * '|'}))$} then :view
       when %r{/models/(.+\.(rb))$}                      then :model
-      when %r{/test/fixtures/(.+\.(yml|csv))$}          then :fixture
+      when %r{/.+/fixtures/(.+\.(yml|csv))$}            then :fixture
       when %r{/test/functional/(.+\.(rb))$}             then :functional_test
       when %r{/test/unit/(.+\.(rb))$}                   then :unit_test
       when %r{/public/javascripts/(.+\.(js))$}          then :javascript
@@ -185,7 +185,8 @@ class RailsPath
     file_type == :view and basename !~ /^_/
   end
 
-  def modules
+  def modules 
+    return nil if tail.nil?
     case file_type
     when :view
       tail.split('/').slice(0...-2)
@@ -247,7 +248,8 @@ class RailsPath
     end
   end
 
-  def rails_path_for(type)
+  def rails_path_for(type)    
+    return nil if file_type.nil?
     return rails_path_for_view if type == :view
     if TextMate.project_directory
       base_path = File.join(rails_root, stubs[type], modules)

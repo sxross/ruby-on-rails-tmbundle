@@ -24,9 +24,18 @@ elsif rails_path = current_file.rails_path_for(choice.to_sym)
     end
   end
 
-  if !rails_path.exists?
-    rails_path.touch
-    if choice.to_sym == :helper
+  if !rails_path.exists? 
+    if !TextMate.message_ok_cancel("Create missing #{rails_path.basename}?")
+      TextMate.exit_discard
+    end
+    rails_path.touch    
+    if choice.to_sym == :controller
+      generated_code = <<-RUBY
+class #{rails_path.controller_name.camelize}Controller < ApplicationController
+end
+RUBY
+      rails_path.append generated_code
+    elsif choice.to_sym == :helper
       generated_code = <<-RUBY
 module #{rails_path.controller_name.camelize}Helper
 end
