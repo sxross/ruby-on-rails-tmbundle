@@ -72,6 +72,7 @@ Added so far:
     * Added generator_test
     * Removed unnecessary misc_test
     * script/clean_bundle_file_names - rename non-os-agnostic file names [Charles Roper]
+  * Haml support [Lawrence Pit]
 
 For thoughts and patches, email drnicwilliams@gmail.com
 

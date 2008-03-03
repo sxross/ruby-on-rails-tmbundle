@@ -5,8 +5,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
-  end     
-  
+  end
+
   def index
     respond_to do |wants|
       wants.html  { }
@@ -14,12 +14,11 @@ class PostsController < ApplicationController
       wants.js    { }
       wants.wacky { }
     end
-
     respond_to do |format|
       format.html { }
-    end    
-  end 
-             
+    end
+  end
+
   def edit
   end
 end

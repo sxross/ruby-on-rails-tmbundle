@@ -157,7 +157,7 @@ class RailsPath
       when %r{/test/functional/(.+\.(rb))$}             then :functional_test
       when %r{/test/unit/(.+\.(rb))$}                   then :unit_test
       when %r{/public/javascripts/(.+\.(js))$}          then :javascript
-      when %r{/public/stylesheets/(.+\.(css))$}         then :stylesheet
+      when %r{/public/stylesheets/(?:sass/)?(.+\.(css|sass))$}  then :stylesheet
       else nil
       end
     # Store the tail (modules + file) after the regexp
@@ -186,9 +186,8 @@ class RailsPath
   end
 
   def modules 
-    return nil if tail.nil?
-    case file_type
-    when :view
+    return nil if tail.nil? 
+    if file_type == :view
       tail.split('/').slice(0...-2)
     else
       tail.split('/').slice(0...-1)
@@ -223,25 +222,19 @@ class RailsPath
     end
     controller_names
   end
-
+  
   def default_extension_for(type, view_format = nil)
     case type
     when :javascript then ENV['RAILS_JS_EXT'] || '.js'
-    when :stylesheet then ENV['RAILS_CSS_EXT'] || '.css'
-    when :view       then 
-      begin
-        if ENV['RAILS_VIEW_EXT']
-          view_format ? ".#{view_format}#{ENV['RAILS_VIEW_EXT']}" : ENV['RAILS_VIEW_EXT']
-        else
-          if view_format.nil?
-            view_format = :html
-          end 
-          case view_format.to_sym
-          when :xml then '.xml.builder'
-          when :js  then '.js.rjs'
-          else           ".#{view_format}.erb"
-          end
-        end
+    when :stylesheet then ENV['RAILS_CSS_EXT'] || (wants_haml ? '.sass' : '.css')
+    when :view       then                    
+      view_format = :html if view_format.nil?
+      case view_format.to_sym
+      when :xml then '.xml.builder'
+      when :js  then '.js.rjs'
+      else 
+        rails_view_ext = ENV['RAILS_VIEW_EXT'] || (wants_haml ? '.haml' : '.erb')
+        ".#{view_format}#{rails_view_ext}"
       end
     when :fixture    then '.yml'
     else '.rb'
@@ -299,22 +292,24 @@ class RailsPath
     return {:extension => extension, :content_type => content_type, :file_name => file_name}
   end
 
-  def self.stubs
+  def wants_haml
+    @wants_html ||= File.file?(File.join(rails_root, "vendor/plugins/haml/", "init.rb"))
+  end
+
+  def stubs
     { :controller => 'app/controllers',
       :model => 'app/models',
-      :helper => '/app/helpers/',
-      :view => '/app/views/',
+      :helper => 'app/helpers/',
+      :view => 'app/views/',
       :config => 'config',
       :lib => 'lib',
       :log => 'log',
       :javascript => 'public/javascripts',
-      :stylesheet => 'public/stylesheets',
+      :stylesheet => wants_haml ? 'public/stylesheets/sass' : 'public/stylesheets',
       :functional_test => 'test/functional',
       :unit_test => 'test/unit',
       :fixture => 'test/fixtures'}
   end
-
-  def stubs; self.class.stubs end
 
   def ==(other)
     other = other.filepath if other.respond_to?(:filepath)
