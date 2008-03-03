@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'rails_bundle_tools'
-require "rails/rails_path"
-require "rails/inflector"
 require 'yaml'
 require File.join(ENV['TM_SUPPORT_PATH'], "lib", "escape")
 DIALOG = ENV['DIALOG']
