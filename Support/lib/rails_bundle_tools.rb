@@ -12,7 +12,8 @@ require 'rails/text_mate'
 require 'rails/rails_path'
 require 'rails/unobtrusive_logger'
 require 'rails/misc'
-require 'rails/inflector'
+require 'rails/inflector'   
+require 'rails/command'
 
 def ruby(command)
   `/usr/bin/env ruby #{command}`
