@@ -3,19 +3,18 @@ require File.dirname(__FILE__) + '/test_helper'
 require 'text_mate_mock'
 require 'rails/rails_path'
 
-TextMate.line_number = '1'
-TextMate.column_number = '1'
-TextMate.project_directory = File.expand_path(File.dirname(__FILE__) + '/app_fixtures')
-
 class RailsPathTest < Test::Unit::TestCase
   def setup
+    TextMate.line_number = '1'
+    TextMate.column_number = '1'
+    TextMate.project_directory = File.expand_path(File.dirname(__FILE__) + '/app_fixtures')
     @rp_controller = RailsPath.new(FIXTURE_PATH + '/app/controllers/user_controller.rb')
     @rp_controller_with_module = RailsPath.new(FIXTURE_PATH + '/app/controllers/admin/base_controller.rb')
     @rp_view = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml')
     @rp_view_with_module = RailsPath.new(FIXTURE_PATH + '/app/views/admin/base/action.rhtml')
     @rp_fixture = RailsPath.new(FIXTURE_PATH + '/test/fixtures/users.yml')
     @rp_fixture_spec = RailsPath.new(FIXTURE_PATH + '/spec/fixtures/users.yml')
-    @rp_wacky = RailsPath.new(FIXTURE_PATH + '/wacky/users.yml') 
+    @rp_wacky = RailsPath.new(FIXTURE_PATH + '/wacky/users.yml')
   end
 
   def test_rails_root
@@ -95,8 +94,8 @@ class RailsPathTest < Test::Unit::TestCase
 
   def test_respond_to_format
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb')
-    TextMate.line_number = '13'
-    assert_equal [12, 'js'], current_file.respond_to_format
+    TextMate.line_number = '14'
+    assert_equal [13, 'js'], current_file.respond_to_format
   end
 
   def test_rails_path_for
@@ -229,4 +228,62 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal(:model, RailsPath.new(FIXTURE_PATH + '/app/views/notifier/forgot_password.html.erb').best_match)
     assert_equal(:controller, RailsPath.new(FIXTURE_PATH + '/app/views/books/new.haml').best_match)
   end
+
+  def test_wants_haml
+    begin
+      assert_equal false, @rp_view.wants_haml
+      haml_fixture_path = File.expand_path(File.dirname(__FILE__) + '/fixtures')
+      TextMate.project_directory = haml_fixture_path
+      assert_equal true, RailsPath.new(haml_fixture_path + '/app/views/posts/index.html.haml').wants_haml
+    ensure
+      TextMate.project_directory = File.expand_path(File.dirname(__FILE__) + '/app_fixtures')
+    end
+  end
+
+  def test_haml
+    begin
+      haml_fixture_path = File.expand_path(File.dirname(__FILE__) + '/fixtures')
+      TextMate.project_directory = haml_fixture_path
+
+      assert_equal [], RailsPath.new(haml_fixture_path + '/public/stylesheets/sass/posts.sass').modules
+      assert_equal ["admin"], RailsPath.new(haml_fixture_path + '/public/stylesheets/sass/admin/posts.sass').modules
+
+      # Going from controller to view
+      current_file = RailsPath.new(haml_fixture_path + '/app/controllers/posts_controller.rb')
+      TextMate.line_number = '2'
+      assert_equal RailsPath.new(haml_fixture_path + '/app/views/posts/new.html.haml'), current_file.rails_path_for(:view)
+
+      current_file = RailsPath.new(haml_fixture_path + '/app/controllers/posts_controller.rb')
+      TextMate.line_number = '12'
+      assert_equal RailsPath.new(haml_fixture_path + '/app/views/posts/index.html.haml'), current_file.rails_path_for(:view)
+
+      current_file = RailsPath.new(haml_fixture_path + '/app/controllers/posts_controller.rb')
+      TextMate.line_number = '13'
+      assert_equal RailsPath.new(haml_fixture_path + '/app/views/posts/index.xml.builder'), current_file.rails_path_for(:view)
+
+      current_file = RailsPath.new(haml_fixture_path + '/app/controllers/posts_controller.rb')
+      TextMate.line_number = '14'
+      assert_equal RailsPath.new(haml_fixture_path + '/app/views/posts/index.js.rjs'), current_file.rails_path_for(:view)
+
+      current_file = RailsPath.new(haml_fixture_path + '/app/controllers/posts_controller.rb')
+      TextMate.line_number = '15'
+      assert_equal RailsPath.new(haml_fixture_path + '/app/views/posts/index.wacky.haml'), current_file.rails_path_for(:view)
+
+      # Going from view to controller
+      current_file = RailsPath.new(haml_fixture_path + '/app/views/posts/index.html.haml')
+      assert_equal RailsPath.new(haml_fixture_path + '/app/controllers/posts_controller.rb'), current_file.rails_path_for(:controller)
+
+      # Going from view to stylesheet
+      current_file = RailsPath.new(haml_fixture_path + '/app/views/posts/index.html.haml')
+      assert_equal RailsPath.new(haml_fixture_path + '/public/stylesheets/sass/posts.sass'), current_file.rails_path_for(:stylesheet)
+
+      # Going from stylesheet to helper
+      current_file = RailsPath.new(haml_fixture_path + '/public/stylesheets/sass/posts.sass')
+      assert_equal RailsPath.new(haml_fixture_path + '/app/helpers/posts_helper.rb'), current_file.rails_path_for(:helper)
+
+    ensure
+      TextMate.project_directory = File.expand_path(File.dirname(__FILE__) + '/app_fixtures')
+    end
+  end
+
 end
