@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= f.submit "${1:Submit}"${2:, :disable_with =&gt; '${3:$1ing...}'} %&gt;</string>
+	<string>${TM_TEMPLATE_START_RUBY}f.submit "${1:Submit}"${2:, :disable_with =&gt; '${3:$1ing...}'}${TM_TEMPLATE_END_RUBY}</string>
 	<key>name</key>
 	<string>f.submit (ffs)</string>
 	<key>scope</key>
-	<string>text.html.ruby</string>
+	<string>text.html.ruby, text.haml</string>
 	<key>tabTrigger</key>
 	<string>f.</string>
 	<key>uuid</key>

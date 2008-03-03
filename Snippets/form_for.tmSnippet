@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;% form_for @${1:model} do |f| -%&gt;
+	<string>${TM_TEMPLATE_START_RUBY_INLINE}form_for @${1:model} do |f|${TM_TEMPLATE_START_RUBY_BLOCK}
   $0
-&lt;% end -%&gt;</string>
+${TM_TEMPLATE_END_RUBY_INLINE}</string>
 	<key>name</key>
 	<string>form_for</string>
 	<key>scope</key>
-	<string>text.html.ruby</string>
+	<string>text.html.ruby, text.haml</string>
 	<key>tabTrigger</key>
 	<string>ff</string>
 	<key>uuid</key>

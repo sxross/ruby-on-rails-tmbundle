@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>&lt;%= link_to "${1:link text...}", :controller =&gt; "${2:items}", :action =&gt; "${3:edit}", :id =&gt; ${4:@item} %&gt;</string>
+	<string>${TM_TEMPLATE_START_RUBY}link_to "${1:link text...}", :controller =&gt; "${2:items}", :action =&gt; "${3:edit}", :id =&gt; ${4:@item}${TM_TEMPLATE_END_RUBY}</string>
 	<key>name</key>
 	<string>link_to (controller, action, id)</string>
 	<key>scope</key>
-	<string>text.html.ruby</string>
+	<string>text.html.ruby, text.haml</string>
 	<key>tabTrigger</key>
 	<string>licai</string>
 	<key>uuid</key>
