@@ -14,6 +14,8 @@ class RailsPathTest < Test::Unit::TestCase
     @rp_view = RailsPath.new(FIXTURE_PATH + '/app/views/user/new.rhtml')
     @rp_view_with_module = RailsPath.new(FIXTURE_PATH + '/app/views/admin/base/action.rhtml')
     @rp_fixture = RailsPath.new(FIXTURE_PATH + '/test/fixtures/users.yml')
+    @rp_fixture_spec = RailsPath.new(FIXTURE_PATH + '/spec/fixtures/users.yml')
+    @rp_wacky = RailsPath.new(FIXTURE_PATH + '/wacky/users.yml') 
   end
 
   def test_rails_root
@@ -29,6 +31,8 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal :controller, @rp_controller.file_type
     assert_equal :view, @rp_view.file_type
     assert_equal :fixture, @rp_fixture.file_type
+    assert_equal :fixture, @rp_fixture_spec.file_type
+    assert_equal nil, @rp_wacky.file_type
   end
 
   def test_modules
@@ -36,8 +40,11 @@ class RailsPathTest < Test::Unit::TestCase
     assert_equal ['admin'], @rp_controller_with_module.modules
     assert_equal [], @rp_view.modules
     assert_equal ['admin'], @rp_view_with_module.modules
-  end             
-  
+    assert_equal [], @rp_fixture.modules
+    assert_equal [], @rp_fixture_spec.modules
+    assert_equal nil, @rp_wacky.modules
+  end
+
   def test_controller_name
     rp = RailsPath.new(FIXTURE_PATH + '/app/models/person.rb')
     assert_equal "people", rp.controller_name 
@@ -102,6 +109,7 @@ class RailsPathTest < Test::Unit::TestCase
       [FIXTURE_PATH + '/app/models/user.rb', :controller, FIXTURE_PATH + '/app/controllers/users_controller.rb'],
       [FIXTURE_PATH + '/app/models/post.rb', :controller, FIXTURE_PATH + '/app/controllers/posts_controller.rb'],
       [FIXTURE_PATH + '/test/fixtures/users.yml', :model, FIXTURE_PATH + '/app/models/user.rb'],
+      [FIXTURE_PATH + '/spec/fixtures/users.yml', :model, FIXTURE_PATH + '/app/models/user.rb'],
       [FIXTURE_PATH + '/app/controllers/user_controller.rb', :model, FIXTURE_PATH + '/app/models/user.rb'],
       [FIXTURE_PATH + '/test/fixtures/users.yml', :unit_test, FIXTURE_PATH + '/test/unit/user_test.rb'],
       [FIXTURE_PATH + '/app/models/user.rb', :fixture, FIXTURE_PATH + '/test/fixtures/users.yml'],
@@ -109,7 +117,7 @@ class RailsPathTest < Test::Unit::TestCase
       [FIXTURE_PATH + '/app/controllers/admin/base_controller.rb', :helper, FIXTURE_PATH + '/app/helpers/admin/base_helper.rb'],
       [FIXTURE_PATH + '/app/controllers/admin/inside/outside_controller.rb', :javascript, FIXTURE_PATH + '/public/javascripts/admin/inside/outside.js'],
       [FIXTURE_PATH + '/app/controllers/admin/base_controller.rb', :functional_test, FIXTURE_PATH + '/test/functional/admin/base_controller_test.rb'],
-      [FIXTURE_PATH + '/app/helpers/admin/base_helper.rb', :controller, FIXTURE_PATH + '/app/controllers/admin/base_controller.rb']
+      [FIXTURE_PATH + '/app/helpers/admin/base_helper.rb', :controller, FIXTURE_PATH + '/app/controllers/admin/base_controller.rb'],
     ]
     # TODO Add [posts.yml, :model, post.rb]
     for pair in partners
@@ -173,6 +181,10 @@ class RailsPathTest < Test::Unit::TestCase
       )
     end
 
+    # test wacky
+    assert_equal(nil, 
+                 @rp_wacky.rails_path_for(:controller), 
+                 "wacky/wackier.rb has no associations") 
   end
   
   def test_file_parts
