@@ -230,7 +230,7 @@ class RailsPath
     when :view       then                    
       view_format = :html if view_format.nil?
       case view_format.to_sym
-      when :xml then '.xml.builder'
+      when :xml, :rss, :atom then ".#{view_format}.builder"
       when :js  then '.js.rjs'
       else 
         rails_view_ext = ENV['RAILS_VIEW_EXT'] || (wants_haml ? '.haml' : '.erb')
