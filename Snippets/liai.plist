@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>${TM_TEMPLATE_START_RUBY}link_to "${1:link text...}", :action =&gt; "${2:edit}", :id =&gt; ${3:@item}${TM_TEMPLATE_END_RUBY}</string>
+	<string>${TM_TEMPLATE_START_RUBY_EXPR}link_to "${1:link text...}", :action =&gt; "${2:edit}", :id =&gt; ${3:@item}${TM_TEMPLATE_END_RUBY_EXPR}</string>
 	<key>name</key>
 	<string>link_to (action, id)</string>
 	<key>scope</key>
