@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>content</key>
-	<string>${TM_TEMPLATE_START_RUBY}f.file_field :${1:attribute}${TM_TEMPLATE_END_RUBY}</string>
+	<string>${TM_TEMPLATE_START_RUBY_EXPR}f.file_field :${1:attribute}${TM_TEMPLATE_END_RUBY_EXPR}</string>
 	<key>name</key>
 	<string>form_for file_field</string>
 	<key>scope</key>
