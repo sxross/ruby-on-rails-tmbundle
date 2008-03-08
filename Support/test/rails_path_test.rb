@@ -93,15 +93,9 @@ class RailsPathTest < Test::Unit::TestCase
   end              
   
   def test_respond_to_format
-<<<<<<< HEAD:Support/test/rails_path_test.rb
-    current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb')  
-    TextMate.line_number = '13'
-    assert_equal [12, 'js'], current_file.respond_to_format           
-=======
     current_file = RailsPath.new(FIXTURE_PATH + '/app/controllers/posts_controller.rb')
     TextMate.line_number = '14'
     assert_equal [13, 'js'], current_file.respond_to_format
->>>>>>> Improved Haml and Sass support:Support/test/rails_path_test.rb
   end
 
   def test_rails_path_for

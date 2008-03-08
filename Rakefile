@@ -8,4 +8,12 @@ APP_ROOT=File.dirname(__FILE__)
 
 RUBY_APP='ruby'
 
+desc "TMBundle Test Task"
+task :default => [ :test ]
+Rake::TestTask.new { |t|
+  t.libs << "test"
+  t.pattern = 'Support/test/*_test.rb'
+  t.verbose = true
+  t.warning = false
+}
 Dir['tasks/**/*.rake'].each { |file| load file }
