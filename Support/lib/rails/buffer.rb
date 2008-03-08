@@ -101,7 +101,7 @@ class Buffer
 
   # Search for the nearest "wants." declaration within a "respond_to" section.
   def find_respond_to_format
-    m = find_method 
+    m = find_method
     return nil if m.nil?
     from, wants = find(:direction => :backward, :from => m.first) { %r{\brespond_to\s.+\|\s*(\w+)\s*\|} }
     return nil if wants.nil?

@@ -358,7 +358,6 @@ two:
 	<p>You can now quickly toggle from a fixtures file (we&#8217;re in comments.yml now) to the
 model file with &#x21E7; &#x2325; &#x2318; &#x2193;.</p>
 
-
 	<p>Within <code>comment.rb</code> model, create a new line within the class, and type <code>bt</code> and press &#x21E5;. Type <code>post</code>. This creates a snippet:</p>
 
 
@@ -851,7 +850,7 @@ format.</p>
     <span class="ident">respond_to</span> <span class="keyword">do</span> <span class="punct">|</span><span class="ident">wants</span><span class="punct">|</span>
       <span class="ident">wants</span><span class="punct">.</span><span class="ident">html</span> <span class="punct">{</span> <span class="ident">render</span> <span class="symbol">:action</span> <span class="punct">=&gt;</span> <span class="punct">&quot;</span><span class="string">new</span><span class="punct">&quot;</span> <span class="punct">}</span>
     <span class="keyword">end</span>
-  <span class="keyword">end</span>    
+  <span class="keyword">end</span>
 <span class="keyword">end</span></pre></p>
 
 
@@ -962,14 +961,14 @@ and then view them as a blog visitor at <a href="http://localhost:3000/blog">htt
 
 
 	<p><pre class='syntax'><span class="keyword">class </span><span class="class">Post</span> <span class="punct">&lt;</span> <span class="constant">ActiveRecord</span><span class="punct">::</span><span class="constant">Base</span>
-  <span class="ident">has_many</span> <span class="symbol">:comments</span>        
-  
+  <span class="ident">has_many</span> <span class="symbol">:comments</span>
+
   <span class="keyword">def </span><span class="method">published</span>
     <span class="punct">!</span><span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span><span class="punct">.</span><span class="ident">nil?</span>
   <span class="keyword">end</span>
-  
+
   <span class="keyword">def </span><span class="method">published=</span><span class="punct">(</span><span class="ident">publish</span><span class="punct">)</span>
-    <span class="keyword">if</span> <span class="ident">publish</span> 
+    <span class="keyword">if</span> <span class="ident">publish</span>
       <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span> <span class="punct">=</span> <span class="constant">DateTime</span><span class="punct">.</span><span class="ident">now</span> <span class="keyword">if</span> <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span><span class="punct">.</span><span class="ident">nil?</span>
     <span class="keyword">else</span>
       <span class="constant">self</span><span class="punct">.</span><span class="ident">published_at</span> <span class="punct">=</span> <span class="constant">nil</span>

@@ -29,6 +29,20 @@ end
 
 def edit
 end
+
+def index
+  respond_to do |wants|
+    wants.html { }
+    wants.js   { }
+    wants.css  { }
+  end
+  respond_to { | wacky |
+    wacky.wackier { }
+  }
+end
+
+def edit
+end
 END
 
 class BufferTest < Test::Unit::TestCase
@@ -53,10 +67,10 @@ class BufferTest < Test::Unit::TestCase
 
     b.line_number = 5
     assert_equal [5, 'my_other_method'], b.find_method
-  end            
-  
+  end
+
   def test_find_respond_to_format
-     b = Buffer.new(TextMate.selected_text)   
+     b = Buffer.new(TextMate.selected_text)
      assert_equal nil, b.find_respond_to_format
      b.line_number = 10
      assert_equal nil, b.find_respond_to_format

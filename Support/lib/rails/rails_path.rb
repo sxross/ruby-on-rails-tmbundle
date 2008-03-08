@@ -8,7 +8,7 @@
 require 'rails/misc'
 require 'rails/text_mate'
 require 'rails/buffer'
-require 'rails/inflector'  
+require 'rails/inflector'
 require 'fileutils'
 
 module AssociationMessages
@@ -21,7 +21,7 @@ module AssociationMessages
     :functional_test => [:controller, :helper, :model, :unit_test, :fixture],
     :unit_test => [:model, :controller, :helper, :functional_test, :fixture],
     :javascript => [:helper, :controller],
-    :stylesheet => [:helper, :controller] 
+    :stylesheet => [:helper, :controller]
   }
 
   # Make associations hash publicly available to each object
@@ -46,7 +46,7 @@ module AssociationMessages
 end
 
 class RailsPath
-  attr_reader :filepath  
+  attr_reader :filepath
   attr_reader :path_name, :file_name, :content_type, :extension
 
   include AssociationMessages
@@ -59,7 +59,7 @@ class RailsPath
       # Relative file, prepend rails_root
       @filepath = File.join(rails_root, filepath)
     end
-    
+
     # Put parts into instance variables to make retrieval more uniform.
     parse_file_parts
   end
@@ -83,13 +83,13 @@ class RailsPath
   # Make sure the file exists by creating it if it doesn't
   def touch 
     if !exists?
-      FileUtils.mkdir_p dirname      
+      FileUtils.mkdir_p dirname
       FileUtils.touch @filepath
     end
-  end     
-  
+  end
+
   def append(str)
-    File.open(@filepath, "a") { |f| f.write str }          
+    File.open(@filepath, "a") { |f| f.write str }
   end
 
   def controller_name
@@ -101,11 +101,11 @@ class RailsPath
     when :unit_test  then name.sub!(/_test$/, '')
     when :view       then name = dirname.split('/').pop
     when :functional_test then name.sub!(/_controller_test$/, '')
-    else                                                                               
-      if !File.file?(File.join(rails_root, stubs[:controller], '/', name + '_controller.rb')) 
-        name = Inflector.pluralize(name) 
+    else
+      if !File.file?(File.join(rails_root, stubs[:controller], '/', name + '_controller.rb'))
+        name = Inflector.pluralize(name)
       end
-    end                                                          
+    end
     return name
   end
 
@@ -123,7 +123,7 @@ class RailsPath
 
     return parse_file_name(name)[:file_name] rescue nil # Remove extension
   end
-  
+
   def respond_to_format
     return nil unless file_type == :controller
     buffer.find_respond_to_format
@@ -255,10 +255,10 @@ class RailsPath
   end
 
   def rails_path_for_view
-    return nil if action_name.nil?        
+    return nil if action_name.nil?
     line, view_format = respond_to_format
 
-    if view_format  
+    if view_format
       VIEW_EXTENSIONS.each do |ext|
         filename_with_extension = "#{action_name}.#{view_format}.#{ext}"
         existing_view = File.join(rails_root, stubs[:view], modules, controller_name, filename_with_extension)
@@ -273,7 +273,7 @@ class RailsPath
     default_view = File.join(rails_root, stubs[:view], modules, controller_name, action_name + default_extension_for(:view, view_format))
     return RailsPath.new(default_view)
   end
-  
+
   def parse_file_parts
     @path_name, @file_name = File.split(@filepath)
     file_part_hash = parse_file_name(@file_name)
@@ -282,7 +282,7 @@ class RailsPath
     @extension = file_part_hash[:extension]
     return [@path_name, @file_name, @content_type, @extension]
   end
-  
+
   # File name parser that has no side-effects on object state
   def parse_file_name(file_name)
     path_parts = file_name.split('.')

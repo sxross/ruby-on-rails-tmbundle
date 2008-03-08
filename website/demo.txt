@@ -25,7 +25,7 @@ This creates a 001_create_posts migration with a create_table:
 end</pre>
 
 h2. Sexy Migration support
-                                                                                                  
+
 If you put the cursor on the line after <code>t.text :body</code>, type <code>t.</code> and press TAB. Select "Create boolean column" (by pressing 0), and type "published" into the template field. If nothing happened when you pressed TAB, check that when you opened the migrations file you've selected the bundle "Ruby on Rails".
 
 Note that another <code>t.</code> was created on the next line! Press TAB and the cursor will be placed after it. You can now press TAB again to create another column, or delete this line.
@@ -140,7 +140,7 @@ To create/navigate to the view, press SHIFT OPTION COMMAND DOWN and select "View
 
 As there are no <code>app/views/blog/index*</code> files, it will prompt you to create a blank view file. By default it guesses <code>index.html.erb</code> (because the method was named <code>index</code>), but of course you can change that in the dialog box.
 
-If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the controller file before hitting SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN. Also note that the cursor must be within the scope of a method for SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN to work. 
+If instead you got the message "blog_controller.rb does not have a view", note that you first need to save the controller file before hitting SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN. Also note that the cursor must be within the scope of a method for SHIFT OPTION COMMAND DOWN or OPTION COMMAND DOWN to work.
 
 Press enter to accept <code>index.html.erb</code>. You are taken to the new file.
 
@@ -395,7 +395,7 @@ with the <code>def</code> snippet:
   def find_post
     @post = Post.find(params[:id]) if params[:id]
   end
-end</pre>   
+end</pre>
 
 Note: the <code>index</code> method could be created by typing <code>def</code>, TAB, <code>index</code>, TAB,  <code>@posts = Post.fina</code>, TAB, BACKSPACE.
 
@@ -484,7 +484,7 @@ Note, for <code>published</code>, you might change the label to <code>Published 
 into the default string file.
 
 Finally, add a "Submit" button using the <code>f.</code> snippet tab completion.
-                                                    
+
 Start <code>script/server</code> from the prompt and you can now view this form at [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
 
 The final form is:
@@ -507,8 +507,8 @@ The final form is:
     <%= f.submit "Submit" %>
   </p>
 <% end -%></pre>
-                                              
-Note: if you got <code><br></code> when hitting CONTROL RETURN instead of <code><br /></code> then you might want to go to the preferences of TextMate (COMMAND ,), choose tab "Advanced", choose "Shell Variables", click the + sign to add a new shell variable, and give it the name <code>TM_XHTML</code> and a value of <code> /</code> 
+
+Note: if you got <code><br></code> when hitting CONTROL RETURN instead of <code><br /></code> then you might want to go to the preferences of TextMate (COMMAND ,), choose tab "Advanced", choose "Shell Variables", click the + sign to add a new shell variable, and give it the name <code>TM_XHTML</code> and a value of <code> /</code>
 
 h2. Partials
 
@@ -629,7 +629,7 @@ The completed <code>create</code> action is:
     respond_to do |wants|
       wants.html { render :action => "new" }
     end
-  end    
+  end
 end</pre>
 
 Yes you'd probably only have one <code>respond_to</code> block, but this is a
@@ -639,10 +639,10 @@ h2. Our application so far
 
 In the browser, we can create posts via [http://localhost:3000/posts/new](http://localhost:3000/posts/new)
 and then view them as a blog visitor at [http://localhost:3000/blog](http://localhost:3000/blog).
-       
+
 h2. Some more migrations
 
-We're looking for the following additions:                  
+We're looking for the following additions:
 
 * rename the column <code>name</code> of table <code>comments</code> to <code>author</code>
 * add a new column <code>author_url</code> to table <code>comments</code>
@@ -651,9 +651,9 @@ We're looking for the following additions:
 Let's try to do this all in one migrations file. Start Quick Migration (CONTROL SHIFT M). Let's name it <code>ModifyComments</code>. A new migrations file <code>003_modify_comments.rb</code> is created and opened, and the cursor is placed behind the <code>mtab</code> trigger. For now delete <code>mtab</code> and instead enter <code>mcol</code> and press TAB. Choose <code>Rename / Rename Column</code> (3). Type <code>comments</code> TAB <code>name</code> TAB <code>author</code> TAB RETURN.
 
 Again type <code>mcol</code> and TAB. This time choose <code>Add / Remove Column</code> (1). Type <code>comments</code> TAB <code>author_url</code>, then TAB twice, and press RETURN.
-	
-Now type <code>mind</code> and TAB. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> TAB <code>post_id</code>.	                                             
-	
+
+Now type <code>mind</code> and TAB. Choose <code>Add / Remove Index</code> (1). Type <code>comments</code> TAB <code>post_id</code>.
+
 The end result looks like this:
 
 <pre syntax="ruby">class ModifyComments < ActiveRecord::Migration
@@ -674,9 +674,9 @@ Notice how the <code>down</code> method calls are in reversed order of the <code
 
 Save the file (COMMAND S) and migrate to current (CONTROL |).
 
-Be sure to modify the comments fixture file. Go there (COMMAND T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (CONTROL \, choose option 1). All tests should pass. 
-                      
-Futhermore we'd like to know when a post was published. To do this we'll want the following modifications: 
+Be sure to modify the comments fixture file. Go there (COMMAND T, press <code>cy</code>, choose <code>comments.yml</code>). Rename <code>name</code> to <code>author</code> and add a row for <code>author_url</code> for each comment. Check your tests again (CONTROL \, choose option 1). All tests should pass.
+
+Futhermore we'd like to know when a post was published. To do this we'll want the following modifications:
 
 * keep track of the datetime when a post was published.
 * remove the column published from the posts table because it can be determined if a post is published by looking at whether or not a value is present for the published date.
@@ -699,35 +699,35 @@ The end result looks like this:
   end
 end</pre>
 
-Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.   
-                               
+Notice how the <code>Remove / Add Column</code> command automagically determined in the <code>down</code> method the column type of column <code>published</code> to be a <code>boolean</code>. It determines this by looking at the current state of your <code>db/schema.rb</code> file.
+
 Save the file (COMMAND S) and migrate to current (CONTROL |).
 
-Now we need to modify the posts fixtures file. Go there (COMMAND T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>. 
+Now we need to modify the posts fixtures file. Go there (COMMAND T, type <code>pyml</code>, choose <code>posts.yml</code>). Replace the line <code>published: true</code> by <code>published_at: 2008-1-1</code>.
 
-Modify the posts functional test, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Functional Test"). Replace <code>:published => '1'</code> by <code>:published_at => Date.new(2008, 1, 1)</code>. 
+Modify the posts functional test, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Functional Test"). Replace <code>:published => '1'</code> by <code>:published_at => Date.new(2008, 1, 1)</code>.
 
 Modify the post model, first go there (SHIFT OPTION COMMAND DOWN, choose "Go to Model"). Have the code look like:
 
 <pre syntax="ruby">class Post < ActiveRecord::Base
-  has_many :comments        
-  
+  has_many :comments
+
   def published
     !self.published_at.nil?
   end
-  
+
   def published=(publish)
-    if publish 
+    if publish
       self.published_at = DateTime.now if self.published_at.nil?
     else
       self.published_at = nil
     end
   end
 end</pre>
-      
-Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions => "published_at IS NOT NULL")</code>.           
-                                                 
-Finally, check your tests again (CONTROL \). All tests should pass.  
+
+Modify the <code>blog_controller.rb</code> file. Replace <code>Post.find_all_by_published(true)</code> by <code>Post.find(:all, :conditions => "published_at IS NOT NULL")</code>.
+
+Finally, check your tests again (CONTROL \). All tests should pass.
 
 
 h1. TODO
